@@ -17,8 +17,8 @@ toc: true
 [원형 연결 리스트](https://namu.wiki/w/%EC%97%B0%EA%B2%B0%20%EB%A6%AC%EC%8A%A4%ED%8A%B8?from=%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8#s-3.3)
 
 
-+ [(1) SingleLinkedList](https://bo-oseng.github.io/data-structure/LinkedList-(1)-SingleLinkedList.html)
-+ [(2) DoublyLinkedList](https://bo-oseng.github.io/data-structure/LinkedList-(2)-DoublyLikedList.html)
++ [(1) SingleLinkedList](https://bo-oseng.github.io/data-structure/LinkedList-(1)-SingleLinkedList/)
++ [(2) DoublyLinkedList](https://bo-oseng.github.io/data-structure/LinkedList-(2)-DoublyLikedList/)
 
 
 ```python

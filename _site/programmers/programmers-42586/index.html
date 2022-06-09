@@ -324,7 +324,7 @@
   <ul class="nav__items" id="category_tag_menu">
       <!--전체 글 수-->
       <li>
-            📂 <span>전체 글 수</style> <span>27</style> <span>개</style> 
+            📂 <span>전체 글 수</style> <span>33</style> <span>개</style> 
       </li>
       <li>
         <!--1차 분류-->
@@ -348,11 +348,11 @@
             <ul>
                 
                     
-                
+                        <li><a href="/categories/boj" class="">백준 (7)</a></li>
                     
                 
                     
-                        <li><a href="/categories/boj" class="">백준 (1)</a></li>
+                
                     
                 
                     
@@ -389,9 +389,9 @@
             <ul>
                 
                     
-                        <li><a href="/categories/data-structure" class="">자료구조 (3)</a></li>
-                    
                 
+                    
+                        <li><a href="/categories/data-structure" class="">자료구조 (3)</a></li>
                     
                 
                     
@@ -411,9 +411,9 @@
                     
                 
                     
-                        <li><a href="/categories/termux" class="">termux (2)</a></li>
-                    
                 
+                    
+                        <li><a href="/categories/termux" class="">termux (2)</a></li>
                     
                 
                     
@@ -547,12 +547,12 @@
 <hr />
 <h2 id="풀이">풀이</h2>
 
-<p>DP의 대표적은 문제중 <a href="https://bo-oseng.github.io/algorithms/2022/02/20/boj-11055.html">가장 큰 부분 증가 수열</a> 와 비슷하게 풀 수 있을것 같아 DP로 접근했다.</p>
+<p>DP의 대표적은 문제중 <a href="https://bo-oseng.github.io/boj/boj-11055/">가장 큰 부분 증가 수열</a> 와 비슷하게 풀 수 있을것 같아 DP로 접근했다.</p>
 
 <p>코드의 흐름은 다음과 같다.</p>
 <ol>
   <li>먼저 각 작업마다 배포에 걸리는 시간을 구해 finish에 저장한다.</li>
-  <li>finish 배열을 앞에서 부터 차례로 스캔하는데 <a href="https://bo-oseng.github.io/algorithms/2022/02/20/boj-11055.html">가장 큰 부분 증가 수열</a> 처럼 지금 스캔 중인 인덱스의 값과 현재 인덱스부터 배열의 끝까지 스캔하며 현재 인덱스의 값보자 작거나 같을 값이 나오면 cnt를 1씩 증가시키고, 큰 값이나오면 answer에 cnt값을 저장하고 이를 반복한다.</li>
+  <li>finish 배열을 앞에서 부터 차례로 스캔하는데 <a href="https://bo-oseng.github.io/boj/boj-11055/">가장 큰 부분 증가 수열</a> 처럼 지금 스캔 중인 인덱스의 값과 현재 인덱스부터 배열의 끝까지 스캔하며 현재 인덱스의 값보자 작거나 같을 값이 나오면 cnt를 1씩 증가시키고, 큰 값이나오면 answer에 cnt값을 저장하고 이를 반복한다.</li>
 </ol>
 
 <p>예를들어 문제어서 예제로 주어진 경우를 살펴보자.</p>
