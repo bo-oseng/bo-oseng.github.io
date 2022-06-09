@@ -1,0 +1,74 @@
+I"�<h1 id="백준-문제-중-1316번">백준 문제 중 1316번</h1>
+
+<p>https://www.acmicpc.net/problem/1316</p>
+
+<h3 id="문제">문제</h3>
+
+<p>그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때문에 그룹 단어이지만, aabbbccb는 b가 떨어져서 나타나기 때문에 그룹 단어가 아니다.</p>
+
+<p>단어 N개를 입력으로 받아 그룹 단어의 개수를 출력하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>시간 제한메모리 제한제출정답맞힌 사람정답 비율</p>
+
+<p>첫째 줄에 단어의 개수 N이 들어온다. N은 100보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에 단어가 들어온다. 단어는 알파벳 소문자로만 되어있고 중복되지 않으며, 길이는 최대 100이다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 그룹 단어의 개수를 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="c1"># 그룹 문자열인지 판단하는 변수 선언
+</span><span class="n">checker</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="c1"># 그룹 문자열의 개수 변수 선언
+</span><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">nums</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)):</span>
+    <span class="n">alphas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+
+<span class="c1"># 그룹 문자열을 판단하는 함수 선언
+</span><span class="k">def</span> <span class="nf">is_group</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">bool</span><span class="p">:</span>
+    
+    <span class="n">checker</span> <span class="o">=</span> <span class="bp">True</span>  
+        
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        
+        <span class="c1"># 문자열의 종류가 변하는 순간 판단   
+</span>        <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+           
+            <span class="s">'''s[i]가 s[i]이후의 substring에 
+               포함 된다면 false값을 리턴'''</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]:</span>
+            
+                <span class="n">checker</span><span class="o">=</span><span class="bp">False</span>
+                <span class="k">return</span> <span class="n">checker</span>
+    
+    <span class="k">return</span> <span class="n">checker</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">is_group</span><span class="p">(</span><span class="n">alphas</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+        <span class="n">cnt</span><span class="o">+=</span><span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+aabbccd
+aabbccad
+aabbcba
+1
+</code></pre></div></div>
+
+<h3 id="배운점">배운점</h3>
+
+<p>처음에 문제를 접근할때 그룹 문자열인지 판단하는 기준이 명확 하지 않았는데 슬라이싱을 통해 접근하니 쉽게 문제를 해걸 할 수 있었다. 파이썬의 슬라이싱 기능이 얼마나 강력한지 느꼈다.</p>
+:ET

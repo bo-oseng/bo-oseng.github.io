@@ -1,0 +1,60 @@
+I"�<h1 id="백준-문제-중-1065번">백준 문제 중 1065번</h1>
+
+<p>https://www.acmicpc.net/problem/1065</p>
+
+<h3 id="문제">문제</h3>
+
+<p>어떤 양의 정수 X의 각 자리가 등차수열을 이룬다면, 그 수를 한수라고 한다. 등차수열은 연속된 두 개의 수의 차이가 일정한 수열을 말한다. N이 주어졌을 때, 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 1,000보다 작거나 같은 자연수 N이 주어진다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#한수를 판별하는 함수를 만든뒤 필터를 이용했다
+</span><span class="k">def</span> <span class="nf">is_hansu</span><span class="p">(</span><span class="n">num</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">bool</span><span class="p">:</span>
+    <span class="n">strnum</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">len_str</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">strnum</span><span class="p">)</span>
+    <span class="n">diff_list</span><span class="o">=</span><span class="p">[]</span>
+    
+    <span class="c1">#각 자릿수끼리의 차를 리스트로 관리했다.
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_str</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">diff</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">strnum</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">strnum</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">diff_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+        
+    <span class="c1">#등차 수열의 성질인 등차는 set자료형으로 길이가 1개가 됨을 이용했다.
+</span>    <span class="n">diff_list</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">diff_list</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">diff_list</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">hansulist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">numbers</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">hansulist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">is_hansu</span><span class="p">,</span> <span class="n">hansulist</span><span class="p">))</span>
+
+<span class="n">answer</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hansulist</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>210
+105
+</code></pre></div></div>
+
+<h3 id="배운점">배운점</h3>
+
+<p>set자료형과 filter함수의 powerful함을 느낄 수 있었다.</p>
+:ET

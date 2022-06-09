@@ -1,0 +1,124 @@
+I"�<h1 id="백준-문제-중-2675번">백준 문제 중 2675번</h1>
+<p>https://www.acmicpc.net/problem/2675</p>
+
+<h3 id="문제">문제</h3>
+
+<p>문자열 S를 입력받은 후에, 각 문자를 R번 반복해 새 문자열 P를 만든 후 출력하는 프로그램을 작성하시오. 즉, 첫 번째 문자를 R번 반복하고, 두 번째 문자를 R번 반복하는 식으로 P를 만들면 된다. S에는 QR Code “alphanumeric” 문자만 들어있다.</p>
+
+<p>QR Code “alphanumeric” 문자는 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$%*+-./: 이다.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 테스트 케이스의 개수 T(1 ≤ T ≤ 1,000)가 주어진다. 각 테스트 케이스는 반복 횟수 R(1 ≤ R ≤ 8), 문자열 S가 공백으로 구분되어 주어진다. S의 길이는 적어도 1이며, 20글자를 넘지 않는다</p>
+
+<h3 id="출력">출력</h3>
+
+<p>각 테스트 케이스에 대해 P를 출력한다.</p>
+
+<hr />
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">answers</span> <span class="o">=</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+  
+    <span class="c1"># 공백을 기준으로 repeat 과 string데이터가 나뉨
+</span>    <span class="n">rs</span> <span class="o">=</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">repeat</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">stri</span> <span class="o">=</span> <span class="n">rs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+ 
+    <span class="c1"># 아래 for 문이 끝날때마다 p초기화
+</span>    <span class="n">p</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stri</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">s</span><span class="o">*</span><span class="n">repeat</span>
+
+        <span class="c1">#issue1
+</span>        <span class="n">p</span><span class="o">+=</span><span class="n">p</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">answers</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        
+
+<span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+3 ABC
+AAAAAA
+BBBBBB
+CCCCCC
+5 \HTP
+\\\\\\\\\\
+HHHHHHHHHH
+TTTTTTTTTT
+PPPPPPPPPP
+CCCCCC
+PPPPPPPPPP
+</code></pre></div></div>
+
+<h4 id="issue1">Issue1</h4>
+<p>잘못된 대입 설정</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">x</span><span class="o">+=</span><span class="n">x</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span><span class="o">+=</span><span class="n">x</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+4
+</code></pre></div></div>
+
+<p>p+=p 는 p=p+p를 뜻하고 프로그램이 의도치않게 흘러갔고, 아래와 같이 해결했다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">answers</span> <span class="o">=</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+  
+    <span class="c1"># 공백을 기준으로 repeat 과 string데이터가 나뉨
+</span>    <span class="n">rs</span> <span class="o">=</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">repeat</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">stri</span> <span class="o">=</span> <span class="n">rs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># 아래 for 문이 끝날때마다 p초기화
+</span>    <span class="n">p</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stri</span><span class="p">:</span>
+        <span class="n">temp</span><span class="o">=</span><span class="n">s</span><span class="o">*</span><span class="n">repeat</span>
+
+        <span class="c1">#issue1 해결후
+</span>        <span class="n">p</span><span class="o">+=</span><span class="n">temp</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">answers</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        
+
+<span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+3 ABC
+AAA
+AAABBB
+AAABBBCCC
+5 \HTP
+\\\\\
+\\\\\HHHHH
+\\\\\HHHHHTTTTT
+\\\\\HHHHHTTTTTPPPPP
+AAABBBCCC
+\\\\\HHHHHTTTTTPPPPP
+</code></pre></div></div>
+
+<h3 id="배운점">배운점</h3>
+<ol>
+  <li>
+    <p>for문에서 +=연산을 사용할때 대입의 의미를 더 생각해보고 작성 하자.</p>
+  </li>
+  <li>
+    <p>문자열 곱셈이 정말 유용했다.</p>
+  </li>
+</ol>
+:ET
