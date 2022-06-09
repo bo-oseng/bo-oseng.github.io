@@ -1,4 +1,22 @@
 var store = [{
+        "title": "LinkedList- (1) SingleLinkedList with python",
+        "excerpt":"연결리스트 연결리스트를 쓸일이 자주 있을거 같아서 파이썬 환경에서 링크리스트를 구현 해보려고 한다. 링크드리스트(연결리스트)에 대한자세한 설명 (1) SingleLinkedList from typing import Any,Type # 노드 클래스 선언 class Node: def __init__(self,data:Any,next:Node=None): self.data = data self.next = next # 싱글 링크드리스트 클래스 선언 class SingleLinkedList: # 시작 head, 현재 cur, 갯수 no 선언...","categories": ["Data-structure"],
+        "tags": ["SingleLinkedList","자료구조","python"],
+        "url": "/data-structure/LinkedList-(1)-SingleLinkedList/",
+        "teaser": null
+      },{
+        "title": "LinkedList- (2) DoublyLinkedList with python",
+        "excerpt":"연결리스트 단일 연결리스트는 앞서 (1) SingleLinkedList 에서 다뤄봤고 이번에는 전방 탐색도 가능한 DoublyLinkedList 이중연결리스트를 정리했다. 이중 연결리스트 자세한 설명 (2) DoublyLinkedList from typing import Any,Type # 노드 클래스 선언 class Node: def __init__(self,data:Any,next:Node=None,prev:Node=None)-&gt;None: # 전방 탐색을 위해 prev필드 추가 self.data = data self.next = next self.prev = prev # 이중연결리스트...","categories": ["Data-structure"],
+        "tags": ["DoublyLinkedList","자료구조","python"],
+        "url": "/data-structure/LinkedList-(2)-DoublyLikedList/",
+        "teaser": null
+      },{
+        "title": "LinkedList- (3) CircularLinkedList with python",
+        "excerpt":"연결리스트 단일 연결리스트 그리고 이중 연결리스트에 이어서 원형 연결리스트를 다루어보았다. 원형 연결 리스트 (1) SingleLinkedList (2) DoublyLinkedList from typing import Any,Type # 노드 클래스 선언 class Node: def __init__(self,data:Any,next=None): self.data = data self.next = next # 원형링크드리스트 클래스 선언 class CircularLinkedList: # 시작 head, 현재 cur, 갯수 no 선언 def...","categories": ["Data-structure"],
+        "tags": ["CircularLinkedList","자료구조","python"],
+        "url": "/data-structure/LinkedList-(3)-CircularLinkedList/",
+        "teaser": null
+      },{
         "title": "Termux를 쓰는 이유, 다운 및 설치",
         "excerpt":"Termux 대부분의 안드로이드 운영체제는 스마트폰의 리눅스 커널 위에서 실행되는 환경이다. 하지만 사용자 레벨에서는 java나 kotlin으로 작성된 어플리케이션만 접근 가능하고 직접적으로 리눅스로 작성된 파일들은 접근이 어렵다. 하지만 이런 접근을 가능하게 해주는게 바로 termux이다. termux는 안드로이드에서 사용 가능한 리눅스 유사환경 터미널 에뮬레이터이다. 사용하는 이유 일단 가장 큰 이유는 어디서든 스마트폰으로 리눅스에 접근할...","categories": ["Termux"],
         "tags": ["안드로이드","리눅스","terminal"],

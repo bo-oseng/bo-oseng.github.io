@@ -42,6 +42,19 @@
             </ul>
       </li>
       <li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">CS</span>
+            <!--2차 분류-->
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Data-structure" %}
+                        <li><a href="/categories/data-structure" class="">자료구조 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+      </li>
+      <li>
         <!--1차 분류-->
         <span class="nav__sub-title">etc</span>
             <!--2차 분류-->

@@ -1,0 +1,219 @@
+I"�W<h1 id="연결리스트">연결리스트</h1>
+
+<p>단일 연결리스트는 앞서 <a href="https://bo-oseng.github.io/algorithms/2022/01/31/LinkedList-(1)-SingleLinkedList.html">(1) SingleLinkedList</a> 에서 다뤄봤고 이번에는 전방 탐색도 가능한 DoublyLinkedList 이중연결리스트를 정리했다.</p>
+
+<p><a href="https://namu.wiki/w/%EC%97%B0%EA%B2%B0%20%EB%A6%AC%EC%8A%A4%ED%8A%B8?from=%EC%97%B0%EA%B2%B0%EB%A6%AC%EC%8A%A4%ED%8A%B8#s-3.2">이중 연결리스트 자세한 설명</a></p>
+
+<h2 id="2-doublylinkedlist">(2) DoublyLinkedList</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span><span class="n">Type</span>
+
+<span class="c1"># 노드 클래스 선언
+</span><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+     
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span><span class="nb">next</span><span class="p">:</span><span class="n">Node</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">prev</span><span class="p">:</span><span class="n">Node</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+         
+         <span class="c1"># 전방 탐색을 위해 prev필드 추가
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="nb">next</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span>
+
+ <span class="c1"># 이중연결리스트 클래스 선언
+</span><span class="k">class</span> <span class="nc">DoublyLinkedList</span><span class="p">:</span>
+
+     <span class="c1"># 시작 head, 현재 cur, 갯수 no 선언
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">no</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+     <span class="c1"># dunder 함수로 len구현
+</span>    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">no</span>
+
+
+     <span class="c1"># 원하는 데이터를 찾는 함수
+</span>    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+
+         <span class="c1"># data의 인덱스를 나타낼 변수
+</span>        <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+        
+         <span class="c1"># head 부터 시작해서 노드가 none이 될때까지 next
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+        <span class="k">while</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+
+            <span class="c1"># 스캔중 data 발견시 return cnt 
+</span>            <span class="k">if</span> <span class="n">p</span><span class="p">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">data</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="o">=</span> <span class="n">p</span>    
+                <span class="k">return</span> <span class="n">cnt</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+            <span class="n">cnt</span><span class="o">+=</span><span class="mi">1</span>
+   
+         <span class="c1"># 검색 실패시 return -1
+</span>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+
+     <span class="c1"># 머리에 노드추가 함수
+</span>    <span class="k">def</span> <span class="nf">add_first</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">no</span><span class="o">+=</span><span class="mi">1</span>
+  
+         <span class="c1"># head.next가 존재 할시 prev가 self.head를 가르키도록 할당
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="nb">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="n">prev</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+
+
+     <span class="c1"># 꼬리 노드추가 함수 
+</span>    <span class="k">def</span> <span class="nf">add_last</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">:</span><span class="n">Any</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+
+         <span class="c1"># 리스트가 비었다면 머리추가와 동일
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">add_first</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+             <span class="c1"># p.next가 None 즉 마지막 노드까지 스캔
+</span>            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+            <span class="k">while</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+
+             <span class="c1"># 마지막노드 p의 next에 data를 data로 prev를 p로 갖는 노드 추가
+</span>             <span class="c1"># cur, no 업데이트
+</span>            <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="bp">None</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">no</span><span class="o">+=</span><span class="mi">1</span>
+
+
+     <span class="c1"># 머리노드 삭제 함수
+</span>    <span class="k">def</span> <span class="nf">remove_first</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Any</span><span class="p">:</span>
+
+         <span class="c1"># 리스트가 비었다면 삭제 실패 False 반환
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+         <span class="c1"># head가 None이 아니라면 head를 삭제
+</span>         <span class="c1"># cur, no 업데이트 후 True 반환            
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="nb">next</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">head</span><span class="p">.</span><span class="n">prev</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">no</span><span class="o">-=</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+
+     <span class="c1"># 꼬리노드 삭제 함수
+</span>    <span class="k">def</span> <span class="nf">remove_last</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">bool</span><span class="p">:</span>
+
+         <span class="c1"># 리스트가 비었다면 false 반환
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+         <span class="c1"># p.next가 none 즉 마지막 노드까지 스캔
+</span>         <span class="c1"># 단. pre에 이전 p를 저장하며 진행
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+            <span class="n">pre</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+            <span class="k">while</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">pre</span> <span class="o">=</span> <span class="n">p</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+    
+             <span class="c1"># 마지막 노드 p의 전 노드 pre의 next를 None으로 업데이트
+</span>            <span class="n">pre</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span>
+
+             <span class="c1"># p의 prev에 None 할당
+</span>            <span class="n">p</span><span class="p">.</span><span class="n">prev</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="o">=</span> <span class="n">pre</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">no</span><span class="o">-=</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+     <span class="c1"># 노드x를 삭제하는 함수
+</span>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">:</span><span class="n">Node</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+  
+         <span class="c1"># 리스트가 비었다면 false 반환  
+</span>        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+            <span class="n">pre</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+
+             <span class="c1"># p의 next와 x가 일치할때 까지 진행
+</span>            <span class="k">while</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">pre</span> <span class="o">=</span> <span class="n">p</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+
+                 <span class="c1"># 마지막 노드까지 없다면 false 반환
+</span>                <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+
+             <span class="c1"># p의 next가 x이므로 p.next에 x의 next 대입
+</span>            <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="nb">next</span>
+
+             <span class="c1"># p의 next가 None이 아니라면 prev에 pre 할당
+</span>            <span class="k">if</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">p</span><span class="p">.</span><span class="nb">next</span><span class="p">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">pre</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="o">=</span> <span class="n">p</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">no</span><span class="o">-=</span><span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">remove_cur_node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">cur</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">print_cur_node</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">'None'</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">cur</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+       
+        <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+        <span class="k">while</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+
+    <span class="k">def</span> <span class="nf">print_reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+        
+        <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">head</span>
+        <span class="k">while</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+        <span class="k">while</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">.</span><span class="n">prev</span>
+
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="p">.</span><span class="n">head</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">remove_first</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">cur</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">no</span>
+
+
+<span class="n">x</span><span class="o">=</span><span class="n">DoublyLinkedList</span><span class="p">()</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_first</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_first</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_first</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_last</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_last</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">remove_cur_node</span><span class="p">()</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_last</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_last</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">remove_last</span><span class="p">()</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_first</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">add_first</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">x</span><span class="p">.</span><span class="n">remove_first</span><span class="p">()</span>
+
+<span class="n">x</span><span class="p">.</span><span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'len:</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+3
+2
+4
+5
+9
+len:6
+</code></pre></div></div>
+
+:ET
