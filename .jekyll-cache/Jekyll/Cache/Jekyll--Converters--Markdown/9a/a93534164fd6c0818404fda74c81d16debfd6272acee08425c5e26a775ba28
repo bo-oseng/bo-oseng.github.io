@@ -1,0 +1,91 @@
+I"�<h1 id="프로그래머스-문제-중-42577번-전화번호-목록">프로그래머스 문제 중 42577번 ‘전화번호 목록’</h1>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42577">https://programmers.co.kr/learn/courses/30/lessons/42577</a></p>
+
+<h3 id="문제설명">문제설명</h3>
+
+<p>전화번호부에 적힌 전화번호 중, 한 번호가 다른 번호의 접두어인 경우가 있는지 확인하려 합니다.
+전화번호가 다음과 같을 경우, 구조대 전화번호는 영석이의 전화번호의 접두사입니다.</p>
+
+<ul>
+  <li>구조대 : 119</li>
+  <li>박준영 : 97 674 223</li>
+  <li>지영석 : 11 9552 4421</li>
+</ul>
+
+<p>전화번호부에 적힌 전화번호를 담은 배열 phone_book 이 solution 함수의 매개변수로 주어질 때, 어떤 번호가 다른 번호의 접두어인 경우가 있으면 false를 그렇지 않으면 true를 return 하도록 solution 함수를 작성해주세요.</p>
+
+<h3 id="제한사항">제한사항</h3>
+
+<ul>
+  <li>phone_book의 길이는 1 이상 1,000,000 이하입니다.
+    <ul>
+      <li>각 전화번호의 길이는 1 이상 20 이하입니다.</li>
+      <li>같은 전화번호가 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="입출력-예">입출력 예</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>phone_book</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[“119”, “97674223”, “1195524421”]</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>[“123”,”456”,”789”]</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>[“12”,”123”,”1235”,”567”,”88”]</td>
+      <td>false</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="입출력-예-설명">입출력 예 설명</h3>
+
+<h4 id="입출력-예-1">입출력 예 #1</h4>
+
+<p>앞에서 설명한 예와 같습니다.</p>
+
+<h4 id="입출력-예-2">입출력 예 #2</h4>
+
+<p>한 번호가 다른 번호의 접두사인 경우가 없으므로, 답은 true입니다.</p>
+
+<h4 id="입출력-예-3">입출력 예 #3</h4>
+
+<p>첫 번째 전화번호, “12”가 두 번째 전화번호 “123”의 접두사입니다. 따라서 답은 false입니다.</p>
+
+<hr />
+<h2 id="풀이">풀이</h2>
+
+<p>해시로 접근해야 효율성 테스트에서 통과할 수 있었던 문제였다. 아무래도 단원 이름에 해쉬가 없었다면 헤맸을것 같은 문제이다.</p>
+
+<p>코드의 구성은 다음과 같다.</p>
+
+<ol>
+  <li>입력으로 주어진 phone_book을 키로 가지는 해쉬를 선언한다.</li>
+  <li>입력으로 주어진 phone_book의 원소를 각 phone_num이라 할때 phone_num 을 한글자씩 꺼내 tmp에 더해나가며 tmp가 해쉬테이블의 키로 존재하는지 비교하고, tmp가 phone_num 자체가 아니라면 해당 해쉬테이블의 키가 tmp를 접두어로 가지므로 False 를 반환한다.</li>
+  <li>모든 스캔을 종료하면 접두어가 없으므로 True를 반환한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">phone_book</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">phone_num</span><span class="p">:</span><span class="mi">1</span> <span class="k">for</span> <span class="n">phone_num</span> <span class="ow">in</span> <span class="n">phone_book</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">phone_num</span> <span class="ow">in</span> <span class="n">phone_book</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="s">''</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">phone_num</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">+=</span> <span class="n">num</span>
+            <span class="k">if</span> <span class="n">tmp</span> <span class="ow">in</span> <span class="n">d</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="n">tmp</span> <span class="o">!=</span> <span class="n">phone_num</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,1009 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Programmers, 코딩테스트 연습, 스택/큐, ‘가장 큰 수’ | BO___OSENG</title>
+<meta name="description" content="프로그래머스 문제 중 42746번 ‘가장 큰 수’">
+
+
+  <meta name="author" content="Kim Boseong">
+  
+  <meta property="article:author" content="Kim Boseong">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="BO___OSENG">
+<meta property="og:title" content="Programmers, 코딩테스트 연습, 스택/큐, ‘가장 큰 수’">
+<meta property="og:url" content="http://localhost:4000/programmers/programmer-42746/">
+
+
+  <meta property="og:description" content="프로그래머스 문제 중 42746번 ‘가장 큰 수’">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-22T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/programmers/programmer-42746/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kim Boseong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="3c90fbeb9804a60a7912a8408c23727f2edde8fd">
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="BO___OSENG Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/favicon_io/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicon_io/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicon_io/favicon-16x16.png"
+/>
+<link rel="manifest" href="/favicon_io/site.webmanifest" />
+<link
+  rel="mask-icon"
+  href="/favicon_io/safari-pinned-tab.svg"
+  color="#5bbad5"
+/>
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          BO___OSENG
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search/">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Categories</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#programmers" itemprop="item"><span itemprop="name">Programmers</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Programmers, 코딩테스트 연습, 스택/큐, '가장 큰 수'</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Kim Boseong</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>김보성의 학습 블로그입니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ses7720@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://bo-oseng.github.io/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/bo-oseng" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Categories</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span>전체 글 수</style> <span>22</style> <span>개</style> 
+      </li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">Coding Test</span>
+            <!--2차 분류-->
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">프로그래머스 (20)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/boj" class="">백준 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">WEB</span>
+            <!--2차 분류-->
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/HTTP" class="">HTTP (1)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Programmers, 코딩테스트 연습, 스택/큐, ‘가장 큰 수’">
+    <meta itemprop="description" content="프로그래머스 문제 중 42746번 ‘가장 큰 수’">
+    <meta itemprop="datePublished" content="2022-05-22T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/programmers/programmer-42746/" class="u-url" itemprop="url">Programmers, 코딩테스트 연습, 스택/큐, ‘가장 큰 수’
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-22T00:00:00+09:00">May 22, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Index</h4></header>
+              <ul class="toc__menu"><li><a href="#프로그래머스-문제-중-42746번-가장-큰-수">프로그래머스 문제 중 42746번 ‘가장 큰 수’</a><ul><li><a href="#문제-설명">문제 설명</a></li><li><a href="#제한사항">제한사항</a></li><li><a href="#입출력-예">입출력 예</a></li></ul></li><li><a href="#풀이">풀이</a><ul><li><a href="#try1">Try1</a></li><li><a href="#try2">Try2</a></li></ul></li></ul></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="프로그래머스-문제-중-42746번-가장-큰-수">프로그래머스 문제 중 42746번 ‘가장 큰 수’</h1>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42746">https://programmers.co.kr/learn/courses/30/lessons/42746</a></p>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.</p>
+
+<p>예를 들어, 주어진 정수가 [6, 10, 2]라면 [6102, 6210, 1062, 1026, 2610, 2106]를 만들 수 있고, 이중 가장 큰 수는 6210입니다.</p>
+
+<p>0 또는 양의 정수가 담긴 배열 numbers가 매개변수로 주어질 때, 순서를 재배치하여 만들 수 있는 가장 큰 수를 문자열로 바꾸어 return 하도록 solution 함수를 작성해주세요.</p>
+
+<h3 id="제한사항">제한사항</h3>
+
+<ul>
+  <li>numbers의 길이는 1 이상 100,000 이하입니다.</li>
+  <li>numbers의 원소는 0 이상 1,000 이하입니다.</li>
+  <li>정답이 너무 클 수 있으니 문자열로 바꾸어 return 합니다.</li>
+</ul>
+
+<h3 id="입출력-예">입출력 예</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>numbers</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[6, 10, 2]</td>
+      <td>“6210”</td>
+    </tr>
+    <tr>
+      <td>[3, 30, 34, 5, 9]</td>
+      <td>“9534330”</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<h4 id="try1">Try1</h4>
+
+<p>처음 문제에 접근할때는 단순하게 모든 경우를 따져 보면 될것 같아서 itertools 모듈의 permutations으로 문제에 접근했으나 시간초과가 떴다.</p>
+
+<p>이 문제를 접하기 전까지만 해도 파이썬 내부모듈의 효율에 대해 확신을 가지고 있었다.</p>
+
+<p>하지만 검색을 해보니 premutations의 시간 복잡도는 O(n^r)로 알고리즘의 효율을 위해서는 지양해야할 모듈이란걸 알게 되었다.</p>
+
+<p><a href="https://stackoverflow.com/questions/58677464/big-o-notation-of-the-permutation-algorithm-in-python-itertools-permutation">permutation의 시간복잡도 참고</a></p>
+
+<p>주어진 numbers를 str로 바꾸고 모든 수열에 대해 최대값을 찾는 식으로 코드를 구현했고, 답을 맞지만 시간초과가 떴다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
+
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="n">max_tmp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">candidataes</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">numbers</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>
+    <span class="c1"># 가능한 모든 경우의 수열에 대해 tmp의 크기를 비교해봄
+</span>    <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">candidataes</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+        <span class="n">max_tmp</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_tmp</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">tmp</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">max_tmp</span><span class="p">)</span>
+
+<span class="n">solution</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'6210'
+</code></pre></div></div>
+
+<p>시간초과를 해결하기 위해서는 단순 비교하는 하드코딩이 아닌 더 효율적인 방법이 필요했다.</p>
+
+<h4 id="try2">Try2</h4>
+
+<p>자바스크립트의 기능 중 sort(compare_func)에 쓰이는 비교함수 compare_func 같은 기능이 파이썬에도 있지 않을까 검색을 , functools의 cmp_to_key 모듈로 javascript의 compare_func과 동일한 방법으로 구현이 가능함을 알게되었다.</p>
+
+<p>cmp_to_key에 대해 간략히 설명하자면 배열에서 차례대로 cmp_to_key(element1, element2)에 두개의 인자가 주어지고, element1과 element2으로 이루어진 return이 True라면 element1과 element2의 위치를 바꾸고 False라면 위치를 바꾸지 않는다.</p>
+
+<p>그리고 수가 0보다 크면 True를 나타내고, 0이거나 0보다 작으면 False를 나타내는 특성을 이용하면 쉽게 비교함수 cmp_to_key를 다룰 수 있다.</p>
+
+<p><a href="https://docs.python.org/ko/3/library/functools.html#functools.cmp_to_key">functools.cmp_to_key 참고자료</a></p>
+
+<p>이 문제에서는 조합시 더 큰 값을 가지게끔 배열을 정렬해야하므로</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">tmp1</span><span class="p">,</span> <span class="n">tmp2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmp1</span> <span class="o">-</span> <span class="n">tmp2</span>
+</code></pre></div></div>
+
+<p>과 같이 비교함수를 구현했다.</p>
+
+<p>비교함수를 통해 새로 만든 배열을 맨끝부터 차례로 이어 붙이면 만들 수 있는 최대의 수를 나타낸다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">cmp_to_key</span>
+
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+     <span class="c1"># 조합했을 때 더 큰값이 가지는 순으로 정렬
+</span>    <span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">element1</span><span class="p">,</span> <span class="n">element2</span><span class="p">):</span>
+        <span class="n">tmp1</span><span class="p">,</span> <span class="n">tmp2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">element1</span> <span class="o">+</span> <span class="n">element2</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">element2</span> <span class="o">+</span> <span class="n">element1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmp1</span> <span class="o">-</span> <span class="n">tmp2</span>
+     <span class="c1"># sorted의 key=cmp_to_key(비교함수) 인자를 주면 비교함수를 사용할 수 있다.
+</span>    <span class="n">str_numbers</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">numbers</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">cmp_to_key</span><span class="p">(</span><span class="n">compare</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">str_numbers</span><span class="p">)</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">while</span> <span class="n">str_numbers</span><span class="p">:</span>
+        <span class="n">answer</span> <span class="o">+=</span> <span class="n">str_numbers</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="n">solution</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">89</span><span class="p">]))</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['8', '89', '98', '9']
+998898
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#functools-cmp-to-key" class="page__taxonomy-item p-category" rel="tag">functools.cmp_to_key</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%8A%A4%ED%83%9D" class="page__taxonomy-item p-category" rel="tag">스택</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item p-category" rel="tag">코딩테스트</a><span class="sep">, </span>
+    
+      <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item p-category" rel="tag">프로그래머스</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#programmers" class="page__taxonomy-item p-category" rel="tag">Programmers</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-05-22T00:00:00+09:00">May 22, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Programmers%2C+%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8+%EC%97%B0%EC%8A%B5%2C+%EC%8A%A4%ED%83%9D%2F%ED%81%90%2C+%27%EA%B0%80%EC%9E%A5+%ED%81%B0+%EC%88%98%27%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammer-42746%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammer-42746%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammer-42746%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/programmers/programmer-42577/" class="pagination--pager" title="Programmers, 코딩테스트 연습, 해시, ‘전화번호 목록’
+">Previous</a>
+    
+    
+      <a href="/http/web-api_key_access/" class="pagination--pager" title="API authentication by API key, API key로 API 인증하기
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42860/" rel="permalink">Programmers, 코딩테스트 연습, 그리디,  ‘조이스틱’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EA%B7%B8%EB%A6%AC%EB%94%94" class="page__taxonomy-item-tag btn btn--small" rel="tag">그리디</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-07T00:00:00+09:00">June 7, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘조이스틱’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-1844/" rel="permalink">Programmers, 찾아라 프로그래밍 마에스터, 완전탐색, ‘게임 맵 최단거리’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-06T00:00:00+09:00">June 6, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘게임 맵 최단거리’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42839/" rel="permalink">Programmers, 코딩테스트 연습, 완전탐색,  ‘소수찾기’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-05T00:00:00+09:00">June 5, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘소수찾기’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/http/web-api_key_access/" rel="permalink">API authentication by API key, API key로 API 인증하기
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#http" class="page__taxonomy-item-category btn btn--small" rel="tag">HTTP</a>
+                    
+                    
+                    <a href="/tags/#authentication" class="page__taxonomy-item-tag btn btn--small" rel="tag">authentication</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#authorization" class="page__taxonomy-item-tag btn btn--small" rel="tag">authorization</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#headers" class="page__taxonomy-item-tag btn btn--small" rel="tag">headers</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#web" class="page__taxonomy-item-tag btn btn--small" rel="tag">Web</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-23T00:00:00+09:00">May 23, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">API key access
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/bo-oseng" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Kim Boseong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/programmers/programmer-42746/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/programmers/programmer-42746"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bo-oseng.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

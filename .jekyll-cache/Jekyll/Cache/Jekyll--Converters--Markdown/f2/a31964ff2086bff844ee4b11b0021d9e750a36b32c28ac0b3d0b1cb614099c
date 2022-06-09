@@ -1,0 +1,177 @@
+I"{?<h1 id="프로그래머스-문제-중-86052번-빛의-경로-사이클">프로그래머스 문제 중 86052번 ‘빛의 경로 사이클’</h1>
+
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/86052">https://programmers.co.kr/learn/courses/30/lessons/86052</a></p>
+
+<h3 id="문제설명">문제설명</h3>
+
+<p>각 칸마다 S, L, 또는 R가 써져 있는 격자가 있습니다. 당신은 이 격자에서 빛을 쏘고자 합니다. 이 격자의 각 칸에는 다음과 같은 특이한 성질이 있습니다.</p>
+
+<ul>
+  <li>빛이 “S”가 써진 칸에 도달한 경우, 직진합니다.</li>
+  <li>빛이 “L”이 써진 칸에 도달한 경우, 좌회전을 합니다.</li>
+  <li>빛이 “R”이 써진 칸에 도달한 경우, 우회전을 합니다.</li>
+  <li>빛이 격자의 끝을 넘어갈 경우, 반대쪽 끝으로 다시 돌아옵니다. 예를 들어, 빛이 1행에서 행이 줄어드는 방향으로 이동할 경우, 같은 열의 반대쪽 끝 행으로 다시 돌아옵니다.</li>
+</ul>
+
+<p>당신은 이 격자 내에서 빛이 이동할 수 있는 경로 사이클이 몇 개 있고, 각 사이클의 길이가 얼마인지 알고 싶습니다. 경로 사이클이란, 빛이 이동하는 순환 경로를 의미합니다.</p>
+
+<p>예를 들어, 다음 그림은 격자 [“SL”,”LR”]에서 1행 1열에서 2행 1열 방향으로 빛을 쏠 경우, 해당 빛이 이동하는 경로 사이클을 표현한 것입니다.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/f3c02c50-f82e-45d0-b633-ad3ecadba316/ex1.png" width="50%" />
+</center>
+
+<p>이 격자에는 길이가 16인 사이클 1개가 있으며, 다른 사이클은 존재하지 않습니다.</p>
+
+<p>격자의 정보를 나타내는 1차원 문자열 배열 grid가 매개변수로 주어집니다. 주어진 격자를 통해 만들어지는 빛의 경로 사이클의 모든 길이들을 배열에 담아 오름차순으로 정렬하여 return 하도록 solution 함수를 완성해주세요.</p>
+
+<h4 id="제한사항">제한사항</h4>
+
+<ul>
+  <li>1 ≤ grid의 길이 ≤ 500
+    <ul>
+      <li>1 ≤ grid의 각 문자열의 길이 ≤ 500</li>
+      <li>grid의 모든 문자열의 길이는 서로 같습니다.</li>
+      <li>grid의 모든 문자열은 ‘L’, ‘R’, ‘S’로 이루어져 있습니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="입출력의-예">입출력의 예</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>grid</th>
+      <th>results</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[“SL”,”LR”]</td>
+      <td>[16]</td>
+    </tr>
+    <tr>
+      <td>[“S”]</td>
+      <td>[1,1,1,1]</td>
+    </tr>
+    <tr>
+      <td>[“R”,”R”]</td>
+      <td>[4,4]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="입출력-예-설명">입출력 예 설명</h3>
+
+<h4 id="입출력-예-1">입출력 예 #1</h4>
+
+<ul>
+  <li>문제 예시와 같습니다.</li>
+  <li>길이가 16인 사이클이 하나 존재하므로(다른 사이클은 없습니다.), [16]을 return 해야 합니다.</li>
+</ul>
+
+<h4 id="입출력-예-2">입출력 예 #2</h4>
+
+<center> 
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/88a2717d-14ab-4297-af06-00baab718080/ex2.png" width="50%" />
+</center>
+
+<ul>
+  <li>4개의 사이클의 길이가 모두 1이므로, [1,1,1,1]을 return 해야 합니다.</li>
+</ul>
+
+<h4 id="입출력-예--4">입출력 예 # 4</h4>
+
+<ul>
+  <li>주어진 격자를 통해 만들 수 있는 사이클들은 다음 그림과 같습니다.</li>
+</ul>
+<center>
+ <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/076dbe07-2b33-414e-b6db-1e73ae2055f3/ex3.png" width="50%" />
+</center>
+
+<hr />
+
+<h5 id="참고">참고</h5>
+
+<p>문제가 조금 불친절 했던것 같다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>예를 들어, 다음 그림은 격자 ["SL","LR"]에서
+1행 1열에서 2행 1열 방향으로 빛을 쏠 경우,
+해당 빛이 이동하는 경로 사이클을 표현한 것입니다.
+</code></pre></div></div>
+
+<p>이 부분에서 오해가 생겼는데 시작점은 1행 1열이고 쏘는 방향만 달라지는 문제라고 생각하게 되었다. 예제로 주어진 입출력도 공교롭게 모두 1행 1열에서 시작되는 경우만 주어져서 오류를 해결하는데 시간이 오래 걸렸었다. 심지어 문제를 제대로 이해하고, 접근했어도 꽤나 어려웠던 문제였다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>이 문제는 완전탐색을 이용해 접근해야 하는데 한가지 특이한점이 있다. 탐색을 하는 부분이 순환을 하는지 여부를 알아야 하는데, 순환을 한다면 탐색을 언제 어떻게 종료해야 하는지를 고려해야하고 이 부분이 문제의 핵심이다.</p>
+
+<ul>
+  <li>
+    <p>각 노드마다 해당 노드에서 출발하는 방향은 상, 하, 좌, 우로 총 네가지만이 존재하고 만약 이번 탐색에 해당 노드에서 상으로 나간 방향이 돌고돌아 다시 해당 노드로 돌아와 다시 상 방향으로 나가게 된다면 순환을 판별할 수 있다.</p>
+  </li>
+  <li>
+    <p>또한 해당노드로 들어오는 빛의 각 방향에 대하여 다음 빛의 방향이 단 한가지의 방향으로 결정된다. 다음 빛의 방향이 정해지므로 만약 해당노드에서 특정방향으로 쏘아진 빛이 순환한다면, 그 순환이 갖는 노드와 방향에 대한 정보는 순서에 상관없이 단 한개의 순환을 나타낸다.</p>
+  </li>
+</ul>
+
+<p>그러므로 해당노드에서 4가지의 방향으로 빛이 쏘아진 적이 있는지 체크하는 리스트 visited를 선언하고, 모든 노드와 방향에 대해 visited를 기준으로 탐색을 진행하면 된다.</p>
+
+<p>코드의 흐름은 다음과 같다.</p>
+
+<ol>
+  <li>상, 하, 좌, 우 순으로 각 방향을 ` dir_dict = {0: (-1, 0), 1: (0, 1), 2: (1, 0), 3: (0, -1)}` 처럼 딕셔너리 형태로 선언한다.</li>
+  <li>다음으로 진행할 노드의 좌표와 진행중인 방향을 입력받아 다음 방향을 설정해줄 함수 <code class="language-plaintext highlighter-rouge">next_dir(next_row, next_col, direction_number):</code>을 선언한다. (음수의 % 연산을 양수로 바꿔주는 파이썬의 특성을 활용하면 쉽게 조작할 수 있다.)</li>
+  <li>각노드에 대해 네가지 방향의 방문을 확인할 <code class="language-plaintext highlighter-rouge">visited = [[[False] * 4 for _ in range(m)] for _ in range(n)]</code> 리스를 선언한다.</li>
+  <li>모든 노드와 모든 방향에 대해서 탐색을 진행하는데, 새로운 노드와 방향을 방문할때마다 cnt를 1 증가시켜준다.</li>
+  <li>탐색중 visited가 true 부분을 만난다면, 시작점과 종료점이 같은지 확인하고 같다면 하나의 순환이 완성 됐으므로 순환의 길이를 나타내는 cnt를 answer에 추가해준다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+     <span class="c1"># 각 방향을 수로 나타낼 딕셔너리 선언
+</span>    <span class="n">dir_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)}</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+     <span class="c1"># 현재 진행중인 방향과 다음 노드의 좌표를 입력받아 다음 방향을 설정하는 함수
+</span>    <span class="k">def</span> <span class="nf">next_dir</span><span class="p">(</span><span class="n">next_row</span><span class="p">,</span> <span class="n">next_col</span><span class="p">,</span> <span class="n">direction_number</span><span class="p">):</span>
+        <span class="n">next_dir_num</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="n">next_row</span><span class="p">][</span><span class="n">next_col</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s">'S'</span><span class="p">:</span>
+            <span class="n">next_dir_num</span> <span class="o">=</span> <span class="n">direction_number</span>
+        <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s">'L'</span><span class="p">:</span>
+            <span class="n">next_dir_num</span> <span class="o">=</span> <span class="p">(</span><span class="n">direction_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span>
+        <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s">'R'</span><span class="p">:</span>
+            <span class="n">next_dir_num</span> <span class="o">=</span> <span class="p">(</span><span class="n">direction_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span>
+        <span class="k">return</span> <span class="n">next_dir_num</span>
+
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="c1"># 각 노드에 대해 4가지의 방향을 확인할 리스트 선언
+</span>    <span class="n">visited</span> <span class="o">=</span> <span class="p">[[[</span><span class="bp">False</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="n">num</span><span class="p">]:</span>
+                    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">visited</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="n">stk</span> <span class="o">=</span> <span class="p">[[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">num</span><span class="p">]]</span>
+                    <span class="k">while</span> <span class="n">stk</span><span class="p">:</span>
+                        <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+                        <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">dir_dict</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">dir_dict</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span> <span class="n">m</span>
+                        <span class="n">nd</span> <span class="o">=</span> <span class="n">next_dir</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">][</span><span class="n">nd</span><span class="p">]:</span>
+                            <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="n">visited</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">][</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                            <span class="n">stk</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">nd</span><span class="p">])</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1"># visited가 True라면 순환의 시작점과 종료점이 같은지 확인
+</span>                            <span class="c1"># 같다면 answer에 순환의 길이를 나타내는 cnt를 추가
+</span>                            <span class="k">if</span> <span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">num</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">nd</span><span class="p">]:</span>
+                                <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<span class="n">solution</span><span class="p">([</span><span class="s">"SL"</span><span class="p">,</span><span class="s">"LR"</span><span class="p">])</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,551 @@
+I"#F
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42860/" rel="permalink">Programmers, 코딩테스트 연습, 그리디,  ‘조이스틱’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EA%B7%B8%EB%A6%AC%EB%94%94" class="page__taxonomy-item-tag btn btn--small" rel="tag">그리디</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-07T00:00:00+09:00">June 7, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘조이스틱’
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-1844/" rel="permalink">Programmers, 찾아라 프로그래밍 마에스터, 완전탐색, ‘게임 맵 최단거리’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-06T00:00:00+09:00">June 6, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘게임 맵 최단거리’
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42839/" rel="permalink">Programmers, 코딩테스트 연습, 완전탐색,  ‘소수찾기’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-05T00:00:00+09:00">June 5, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘소수찾기’
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42586/" rel="permalink">Programmers, 스택/큐, ‘기능개발’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%8A%A4%ED%83%9D-%ED%81%90" class="page__taxonomy-item-tag btn btn--small" rel="tag">스택/큐</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-05T00:00:00+09:00">May 5, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 42586번 ‘기능개발’
+https://programmers.co.kr/learn/courses/30/lessons/42586?language=python3
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-12899/" rel="permalink">Programmers, 구현, 연습문제 중 ‘124 나라의 숫자’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EA%B5%AC%ED%98%84" class="page__taxonomy-item-tag btn btn--small" rel="tag">구현</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-03T00:00:00+09:00">May 3, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 12899번 ‘124 나라의 숫자’
+https://programmers.co.kr/learn/courses/30/lessons/12899
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-60057/" rel="permalink">Programmers, 문자열, 2020 KAKAO BLIND RECRUITMENT 중 ‘문자열 압축’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EB%AC%B8%EC%9E%90%EC%97%B4" class="page__taxonomy-item-tag btn btn--small" rel="tag">문자열</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-02T00:00:00+09:00">May 2, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 60057번 ‘문자열 압축’
+https://programmers.co.kr/learn/courses/30/lessons/60057
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42888/" rel="permalink">Programmers, 구현, 2019 KAKAO BLIND RECRUITMENT 중 ‘오픈채팅방’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EA%B5%AC%ED%98%84" class="page__taxonomy-item-tag btn btn--small" rel="tag">구현</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-01T00:00:00+09:00">May 1, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 42888번 오픈채팅방
+https://programmers.co.kr/learn/courses/30/lessons/42888
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-62048/" rel="permalink">Programmers, 구현, Summer/Winter Coding(2019) 중 ‘멀쩡한 사각형’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EA%B5%AC%ED%98%84" class="page__taxonomy-item-tag btn btn--small" rel="tag">구현</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-04-30T00:00:00+09:00">April 30, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제중 6208번 ‘멀쩡한 사각형’
+https://programmers.co.kr/learn/courses/30/lessons/60057
+</p>
+  </article>
+</div>
+
+:ET

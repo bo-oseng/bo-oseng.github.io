@@ -1,0 +1,1112 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Programmers, 2021 KAKAO BLIND RECRUITMENT 중, 구현, ‘메뉴 리뉴얼’ | BO___OSENG</title>
+<meta name="description" content="프로그래머스 문제 중 72411번 ‘메뉴 리뉴얼’ https://programmers.co.kr/learn/courses/30/lessons/72411">
+
+
+  <meta name="author" content="Kim Boseong">
+  
+  <meta property="article:author" content="Kim Boseong">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="BO___OSENG">
+<meta property="og:title" content="Programmers, 2021 KAKAO BLIND RECRUITMENT 중, 구현, ‘메뉴 리뉴얼’">
+<meta property="og:url" content="http://localhost:4000/programmers/programmers-72411/">
+
+
+  <meta property="og:description" content="프로그래머스 문제 중 72411번 ‘메뉴 리뉴얼’ https://programmers.co.kr/learn/courses/30/lessons/72411">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-11T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/programmers/programmers-72411/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kim Boseong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="3c90fbeb9804a60a7912a8408c23727f2edde8fd">
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="BO___OSENG Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/favicon_io/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicon_io/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicon_io/favicon-16x16.png"
+/>
+<link rel="manifest" href="/favicon_io/site.webmanifest" />
+<link
+  rel="mask-icon"
+  href="/favicon_io/safari-pinned-tab.svg"
+  color="#5bbad5"
+/>
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          BO___OSENG
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search/">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Categories</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#programmers" itemprop="item"><span itemprop="name">Programmers</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Programmers, 2021 KAKAO BLIND RECRUITMENT 중, 구현, '메뉴 리뉴얼'</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Kim Boseong</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>김보성의 학습 블로그입니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ses7720@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://bo-oseng.github.io/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/bo-oseng" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Categories</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span>전체 글 수</style> <span>22</style> <span>개</style> 
+      </li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">Coding Test</span>
+            <!--2차 분류-->
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">프로그래머스 (20)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/boj" class="">백준 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">WEB</span>
+            <!--2차 분류-->
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/HTTP" class="">HTTP (1)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Programmers, 2021 KAKAO BLIND RECRUITMENT 중, 구현, ‘메뉴 리뉴얼’">
+    <meta itemprop="description" content="프로그래머스 문제 중 72411번 ‘메뉴 리뉴얼’https://programmers.co.kr/learn/courses/30/lessons/72411">
+    <meta itemprop="datePublished" content="2022-05-11T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/programmers/programmers-72411/" class="u-url" itemprop="url">Programmers, 2021 KAKAO BLIND RECRUITMENT 중, 구현, ‘메뉴 리뉴얼’
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-11T00:00:00+09:00">May 11, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Index</h4></header>
+              <ul class="toc__menu"><li><a href="#프로그래머스-문제-중-72411번-메뉴-리뉴얼">프로그래머스 문제 중 72411번 ‘메뉴 리뉴얼’</a><ul><li><a href="#문제-설명">문제 설명</a></li><li><a href="#문제">[문제]</a></li><li><a href="#제한사항">[제한사항]</a></li><li><a href="#입출력-예">[입출력 예]</a></li><li><a href="#입출력-예에-대한-설명">입출력 예에 대한 설명</a><ul><li><a href="#입출력-예-1">입출력 예 #1</a></li><li><a href="#입출력-예-2">입출력 예 #2</a></li><li><a href="#입출력-예-3">입출력 예 #3</a></li></ul></li></ul></li><li><a href="#풀이">풀이</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="프로그래머스-문제-중-72411번-메뉴-리뉴얼">프로그래머스 문제 중 72411번 ‘메뉴 리뉴얼’</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/72411">https://programmers.co.kr/learn/courses/30/lessons/72411</a></p>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>레스토랑을 운영하던 스카피는 코로나19로 인한 불경기를 극복하고자 메뉴를 새로 구성하려고 고민하고 있습니다.
+기존에는 단품으로만 제공하던 메뉴를 조합해서 코스요리 형태로 재구성해서 새로운 메뉴를 제공하기로 결정했습니다. 어떤 단품메뉴들을 조합해서 코스요리 메뉴로 구성하면 좋을 지 고민하던 “스카피”는 이전에 각 손님들이 주문할 때 가장 많이 함께 주문한 단품메뉴들을 코스요리 메뉴로 구성하기로 했습니다.
+단, 코스요리 메뉴는 최소 2가지 이상의 단품메뉴로 구성하려고 합니다. 또한, 최소 2명 이상의 손님으로부터 주문된 단품메뉴 조합에 대해서만 코스요리 메뉴 후보에 포함하기로 했습니다.</p>
+
+<p>예를 들어, 손님 6명이 주문한 단품메뉴들의 조합이 다음과 같다면,
+(각 손님은 단품메뉴를 2개 이상 주문해야 하며, 각 단품메뉴는 A ~ Z의 알파벳 대문자로 표기합니다.)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>손님번호</th>
+      <th>주문한 단품메뉴 조합</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1번손님</td>
+      <td>A, B, C, F, G</td>
+    </tr>
+    <tr>
+      <td>2번손님</td>
+      <td>A, C</td>
+    </tr>
+    <tr>
+      <td>3번손님</td>
+      <td>C, D, E</td>
+    </tr>
+    <tr>
+      <td>4번손님</td>
+      <td>A, C, D, E</td>
+    </tr>
+    <tr>
+      <td>5번손님</td>
+      <td>B, C, F, G</td>
+    </tr>
+    <tr>
+      <td>6번손님</td>
+      <td>A, C, D, E, H</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>가장 많이 함께 주문된 단품메뉴 조합에 따라 “스카피”가 만들게 될 코스요리 메뉴 구성 후보는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>코스 종류</th>
+      <th>메뉴 구성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>요리 2개 코스</td>
+      <td>A, C</td>
+      <td>1번, 2번, 4번, 6번 손님으로부터 총 4번 주문됐습니다.</td>
+    </tr>
+    <tr>
+      <td>요리 3개 코스</td>
+      <td>C, D, E</td>
+      <td>3번, 4번, 6번 손님으로부터 총 3번 주문됐습니다.</td>
+    </tr>
+    <tr>
+      <td>요리 4개 코스</td>
+      <td>B, C, F, G</td>
+      <td>1번, 5번 손님으로부터 총 2번 주문됐습니다.</td>
+    </tr>
+    <tr>
+      <td>요리 4개 코스</td>
+      <td>A, C, D, E</td>
+      <td>4번, 6번 손님으로부터 총 2번 주문됐습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="문제">[문제]</h3>
+
+<p>각 손님들이 주문한 단품메뉴들이 문자열 형식으로 담긴 배열 orders, “스카피”가 추가하고 싶어하는 코스요리를 구성하는 단품메뉴들의 갯수가 담긴 배열 course가 매개변수로 주어질 때, “스카피”가 새로 추가하게 될 코스요리의 메뉴 구성을 문자열 형태로 배열에 담아 return 하도록 solution 함수를 완성해 주세요.</p>
+
+<h3 id="제한사항">[제한사항]</h3>
+
+<ul>
+  <li>orders 배열의 크기는 2 이상 20 이하입니다.</li>
+  <li>orders 배열의 각 원소는 크기가 2 이상 10 이하인 문자열입니다.
+    <ul>
+      <li>각 문자열은 알파벳 대문자로만 이루어져 있습니다.</li>
+      <li>각 문자열에는 같은 알파벳이 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>course 배열의 크기는 1 이상 10 이하입니다.
+    <ul>
+      <li>course 배열의 각 원소는 2 이상 10 이하인 자연수가 오름차순으로 정렬되어 있습니다.</li>
+      <li>course 배열에는 같은 값이 중복해서 들어있지 않습니다.</li>
+    </ul>
+  </li>
+  <li>정답은 각 코스요리 메뉴의 구성을 문자열 형식으로 배열에 담아 사전 순으로 오름차순 정렬해서 return 해주세요.
+    <ul>
+      <li>배열의 각 원소에 저장된 문자열 또한 알파벳 오름차순으로 정렬되어야 합니다.</li>
+      <li>만약 가장 많이 함께 주문된 메뉴 구성이 여러 개라면, 모두 배열에 담아 return 하면 됩니다.</li>
+      <li>orders와 course 매개변수는 return 하는 배열의 길이가 1 이상이 되도록 주어집니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="입출력-예">[입출력 예]</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>orders</th>
+      <th>course</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[“ABCFG”, “AC”, “CDE”, “ACDE”, “BCFG”, “ACDEH”]</td>
+      <td>[2,3,4]</td>
+      <td>[“AC”, “ACDE”, “BCFG”, “CDE”]</td>
+    </tr>
+    <tr>
+      <td>[“ABCDE”, “AB”, “CD”, “ADE”, “XYZ”, “XYZ”, “ACD”]</td>
+      <td>[2,3,5]</td>
+      <td>[“ACD”, “AD”, “ADE”, “CD”, “XYZ”]</td>
+    </tr>
+    <tr>
+      <td>[“XYZ”, “XWY”, “WXA”]</td>
+      <td>[2,3,4]</td>
+      <td>[“WX”, “XY”]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="입출력-예에-대한-설명">입출력 예에 대한 설명</h3>
+
+<h4 id="입출력-예-1">입출력 예 #1</h4>
+<p>문제의 예시와 같습니다.</p>
+
+<h4 id="입출력-예-2">입출력 예 #2</h4>
+<p>AD가 세 번, CD가 세 번, ACD가 두 번, ADE가 두 번, XYZ 가 두 번 주문됐습니다.
+요리 5개를 주문한 손님이 1명 있지만, 최소 2명 이상의 손님에게서 주문된 구성만 코스요리 후보에 들어가므로, 요리 5개로 구성된 코스요리는 새로 추가하지 않습니다.</p>
+
+<h4 id="입출력-예-3">입출력 예 #3</h4>
+<p>WX가 두 번, XY가 두 번 주문됐습니다.
+3명의 손님 모두 단품메뉴를 3개씩 주문했지만, 최소 2명 이상의 손님에게서 주문된 구성만 코스요리 후보에 들어가므로, 요리 3개로 구성된 코스요리는 새로 추가하지 않습니다.
+또, 단품메뉴를 4개 이상 주문한 손님은 없으므로, 요리 4개로 구성된 코스요리 또한 새로 추가하지 않습니다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>이 문제는 문제의 방향성을 잡고나서 해결하기에는 오래 걸리지 않았으나, 어떤식으로 문제를 해결할지 고민하는 시간이 길었다.</p>
+
+<p>어떤식으로 접근해야 최적일지 꽤나 오래 고민했는데 딱히 최적이라고 할만한 방법은 없고 브루트포스로 가능한 모든 메뉴조합을 combinations 모듈을 통헤 후보를 만들고, 모든 후보들을 counter 모듈로 세주었다.</p>
+
+<p>코드의 흐름은 다음과 같다.</p>
+<ol>
+  <li>
+    <p>입력으로 주어진 oreders 와 course를 쪼개고, 각각의 손님이 메뉴를 시킨 조합 order 중 c개를 뽑아 combinations 모듈을 통해 조합하고, candidates에 저장한다.</p>
+  </li>
+  <li>
+    <p>모든 손님들의 주문중 c개를 뽑은 조합을 모두 candidates 에 저장한다.</p>
+  </li>
+  <li>
+    <p>Counter 모듈로 candidates를 센 값을 candidates_cnt에 저장한다.</p>
+  </li>
+  <li>
+    <p>candidates_cnt 중 가장 갯수가 많은 tmp[max_cnt]를 answer에 저장한다.</p>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+
+     <span class="c1"># couser 원소값 중 c개 만큼 뽑아 조합한다.
+</span>    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">course</span><span class="p">:</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="p">[]</span>
+
+         <span class="c1"># 손님이 주문한 메뉴중 c개를 뽑아 candidates 에 저장한다.
+</span>        <span class="k">for</span> <span class="n">order</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">:</span>
+            <span class="n">order</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+
+             <span class="c1"># 모든 손님들의 주문에 대한 조합을 나타낸다.
+</span>            <span class="n">candidates</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+
+         <span class="c1"># Counter 모듈을 활용해 각각의 조합이 몇번 나타날 수 있는지 세준다.
+</span>        <span class="n">candidates_cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
+
+         <span class="c1"># 갯수가 가장 많은 것만을 answer에 더해준다.
+</span>        <span class="n">max_cnt</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">candidates_cnt</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="s">''</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">candidate</span><span class="p">))</span>
+            <span class="n">max_cnt</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_cnt</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="n">answer</span> <span class="o">+=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">max_cnt</span><span class="p">]</span> <span class="k">if</span> <span class="n">max_cnt</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="n">answer</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">answer</span>
+
+
+<span class="n">solution</span><span class="p">([</span><span class="s">"ABCFG"</span><span class="p">,</span> <span class="s">"AC"</span><span class="p">,</span> <span class="s">"CDE"</span><span class="p">,</span> <span class="s">"ACDE"</span><span class="p">,</span> <span class="s">"BCFG"</span><span class="p">,</span> <span class="s">"ACDEH"</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaultdict(&lt;class 'list'&gt;, {1: ['AB', 'AF', 'AG', 'AH', 'CH', 'DH', 'EH'], 4: ['AC'], 2: ['BC', 'BF', 'BG', 'CF', 'CG', 'FG', 'AD', 'AE'], 3: ['CD', 'CE', 'DE']})
+
+defaultdict(&lt;class 'list'&gt;, {1: ['ABC', 'ABF', 'ABG', 'ACF', 'ACG', 'AFG', 'ACH', 'ADH', 'AEH', 'CDH', 'CEH', 'DEH'], 2: ['BCF', 'BCG', 'BFG', 'CFG', 'ACD', 'ACE', 'ADE'], 3: ['CDE']})
+
+defaultdict(&lt;class 'list'&gt;, {1: ['ABCF', 'ABCG', 'ABFG', 'ACFG', 'ACDH', 'ACEH', 'ADEH', 'CDEH'], 2: ['BCFG', 'ACDE']})
+
+
+
+
+
+
+['AC', 'ACDE', 'BCFG', 'CDE']
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EA%B5%AC%ED%98%84" class="page__taxonomy-item p-category" rel="tag">구현</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item p-category" rel="tag">코딩테스트</a><span class="sep">, </span>
+    
+      <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item p-category" rel="tag">프로그래머스</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#programmers" class="page__taxonomy-item p-category" rel="tag">Programmers</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-05-11T00:00:00+09:00">May 11, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Programmers%2C+2021+KAKAO+BLIND+RECRUITMENT+%EC%A4%91%2C+%EA%B5%AC%ED%98%84%2C+%27%EB%A9%94%EB%89%B4+%EB%A6%AC%EB%89%B4%EC%96%BC%27%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-72411%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-72411%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-72411%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/programmers/programmers-77485/" class="pagination--pager" title="Programmers, 2021 Dev-Matching 중, 구현, ‘행렬 테두리 회전’
+">Previous</a>
+    
+    
+      <a href="/programmers/programmers-60058/" class="pagination--pager" title="Programmers, 2020 KAKAO BLIND RECRUITMENT 중, 스택, 재귀,’괄호 변환’
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42860/" rel="permalink">Programmers, 코딩테스트 연습, 그리디,  ‘조이스틱’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EA%B7%B8%EB%A6%AC%EB%94%94" class="page__taxonomy-item-tag btn btn--small" rel="tag">그리디</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-07T00:00:00+09:00">June 7, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘조이스틱’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-1844/" rel="permalink">Programmers, 찾아라 프로그래밍 마에스터, 완전탐색, ‘게임 맵 최단거리’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-06T00:00:00+09:00">June 6, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘게임 맵 최단거리’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42839/" rel="permalink">Programmers, 코딩테스트 연습, 완전탐색,  ‘소수찾기’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-05T00:00:00+09:00">June 5, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘소수찾기’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/http/web-api_key_access/" rel="permalink">API authentication by API key, API key로 API 인증하기
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#http" class="page__taxonomy-item-category btn btn--small" rel="tag">HTTP</a>
+                    
+                    
+                    <a href="/tags/#authentication" class="page__taxonomy-item-tag btn btn--small" rel="tag">authentication</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#authorization" class="page__taxonomy-item-tag btn btn--small" rel="tag">authorization</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#headers" class="page__taxonomy-item-tag btn btn--small" rel="tag">headers</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#web" class="page__taxonomy-item-tag btn btn--small" rel="tag">Web</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-23T00:00:00+09:00">May 23, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">API key access
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/bo-oseng" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Kim Boseong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/programmers/programmers-72411/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/programmers/programmers-72411"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bo-oseng.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

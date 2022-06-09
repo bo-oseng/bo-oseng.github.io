@@ -1,0 +1,1086 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Programmers, 2021 Dev-Matching 중, 구현, ‘행렬 테두리 회전’ | BO___OSENG</title>
+<meta name="description" content="프로그래머스 문제 중 77485번 ‘행렬 테두리 회전’ https://programmers.co.kr/learn/courses/30/lessons/77485">
+
+
+  <meta name="author" content="Kim Boseong">
+  
+  <meta property="article:author" content="Kim Boseong">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="BO___OSENG">
+<meta property="og:title" content="Programmers, 2021 Dev-Matching 중, 구현, ‘행렬 테두리 회전’">
+<meta property="og:url" content="http://localhost:4000/programmers/programmers-77485/">
+
+
+  <meta property="og:description" content="프로그래머스 문제 중 77485번 ‘행렬 테두리 회전’ https://programmers.co.kr/learn/courses/30/lessons/77485">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/programmers/programmers-77485/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kim Boseong",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="3c90fbeb9804a60a7912a8408c23727f2edde8fd">
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="BO___OSENG Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/favicon_io/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicon_io/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicon_io/favicon-16x16.png"
+/>
+<link rel="manifest" href="/favicon_io/site.webmanifest" />
+<link
+  rel="mask-icon"
+  href="/favicon_io/safari-pinned-tab.svg"
+  color="#5bbad5"
+/>
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          BO___OSENG
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tag</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search/">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Categories</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#programmers" itemprop="item"><span itemprop="name">Programmers</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Programmers, 2021 Dev-Matching 중, 구현, '행렬 테두리 회전'</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Kim Boseong</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>김보성의 학습 블로그입니다.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:ses7720@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://bo-oseng.github.io/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/bo-oseng" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+
+  
+    <!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
+
+
+<nav class="nav__list">
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Categories</label>
+  <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
+      <li>
+            📂 <span>전체 글 수</style> <span>22</style> <span>개</style> 
+      </li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">Coding Test</span>
+            <!--2차 분류-->
+            <ul>
+                
+                    
+                
+                    
+                        <li><a href="/categories/programmers" class="">프로그래머스 (20)</a></li>
+                    
+                
+                    
+                
+            </ul>
+            <ul>
+                
+                    
+                        <li><a href="/categories/boj" class="">백준 (1)</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+      </li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">WEB</span>
+            <!--2차 분류-->
+            <ul>
+                
+                    
+                
+                    
+                
+                    
+                        <li><a href="/categories/HTTP" class="">HTTP (1)</a></li>
+                    
+                
+            </ul>
+      </li>
+  </ul>
+</nav>
+  
+
+  </div>
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Programmers, 2021 Dev-Matching 중, 구현, ‘행렬 테두리 회전’">
+    <meta itemprop="description" content="프로그래머스 문제 중 77485번 ‘행렬 테두리 회전’https://programmers.co.kr/learn/courses/30/lessons/77485">
+    <meta itemprop="datePublished" content="2022-05-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/programmers/programmers-77485/" class="u-url" itemprop="url">Programmers, 2021 Dev-Matching 중, 구현, ‘행렬 테두리 회전’
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-10T00:00:00+09:00">May 10, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Index</h4></header>
+              <ul class="toc__menu"><li><a href="#프로그래머스-문제-중-77485번-행렬-테두리-회전">프로그래머스 문제 중 77485번 ‘행렬 테두리 회전’</a><ul><li><a href="#입출력-예시">입출력 예시</a></li><li><a href="#입출력-예-설명">입출력 예 설명</a></li></ul></li><li><a href="#풀이">풀이</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="프로그래머스-문제-중-77485번-행렬-테두리-회전">프로그래머스 문제 중 77485번 ‘행렬 테두리 회전’</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/77485">https://programmers.co.kr/learn/courses/30/lessons/77485</a></p>
+
+<p>rows x columns 크기인 행렬이 있습니다. 행렬에는 1부터 rows x columns까지의 숫자가 한 줄씩 순서대로 적혀있습니다. 이 행렬에서 직사각형 모양의 범위를 여러 번 선택해, 테두리 부분에 있는 숫자들을 시계방향으로 회전시키려 합니다. 각 회전은 (x1, y1, x2, y2)인 정수 4개로 표현하며, 그 의미는 다음과 같습니다.</p>
+
+<ul>
+  <li>x1 행 y1 열부터 x2 행 y2 열까지의 영역에 해당하는 직사각형에서 테두리에 있는 숫자들을 한 칸씩 시계방향으로 회전합니다.</li>
+</ul>
+
+<p>다음은 6 x 6 크기 행렬의 예시입니다.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/4c3c0fab-11f4-43b6-b290-6f4017e9379f/grid_example.png" width="50%" />
+</center>
+
+<p>이 행렬에 (2, 2, 5, 4) 회전을 적용하면, 아래 그림과 같이 2행 2열부터 5행 4열까지 영역의 테두리가 시계방향으로 회전합니다. 이때, 중앙의 15와 21이 있는 영역은 회전하지 않는 것을 주의하세요.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/962df137-5c71-4091-ad9f-8e322910c1ab/rotation_example.png" width="50%" />
+</center>
+
+<p>행렬의 세로 길이(행 개수) rows, 가로 길이(열 개수) columns, 그리고 회전들의 목록 queries가 주어질 때, 각 회전들을 배열에 적용한 뒤, 그 회전에 의해 위치가 바뀐 숫자들 중 가장 작은 숫자들을 순서대로 배열에 담아 return 하도록 solution 함수를 완성해주세요.</p>
+
+<p>제한사항</p>
+<ul>
+  <li>rows는 2 이상 100 이하인 자연수입니다.</li>
+  <li>columns는 2 이상 100 이하인 자연수입니다.</li>
+  <li>처음에 행렬에는 가로 방향으로 숫자가 1부터 하나씩 증가하면서 적혀있습니다.
+    <ul>
+      <li>즉, 아무 회전도 하지 않았을 때, i 행 j 열에 있는 숫자는 ((i-1) x columns + j)입니다.</li>
+    </ul>
+  </li>
+  <li>queries의 행의 개수(회전의 개수)는 1 이상 10,000 이하입니다.</li>
+  <li>queries의 각 행은 4개의 정수 [x1, y1, x2, y2]입니다.
+    <ul>
+      <li>x1 행 y1 열부터 x2 행 y2 열까지 영역의 테두리를 시계방향으로 회전한다는 뜻입니다.</li>
+      <li>1 ≤ x1 &lt; x2 ≤ rows, 1 ≤ y1 &lt; y2 ≤ columns입니다.</li>
+      <li>모든 회전은 순서대로 이루어집니다.</li>
+      <li>예를 들어, 두 번째 회전에 대한 답은 첫 번째 회전을 실행한 다음, 그 상태에서 두 번째 회전을 실행했을 때 이동한 숫자 중 최솟값을 구하면 됩니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="입출력-예시">입출력 예시</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>rows</th>
+      <th>columns</th>
+      <th>queries</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>6</td>
+      <td>6</td>
+      <td>[[2,2,5,4],[3,3,6,6],[5,1,6,3]]</td>
+      <td>[8, 10, 25]</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+      <td>[[1,1,2,2],[1,2,2,3],[2,1,3,2],[2,2,3,3]]</td>
+      <td>[1, 1, 5, 3]</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>97</td>
+      <td>[[1,1,100,97]]</td>
+      <td>[1]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="입출력-예-설명">입출력 예 설명</h3>
+
+<p>입출력 예 #1</p>
+
+<ul>
+  <li>회전을 수행하는 과정을 그림으로 표현하면 다음과 같습니다.</li>
+</ul>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/8c8cdd84-d0ec-4b9d-bdf7-f100d0098c5e/example1.png" width="70%" />
+</center>
+
+<p>입출력 예 #2</p>
+
+<ul>
+  <li>회전을 수행하는 과정을 그림으로 표현하면 다음과 같습니다.</li>
+</ul>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/e3fce2bf-9da9-41e4-926a-5d19b4f31188/example2.png" width="60%" />
+</center>
+
+<p>입출력 예 #3</p>
+
+<ul>
+  <li>이 예시에서는 행렬의 테두리에 위치한 모든 칸들이 움직입니다. 따라서, 행렬의 테두리에 있는 수 중 가장 작은 숫자인 1이 바로 답이 됩니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>이 문제는 어렵지 않게 풀 수 있지만, 꼼꼼함이 매우 중요한 문제였다.</p>
+
+<p>코드의 흐름이 다음과 같다.</p>
+<ol>
+  <li>입력으로 주어지는 인덱스들은 1부터 시작하므로 적절한 배열을 선언하고, 문제의 초기 조건에 맞게 적절한값을 대열한다.</li>
+  <li>회전을 구현할 함수를 선언한다. 이때 헹렬의 테두리 네개 중 하나를 메인으로 잡고 하나씩 밀어준다는 느낌으로 반복문을 진행한다. 증요한건 이때 처음 원소의 값을 다른 변수에(tmp) 저장해야한다.</li>
+  <li>회전에 참여하는 수들중 가장 작은 값을 min_board에 저장한다.</li>
+</ol>
+
+<p>이를 코드로 구현 하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">queries</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+
+     <span class="c1"># 0 인덱스가 아닌 1 인덱스로 활용하기 위한 전처리
+</span>    <span class="n">board</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">columns</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">columns</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">rows</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">columns</span> <span class="o">+</span> <span class="n">c</span>
+
+
+    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span><span class="p">,</span> <span class="n">x_2</span><span class="p">,</span> <span class="n">y_2</span><span class="p">):</span>
+        <span class="n">min_board</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">maxsize</span>
+         <span class="c1"># 왼쪽 아래 축을 기준으로 회전 시작, 처음값을 tmp에 저장
+</span>        <span class="n">tmp</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_1</span><span class="p">]</span>
+        <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
+         <span class="c1"># 회전에 참여하는 모든 수들 중 최솟 값을 찾음
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">x_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_1</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">y_1</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_1</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span> <span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_1</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">y_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_2</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">x_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">i</span><span class="p">][</span><span class="n">y_2</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_2</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">y_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">min_board</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">min_board</span>
+
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">query</span>
+        <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">rotate</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">))</span>
+        <span class="n">pprint</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span>
+
+<span class="n">solution</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+[[-1, -1, -1, -1, -1, -1, -1],
+ [-1, 1, 2, 3, 4, 5, 6],
+ [-1, 7, 14, 8, 9, 11, 12],
+ [-1, 13, 20, 15, 10, 17, 18],
+ [-1, 19, 26, 21, 16, 23, 24],
+ [-1, 25, 27, 28, 22, 29, 30],
+ [-1, 31, 32, 33, 34, 35, 36]]
+
+10
+[[-1, -1, -1, -1, -1, -1, -1],
+ [-1, 1, 2, 3, 4, 5, 6],
+ [-1, 7, 14, 8, 9, 11, 12],
+ [-1, 13, 20, 21, 15, 10, 17],
+ [-1, 19, 26, 28, 16, 23, 18],
+ [-1, 25, 27, 33, 22, 29, 24],
+ [-1, 31, 32, 34, 35, 36, 30]]
+
+25
+[[-1, -1, -1, -1, -1, -1, -1],
+ [-1, 1, 2, 3, 4, 5, 6],
+ [-1, 7, 14, 8, 9, 11, 12],
+ [-1, 13, 20, 21, 15, 10, 17],
+ [-1, 19, 26, 28, 16, 23, 18],
+ [-1, 31, 25, 27, 22, 29, 24],
+ [-1, 32, 34, 33, 35, 36, 30]]
+
+[8, 10, 25]
+
+
+
+
+
+[8, 10, 25]
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EA%B5%AC%ED%98%84" class="page__taxonomy-item p-category" rel="tag">구현</a><span class="sep">, </span>
+    
+      <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item p-category" rel="tag">코딩테스트</a><span class="sep">, </span>
+    
+      <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item p-category" rel="tag">프로그래머스</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#programmers" class="page__taxonomy-item p-category" rel="tag">Programmers</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-05-10T00:00:00+09:00">May 10, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Programmers%2C+2021+Dev-Matching+%EC%A4%91%2C+%EA%B5%AC%ED%98%84%2C+%27%ED%96%89%EB%A0%AC+%ED%85%8C%EB%91%90%EB%A6%AC+%ED%9A%8C%EC%A0%84%27%20http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-77485%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-77485%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogrammers%2Fprogrammers-77485%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/programmers/programmers-12973/" class="pagination--pager" title="Programmers, 스택, 2017 팁스타운 중 ‘짝지어 제거하기’
+">Previous</a>
+    
+    
+      <a href="/programmers/programmers-72411/" class="pagination--pager" title="Programmers, 2021 KAKAO BLIND RECRUITMENT 중, 구현, ‘메뉴 리뉴얼’
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42860/" rel="permalink">Programmers, 코딩테스트 연습, 그리디,  ‘조이스틱’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EA%B7%B8%EB%A6%AC%EB%94%94" class="page__taxonomy-item-tag btn btn--small" rel="tag">그리디</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-07T00:00:00+09:00">June 7, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘조이스틱’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-1844/" rel="permalink">Programmers, 찾아라 프로그래밍 마에스터, 완전탐색, ‘게임 맵 최단거리’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-06T00:00:00+09:00">June 6, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘게임 맵 최단거리’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/programmers/programmers-42839/" rel="permalink">Programmers, 코딩테스트 연습, 완전탐색,  ‘소수찾기’
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#programmers" class="page__taxonomy-item-category btn btn--small" rel="tag">Programmers</a>
+                    
+                    
+                    <a href="/tags/#python" class="page__taxonomy-item-tag btn btn--small" rel="tag">python</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%99%84%EC%A0%84%ED%83%90%EC%83%89" class="page__taxonomy-item-tag btn btn--small" rel="tag">완전탐색</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8" class="page__taxonomy-item-tag btn btn--small" rel="tag">코딩테스트</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4" class="page__taxonomy-item-tag btn btn--small" rel="tag">프로그래머스</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-05T00:00:00+09:00">June 5, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">프로그래머스 문제 중 ‘소수찾기’
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/http/web-api_key_access/" rel="permalink">API authentication by API key, API key로 API 인증하기
+</a>
+      
+    </h2>
+    <div>
+      <!--Archive page 용-: (post -> page)-->
+<!--page__taxonomy.html에서 가져 옴-->
+        
+        <span class="page__taxonomy">
+            <span itemprop="keywords"><a href="/categories/#http" class="page__taxonomy-item-category btn btn--small" rel="tag">HTTP</a>
+                    
+                    
+                    <a href="/tags/#authentication" class="page__taxonomy-item-tag btn btn--small" rel="tag">authentication</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#authorization" class="page__taxonomy-item-tag btn btn--small" rel="tag">authorization</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#headers" class="page__taxonomy-item-tag btn btn--small" rel="tag">headers</a><span class="sep"> </span>
+                
+                    
+                    
+                    <a href="/tags/#web" class="page__taxonomy-item-tag btn btn--small" rel="tag">Web</a>
+                
+            </span>
+        </span>
+    </div>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-23T00:00:00+09:00">May 23, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">API key access
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/bo-oseng" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Kim Boseong. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/programmers/programmers-77485/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/programmers/programmers-77485"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://bo-oseng.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
