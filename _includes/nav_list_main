@@ -41,5 +41,17 @@
                 {% endfor %}
             </ul>
       </li>
+      <li>
+        <!--1차 분류-->
+        <span class="nav__sub-title">etc</span>
+            <!--2차 분류-->
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Termux" %}
+                        <li><a href="/categories/termux" class="">termux ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+      </li>
   </ul>
 </nav>

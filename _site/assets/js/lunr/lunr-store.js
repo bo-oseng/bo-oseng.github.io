@@ -1,4 +1,16 @@
 var store = [{
+        "title": "Termux를 쓰는 이유, 다운 및 설치",
+        "excerpt":"Termux 대부분의 안드로이드 운영체제는 스마트폰의 리눅스 커널 위에서 실행되는 환경이다. 하지만 사용자 레벨에서는 java나 kotlin으로 작성된 어플리케이션만 접근 가능하고 직접적으로 리눅스로 작성된 파일들은 접근이 어렵다. 하지만 이런 접근을 가능하게 해주는게 바로 termux이다. termux는 안드로이드에서 사용 가능한 리눅스 유사환경 터미널 에뮬레이터이다. 사용하는 이유 일단 가장 큰 이유는 어디서든 스마트폰으로 리눅스에 접근할...","categories": ["Termux"],
+        "tags": ["안드로이드","리눅스","terminal"],
+        "url": "/termux/termux-(1)intro/",
+        "teaser": null
+      },{
+        "title": "Termux에서 python, Jupyter notebook 설치 및 활용",
+        "excerpt":"Termux의 활용 이번 글에서는 내가 termux를 어떻게 활용하고 있는지 소개하려고 한다. 요즘은 알고리즘 공부를 주로 하고 있다. 파이썬을 통해 학습하는데 PC 환경이 아닌 스마트폰에서 구글코랩을 통해 진행한다. 구글 코랩은 주피터노트북의 웹버전인데 한가지 아쉬운점이 파일을 .md 나 .html파일이 아닌 .ipynb 파일으로 밖에 다루지 못한다는 점이다. 그래서 스마트폰에서 Jupyter notebook을 쓰고 싶을때가...","categories": ["Termux"],
+        "tags": ["python","리눅스","terminal","jupyter"],
+        "url": "/termux/termux-(2)Jupyter-notebook/",
+        "teaser": null
+      },{
         "title": "백준 문제 중 15685번, 구현, 드래곤커브",
         "excerpt":"백준 문제 중 15685번 https://www.acmicpc.net/problem/15685 문제 드래곤 커브는 다음과 같은 세 가지 속성으로 이루어져 있으며, 이차원 좌표 평면 위에서 정의된다. 좌표 평면의 x축은 → 방향, y축은 ↓ 방향이다. 시작 점 시작 방향 세대 0세대 드래곤 커브는 아래 그림과 같은 길이가 1인 선분이다. 아래 그림은 (0, 0)에서 시작하고, 시작 방향은 오른쪽인...","categories": ["BOJ"],
         "tags": ["python","백준온라인저지","코딩테스트"],
