@@ -1,0 +1,183 @@
+I"?\<h1 id="백준-문제-중-12100번">백준 문제 중 12100번</h1>
+<p><a>https://www.acmicpc.net/problem/12100</a></p>
+
+<p>2048 게임은 4×4 크기의 보드에서 혼자 즐기는 재미있는 게임이다. 이 링크를 누르면 게임을 해볼 수 있다.</p>
+
+<p>이 게임에서 한 번의 이동은 보드 위에 있는 전체 블록을 상하좌우 네 방향 중 하나로 이동시키는 것이다. 이때, 같은 값을 갖는 두 블록이 충돌하면 두 블록은 하나로 합쳐지게 된다. 한 번의 이동에서 이미 합쳐진 블록은 또 다른 블록과 다시 합쳐질 수 없다. (실제 게임에서는 이동을 한 번 할 때마다 블록이 추가되지만, 이 문제에서 블록이 추가되는 경우는 없다)</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 보드의 크기 N (1 ≤ N ≤ 20)이 주어진다. 둘째 줄부터 N개의 줄에는 게임판의 초기 상태가 주어진다. 0은 빈 칸을 나타내며, 이외의 값은 모두 블록을 나타낸다. 블록에 쓰여 있는 수는 2보다 크거나 같고, 1024보다 작거나 같은 2의 제곱꼴이다. 블록은 적어도 하나 주어진다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>최대 5번 이동시켜서 얻을 수 있는 가장 큰 블록을 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>처음에 문제에 접근 할때는 0이아닌 숫자가 있는 부분만 시작점으로 큐에 저장했다가 하나씩 꺼내서 한방향으로 모든 숫자를 이동하거나 병합하도록 진행하고 그 이후 남은 0이아닌 숫자를 큐에 넣어 BFS를 하는식으로 시도했었다.</p>
+
+<p>그러나 코드를 짜다보니 맵 전체의 상태를 저장해야 될 필요성을 느꼈고 이동횟수가 5회로 제한되어 있으므로, 맵 전체를 입력 출력으로 하는 DFS를 하는게 더 나을 것 같다는 생각이 들었다.</p>
+
+<p>여기 까지는 접근했으나 이동시 병합하거나 병합하지 않고 차례로 쌓는 처리가 너무 어려워서 검색을 통해 해결했다.</p>
+
+<p>코드의 흐름은 이렇다.</p>
+<ol>
+  <li>현재 맵 상태를 입력으로 네 방향으로의 탐색을 재귀적으로 진행할 dfs를 호출한다.</li>
+  <li>한 방향에 대하여 이동할때 조건에 따라 블럭들을 병합하거나, 블럭들을 순차적으로 쌓는 처리를 해줄 함수 move를 호출한다.</li>
+  <li>move 함수는 움직이기전 상태의 맵을 입력받아 움직이고 난 후의 상태의 맵을 출력한다.(이때 반드시 깊은복사로 맵을 넘겨주어야 한다.)</li>
+  <li>dfs의 탐색이 5회가 되면 가능한 최대값을 구한다.</li>
+</ol>
+
+<p>move 함수의 구현이 어려웠다. move 함수를 더 구체적으로 살펴보자<br />
+ dir이 0인 경우 즉 위로 이동하는 경우라 가정하자.</p>
+<ol>
+  <li>맵을 각 col으로 쪼개 하나의 col마다 탐색을 진행하다.</li>
+  <li>j번째 순차의 col의 가장 위를 기준으로 병합 및 저장이 시작되므로 열의 가장 윗 부분 row 인덱스인 0을 top에 저장한다.</li>
+  <li>top이후의 인덱스 1부터 n-1을 i라 할때 차례대로 살펴보자.</li>
+  <li>board[top][j]에 따라 top과 board[top][j]를 조작한다.
+세가지의 동작이 있을 것이다.
+    <ul>
+      <li>board[top][j] == 0 이라면 board[i][j] 를 board[top][j]에 대입한다. top은 변동이 없다.</li>
+      <li>board[top][j] == board[i][j] 라면 병합이 가능하므로 board[top][j]에 병합을 해주고 한 이동에 한번의 병합만이 가능하므로 기준 top의 인덱스를 1 증가 시킨다.</li>
+      <li>둘다 아니라면 top의 인덱스를 1증가시키고 board[top][j]에 board[i][j]를 대입한다. (블럭이 쌓이는 경우)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>이러한 과정을 각 방향에 대해 맞게끔 코드를 구성하면 된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">board</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">board</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
+
+
+<span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="nb">dir</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">board</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span><span class="o">-&gt;</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+
+     <span class="c1"># up
+</span>    <span class="k">if</span> <span class="nb">dir</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">top</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+                    <span class="k">elif</span> <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">tmp</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">*</span> <span class="mi">2</span>
+                        <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> 
+     <span class="c1"># right   
+</span>    <span class="k">elif</span> <span class="nb">dir</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">top</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+                    <span class="k">elif</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">==</span> <span class="n">tmp</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">*</span> <span class="mi">2</span>
+                        <span class="n">top</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">top</span> <span class="o">-=</span> <span class="mi">1</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+
+     <span class="c1"># down
+</span>    <span class="k">elif</span> <span class="nb">dir</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">top</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+                    <span class="k">elif</span> <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">tmp</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">*</span> <span class="mi">2</span>
+                        <span class="n">top</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">top</span> <span class="o">-=</span> <span class="mi">1</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">top</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+
+     <span class="c1"># left
+</span>    <span class="k">elif</span> <span class="nb">dir</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">top</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+                    <span class="k">elif</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">==</span> <span class="n">tmp</span><span class="p">:</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">*</span> <span class="mi">2</span>
+                        <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+
+    <span class="k">return</span> <span class="n">board</span>
+
+
+<span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">board</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">cnt</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+
+    <span class="k">global</span> <span class="n">ans</span>
+
+    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">ans</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">return</span>
+
+    <span class="n">dfs</span><span class="p">(</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)),</span> <span class="n">cnt</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)),</span> <span class="n">cnt</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">move</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)),</span> <span class="n">cnt</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">move</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)),</span> <span class="n">cnt</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dfs</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+2 0 2
+0 2 0
+2 0 2
+4
+</code></pre></div></div>
+
+<h3 id="배운점">배운점</h3>
+
+<p>내가 슬라이싱 복사에 대해 잘못 알고 있어 헤맸던 부분이 있다. [:] 통한 객체 복사는 엄밀히 말하면 얕은 복사라는것이다. 처음에는 copy 모듈의 deepcopy가 아닌 슬라이싱 [:]을 통해 맵을 넘겨주었는데 굉장히 찾기 힘든 버그가 생겨서 해결하는데 시간이 오래결렸다.</p>
+
+<p>다음을 살펴보자</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">b</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">'True'</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="ow">is</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="s">'True'</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+True
+[1, 2, 3, [4, 5, 6], 6]
+</code></pre></div></div>
+
+<p>a와 b의 id는 달라졌지만, 리스트 안의 리스트 즉 nested list는 얕은복사가 일어났음을 볼 수 있다.</p>
+:ET

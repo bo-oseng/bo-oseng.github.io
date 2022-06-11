@@ -1,0 +1,181 @@
+I"M0<h1 id="백준-문제-중-12865번">백준 문제 중 12865번</h1>
+
+<p>https://www.acmicpc.net/problem/12865</p>
+
+<h3 id="문제">문제</h3>
+
+<p>이 문제는 아주 평범한 배낭에 관한 문제이다.</p>
+
+<p>한 달 후면 국가의 부름을 받게 되는 준서는 여행을 가려고 한다. 세상과의 단절을 슬퍼하며 최대한 즐기기 위한 여행이기 때문에, 가지고 다닐 배낭 또한 최대한 가치 있게 싸려고 한다.</p>
+
+<p>준서가 여행에 필요하다고 생각하는 N개의 물건이 있다. 각 물건은 무게 W와 가치 V를 가지는데, 해당 물건을 배낭에 넣어서 가면 준서가 V만큼 즐길 수 있다. 아직 행군을 해본 적이 없는 준서는 최대 K만큼의 무게만을 넣을 수 있는 배낭만 들고 다닐 수 있다. 준서가 최대한 즐거운 여행을 하기 위해 배낭에 넣을 수 있는 물건들의 가치의 최댓값을 알려주자.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫 줄에 물품의 수 N(1 ≤ N ≤ 100)과 준서가 버틸 수 있는 무게 K(1 ≤ K ≤ 100,000)가 주어진다. 두 번째 줄부터 N개의 줄에 거쳐 각 물건의 무게 W(1 ≤ W ≤ 100,000)와 해당 물건의 가치 V(0 ≤ V ≤ 1,000)가 주어진다.</p>
+
+<p>입력으로 주어지는 모든 수는 정수이다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>한 줄에 배낭에 넣을 수 있는 물건들의 가치합의 최댓값을 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>유명한 문제이나 직접 구현하려니 생각보다 어려웠던 문제이다.</p>
+
+<p>먼저 입력받은 짐을 무게순으로, 무게가 같다면 가치가 높은 순으로 정렬후 cargo에 저장한다. <br />
+그리고 가로를 가방의 무게, 세로를 짐의 종류로 하는 2차원 배열 DP를 선언했다.<br />
+[0,0]과 0 축은 계산의 편의상 추가할 부분이고 모두 0으로 초기화 해준다.</p>
+
+<p>짐이 [3,6]만 있는 경우인 1열 dp[1][mass]에 대하여 dp[1][1]부터 dp[1][k]까지의 값을 생각해보자.</p>
+
+<p>dp[1][1]이 뜻하는 의미는 1kg까지 담을 수 있는 짐의 구성 중 최대 가치이다. 그러나 현재 있는 짐들 중 제일 작은 짐의 무게가 3이므로 아무것도 담을 수 없다. 즉 무게 mass가 cargo[1][0]보다 작을때는 cargo[1]번은 아예 담을 수 없으므로 이전의 짐의 구성들로 담는것과 다를게 없다.</p>
+
+<p>즉 mass-cargo[c][0]&lt;0 이라면 dp[c][mass] = dp[c-1][mass]를 만족한다.</p>
+
+<p>이를 수도 코드로 나타내면</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">if</span> <span class="n">mass</span><span class="o">-</span><span class="n">cargo</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">mass</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mass</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>mass-cargo[1][0] &gt;= 0을 만족하는 dp[1][3]은 3kg을 담을 수 있고, 짐을 구성할 수 있는 경우는 두가지이고 이 중 최대를 구해야한다.</p>
+
+<ol>
+  <li>
+    <p>[3,6]짐을 담을 수 있는 무게 mass 에서 cargo[1][0]을 뺀 값을 reamain = mass-cargo[1][0] 이라할때, [3,6]이 추가되기 이전의 짐구성 중 최대 가치를 나타내는 dp[1-1][reamin]에 cargo[1][1]을 더한 값이되는 경우.</p>
+  </li>
+  <li>
+    <p>[3,6]을 담을 수 있나 담지 않고 구성한 경우의 가치가 더 클경우 dp[1-1][3]</p>
+  </li>
+</ol>
+
+<p>이를 수도코드로 나타내면</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">else</span><span class="p">:</span>
+<span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">mass</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mass</span><span class="o">-</span><span class="n">cargo</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="n">cargo</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mass</span><span class="p">])</span> 
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th><strong>0</strong></th>
+      <th><strong>1</strong></th>
+      <th><strong>2</strong></th>
+      <th><strong>3</strong></th>
+      <th><strong>4</strong></th>
+      <th><strong>5</strong></th>
+      <th><strong>6</strong></th>
+      <th><strong>7</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>[0,0]</strong></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><strong>[3,6]</strong></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td><strong>[4,8]</strong></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>8</td>
+      <td>12</td>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td><strong>[5,12]</strong></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>8</td>
+      <td>12</td>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td><strong>[6,13]</strong></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>8</td>
+      <td>12</td>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위의 내용들을 코드를 구현하면 아래와 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+
+ <span class="c1"># 계산의 편의를 위해 [0,0] 추가
+</span><span class="n">cargo</span> <span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">cargo</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())))</span>
+
+ <span class="c1"># 계산의 편의를 무게, 가치 순으로 정렬
+</span><span class="n">cargo</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+ <span class="c1">#계산의 편의를 위해 dp[0][j]축 dp[i][0] 추가
+</span><span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+ <span class="c1"># 모든 DP를 순회
+</span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">mass</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+
+         <span class="c1"># 짐 c를 담을 수 있는 경우와 없는 경우 판단
+</span>        <span class="k">if</span> <span class="n">mass</span><span class="o">-</span><span class="n">cargo</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+
+             <span class="c1"># 담을 수 없다면 c-1까지의 짐의 구성과 같으므로 dp[c-1][mass]
+</span>            <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">mass</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mass</span><span class="p">]</span>
+
+         <span class="c1"># 담을 수 있다면, 담는경우와 안담는 경우 중 최대값을 판별
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">mass</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mass</span><span class="o">-</span><span class="n">cargo</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="n">cargo</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mass</span><span class="p">])</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">k</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 7
+3 6
+4 8
+5 12
+6 13
+[[0, 0, 0, 0, 0, 0, 0, 0],
+ [0, 0, 0, 6, 6, 6, 6, 6],
+ [0, 0, 0, 6, 8, 8, 8, 14],
+ [0, 0, 0, 6, 8, 12, 12, 14],
+ [0, 0, 0, 6, 8, 12, 13, 14]]
+14
+</code></pre></div></div>
+
+:ET

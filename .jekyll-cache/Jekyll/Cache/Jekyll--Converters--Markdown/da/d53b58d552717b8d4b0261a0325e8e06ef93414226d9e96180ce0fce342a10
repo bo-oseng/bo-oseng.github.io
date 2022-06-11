@@ -1,0 +1,83 @@
+I"� <h1 id="백준-문제-중-1992번">백준 문제 중 1992번</h1>
+<p>https://www.acmicpc.net/problem/1992</p>
+
+<h3 id="문제">문제</h3>
+
+<p>흑백 영상을 압축하여 표현하는 데이터 구조로 쿼드 트리(Quad Tree)라는 방법이 있다. 흰 점을 나타내는 0과 검은 점을 나타내는 1로만 이루어진 영상(2차원 배열)에서 같은 숫자의 점들이 한 곳에 많이 몰려있으면, 쿼드 트리에서는 이를 압축하여 간단히 표현할 수 있다.</p>
+
+<p>주어진 영상이 모두 0으로만 되어 있으면 압축 결과는 “0”이 되고, 모두 1로만 되어 있으면 압축 결과는 “1”이 된다. 만약 0과 1이 섞여 있으면 전체를 한 번에 나타내지를 못하고, 왼쪽 위, 오른쪽 위, 왼쪽 아래, 오른쪽 아래, 이렇게 4개의 영상으로 나누어 압축하게 되며, 이 4개의 영역을 압축한 결과를 차례대로 괄호 안에 묶어서 표현한다</p>
+
+<p><img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/upload/201007/qq.png" alt="img" /></p>
+
+<p>위 그림에서 왼쪽의 영상은 오른쪽의 배열과 같이 숫자로 주어지며, 이 영상을 쿼드 트리 구조를 이용하여 압축하면 “(0(0011)(0(0111)01)1)”로 표현된다.  N ×N 크기의 영상이 주어질 때, 이 영상을 압축한 결과를 출력하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에는 영상의 크기를 나타내는 숫자 N 이 주어진다. N 은 언제나 2의 제곱수로 주어지며, 1 ≤ N ≤ 64의 범위를 가진다. 두 번째 줄부터는 길이 N의 문자열이 N개 들어온다. 각 문자열은 0 또는 1의 숫자로 이루어져 있으며, 영상의 각 점들을 나타낸다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>영상을 압축한 결과를 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>문제 자체는 이전에 풀었던 <a href="https://bo-oseng.github.io/boj/boj-2630">색종이 만들기</a>와 비슷해 어렵지 않았으나 크게 두가지 정도 신경쓸게 있었다.</p>
+<ul>
+  <li>출력처리</li>
+  <li>출력순서</li>
+</ul>
+
+<p>처음에 출력되는 순서를 기억했다 출력하게끔 스택이나 큐를 써야하나 고민했는데 그냥 재귀함수내에서 출력까지 하면 쉽고 가끔하게 처리할 수 있다.</p>
+
+<p>그리고 출력순서는 문제에서 주어진게 왼위 오위 왼아 오아 순이므로 재귀를 부르는 순서를 이에 맞게 설정해주기만 하면됐다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">datas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">datas</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">list</span><span class="p">(</span><span class="nb">input</span><span class="p">()))))</span>
+
+
+ <span class="c1"># 모든 원소가 같을때만 True를 반환하는 함수
+</span><span class="k">def</span> <span class="nf">is_all_same</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">datas</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">datas</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+
+ <span class="c1"># 재귀적으로 압축된 데이터를 출력할 함수
+</span><span class="k">def</span> <span class="nf">zip_data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+
+     <span class="c1"># 모든 원소가 같거나 크기가 1이 되면 바로 출력
+</span>    <span class="k">if</span> <span class="n">is_all_same</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="ow">or</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">datas</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+        <span class="k">return</span>
+
+     <span class="c1"># 재귀가 시작되는 처음과 끝에 ()를 출력해 출력처리
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">'('</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+    <span class="n">zip_data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">zip_data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">zip_data</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">zip_data</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">')'</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+
+<span class="n">zip_data</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+11110000
+11110000
+00011100
+00011100
+11110000
+11110000
+11110011
+11110011
+((110(0101))(0010)1(0001))
+</code></pre></div></div>
+:ET

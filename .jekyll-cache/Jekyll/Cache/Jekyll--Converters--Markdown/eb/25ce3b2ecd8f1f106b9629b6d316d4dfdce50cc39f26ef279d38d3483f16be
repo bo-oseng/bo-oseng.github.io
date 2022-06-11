@@ -1,0 +1,133 @@
+I"�B<h1 id="백준-문제-중-15683번">백준 문제 중 15683번</h1>
+
+<p><a href="https://www.acmicpc.net/problem/15683">https://www.acmicpc.net/problem/15683</a></p>
+
+<h3 id="문제">문제</h3>
+
+<p>스타트링크의 사무실은 1×1크기의 정사각형으로 나누어져 있는 N×M 크기의 직사각형으로 나타낼 수 있다. 사무실에는 총 K개의 CCTV가 설치되어져 있는데, CCTV는 5가지 종류가 있다. 각 CCTV가 감시할 수 있는 방법은 다음과 같다.</p>
+
+<div display="flex">
+  <img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15683/1.png" width="15%" />
+  <img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15683/2.png" width="20%" />
+  <img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15683/3.png" width="15%" />
+  <img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15683/4.png" width="20%" />
+  <img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15683/5.png" width="20%" />
+</div>
+
+<p>1번 CCTV는 한 쪽 방향만 감시할 수 있다. 2번과 3번은 두 방향을 감시할 수 있는데, 2번은 감시하는 방향이 서로 반대방향이어야 하고, 3번은 직각 방향이어야 한다. 4번은 세 방향, 5번은 네 방향을 감시할 수 있다.</p>
+
+<p>CCTV는 감시할 수 있는 방향에 있는 칸 전체를 감시할 수 있다. 사무실에는 벽이 있는데, CCTV는 벽을 통과할 수 없다. CCTV가 감시할 수 없는 영역은 사각지대라고 한다.</p>
+
+<p>CCTV는 회전시킬 수 있는데, 회전은 항상 90도 방향으로 해야 하며, 감시하려고 하는 방향이 가로 또는 세로 방향이어야 한다.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 사무실의 세로 크기 N과 가로 크기 M이 주어진다. (1 ≤ N, M ≤ 8)</p>
+
+<p>둘째 줄부터 N개의 줄에는 사무실 각 칸의 정보가 주어진다. 0은 빈 칸, 6은 벽, 1~5는 CCTV를 나타내고, 문제에서 설명한 CCTV의 종류이다.</p>
+
+<p>CCTV의 최대 개수는 8개를 넘지 않는다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 사각 지대의 최소 크기를 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>CCTV의 종류에 따라 동작을 나누는게 문제의 핵심이었다. 모든 CCTV에 대해서 모든 경우를 탐색해 사각지대가 최소일땔르 구하면 된다.</p>
+
+<p>CCTV를 종류에 따른 동작을 딕셔너리에 선언하고, 종류에 따라 DFS를 실행 하게 코드를 구성했다.</p>
+
+<p>코드의 흐름은 이렇다.</p>
+<ol>
+  <li>CCTV가 설치된 좌표와 종류를 points 리스트에 담는다.</li>
+  <li>CCTV 종류에 따라 동작을 나타낼 딕셔너리 cctv를 선언한다.</li>
+  <li>최악의 경우의 사각구역의 수를 ans에 초기화한다.</li>
+  <li>할당된 방향으로 인덱스 범위를 벗어나지않고 벽을 만나기 전까지 구역을 #으로 바꿔줄 함수 mark_observable을 선언한다.</li>
+  <li>재귀적으로 DFS로 모든 탐색을 진행할 dfs를 선언한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">board</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+ <span class="c1"># CCTV가 설치된 모든 좌표와 종류를 points 리스트에 저장
+</span><span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="s">'12345'</span><span class="p">:</span>
+            <span class="n">points</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]])</span>
+
+ <span class="c1"># CCTV 종류에 따라 동작을 구별할 딕셔너리 선언
+</span><span class="n">cctv</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'1'</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span> 
+    <span class="p">],</span> 
+    <span class="s">'2'</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+    <span class="p">],</span>
+    <span class="s">'3'</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+    <span class="p">],</span>
+    <span class="s">'4'</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> 
+        <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+    <span class="p">],</span>
+    <span class="s">'5'</span><span class="p">:[</span>
+       <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+ <span class="c1"># CCTV가 하나도 없을때의 사각구역으로 ans를 초기화
+</span><span class="n">ans</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">m</span>
+
+ <span class="c1"># 할당된 dir들로 감시가능 구역을 모두 #으로 바꿔줄 함수 선언
+</span><span class="k">def</span> <span class="nf">mark_observable</span><span class="p">(</span><span class="n">sub_board</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">r</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dir</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span><span class="o">-&gt;</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+
+    <span class="k">for</span> <span class="n">dr</span><span class="p">,</span><span class="n">dc</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">:</span>
+        <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="n">dc</span>
+        <span class="k">while</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nc</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="ow">and</span> <span class="n">sub_board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'6'</span><span class="p">:</span>
+            <span class="n">sub_board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="s">'#'</span>
+            <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">nr</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">+</span> <span class="n">dc</span>
+    <span class="k">return</span> <span class="n">sub_board</span>
+    
+          
+ <span class="c1"># 재귀적으로 완전탐색을 실행할 DFS 선언
+</span><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">depth</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">board</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span><span class="o">-&gt;</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+
+    <span class="k">global</span> <span class="n">ans</span>
+
+    <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="k">return</span>
+        
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">==</span> <span class="n">depth</span><span class="p">:</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">board</span><span class="p">:</span> <span class="n">cnt</span> <span class="o">+=</span> <span class="n">b</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'0'</span><span class="p">)</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">depth</span><span class="p">]</span>
+    <span class="n">candidates</span> <span class="o">=</span> <span class="n">cctv</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span>
+     <span class="c1"># candidates 안에 있는 모든 동작에 대해 경우를 탐색함
+</span>    <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+        <span class="n">sub_board</span> <span class="o">=</span> <span class="n">mark_observable</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">candidate</span><span class="p">)</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sub_board</span><span class="p">)</span>
+        
+
+<span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 7
+4 0 0 0 0 0 0
+0 0 0 2 0 0 0
+0 0 0 0 0 0 4
+0
+</code></pre></div></div>
+
+:ET
