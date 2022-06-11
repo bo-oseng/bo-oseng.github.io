@@ -40,6 +40,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "VanilaJS" %}
+                        <li><a href="/categories/vanila-js" class="">Vanila JS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
       <li>
       <li>
