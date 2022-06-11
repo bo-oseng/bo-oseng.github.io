@@ -3,7 +3,7 @@ layout: single
 
 title: Menu Slider & Modal, VanillaJS - (6)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, css, html]
 

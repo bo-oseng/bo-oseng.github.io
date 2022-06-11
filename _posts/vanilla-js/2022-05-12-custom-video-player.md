@@ -3,7 +3,7 @@ layout: single
 
 title: Custom Video Player, VanillaJS - (3)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, HTMLMediaElemnet, progress]
 

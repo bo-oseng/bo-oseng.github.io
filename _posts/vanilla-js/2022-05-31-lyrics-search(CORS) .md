@@ -3,7 +3,7 @@ layout: single
 
 title: Lyrics Search (CORS), VanillaJS - (10)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, SOP, CORS, proxy, tagname, herokuapp]
 

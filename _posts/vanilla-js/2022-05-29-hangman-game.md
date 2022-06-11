@@ -3,7 +3,7 @@ layout: single
 
 title: Hangman Game, VanillaJS - (9)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, svg, keyEvent, regexp]
 

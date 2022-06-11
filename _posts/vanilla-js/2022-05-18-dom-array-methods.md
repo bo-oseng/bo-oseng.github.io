@@ -3,7 +3,7 @@ layout: single
 
 title: DOM Array Methods, VanillaJS - (5)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, await, async, reduce, spread]
 

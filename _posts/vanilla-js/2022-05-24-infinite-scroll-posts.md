@@ -3,7 +3,7 @@ layout: single
 
 title: Infinite Scroll Posts, VanillaJS - (7)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, Query Sting, async, await, scrollEvent, destructuring]
 

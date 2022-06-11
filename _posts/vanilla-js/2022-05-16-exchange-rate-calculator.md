@@ -3,7 +3,7 @@ layout: single
 
 title: Exchange Rate Calculatorr, VanillaJS - (4)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, API]
 

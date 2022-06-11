@@ -3,7 +3,7 @@ layout: single
 
 title: Sortable List, VanillaJS - (8)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, data attribute, closet, drag and drop, this]
 

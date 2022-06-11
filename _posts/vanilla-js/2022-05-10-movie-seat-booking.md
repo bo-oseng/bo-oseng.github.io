@@ -3,7 +3,7 @@ layout: single
 
 title: Movie seat booking, VanillaJS - (2)
 categories:
-  - VanilaJS
+  - VanillaJS
 
 tag: [javascript, html, css, localStorage]
 
