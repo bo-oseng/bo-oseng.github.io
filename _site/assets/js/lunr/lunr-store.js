@@ -335,16 +335,100 @@ var store = [{
         "url": "/data-structure/LinkedList-(1)-SingleLinkedList/",
         "teaser": null
       },{
+        "title": "백준 문제 중 10866번, 덱, '덱'",
+        "excerpt":"백준 문제 중 10866번 https://www.acmicpc.net/problem/10866 문제 정수를 저장하는 덱(Deque)를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오. 명령은 총 여덟 가지이다. push_front X: 정수 X를 덱의 앞에 넣는다. push_back X: 정수 X를 덱의 뒤에 넣는다. pop_front: 덱의 가장 앞에 있는 수를 빼고, 그 수를 출력한다. 만약, 덱에 들어있는 정수가 없는...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","덱"],
+        "url": "/boj/boj-10866/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 17413번, 스택, '단어 뒤집기 2'",
+        "excerpt":"백준 문제 중 17413번 https://www.acmicpc.net/problem/17413 문제 문자열 S가 주어졌을 때, 이 문자열에서 단어만 뒤집으려고 한다. 먼저, 문자열 S는 아래와과 같은 규칙을 지킨다. 알파벳 소문자(‘a’-‘z’), 숫자(‘0’-‘9’), 공백(‘ ‘), 특수 문자(‘&lt;’, ‘&gt;’)로만 이루어져 있다. 문자열의 시작과 끝은 공백이 아니다. ’&lt;’와 ‘&gt;’가 문자열에 있는 경우 번갈아가면서 등장하며, ‘&lt;’이 먼저 등장한다. 또, 두 문자의...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","스택"],
+        "url": "/boj/boj-17413/",
+        "teaser": null
+      },{
         "title": "LinkedList- (2) DoublyLinkedList with python",
         "excerpt":"연결리스트 단일 연결리스트는 앞서 (1) SingleLinkedList 에서 다뤄봤고 이번에는 전방 탐색도 가능한 DoublyLinkedList 이중연결리스트를 정리했다. 이중 연결리스트 자세한 설명 (2) DoublyLinkedList from typing import Any,Type # 노드 클래스 선언 class Node: def __init__(self,data:Any,next:Node=None,prev:Node=None)-&gt;None: # 전방 탐색을 위해 prev필드 추가 self.data = data self.next = next self.prev = prev # 이중연결리스트...","categories": ["Data-structure"],
         "tags": ["DoublyLinkedList","자료구조","python"],
         "url": "/data-structure/LinkedList-(2)-DoublyLikedList/",
         "teaser": null
       },{
+        "title": "백준 문제 중 10799번, 스택, '쇠막대기'",
+        "excerpt":"백준 문제 중 10799번 https://www.acmicpc.net/problem/10799 문제 여러 개의 쇠막대기를 레이저로 절단하려고 한다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자른다. 쇠막대기와 레이저의 배치는 다음 조건을 만족한다. 쇠막대기는 자신보다 긴 쇠막대기 위에만 놓일 수 있다. - 쇠막대기를 다른 쇠막대기 위에 놓는 경우 완전히 포함되도록 놓되,...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","스택"],
+        "url": "/boj/boj-10799/",
+        "teaser": null
+      },{
         "title": "LinkedList- (3) CircularLinkedList with python",
         "excerpt":"연결리스트 단일 연결리스트 그리고 이중 연결리스트에 이어서 원형 연결리스트를 다루어보았다. 원형 연결 리스트 (1) SingleLinkedList (2) DoublyLinkedList from typing import Any,Type # 노드 클래스 선언 class Node: def __init__(self,data:Any,next=None): self.data = data self.next = next # 원형링크드리스트 클래스 선언 class CircularLinkedList: # 시작 head, 현재 cur, 갯수 no 선언 def...","categories": ["Data-structure"],
         "tags": ["CircularLinkedList","자료구조","python"],
         "url": "/data-structure/LinkedList-(3)-CircularLinkedList/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 17298번, 스택, '오큰수'",
+        "excerpt":"백준 문제 중 17298번 https://www.acmicpc.net/problem/17298 문제 크기가 N인 수열 A = A1, A2, …, AN이 있다. 수열의 각 원소 Ai에 대해서 오큰수 NGE(i)를 구하려고 한다. Ai의 오큰수는 오른쪽에 있으면서 Ai보다 큰 수 중에서 가장 왼쪽에 있는 수를 의미한다. 그러한 수가 없는 경우에 오큰수는 -1이다. 예를 들어, A = [3, 5,...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","스택"],
+        "url": "/boj/boj-17298/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 17299번, 스택, '오등큰수'",
+        "excerpt":"백준 문제 중 17299번 https://www.acmicpc.net/problem/17299 문제 크기가 N인 수열 A = A1, A2, …, AN이 있다. 수열의 각 원소 Ai에 대해서 오등큰수 NGF(i)를 구하려고 한다. Ai가 수열 A에서 등장한 횟수를 F(Ai)라고 했을 때, Ai의 오등큰수는 오른쪽에 있으면서 수열 A에서 등장한 횟수가 F(Ai)보다 큰 수 중에서 가장 왼쪽에 있는 수를 의미한다....","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","스택"],
+        "url": "/boj/boj-17299/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 1918번, 스택, '후위 표기식'",
+        "excerpt":"백준 문제 중 1918번 https://www.acmicpc.net/problem/1918 문제 수식은 일반적으로 3가지 표기법으로 표현할 수 있다. 연산자가 피연산자 가운데 위치하는 중위 표기법(일반적으로 우리가 쓰는 방법이다), 연산자가 피연산자 앞에 위치하는 전위 표기법(prefix notation), 연산자가 피연산자 뒤에 위치하는 후위 표기법(postfix notation)이 그것이다. 예를 들어 중위 표기법으로 표현된 a+b는 전위 표기법으로는 +ab이고, 후위 표기법으로는 ab+가 된다....","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","스택"],
+        "url": "/boj/boj-1918/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 10808번, DP, '알파벳 개수'",
+        "excerpt":"백준 문제 중 10808번 https://www.acmicpc.net/problem/10808 문제 알파벳 소문자로만 이루어진 단어 S가 주어진다. 각 알파벳이 단어에 몇 개가 포함되어 있는지 구하는 프로그램을 작성하시오. 입력 첫째 줄에 단어 S가 주어진다. 단어의 길이는 100을 넘지 않으며, 알파벳 소문자로만 이루어져 있다. 출력 단어에 포함되어 있는 a의 개수, b의 개수, …, z의 개수를 공백으로 구분해서...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","DP","다이낙믹프로그래밍"],
+        "url": "/boj/boj-10808/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 1935번, 스택, '후위 표기식2'",
+        "excerpt":"백준 문제 중 1935번 https://www.acmicpc.net/problem/1935 문제 후위 표기식과 각 피연산자에 대응하는 값들이 주어져 있을 때, 그 식을 계산하는 프로그램을 작성하시오. 입력 첫째 줄에 피연산자의 개수(1 ≤ N ≤ 26) 가 주어진다. 그리고 둘째 줄에는 후위 표기식이 주어진다. (여기서 피연산자는 A~Z의 영대문자이며, A부터 순서대로 N개의 영대문자만이 사용되며, 길이는 100을 넘지 않는다)...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","스택"],
+        "url": "/boj/boj-1935/",
+        "teaser": null
+      },{
+        "title": "백준 문제 1463번 with python, DP, 1로만들기",
+        "excerpt":"layout: single title: 백준 문제 중 1463번, DP, ‘1로만들기’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, DP, 다이나믹 프로그래밍] toc: true 백준 문제 중 1463번 https://www.acmicpc.net/problem/1463 문제 정수 X에 사용할 수 있는 연산은 다음과 같이 세 가지 이다. X가 3으로 나누어 떨어지면, 3으로 나눈다. X가 2로 나누어 떨어지면, 2로 나눈다. 1을...","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-1463/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 11726번, DP, '2xn 타일링'",
+        "excerpt":"백준 문제 중 11726번 https://www.acmicpc.net/problem/11726 문제 2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오. 아래 그림은 2×5 크기의 직사각형을 채운 한 가지 방법의 예이다. 입력 첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000) 출력 첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","DP","다이나믹 프로그래밍"],
+        "url": "/boj/boj-11726/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 9095번, DP, '1,2,3 더하기'",
+        "excerpt":"백준 문제 중 9095번 https://www.acmicpc.net/problem/9095 문제 정수 4를 1, 2, 3의 합으로 나타내는 방법은 총 7가지가 있다. 합을 나타낼 때는 수를 1개 이상 사용해야 한다. 1+1+1+1 1+1+2 1+2+1 2+1+1 2+2 1+3 3+1 정수 n이 주어졌을 때, n을 1, 2, 3의 합으로 나타내는 방법의 수를 구하는 프로그램을 작성하시오. 입력 첫째 줄에...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","DP","다이나믹 프로그래밍"],
+        "url": "/boj/boj-9095/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 11052번, DP, '카드 구매하기'",
+        "excerpt":"백준 문제 11052번 https://www.acmicpc.net/problem/11052 문제 요즘 민규네 동네에서는 스타트링크에서 만든 PS카드를 모으는 것이 유행이다. PS카드는 PS(Problem Solving)분야에서 유명한 사람들의 아이디와 얼굴이 적혀있는 카드이다. 각각의 카드에는 등급을 나타내는 색이 칠해져 있고, 다음과 같이 8가지가 있다. 전설카드 레드카드 오렌지카드 퍼플카드 블루카드 청록카드 그린카드 그레이카드 카드는 카드팩의 형태로만 구매할 수 있고, 카드팩의 종류는...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","DP","다이나믹 프로그래밍"],
+        "url": "/boj/boj-11052/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 10844번, DP, '쉬운 계단 수'",
+        "excerpt":"백준 문제 중 10844번 https://www.acmicpc.net/problem/10844 문제 45656이란 수를 보자. 이 수는 인접한 모든 자리의 차이가 1이다. 이런 수를 계단 수라고 한다. N이 주어질 때, 길이가 N인 계단 수가 총 몇 개 있는지 구해보자. 0으로 시작하는 수는 계단수가 아니다. 입력 첫째 줄에 N이 주어진다. N은 1보다 크거나 같고, 100보다 작거나 같은...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","DP","다이나믹 프로그래밍"],
+        "url": "/boj/boj-10844/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 2193번, DP, '이친수'",
+        "excerpt":"백준 문제 중 2193번 https://www.acmicpc.net/problem/2193 문제 0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다. 이친수는 0으로 시작하지 않는다.이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다. 예를 들면 1, 10, 100, 101,...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","DP","다이나믹 프로그래밍"],
+        "url": "/boj/boj-2193/",
         "teaser": null
       },{
         "title": "Termux를 쓰는 이유, 다운 및 설치",

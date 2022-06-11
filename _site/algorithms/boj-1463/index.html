@@ -1,0 +1,96 @@
+<hr />
+<p>layout: single</p>
+
+<p>title: 백준 문제 중 1463번, DP, ‘1로만들기’
+categories:</p>
+<ul>
+  <li>BOJ</li>
+</ul>
+
+<p>tag: [python, 백준온라인저지, 코딩테스트, DP, 다이나믹 프로그래밍]</p>
+
+<h2 id="toc-true">toc: true</h2>
+<h1 id="백준-문제-중-1463번">백준 문제 중 1463번</h1>
+
+<p>https://www.acmicpc.net/problem/1463</p>
+
+<h3 id="문제">문제</h3>
+
+<p>정수 X에 사용할 수 있는 연산은 다음과 같이 세 가지 이다.</p>
+
+<ol>
+  <li>X가 3으로 나누어 떨어지면, 3으로 나눈다.</li>
+  <li>X가 2로 나누어 떨어지면, 2로 나눈다.</li>
+  <li>1을 뺀다.</li>
+</ol>
+
+<p>정수 N이 주어졌을 때, 위와 같은 연산 세 개를 적절히 사용해서 1을 만들려고 한다. 연산을 사용하는 횟수의 최솟값을 출력하시오</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 1보다 크거나 같고, 106보다 작거나 같은 정수 N이 주어진다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 연산을 하는 횟수의 최솟값을 출력한다.</p>
+
+<hr />
+<h2 id="풀이">풀이</h2>
+
+<p>다이나믹 프로그래밍을 처음 접해 보는 문제였다.
+다이나믹 프로그래밍에 대해서는 전혀 지식이 없어서 책을 보고 학습한뒤 메모이제이션, 타뷸레이션등의 방법론들을 학습했는데 꽤나 흥미로웠다.</p>
+
+<p>코드의 논리를 대충 설명 하자면, 1까지 가는 최소의 값을 반환하는 함수를 C(n)이라 하자<br />
+ 그러면 C(n) = min(C(n-1),C(n/2),C(n/3))+1 의 관계를 만족한다. 예를 들어 n=10일때의 C(10)은  C(9),C(5),C(10/3) 으로 이동 하는데 +1을 소모하고 이 세개중 최소값을 고르기만 하면 그값에 1을 더한게 C(10)의 최소가 되기 때문이다.</p>
+
+<p>코드로 작성해보면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+ <span class="c1"># 초기값 설정
+</span><span class="n">dp</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">dp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">one</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+
+     <span class="c1"># 만약 dp[n]의 값이 이미 존재한다면 바로 리턴
+</span>    <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+     <span class="c1"># 4~n까지 진행
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+
+         <span class="c1"># min연산을 위해 x,y에 무한대 설정
+</span>        <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">inf</span><span class="p">,</span><span class="n">math</span><span class="p">.</span><span class="n">inf</span>
+
+         <span class="c1"># i가 2로 나누어지거나 3으로 나누어진다면 
+</span>         <span class="c1"># x,y에 각각 C(n/2), C(n/3) 대입
+</span>        <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">3</span><span class="p">]</span>
+
+         <span class="c1"># C(n-1)을 나타내는 dp[n-1]대입
+</span>        <span class="n">z</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+         <span class="c1">#C(n) = min(C(n/2), C(n/3), C(n-1)) +1
+</span>        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+0
+</code></pre></div></div>
+
+<p>추가적으로 dp를 함수 밖에 설정하여 여러번 함수를 호출하게 된다면 미리 계산했던 dp의 값을 이용할 수 있어 더 빠르게 해결할 수 있게끔 했다.</p>
+
+<h3 id="배운점">배운점</h3>
+<p>다이나믹 프로그래밍의 기초에 대해 알 수 있었다.</p>
