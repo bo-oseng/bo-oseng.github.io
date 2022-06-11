@@ -179,10 +179,10 @@ var store = [{
         "url": "/boj/boj-10872/",
         "teaser": null
       },{
-        "title": "Boj 9029+",
+        "title": "Boj 9029",
         "excerpt":"layout: single title: 백준 문제 중 9020번, 수학, ‘ 골드바흐의 추측’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 수학] toc: true 백준 문제 중 9020번 https://www.acmicpc.net/problem/9020 문제 1보다 큰 자연수 중에서 1과 자기 자신을 제외한 약수가 없는 자연수를 소수라고 한다. 예를 들어, 5는 1과 5를 제외한 약수가 없기 때문에 소수이다. 하지만,...","categories": [],
         "tags": [],
-        "url": "/boj-9029+/",
+        "url": "/boj-9029/",
         "teaser": null
       },{
         "title": "백준 문제 중 10870번, 수학, '피보나치 수 5'",
