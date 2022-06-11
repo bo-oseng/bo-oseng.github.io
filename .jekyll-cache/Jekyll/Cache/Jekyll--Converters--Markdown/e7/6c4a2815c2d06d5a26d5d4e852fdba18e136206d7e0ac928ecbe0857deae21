@@ -1,0 +1,109 @@
+I" <h1 id="백준-문제-중-1874번">백준 문제 중 1874번</h1>
+<p>https://www.acmicpc.net/problem/1874</p>
+
+<h3 id="문제">문제</h3>
+
+<p>스택 (stack)은 기본적인 자료구조 중 하나로, 컴퓨터 프로그램을 작성할 때 자주 이용되는 개념이다. 스택은 자료를 넣는 (push) 입구와 자료를 뽑는 (pop) 입구가 같아 제일 나중에 들어간 자료가 제일 먼저 나오는 (LIFO, Last in First out) 특성을 가지고 있다.</p>
+
+<p>1부터 n까지의 수를 스택에 넣었다가 뽑아 늘어놓음으로써, 하나의 수열을 만들 수 있다. 이때, 스택에 push하는 순서는 반드시 오름차순을 지키도록 한다고 하자. 임의의 수열이 주어졌을 때 스택을 이용해 그 수열을 만들 수 있는지 없는지, 있다면 어떤 순서로 push와 pop 연산을 수행해야 하는지를 알아낼 수 있다. 이를 계산하는 프로그램을 작성하라.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫 줄에 n (1 ≤ n ≤ 100,000)이 주어진다. 둘째 줄부터 n개의 줄에는 수열을 이루는 1이상 n이하의 정수가 하나씩 순서대로 주어진다. 물론 같은 정수가 두 번 나오는 일은 없다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>입력된 수열을 만들기 위해 필요한 연산을 한 줄에 한 개씩 출력한다. push연산은 +로, pop 연산은 -로 표현하도록 한다. 불가능한 경우 NO를 출력한다.</p>
+
+<h4 id="힌트">힌트</h4>
+
+<p>1부터 n까지에 수에 대해 차례로 [push, push, push, push, pop, pop, push, push, pop, push, push, pop, pop, pop, pop, pop] 연산을 수행하면 수열 [4, 3, 6, 8, 7, 5, 2, 1]을 얻을 수 있다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>처음 문제를 보고 좀 난해 했는데 몇번 읽어보니 이해가됐다.</p>
+
+<p>n이하의 수를 1~n 순으로만 push 할 수 있을때 push 와 pop의 조합으로 입력으로 주어진 수열로 조합 할 수 있는지 판단하는 문제이다.</p>
+
+<ul>
+  <li>스택 stk에 1~n 을 차례대로 push하면서 수열 x를 스캔한다. 수열 x의 첫번째 원소와 스택 stk의 가장 마지막에 push한 원소가 같다면 stk에서 pop 한다. 그 후 수열 x의 다음 원소로 넘어가 스캔을 시작하고, 스택 stk은 다시 push를 중단한 곳 부터 차례대로 넣는 과정을 반복한다.</li>
+</ul>
+
+<ol>
+  <li>종료조건 1:x의 모든 원소의 스캔이 완료되는 동안 중단이 없었으므로 True(j&gt;l)이</li>
+  <li>종료조건 2: 수열로 주어지는 경우중 스택의 크기가 가장 커지는 최악의 경우는 n의 내림차순의 수열이다. n의 내림차순 수열의 경우 스택이 n개가 되자마자 pop이 되어 모든 경우 스택의 개수는 항상 n개보다 작아야 한다. 스택이 n보다 커지면 조기 종료 한다.(i&gt;l)</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># 입력처리
+</span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+  <span class="c1"># push pop으로 조합이 가능한지 판단하는 함수 선언
+</span><span class="k">def</span> <span class="nf">is_push_pop</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span><span class="n">l</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+
+    <span class="n">stk</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="s">''</span>
+
+     <span class="c1"># 오름차순으로 stk에 push할 변수 선언
+</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+
+     <span class="c1"># 수열과 스택에 접근할 변수 선언
+</span>    <span class="n">j</span><span class="p">,</span><span class="n">ptr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+
+     <span class="c1"># 수열 x의 스캔을 마칠때까지 반복(종료조건 1)
+</span>    <span class="k">while</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">l</span><span class="p">:</span>
+
+         <span class="c1"># 스택이 비었다면 push
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">stk</span><span class="p">:</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">+=</span><span class="s">'+'</span>
+            <span class="n">ptr</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+             <span class="c1"># x의 원소와 stk의 마지막 원소가 같다면 pop
+</span>            <span class="k">if</span> <span class="n">stk</span><span class="p">[</span><span class="n">ptr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">s</span><span class="o">+=</span><span class="s">'-'</span>
+                <span class="n">ptr</span><span class="o">-=</span><span class="mi">1</span>
+                <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                 <span class="c1"># 가능한 최악의 경우보다 스택이 커져서 조기 종료(종료조건2)
+</span>                <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="n">l</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="k">print</span><span class="p">(</span><span class="s">'NO'</span><span class="p">)</span>
+                <span class="n">stk</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">s</span><span class="o">+=</span><span class="s">'+'</span>
+                <span class="n">ptr</span><span class="o">+=</span><span class="mi">1</span>
+                <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">is_push_pop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+5
+4
+3
+2
+1
++
++
++
++
++
+-
+-
+-
+-
+-
+</code></pre></div></div>
+
+:ET

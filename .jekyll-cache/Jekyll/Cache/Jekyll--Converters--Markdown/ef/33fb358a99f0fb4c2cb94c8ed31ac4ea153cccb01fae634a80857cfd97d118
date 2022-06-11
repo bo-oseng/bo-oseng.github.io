@@ -1,0 +1,262 @@
+I"n<h1 id="백준-문제-중-2751번">백준 문제 중 2751번</h1>
+<p>https://www.acmicpc.net/problem/2751</p>
+
+<h3 id="문제">문제</h3>
+
+<p>N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 수의 개수 N(1 ≤ N ≤ 1,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 절댓값이 1,000,000보다 작거나 같은 정수이다. 수는 중복되지 않는다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>문제에 따로 명시되진 않았지만 시간복잡도가 n<em>log n인 정렬을 이용해야 한다. n</em>log n의 정렬방법은 퀵정렬 병합정렬 힙정렬등이 있다.</p>
+
+<ol>
+  <li>퀵정렬</li>
+</ol>
+
+<p>퀵 정렬은 배열중 원소 하나를 선택해 피벗을으로 정한뒤 피벗을 기준으로 좌 우를 나누는 과정을 재귀적으로 진행하는 방법이다. <a href="https://namu.wiki/w/%EC%A0%95%EB%A0%AC%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98?from=%ED%80%B5%EC%A0%95%EB%A0%AC#s-2.2.3">퀵정렬 자세한 설명</a></p>
+
+<p>퀵정렬의 피벗 선택 방식중 효율적인 원소의 처음 중간 끝의 값을 비교해 중간값을 피벗으로 정하는 방법을 선택했다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">MutableSequence</span>
+
+ <span class="c1"># 중간값을 반환하는 함수 선언
+</span><span class="k">def</span> <span class="nf">sort3</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">MutableSequence</span><span class="p">,</span><span class="n">idx1</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">idx2</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">idx3</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+
+     <span class="c1"># 인덱스 3개를 오름차순으로 정렬 한뒤 중간 인덱스 반환
+</span>    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]:</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">idx3</span><span class="p">]</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]:</span> <span class="n">a</span><span class="p">[</span><span class="n">idx3</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx3</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]:</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">idx2</span>
+
+
+ <span class="c1"># 퀵정렬을 구현하는 함수 선언
+</span><span class="k">def</span> <span class="nf">qsort</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">MutableSequence</span><span class="p">,</span><span class="n">left</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">right</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+
+    <span class="n">pl</span> <span class="o">=</span> <span class="n">left</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="n">right</span>
+
+     <span class="c1"># 최적의 피벗 선택
+</span>    <span class="n">m</span> <span class="o">=</span> <span class="n">sort3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">left</span><span class="p">,(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">m</span><span class="p">]</span>
+    
+     <span class="c1"># 피벗을 기준으로 배열을 좌우로 나눔
+</span>    <span class="k">while</span> <span class="n">pl</span><span class="o">&lt;=</span><span class="n">pr</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">]</span><span class="o">&lt;</span><span class="n">x</span><span class="p">:</span> <span class="n">pl</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">]:</span> <span class="n">pr</span><span class="o">-=</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">pl</span><span class="o">&lt;=</span><span class="n">pr</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">]</span>
+            <span class="n">pl</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="n">pr</span><span class="o">-=</span><span class="mi">1</span>
+
+     <span class="c1"># 1차적으로 나눈 배열을 재귀적으로 배열의 원소수가 1개일때까지 나눔
+</span>    <span class="k">if</span> <span class="n">left</span><span class="o">&lt;</span><span class="n">pr</span><span class="p">:</span> <span class="n">qsort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">pr</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pl</span><span class="o">&lt;</span><span class="n">right</span><span class="p">:</span> <span class="n">qsort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">pl</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">qsort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+5
+4
+3
+2
+1
+1
+2
+3
+4
+5
+</code></pre></div></div>
+
+<p>그런데 시간이 초과되어 알고리즘을 조금 개선 해보았더.</p>
+
+<h4 id="알고리즘-개선">알고리즘 개선</h4>
+<p>중간값으로 피벗을 선택한뒤에는 배열의 left,(left+right)//2, right 의 인덱스에 있는 값들끼리는 대소가 정해졌고 피벗을 기준으로 왼쪽 오른쪽 또한 나누어 져있음을 알 수 있다. 이를 이용하려면 right-1의 원소와 (left+right)//2 원소의 위치를 바꾸면 피벗 이하인 원소는 left에 해당하는 원소 한개 피벗 이상인 원소는 right와 (left+right)//2에 해당하는 원소인 상태에서 퀵정렬을 시작 할 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">MutableSequence</span>
+
+<span class="c1"># 중간값을 반환하는 함수 선언
+</span><span class="k">def</span> <span class="nf">sort3</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">MutableSequence</span><span class="p">,</span><span class="n">idx1</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">idx2</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">idx3</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+
+     <span class="c1"># 인덱스 3개를 오름차순으로 정렬 한뒤 중간 인덱스 반환
+</span>    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]:</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">idx3</span><span class="p">]</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]:</span> <span class="n">a</span><span class="p">[</span><span class="n">idx3</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx3</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]:</span> <span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">idx1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx2</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">idx2</span>
+
+
+<span class="c1"># 퀵정렬을 구현하는 함수 선언
+</span><span class="k">def</span> <span class="nf">qsort</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">MutableSequence</span><span class="p">,</span><span class="n">left</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">right</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+
+    <span class="n">pl</span> <span class="o">=</span> <span class="n">left</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="n">right</span>
+
+     <span class="c1"># 최적의 피벗 선택
+</span>    <span class="n">m</span> <span class="o">=</span> <span class="n">sort3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">left</span><span class="p">,(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">m</span><span class="p">]</span>
+
+     <span class="c1"># 알고리즘 개선
+</span>    <span class="n">a</span><span class="p">[</span><span class="n">m</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">right</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">right</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">m</span><span class="p">]</span>
+    <span class="n">pl</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">pr</span><span class="o">-=</span><span class="mi">2</span>
+    
+     <span class="c1"># 피벗을 기준으로 배열을 좌우로 나눔
+</span>    <span class="k">while</span> <span class="n">pl</span><span class="o">&lt;=</span><span class="n">pr</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">]</span><span class="o">&lt;</span><span class="n">x</span><span class="p">:</span> <span class="n">pl</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">while</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">]:</span> <span class="n">pr</span><span class="o">-=</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">pl</span><span class="o">&lt;=</span><span class="n">pr</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">pr</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">pl</span><span class="p">]</span>
+            <span class="n">pl</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="n">pr</span><span class="o">-=</span><span class="mi">1</span>
+
+     <span class="c1"># 1차적으로 나눈 배열을 재귀적으로 배열의 원소수가 1개일때까지 나눔
+</span>    <span class="k">if</span> <span class="n">left</span><span class="o">&lt;</span><span class="n">pr</span><span class="p">:</span> <span class="n">qsort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">pr</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pl</span><span class="o">&lt;</span><span class="n">right</span><span class="p">:</span> <span class="n">qsort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">pl</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">qsort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>그러나 여전히 시간초과가 되어 검삭을 해보았더니 다음과 같은 글을 발견했다.</p>
+
+<pre>퀵 정렬은 최악의 경우 O(N^2)입니다.
+이름에 quick이 있다고 속으면 안 됩니다.
+
+평균 시간복잡도는 O(NlogN)이지만, 평범하게 구현한 퀵 정렬은 매우 단순한 방법으로 최악의 케이스의 시간복잡도인 O(N^2)을 만들 수 있습니다.
+
+단순히 이미 정렬이나 역정렬된 상태로만 입력이 주어져도 퀵 정렬이 감당할 수 없습니다.
+
+이를 회피하는 방법으로 피벗으로 중앙값의 중앙값 고르기, 재귀가 깊어지면 다른 정렬을 사용하기, 랜덤으로 섞은 뒤에 수행하기 등이 있지만 정말 잘 구현하지 않으면 여전히 효율이 매우 안 좋습니다.
+
+그래서 퀵 정렬은 그냥 이 문제에 사용하지 않기를 권장합니다. 이 문제 뿐만 아니라 어떤 알고리즘 문제에도 사용하지 않는 것이 좋습니다.
+연습하기 위한 목적으로만 쓰세요.</pre>
+
+<p>그 이후 병합정렬을 통해 문제를 풀었다.</p>
+
+<ol>
+  <li>병합정렬 이용</li>
+</ol>
+
+<p>병합정렬은 병합을 이용함 정렬인데 병렬은 n개의 배열과 m개의 배열이 있다고 할때 두 배열의 원소를 하나씩 비교해가며 새로운 n+m개의 배열에 집어넣는것을 말한다.<br />
+ 병합을 이용한 정렬 방법은 a라는 배열의 좌 우를 나눠 좌 우를 병합해 다시 a배열에 집어넣는 과정을 재귀적으로 하는 법이다.  <a href="https://namu.wiki/w/%EC%A0%95%EB%A0%AC%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98?from=%ED%80%B5%EC%A0%95%EB%A0%AC#s-2.2.1">자세한 설명</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">MutableSequence</span>
+
+<span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">MutableSequence</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">_merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">MutableSequence</span><span class="p">,</span><span class="n">left</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">right</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span><span class="o">-&gt;</span><span class="bp">None</span><span class="p">:</span>
+        
+         <span class="c1"># 원소수가 1개 이상일때만 실행
+</span>        <span class="k">if</span> <span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="p">:</span>
+
+            <span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+
+             <span class="c1"># 배열을 좌우로 나눠 재귀적으로 호출           
+</span>            <span class="n">_merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">center</span><span class="p">)</span>
+            <span class="n">_merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">center</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
+
+             <span class="c1"># 배열에 접근하기위한 인덱스 선언
+</span>            <span class="n">p</span><span class="o">=</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span>
+            <span class="n">i</span><span class="o">=</span><span class="n">k</span><span class="o">=</span><span class="n">left</span>
+ 
+             <span class="c1"># 임시배열 buff 에 a의 left 부분 저장
+</span>            <span class="k">while</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">center</span><span class="p">:</span>
+                <span class="n">buff</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">p</span><span class="o">+=</span><span class="mi">1</span>
+                <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+
+             <span class="c1"># a의 right 부분과 buff에 저장된 a의 left부분을 비교해 a에 저장
+</span>            <span class="k">while</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">right</span> <span class="ow">and</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">p</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">buff</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">buff</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+                <span class="n">k</span><span class="o">+=</span><span class="mi">1</span>
+
+             <span class="c1"># buff에 남은 원소가 있다면 a에 복사
+</span>            <span class="k">while</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">p</span><span class="p">:</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">buff</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">k</span><span class="o">+=</span><span class="mi">1</span>
+                <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
+
+    <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">buff</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+    <span class="n">_merge_sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">buff</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">merge_sort</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>10
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</code></pre></div></div>
+
+<p>병합정렬을 사용한 뒤에도 시간초과가 떴으나 pypy3로 제출하니 정답처리가 되었다.</p>
+
+<h3 id="배운점">배운점</h3>
+<p>퀵정렬의 최악의 경우와 툭성 때문에 이름과는 달리 알고리즘 테스트에는 적합하지 않은 알고리즘이란걸 알게 되었다.</p>
+:ET
