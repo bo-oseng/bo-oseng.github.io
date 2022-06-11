@@ -1,0 +1,203 @@
+I"1A<h1 id="프로그래머스-문제-중-77485번-행렬-테두리-회전">프로그래머스 문제 중 77485번 ‘행렬 테두리 회전’</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/77485">https://programmers.co.kr/learn/courses/30/lessons/77485</a></p>
+
+<p>rows x columns 크기인 행렬이 있습니다. 행렬에는 1부터 rows x columns까지의 숫자가 한 줄씩 순서대로 적혀있습니다. 이 행렬에서 직사각형 모양의 범위를 여러 번 선택해, 테두리 부분에 있는 숫자들을 시계방향으로 회전시키려 합니다. 각 회전은 (x1, y1, x2, y2)인 정수 4개로 표현하며, 그 의미는 다음과 같습니다.</p>
+
+<ul>
+  <li>x1 행 y1 열부터 x2 행 y2 열까지의 영역에 해당하는 직사각형에서 테두리에 있는 숫자들을 한 칸씩 시계방향으로 회전합니다.</li>
+</ul>
+
+<p>다음은 6 x 6 크기 행렬의 예시입니다.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/4c3c0fab-11f4-43b6-b290-6f4017e9379f/grid_example.png" width="50%" />
+</center>
+
+<p>이 행렬에 (2, 2, 5, 4) 회전을 적용하면, 아래 그림과 같이 2행 2열부터 5행 4열까지 영역의 테두리가 시계방향으로 회전합니다. 이때, 중앙의 15와 21이 있는 영역은 회전하지 않는 것을 주의하세요.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/962df137-5c71-4091-ad9f-8e322910c1ab/rotation_example.png" width="50%" />
+</center>
+
+<p>행렬의 세로 길이(행 개수) rows, 가로 길이(열 개수) columns, 그리고 회전들의 목록 queries가 주어질 때, 각 회전들을 배열에 적용한 뒤, 그 회전에 의해 위치가 바뀐 숫자들 중 가장 작은 숫자들을 순서대로 배열에 담아 return 하도록 solution 함수를 완성해주세요.</p>
+
+<p>제한사항</p>
+<ul>
+  <li>rows는 2 이상 100 이하인 자연수입니다.</li>
+  <li>columns는 2 이상 100 이하인 자연수입니다.</li>
+  <li>처음에 행렬에는 가로 방향으로 숫자가 1부터 하나씩 증가하면서 적혀있습니다.
+    <ul>
+      <li>즉, 아무 회전도 하지 않았을 때, i 행 j 열에 있는 숫자는 ((i-1) x columns + j)입니다.</li>
+    </ul>
+  </li>
+  <li>queries의 행의 개수(회전의 개수)는 1 이상 10,000 이하입니다.</li>
+  <li>queries의 각 행은 4개의 정수 [x1, y1, x2, y2]입니다.
+    <ul>
+      <li>x1 행 y1 열부터 x2 행 y2 열까지 영역의 테두리를 시계방향으로 회전한다는 뜻입니다.</li>
+      <li>1 ≤ x1 &lt; x2 ≤ rows, 1 ≤ y1 &lt; y2 ≤ columns입니다.</li>
+      <li>모든 회전은 순서대로 이루어집니다.</li>
+      <li>예를 들어, 두 번째 회전에 대한 답은 첫 번째 회전을 실행한 다음, 그 상태에서 두 번째 회전을 실행했을 때 이동한 숫자 중 최솟값을 구하면 됩니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="입출력-예시">입출력 예시</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>rows</th>
+      <th>columns</th>
+      <th>queries</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>6</td>
+      <td>6</td>
+      <td>[[2,2,5,4],[3,3,6,6],[5,1,6,3]]</td>
+      <td>[8, 10, 25]</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>3</td>
+      <td>[[1,1,2,2],[1,2,2,3],[2,1,3,2],[2,2,3,3]]</td>
+      <td>[1, 1, 5, 3]</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>97</td>
+      <td>[[1,1,100,97]]</td>
+      <td>[1]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="입출력-예-설명">입출력 예 설명</h3>
+
+<p>입출력 예 #1</p>
+
+<ul>
+  <li>회전을 수행하는 과정을 그림으로 표현하면 다음과 같습니다.</li>
+</ul>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/8c8cdd84-d0ec-4b9d-bdf7-f100d0098c5e/example1.png" width="70%" />
+</center>
+
+<p>입출력 예 #2</p>
+
+<ul>
+  <li>회전을 수행하는 과정을 그림으로 표현하면 다음과 같습니다.</li>
+</ul>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/ybm/e3fce2bf-9da9-41e4-926a-5d19b4f31188/example2.png" width="60%" />
+</center>
+
+<p>입출력 예 #3</p>
+
+<ul>
+  <li>이 예시에서는 행렬의 테두리에 위치한 모든 칸들이 움직입니다. 따라서, 행렬의 테두리에 있는 수 중 가장 작은 숫자인 1이 바로 답이 됩니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>이 문제는 어렵지 않게 풀 수 있지만, 꼼꼼함이 매우 중요한 문제였다.</p>
+
+<p>코드의 흐름이 다음과 같다.</p>
+<ol>
+  <li>입력으로 주어지는 인덱스들은 1부터 시작하므로 적절한 배열을 선언하고, 문제의 초기 조건에 맞게 적절한값을 대열한다.</li>
+  <li>회전을 구현할 함수를 선언한다. 이때 헹렬의 테두리 네개 중 하나를 메인으로 잡고 하나씩 밀어준다는 느낌으로 반복문을 진행한다. 증요한건 이때 처음 원소의 값을 다른 변수에(tmp) 저장해야한다.</li>
+  <li>회전에 참여하는 수들중 가장 작은 값을 min_board에 저장한다.</li>
+</ol>
+
+<p>이를 코드로 구현 하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">queries</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
+
+     <span class="c1"># 0 인덱스가 아닌 1 인덱스로 활용하기 위한 전처리
+</span>    <span class="n">board</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">columns</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">columns</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">rows</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">columns</span> <span class="o">+</span> <span class="n">c</span>
+
+
+    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span><span class="p">,</span> <span class="n">x_2</span><span class="p">,</span> <span class="n">y_2</span><span class="p">):</span>
+        <span class="n">min_board</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">maxsize</span>
+         <span class="c1"># 왼쪽 아래 축을 기준으로 회전 시작, 처음값을 tmp에 저장
+</span>        <span class="n">tmp</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_1</span><span class="p">]</span>
+        <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
+         <span class="c1"># 회전에 참여하는 모든 수들 중 최솟 값을 찾음
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">x_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_1</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">y_1</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_1</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span> <span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_1</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">y_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_2</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">x_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">i</span><span class="p">][</span><span class="n">y_2</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_2</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_2</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">y_2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">y_1</span><span class="p">):</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">min_board</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_board</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_2</span> <span class="o">-</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">board</span><span class="p">[</span><span class="n">x_1</span><span class="p">][</span><span class="n">y_1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">min_board</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">min_board</span>
+
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">query</span>
+        <span class="n">answer</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">rotate</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">))</span>
+        <span class="n">pprint</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span>
+
+<span class="n">solution</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>8
+[[-1, -1, -1, -1, -1, -1, -1],
+ [-1, 1, 2, 3, 4, 5, 6],
+ [-1, 7, 14, 8, 9, 11, 12],
+ [-1, 13, 20, 15, 10, 17, 18],
+ [-1, 19, 26, 21, 16, 23, 24],
+ [-1, 25, 27, 28, 22, 29, 30],
+ [-1, 31, 32, 33, 34, 35, 36]]
+
+10
+[[-1, -1, -1, -1, -1, -1, -1],
+ [-1, 1, 2, 3, 4, 5, 6],
+ [-1, 7, 14, 8, 9, 11, 12],
+ [-1, 13, 20, 21, 15, 10, 17],
+ [-1, 19, 26, 28, 16, 23, 18],
+ [-1, 25, 27, 33, 22, 29, 24],
+ [-1, 31, 32, 34, 35, 36, 30]]
+
+25
+[[-1, -1, -1, -1, -1, -1, -1],
+ [-1, 1, 2, 3, 4, 5, 6],
+ [-1, 7, 14, 8, 9, 11, 12],
+ [-1, 13, 20, 21, 15, 10, 17],
+ [-1, 19, 26, 28, 16, 23, 18],
+ [-1, 31, 25, 27, 22, 29, 24],
+ [-1, 32, 34, 33, 35, 36, 30]]
+
+[8, 10, 25]
+
+
+
+
+
+[8, 10, 25]
+</code></pre></div></div>
+
+:ET

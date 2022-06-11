@@ -1,0 +1,58 @@
+I"L<h1 id="백준-문제중-1152번">백준 문제중 1152번</h1>
+<p>https://www.acmicpc.net/problem/1152</p>
+
+<h3 id="문제">문제</h3>
+
+<p>영어 대소문자와 공백으로 이루어진 문자열이 주어진다. 이 문자열에는 몇 개의 단어가 있을까? 이를 구하는 프로그램을 작성하시오. 단, 한 단어가 여러 번 등장하면 등장한 횟수만큼 모두 세어야 한다.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫 줄에 영어 대소문자와 공백으로 이루어진 문자열이 주어진다. 이 문자열의 길이는 1,000,000을 넘지 않는다. 단어는 공백 한 개로 구분되며, 공백이 연속해서 나오는 경우는 없다. 또한 문자열은 공백으로 시작하거나 끝날 수 있다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 단어의 개수를 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">strs</span> <span class="o">=</span> <span class="nb">input</span><span class="p">().</span><span class="n">strip</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">strs</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">strs</span> <span class="o">=</span> <span class="nb">input</span><span class="p">().</span><span class="n">strip</span><span class="p">().</span><span class="n">split</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">strs</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+</code></pre></div></div>
+
+<h3 id="배운점">배운점</h3>
+
+<p>split()과 split(‘ ‘)는 다르다!!</p>
+
+<ul>
+  <li>https://docs.python.org/library/stdtypes.html#str.split</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="s">'1  2'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['1', '', '2']
+['1', '2']
+</code></pre></div></div>
+
+<p>split() 공백의 종류 갯수에 관계없이 쪼개고
+split(‘ ‘)는 ‘‘사이의 종류와 갯수에 따라 변한다.</p>
+:ET

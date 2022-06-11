@@ -1,0 +1,153 @@
+I"gB<h1 id="백준-문제-중-17142-번">백준 문제 중 17142 번</h1>
+<p><a>https://www.acmicpc.net/problem/17142</a></p>
+
+<h3 id="문제">문제</h3>
+
+<p>인체에 치명적인 바이러스를 연구하던 연구소에 승원이가 침입했고, 바이러스를 유출하려고 한다. 바이러스는 활성 상태와 비활성 상태가 있다. 가장 처음에 모든 바이러스는 비활성 상태이고, 활성 상태인 바이러스는 상하좌우로 인접한 모든 빈 칸으로 동시에 복제되며, 1초가 걸린다. 승원이는 연구소의 바이러스 M개를 활성 상태로 변경하려고 한다.</p>
+
+<p>연구소는 크기가 N×N인 정사각형으로 나타낼 수 있으며, 정사각형은 1×1 크기의 정사각형으로 나누어져 있다. 연구소는 빈 칸, 벽, 바이러스로 이루어져 있으며, 벽은 칸 하나를 가득 차지한다. 활성 바이러스가 비활성 바이러스가 있는 칸으로 가면 비활성 바이러스가 활성으로 변한다.</p>
+
+<p>예를 들어, 아래와 같이 연구소가 생긴 경우를 살펴보자. 0은 빈 칸, 1은 벽, 2는 바이러스의 위치이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 0 0 0 1 1 0
+0 0 1 0 1 2 0
+0 1 1 0 1 0 0
+0 1 0 0 0 0 0
+0 0 0 2 0 1 1
+0 1 0 0 0 0 0
+2 1 0 0 0 0 2
+</code></pre></div></div>
+
+<p>M = 3이고, 바이러스를 아래와 같이 활성 상태로 변경한 경우 6초면 모든 칸에 바이러스를 퍼뜨릴 수 있다. 벽은 -, 비활성 바이러스는 *, 활성 바이러스는 0, 빈 칸은 바이러스가 퍼지는 시간으로 표시했다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 6 5 4 - - 2
+5 6 - 3 - 0 1
+4 - - 2 - 1 2
+3 - 2 1 2 2 3
+2 2 1 0 1 - -
+1 - 2 1 2 3 4
+0 - 3 2 3 4 *
+</code></pre></div></div>
+
+<p>시간이 최소가 되는 방법은 아래와 같고, 4초만에 모든 칸에 바이러스를 퍼뜨릴 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 1 2 3 - - 2
+1 2 - 3 - 0 1
+2 - - 2 - 1 2
+3 - 2 1 2 2 3
+3 2 1 0 1 - -
+4 - 2 1 2 3 4
+* - 3 2 3 4 *
+</code></pre></div></div>
+
+<p>연구소의 상태가 주어졌을 때, 모든 빈 칸에 바이러스를 퍼뜨리는 최소 시간을 구해보자.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 연구소의 크기 N(4 ≤ N ≤ 50), 놓을 수 있는 바이러스의 개수 M(1 ≤ M ≤ 10)이 주어진다.</p>
+
+<p>둘째 줄부터 N개의 줄에 연구소의 상태가 주어진다. 0은 빈 칸, 1은 벽, 2는 바이러스를 놓을 수 있는 위치이다. 2의 개수는 M보다 크거나 같고, 10보다 작거나 같은 자연수이다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>연구소의 모든 빈 칸에 바이러스가 있게 되는 최소 시간을 출력한다. 바이러스를 어떻게 놓아도 모든 빈 칸에 바이러스를 퍼뜨릴 수 없는 경우에는 -1을 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>처음 문제룰 보고 풀때 상당히 쉬운 문제인데 왜 정답률이 이렇게 낮은지 의문이 생겼었다.<br />
+ 막상 풀어보니 문제 흐름 자체는 쉬운데 비활성 바이러스와 활성 바이러스의 예외처리를 해줘야 하는 부분이 생각하기가 쉽지가 않았다.</p>
+
+<p>문제 풀이 구성은 다음과 같다.</p>
+<ol>
+  <li>itertools 모듈의 combinations 함수로 k개 바이러스 중 m개를 뽑는 조합을 모두 구해 candidates에 저장한다.</li>
+  <li>candidates의 모든 값을 순차적으로 입력으로 하고 주어진 지형 grid를 BFS로 모두 탐색 해보고 최소의 값을 갖는 경우를 구한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+<span class="n">viruses</span><span class="p">,</span> <span class="n">blanks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">viruses</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">blanks</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+<span class="n">b_cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">blanks</span><span class="p">)</span>
+ 
+<span class="n">candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">viruses</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+
+<span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">grid</span><span class="p">):</span>
+
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">False</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+     <span class="c1"># 각각의 candidate에 대해 탐색을 진행함 sub_gird 선언
+</span>    <span class="n">sub_grid</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+
+     <span class="c1"># 감염에 걸리는 시간을 저장할 리스트 infect 선언
+</span>    <span class="n">infect</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+    <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+     <span class="c1"># candidate에 있는 바이러스를 q에 넣으면서, 시작점 infect[r][c]를 0으로 초기화
+</span>    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">candidate</span><span class="p">:</span>
+        <span class="n">visited</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">infect</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+
+     <span class="c1"># 새로 감염시킨 곳을 셀 변수 선언(비활성 바이러스와 구분을 위해 필요)
+</span>    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+         <span class="c1"># 감염 시킨곳과 빈칸이 같다면 bfs 탐색을 종료
+</span>        <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="n">b_cnt</span><span class="p">:</span> <span class="k">break</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span> <span class="o">+</span> <span class="n">dc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+             <span class="c1"># 벽이 아니면서 리스트 범위 안일 경우만 탐색 진행
+</span>            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nc</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="ow">and</span> <span class="n">sub_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">visited</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="n">infect</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="n">infect</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">])</span>
+                 <span class="c1"># sub_grid[nr][nc]가 0일때만 sub_grid[nr][nc] = 2를 대입하고, cnt를 1 증가시킴
+</span>                <span class="k">if</span> <span class="n">sub_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">sub_grid</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+                    <span class="n">cnt</span> <span class="o">+=</span><span class="mi">1</span>
+
+    <span class="c1"># 모든 BFS를 종료하고 sub_grid가 0인곳이 남아있다면 불가능한 경우이다.                
+</span>    <span class="n">seconds</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">sub_grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">seconds</span>  <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">seconds</span> <span class="p">,</span> <span class="n">infect</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">seconds</span>
+
+
+ <span class="c1"># 감염 시킬 빈칸이 없다면 min_seconds = 0 
+</span><span class="k">if</span> <span class="n">blanks</span><span class="p">:</span>                
+    <span class="n">min_seconds</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+        <span class="n">min_seconds</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_seconds</span><span class="p">,</span> <span class="n">bfs</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">grid</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">min_seconds</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">min_seconds</span><span class="p">)</span> <span class="k">if</span> <span class="n">min_seconds</span> <span class="o">!=</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span> <span class="k">else</span> <span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4 1
+2 1 1 1
+1 1 1 1
+1 1 1 1
+1 1 1 1
+0
+</code></pre></div></div>
+
+:ET

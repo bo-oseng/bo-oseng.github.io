@@ -1,0 +1,160 @@
+I"�.<h1 id="백준-문제-중-1110번">백준 문제 중 1110번</h1>
+<p>https://www.acmicpc.net/problem/1110</p>
+
+<h3 id="문제">문제</h3>
+<p>0보다 크거나 같고, 99보다 작거나 같은 정수가 주어질 때 다음과 같은 연산을 할 수 있다. 먼저 주어진 수가 10보다 작다면 앞에 0을 붙여 두 자리 수로 만들고, 각 자리의 숫자를 더한다. 그 다음, 주어진 수의 가장 오른쪽 자리 수와 앞에서 구한 합의 가장 오른쪽 자리 수를 이어 붙이면 새로운 수를 만들 수 있다. 다음 예를 보자.
+26부터 시작한다. 2+6 = 8이다. 새로운 수는 68이다. 6+8 = 14이다. 새로운 수는 84이다. 8+4 = 12이다. 새로운 수는 42이다. 4+2 = 6이다. 새로운 수는 26이다.
+위의 예는 4번만에 원래 수로 돌아올 수 있다. 따라서 26의 사이클의 길이는 4이다.
+N이 주어졌을 때, N의 사이클의 길이를 구하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+<p>첫째 줄에 N이 주어진다. N은 0보다 크거나 같고, 99보다 작거나 같은 정수이다.</p>
+
+<h3 id="출력">출력</h3>
+<p>첫째 줄에 N의 사이클 길이를 출력한다.
+—</p>
+
+<h2 id="풀이">풀이</h2>
+
+<h4 id="solution1">Solution1</h4>
+<p>문자열 조작</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1">#한자리수가 들어왔을때 0추가
+</span>    <span class="n">a</span><span class="o">=</span><span class="s">'0'</span><span class="o">+</span><span class="n">a</span>
+
+
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="o">%</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#10이상일때 나머지만 취하기
+</span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="o">%</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9
+99
+98
+</code></pre></div></div>
+
+<p>input 값이 string임을 이용해 문자열의 index로 문자열을 직접 조작해 문제에 조건에 맞는 수로 변환했고 반복해봤습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">=</span><span class="s">'0'</span><span class="o">+</span><span class="n">a</span>
+
+<span class="n">origin</span> <span class="o">=</span> <span class="n">a</span> <span class="c1">#비교를 위해 저장
+</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="o">%</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">origin</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">origin</span><span class="p">:</span> <span class="c1">#무한반복 탈출조건
+</span>        <span class="k">break</span>
+    <span class="k">if</span> <span class="n">count</span><span class="o">==</span><span class="mi">1000</span><span class="p">:</span> <span class="c1">#1000번 시행에도 못찾을 경우 탈출
+</span>        <span class="k">print</span><span class="p">(</span><span class="s">'fail'</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+22 02
+24 02
+46 02
+60 02
+06 02
+66 02
+62 02
+28 02
+80 02
+08 02
+88 02
+86 02
+64 02
+40 02
+04 02
+44 02
+48 02
+82 02
+20 02
+02 02
+20
+</code></pre></div></div>
+
+<p>문자열이 조작이 끝난값과 입력받은 값을(한자리라면 0추가) 비교하기 위해서 origin이라는 변수에 저장하고 반복문을 실행 했습니다.</p>
+
+<p>속도 68ms 메모리 29200kb</p>
+
+<h4 id="solution2">Solution2</h4>
+<p>// 연산과 % 연산으로 숫자 쪼개기</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">numleft</span> <span class="o">=</span> <span class="n">num</span><span class="o">//</span><span class="mi">10</span>
+<span class="n">numright</span> <span class="o">=</span> <span class="n">num</span><span class="o">%</span><span class="mi">10</span>
+<span class="n">numsum</span> <span class="o">=</span> <span class="p">(</span><span class="n">numleft</span> <span class="o">+</span> <span class="n">numright</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="n">numright</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">numsum</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+<span class="n">numleft</span> <span class="o">=</span> <span class="n">num</span><span class="o">//</span><span class="mi">10</span>
+<span class="n">numright</span> <span class="o">=</span> <span class="n">num</span><span class="o">%</span><span class="mi">10</span>
+<span class="n">numsum</span> <span class="o">=</span> <span class="p">(</span><span class="n">numleft</span> <span class="o">+</span> <span class="n">numright</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="n">numright</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">numsum</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>26
+68
+84
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+<span class="n">origin</span> <span class="o">=</span> <span class="n">num</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="mi">0</span><span class="o">&gt;</span><span class="mi">2</span><span class="si">}</span><span class="s">'</span><span class="p">,</span><span class="n">count</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">numleft</span> <span class="o">=</span> <span class="n">num</span><span class="o">//</span><span class="mi">10</span>
+    <span class="n">numright</span> <span class="o">=</span> <span class="n">num</span><span class="o">%</span><span class="mi">10</span>
+    <span class="n">numsum</span> <span class="o">=</span> <span class="p">(</span><span class="n">numleft</span> <span class="o">+</span> <span class="n">numright</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span>
+
+    <span class="n">num</span> <span class="o">=</span> <span class="n">numright</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">numsum</span>
+    
+    <span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="mi">0</span><span class="o">&gt;</span><span class="mi">2</span><span class="si">}</span><span class="s">'</span><span class="p">,</span><span class="n">count</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">num</span><span class="o">==</span><span class="n">origin</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">if</span> <span class="n">count</span><span class="o">==</span> <span class="mi">1000</span><span class="p">:</span>
+        <span class="k">break</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>26
+26 0
+68 1
+84 2
+42 3
+26 4
+</code></pre></div></div>
+
+<p>fstring 으로 한자리수 앞 0 추가를 구현했고
+//, % 연산자로 자릿수 조작을 구현했다</p>
+
+<p>속도 72ms 메모리 29200kb</p>
+
+<h3 id="배운점">배운점</h3>
+<ol>
+  <li>문자열 조작이 속도면에서 조금 더 빨랐다.</li>
+  <li>문자열은 immutable 값이라 인덱스로 직접 수정이 불가능하다.</li>
+</ol>
+:ET

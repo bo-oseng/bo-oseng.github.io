@@ -1,0 +1,41 @@
+I"<h1 id="백준-문제-중-1085번">백준 문제 중 1085번</h1>
+<p>https://www.acmicpc.net/problem/1085</p>
+
+<h3 id="문제">문제</h3>
+
+<p>한수는 지금 (x, y)에 있다. 직사각형은 각 변이 좌표축에 평행하고, 왼쪽 아래 꼭짓점은 (0, 0), 오른쪽 위 꼭짓점은 (w, h)에 있다. 직사각형의 경계선까지 가는 거리의 최솟값을 구하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 x, y, w, h가 주어진다</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 문제의 정답을 출력한다.</p>
+
+<h3 id="제한">제한</h3>
+
+<ul>
+  <li>1 ≤ w, h ≤ 1,000</li>
+  <li>1 ≤ x ≤ w-1</li>
+  <li>1 ≤ y ≤ h-1</li>
+  <li>x, y, w, h는 정수</li>
+</ul>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+
+ <span class="c1"># x y 가 사각형 내부에 있으므로 네개의 변수중 최솟값이 답
+</span><span class="n">answer</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="n">h</span><span class="o">-</span><span class="n">y</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>161 181 762 375
+161
+</code></pre></div></div>
+
+:ET

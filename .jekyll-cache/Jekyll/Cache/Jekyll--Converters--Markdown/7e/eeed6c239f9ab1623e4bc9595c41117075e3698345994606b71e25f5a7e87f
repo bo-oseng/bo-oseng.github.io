@@ -1,0 +1,174 @@
+I"m:<h1 id="프로그래머스-문제-중-게임-맵-최단거리">프로그래머스 문제 중 ‘게임 맵 최단거리’</h1>
+
+<h3 id="문제설명">문제설명</h3>
+
+<p>ROR 게임은 두 팀으로 나누어서 진행하며, 상대 팀 진영을 먼저 파괴하면 이기는 게임입니다. 따라서, 각 팀은 상대 팀 진영에 최대한 빨리 도착하는 것이 유리합니다.</p>
+
+<p>지금부터 당신은 한 팀의 팀원이 되어 게임을 진행하려고 합니다. 다음은 5 x 5 크기의 맵에, 당신의 캐릭터가 (행: 1, 열: 1) 위치에 있고, 상대 팀 진영은 (행: 5, 열: 5) 위치에 있는 경우의 예시입니다.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/dc3a1b49-13d3-4047-b6f8-6cc40b2702a7/%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A5%E1%84%85%E1%85%B51_sxuruo.png" width="30%" />
+</center>
+
+<p>위 그림에서 검은색 부분은 벽으로 막혀있어 갈 수 없는 길이며, 흰색 부분은 갈 수 있는 길입니다. 캐릭터가 움직일 때는 동, 서, 남, 북 방향으로 한 칸씩 이동하며, 게임 맵을 벗어난 길은 갈 수 없습니다.
+아래 예시는 캐릭터가 상대 팀 진영으로 가는 두 가지 방법을 나타내고 있습니다.</p>
+
+<ul>
+  <li>첫 번째 방법은 11개의 칸을 지나서 상대 팀 진영에 도착했습니다.</li>
+</ul>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/9d909e5a-ca95-4088-9df9-d84cb804b2b0/%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A5%E1%84%85%E1%85%B52_hnjd3b.png" width="30%" />
+</center>
+
+<ul>
+  <li>두 번째 방법은 15개의 칸을 지나서 상대팀 진영에 도착했습니다.</li>
+</ul>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/4b7cd629-a3c2-4e02-b748-a707211131de/%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A5%E1%84%85%E1%85%B53_ntxygd.png" width="30%" />
+</center>
+
+<p>위 예시에서는 첫 번째 방법보다 더 빠르게 상대팀 진영에 도착하는 방법은 없으므로, 이 방법이 상대 팀 진영으로 가는 가장 빠른 방법입니다.</p>
+
+<p>만약, 상대 팀이 자신의 팀 진영 주위에 벽을 세워두었다면 상대 팀 진영에 도착하지 못할 수도 있습니다. 예를 들어, 다음과 같은 경우에 당신의 캐릭터는 상대 팀 진영에 도착할 수 없습니다.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/d963b4bd-12e5-45da-9ca7-549e453d58a9/%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A5%E1%84%85%E1%85%B54_of9xfg.png" width="30%" />
+</center>
+
+<p>게임 맵의 상태 maps가 매개변수로 주어질 때, 캐릭터가 상대 팀 진영에 도착하기 위해서 지나가야 하는 칸의 개수의 최솟값을 return 하도록 solution 함수를 완성해주세요. 단, 상대 팀 진영에 도착할 수 없을 때는 -1을 return 해주세요.</p>
+
+<h3 id="제한사항">제한사항</h3>
+
+<ul>
+  <li>maps는 n x m 크기의 게임 맵의 상태가 들어있는 2차원 배열로, n과 m은 각각 1 이상 100 이하의 자연수입니다.
+    <ul>
+      <li>n과 m은 서로 같을 수도, 다를 수도 있지만, n과 m이 모두 1인 경우는 입력으로 주어지지 않습니다.</li>
+    </ul>
+  </li>
+  <li>maps는 0과 1로만 이루어져 있으며, 0은 벽이 있는 자리, 1은 벽이 없는 자리를 나타냅니다.</li>
+  <li>처음에 캐릭터는 게임 맵의 좌측 상단인 (1, 1) 위치에 있으며, 상대방 진영은 게임 맵의 우측 하단인 (n, m) 위치에 있습니다.</li>
+</ul>
+
+<h3 id="입출력-예">입출력 예</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>maps</th>
+      <th>answer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>[[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="입출력-예-설명">입출력 예 설명</h4>
+
+<h5 id="입출력-예-1">입출력 예 #1</h5>
+
+<p>주어진 데이터는 다음과 같습니다.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/6db71f7f-58d3-4623-9fab-7cd99fa863a5/%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A5%E1%84%85%E1%85%B56_lgjvrb.png" width="30%" />
+</center>
+
+<p>캐릭터가 적 팀의 진영까지 이동하는 가장 빠른 길은 다음 그림과 같습니다.</p>
+
+<center>
+  <img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/d223d017-b3e2-4772-9045-a565133d45ff/%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A1%E1%86%AB%E1%84%80%E1%85%A5%E1%84%85%E1%85%B52_hnjd3b%20%281%29.png" width="30%" />
+</center>
+
+<p>따라서 총 11칸을 캐릭터가 지나갔으므로 11을 return 하면 됩니다.</p>
+
+<h5 id="입출력-예-2">입출력 예 #2</h5>
+
+<p>문제의 예시와 같으며, 상대 팀 진영에 도달할 방법이 없습니다. 따라서 -1을 return 합니다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>이전에 백준 사이트에서 다뤄봤던 <a href="https://bo-oseng.github.io/boj/boj-2178/">미로탐색</a>과 비슷한 문제였다. 미로탐색 문제를 풀면서 최단거리 탐색에 더 잘 어울리는 알고리즘은 BFS임을 학습했다.</p>
+
+<p>DFS는 목적지까지 도착하는 것만이 목적이라 최단거리인지 아닌지를 판단하기 힘들고 모든 탐색의 경우를 다 끝내고 탐색을 마친 모든 경우를 각각을 비교하는 과정이 필요하다.</p>
+
+<p>반면에 BFS는 모든 경우를 한칸씩 전진해 나가는 방식이므로 목적지에 도착만 한다면 그때 바로 최소값을 나타낸다.</p>
+
+<p>따라서 이 문제는 BFS로 탐색을 진행하되, 주어지는 maps의 지형 중 도착이 불가능한 경우가 언제인지를 파악하는것이다.</p>
+
+<p>도착이 불가능한 경우는 BFS로 가능한 모든 탐색을 진행 했음에도 [n - 1][m -1]에 도착하지 못하는 경우이다.</p>
+
+<p>코드의 흐름은 다음과 같다.</p>
+
+<ol>
+  <li>방문여부 확인을 위한 2차원 리스트 visited를 선언한다.</li>
+  <li>deque를 활용한 BFS탐색을 위한 함수 bfs를 선언한다.</li>
+  <li>bfs는 deque를 활용해 구현하고, 상하좌우를 한칸씩 이동해보고 조건을 만족한다면 다음 탐색을 위해 칸의 수를 의미하는 cnt를 1증가시켜 큐에 넣고, 만족하지 못한다면 건너뛴다.</li>
+  <li>bfs 탐색을 진행하던중 도착지에 도착한다면 바로 cnt를 return해준다.</li>
+  <li>deque에 있는 모든 지점을 탐색했음에도 도착하지 못했다면 불가능한 경우 이므로 -1을 return한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">maps</span><span class="p">):</span>
+
+    <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">maps</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+     <span class="c1"># 상하좌우 탐색을 위한 dr, dc 선언
+</span>    <span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+     <span class="c1"># 방문여부 확인을 위한 visited 선언
+</span>    <span class="n">visited</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+     <span class="c1"># 시작점 방문처리
+</span>    <span class="n">visited</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+
+     <span class="c1"># 시작점의 정보를 start로 입력받는다.
+</span>    <span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+             <span class="c1"># 도착점에 있다면 cnt를 return한다.
+</span>            <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">==</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">cnt</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span> <span class="o">+</span> <span class="n">dc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nc</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="ow">and</span> <span class="n">maps</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">visited</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="s">'''
+     문제에 주어진 시작 좌표는 1,1 이나 0, 0에서 시작해
+     n-1, m-1 도착으로 봐도 무방하다.
+    '''</span>
+
+     <span class="c1"># stat_cnt는 시작할때의 칸의 수이다.
+</span>    <span class="n">start_r</span><span class="p">,</span> <span class="n">start_c</span><span class="p">,</span> <span class="n">start_cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">bfs</span><span class="p">([</span><span class="n">start_r</span><span class="p">,</span> <span class="n">start_c</span><span class="p">,</span> <span class="n">start_cnt</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span>
+
+<span class="n">solution</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11
+
+
+
+
+
+11
+</code></pre></div></div>
+:ET

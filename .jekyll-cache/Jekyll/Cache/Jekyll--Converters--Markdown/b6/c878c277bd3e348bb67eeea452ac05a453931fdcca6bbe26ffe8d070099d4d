@@ -1,0 +1,55 @@
+I"�<h2 id="풀이">풀이</h2>
+
+<h1 id="백준-문제-중-11047번">백준 문제 중 11047번</h1>
+<p>https://www.acmicpc.net/problem/11047</p>
+
+<h3 id="문제">문제</h3>
+
+<p>준규가 가지고 있는 동전은 총 N종류이고, 각각의 동전을 매우 많이 가지고 있다.</p>
+
+<p>동전을 적절히 사용해서 그 가치의 합을 K로 만들려고 한다. 이때 필요한 동전 개수의 최솟값을 구하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 N과 K가 주어진다. (1 ≤ N ≤ 10, 1 ≤ K ≤ 100,000,000)</p>
+
+<p>둘째 줄부터 N개의 줄에 동전의 가치 Ai가 오름차순으로 주어진다. (1 ≤ Ai ≤ 1,000,000, A1 = 1, i ≥ 2인 경우에 Ai는 Ai-1의 배수)</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 K원을 만드는데 필요한 동전 개수의 최솟값을 출력한다.</p>
+
+<hr />
+
+<p>대표적인 그리디 문제로 쉽게 구현했다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+
+<span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">coin</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="n">coin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+
+     <span class="c1"># coin[i] 동전을 쓸 수 있는지 판별 
+</span>     <span class="c1"># k == coin[i]일 때도 고려해야 한다. 
+</span>    <span class="k">if</span> <span class="n">k</span><span class="o">-</span><span class="n">coin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">ans</span><span class="o">+=</span><span class="n">k</span><span class="o">//</span><span class="n">coin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="o">%</span><span class="n">coin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 1
+1
+1
+</code></pre></div></div>
+
+<h3 id="배운점">배운점</h3>
+<p>알고리즘 자체는 크게 어렵지 않은 문제였는데 예외처리를 꼼꼼히 봐야 하는 문제였다. 처음 코드를 짤때 if k-coin[i]&gt;0 일때로 판별을 했었는데 만약 주어진 금액에 딱 맞는 동전이 있을때 오류가 생기게되어 코드를 수정했다.</p>
+:ET

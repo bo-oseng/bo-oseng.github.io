@@ -1,0 +1,72 @@
+I"m<h1 id="백준-문제-중-1309번">백준 문제 중 1309번</h1>
+<p>https://www.acmicpc.net/problem/1309</p>
+
+<h3 id="문제">문제</h3>
+
+<p>어떤 동물원에 가로로 두칸 세로로 N칸인 아래와 같은 우리가 있다.</p>
+
+<p><img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/upload/201004/dnfl.JPG" alt="cage" /></p>
+
+<p>이 동물원에는 사자들이 살고 있는데 사자들을 우리에 가둘 때, 가로로도 세로로도 붙어 있게 배치할 수는 없다. 이 동물원 조련사는 사자들의 배치 문제 때문에 골머리를 앓고 있다.</p>
+
+<p>동물원 조련사의 머리가 아프지 않도록 우리가 2*N 배열에 사자를 배치하는 경우의 수가 몇 가지인지를 알아내는 프로그램을 작성해 주도록 하자. 사자를 한 마리도 배치하지 않는 경우도 하나의 경우의 수로 친다고 가정한다.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 우리의 크기 N(1≤N≤100,000)이 주어진다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 사자를 배치하는 경우의 수를 9901로 나눈 나머지를 출력하여라.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>우선 예시를 몇개 살펴보자.</p>
+
+<p>n = 1 일때 2 × 1의 우리에 사자를 넣는 방법은<br />
+[0,0], [0,1], [1,0]<br />
+3개 이다.</p>
+
+<p>n = 2 일때 2 x 2의 우리에 사자를 넣는 방법은
+[0,0][0,0], [0,0][0,1], [0,0][1,0]  <br />
+[0,1][0,0], [0,1][1,0]<br />
+[1,0][0,0], [1,0][0,1]<br />
+7개 이다.</p>
+
+<p>2 x n크기의 우리에 사자를 넣을때 맨 마지막 n번째 우리에 사자를 넣는 방법을 각각 [0,0] [0,1] [1,0] 이라 할때 각 방법을 0,1,2 로 인덱스로 하고 2 x n크기에서 방법의 수를 값으로 하는 배열을 dp라 하자,그러면 dp[n][0]은 dp[n-1] 중 다음이 [0,0]로 끝날 수 있는 값을, dp[n][1]은 dp[n-1]중 다음이 [0,1]로 끝날 수 있는 값을, dp[n][2]은 dp[n-1]중 다음이 [1,0]로 끝날 수 있는 값을 나타낸다.</p>
+
+<p>이를 수도코드로 표현하면</p>
+
+<p>dp[n][0] = sum(dp[n-1])</p>
+
+<p>dp[n][1] = dp[n-1][0] + dp[n-1][2]</p>
+
+<p>dp[n][2] = dp[n-1][0] + dp[n-1][1]</p>
+
+<p>이되고 이를 코드로 구현하면 아래와 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="mi">9901</span>
+
+<span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+ <span class="c1"># 2 x 1 의 방법 각각 [0,0], [0,1], [1,0]는 1개씩이다.
+</span><span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># int 가 2^31-1을 넘는걸 방지하기위해 %M 를 추가
+</span>    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">%</span><span class="n">M</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span><span class="o">%</span><span class="n">M</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">%</span><span class="n">M</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">%</span><span class="n">M</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+41
+</code></pre></div></div>
+
+:ET

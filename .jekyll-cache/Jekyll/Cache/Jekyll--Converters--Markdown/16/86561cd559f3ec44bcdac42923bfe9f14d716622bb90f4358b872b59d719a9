@@ -1,0 +1,151 @@
+I"�6<h1 id="백준-문제-중-14502번">백준 문제 중 14502번</h1>
+<p><a>https://www.acmicpc.net/problem/14502<a></a></a></p>
+
+<h3 id="문제">문제</h3>
+
+<p>인체에 치명적인 바이러스를 연구하던 연구소에서 바이러스가 유출되었다. 다행히 바이러스는 아직 퍼지지 않았고, 바이러스의 확산을 막기 위해서 연구소에 벽을 세우려고 한다.</p>
+
+<p>연구소는 크기가 N×M인 직사각형으로 나타낼 수 있으며, 직사각형은 1×1 크기의 정사각형으로 나누어져 있다. 연구소는 빈 칸, 벽으로 이루어져 있으며, 벽은 칸 하나를 가득 차지한다.</p>
+
+<p>일부 칸은 바이러스가 존재하며, 이 바이러스는 상하좌우로 인접한 빈 칸으로 모두 퍼져나갈 수 있다. 새로 세울 수 있는 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.</p>
+
+<p>예를 들어, 아래와 같이 연구소가 생긴 경우를 살펴보자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 0 0 0 1 1 0
+0 0 1 0 1 2 0
+0 1 1 0 1 0 0
+0 1 0 0 0 0 0
+0 0 0 0 0 1 1
+0 1 0 0 0 0 0
+0 1 0 0 0 0 0
+</code></pre></div></div>
+
+<p>이때, 0은 빈 칸, 1은 벽, 2는 바이러스가 있는 곳이다. 아무런 벽을 세우지 않는다면, 바이러스는 모든 빈 칸으로 퍼져나갈 수 있다.</p>
+
+<p>2행 1열, 1행 2열, 4행 6열에 벽을 세운다면 지도의 모양은 아래와 같아지게 된다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 1 0 0 1 1 0
+1 0 1 0 1 2 0
+0 1 1 0 1 0 0
+0 1 0 0 0 1 0
+0 0 0 0 0 1 1
+0 1 0 0 0 0 0
+0 1 0 0 0 0 0  
+</code></pre></div></div>
+
+<p>바이러스가 퍼진 뒤의 모습은 아래와 같아진다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 1 0 0 1 1 2
+1 0 1 0 1 2 2
+0 1 1 0 1 2 2
+0 1 0 0 0 1 2
+0 0 0 0 0 1 1
+0 1 0 0 0 0 0
+0 1 0 0 0 0 0
+</code></pre></div></div>
+
+<p>벽을 3개 세운 뒤, 바이러스가 퍼질 수 없는 곳을 안전 영역이라고 한다. 위의 지도에서 안전 영역의 크기는 27이다.</p>
+
+<p>연구소의 지도가 주어졌을 때 얻을 수 있는 안전 영역 크기의 최댓값을 구하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+
+<p>첫째 줄에 지도의 세로 크기 N과 가로 크기 M이 주어진다. (3 ≤ N, M ≤ 8)</p>
+
+<p>둘째 줄부터 N개의 줄에 지도의 모양이 주어진다. 0은 빈 칸, 1은 벽, 2는 바이러스가 있는 위치이다. 2의 개수는 2보다 크거나 같고, 10보다 작거나 같은 자연수이다.</p>
+
+<p>빈 칸의 개수는 3개 이상이다.</p>
+
+<h3 id="출력">출력</h3>
+
+<p>첫째 줄에 얻을 수 있는 안전 영역의 최대 크기를 출력한다.</p>
+
+<hr />
+
+<h2 id="풀이">풀이</h2>
+
+<p>3개의 벽을 최적의 방법으로 세우는 방법이 뭘까 고민하다가 그냥 모든 경우를 탐색해야 겠다는 생각이 들었다.</p>
+
+<p>3개벽을 고르는 모든 경우는 dfs로도 구현이 가능하지만 간단하게 itertools 모듈을 사용했다.</p>
+
+<p>코드의 흐름은 다음과같다.</p>
+<ol>
+  <li>주어진 맵에서 각 바이러스를 viruses에 각 빈칸의 좌표를 blanks에 그리고 벽의 총 개수를 w_cnt에 저장한다.</li>
+  <li>빈칸의 후보 중 itertools모듈로 3개를 골라 조합한뒤 candidates에 저장한다.</li>
+  <li>감염된 곳의 수를 나타내는 infect, 지도를 나타내는 board를 변수로 갖고, 감염될 수 있는 모든 지역을 탐색할 bfs를 선언한다. 입력받은 infect보다 현재 맵에 바이러스가 많다면 후보가 될 수 없으므로 바로 리턴한다.</li>
+  <li>candidates에서 벽의 후보를 하나씩 골라 후보로 뽑힌 을 벽으로 만든뒤 bfs를 호출해 최소 감염수 infect를 탐색하고 탐색을 마친뒤 벽을 다시 빈칸으로 만들어준다.</li>
+  <li>candidates의 모든 후보 탐색을 마치고 구한 최소 infect로 최대 안전구역을 구한다.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">board</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">board</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
+
+ <span class="c1"># 바이러스, 빈칸을 각각 리스트에 저장
+</span><span class="n">viruses</span><span class="p">,</span> <span class="n">blanks</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+ <span class="c1"># 벽의 총 개수 카운트
+</span><span class="n">w_cnt</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="s">'2'</span><span class="p">:</span>
+            <span class="n">viruses</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">board</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span><span class="p">:</span>
+            <span class="n">blanks</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">w_cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+ <span class="c1"># 세울 수 있는 벽의 후보
+</span><span class="n">candidates</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">(</span><span class="n">blanks</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">infect</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">board</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>  
+   
+     <span class="c1"># 바이러스 수를 셀 변수
+</span>    <span class="n">v_cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+     <span class="c1"># 초기 바이러스 위치를 큐에 넣음
+</span>    <span class="k">for</span> <span class="n">virus</span> <span class="ow">in</span> <span class="n">viruses</span><span class="p">:</span>
+        <span class="n">v_cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">virus</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+         <span class="c1"># 입력으로 받은 infect보다 v_cnt가 크다면 백트래킹
+</span>        <span class="k">if</span> <span class="n">v_cnt</span> <span class="o">&gt;</span> <span class="n">infect</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">infect</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span> <span class="o">+</span> <span class="n">dc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nc</span> <span class="o">&lt;</span><span class="n">m</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span><span class="p">:</span>
+                <span class="n">v_cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">q</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">])</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="s">'2'</span>
+    
+    <span class="k">return</span> <span class="n">v_cnt</span>
+
+<span class="n">infect</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="n">candidate</span><span class="p">:</span> <span class="n">board</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="s">'1'</span>
+    <span class="n">infect</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">infect</span><span class="p">,</span> <span class="n">bfs</span><span class="p">(</span><span class="n">infect</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="n">candidate</span><span class="p">:</span> <span class="n">board</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="s">'0'</span>
+
+
+<span class="n">ans</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">n</span> <span class="o">-</span> <span class="n">infect</span> <span class="o">-</span> <span class="n">w_cnt</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>58
+3
+</code></pre></div></div>
+
+:ET
