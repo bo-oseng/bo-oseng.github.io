@@ -488,7 +488,7 @@
           <aside class="sidebar__right ">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Index</h4></header>
-              <ul class="toc__menu"><li><a href="#백준-문제-중-19236번">백준 문제 중 19236번</a><ul><li><a href="#문제">문제</a></li></ul></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#백준-문제-중-19236번">백준 문제 중 19236번</a><ul><li><a href="#문제">문제</a></li><li><a href="#입력">입력</a></li><li><a href="#출력">출력</a></li></ul></li><li><a href="#풀이">풀이</a></li></ul></li></ul>
 
             </nav>
           </aside>
@@ -511,163 +511,155 @@
 <center>
   <img src="https://upload.acmicpc.net/1c7c473e-5e2c-4c45-9c88-b3b7cd06a360/-/preview/" width="50%" />  
   
-  <그림1>
-&lt;/center&gt;
+  그림1
+</center>
 
-
-
-
-&lt;그림 1&gt;은 청소년 상어가 공간에 들어가기 전 초기 상태이다. 상어가 공간에 들어가면 (0, 0)에 있는 7번 물고기를 먹고, 상어의 방향은 ↘이 된다. &lt;그림 2&gt;는 상어가 들어간 직후의 상태를 나타낸다.
+<p>&lt;그림 1&gt;은 청소년 상어가 공간에 들어가기 전 초기 상태이다. 상어가 공간에 들어가면 (0, 0)에 있는 7번 물고기를 먹고, 상어의 방향은 ↘이 된다. &lt;그림 2&gt;는 상어가 들어간 직후의 상태를 나타낸다.</p>
 
 <center>
   <img src="https://upload.acmicpc.net/8f26df12-6f68-43a3-9f6e-7416144e91dc/-/preview/" width="50%" />  
-  <그림2>
-&lt;/center&gt;
 
+  그림2
+</center>
 
-이제 물고기가 이동해야 한다. 1번 물고기의 방향은 ↗이다. ↗ 방향에는 칸이 있고, 15번 물고기가 들어있다. 물고기가 있는 칸으로 이동할 때는 그 칸에 있는 물고기와 위치를 서로 바꿔야 한다. 따라서, 1번 물고기가 이동을 마치면 &lt;그림 3&gt;과 같아진다.
+<p>이제 물고기가 이동해야 한다. 1번 물고기의 방향은 ↗이다. ↗ 방향에는 칸이 있고, 15번 물고기가 들어있다. 물고기가 있는 칸으로 이동할 때는 그 칸에 있는 물고기와 위치를 서로 바꿔야 한다. 따라서, 1번 물고기가 이동을 마치면 &lt;그림 3&gt;과 같아진다.</p>
 
 <center>
   <img src="https://upload.acmicpc.net/75315b3c-ee04-4ae8-9422-5b1137f86117/-/preview/" width="50%" />  
   
-  <그림3>
-&lt;/center&gt;
+  그림3
+</center>
 
-
-2번 물고기의 방향은 ←인데, 그 방향에는 상어가 있으니 이동할 수 없다. 방향을 45도 반시계 회전을 하면 ↙가 되고, 이 칸에는 3번 물고기가 있다. 물고기가 있는 칸이니 서로 위치를 바꾸고, &lt;그림 4&gt;와 같아지게 된다.
+<p>2번 물고기의 방향은 ←인데, 그 방향에는 상어가 있으니 이동할 수 없다. 방향을 45도 반시계 회전을 하면 ↙가 되고, 이 칸에는 3번 물고기가 있다. 물고기가 있는 칸이니 서로 위치를 바꾸고, &lt;그림 4&gt;와 같아지게 된다.</p>
 
 <center>
   <img src="https://upload.acmicpc.net/7be317c7-b8b5-4b83-becb-ffd8550311fb/-/preview/" width="50%" />  
-  <그림4>
-&lt;/center&gt;
 
+  그림4
+</center>
 
-3번 물고기의 방향은 ↑이고, 존재하지 않는 칸이다. 45도 반시계 회전을 한 방향 ↖도 존재하지 않으니, 다시 회전을 한다. ← 방향에는 상어가 있으니 또 회전을 해야 한다. ↙ 방향에는 2번 물고기가 있으니 서로의 위치를 교환하면 된다. 이런 식으로 모든 물고기가 이동하면 &lt;그림 5&gt;와 같아진다.
+<p>3번 물고기의 방향은 ↑이고, 존재하지 않는 칸이다. 45도 반시계 회전을 한 방향 ↖도 존재하지 않으니, 다시 회전을 한다. ← 방향에는 상어가 있으니 또 회전을 해야 한다. ↙ 방향에는 2번 물고기가 있으니 서로의 위치를 교환하면 된다. 이런 식으로 모든 물고기가 이동하면 &lt;그림 5&gt;와 같아진다.</p>
 
 <center>
   <img src="https://upload.acmicpc.net/a58fbda0-bb64-4773-b5f9-2da0bd3f0fd2/-/preview/" width="50%" />  
   
-  <그림5>
-&lt;/center&gt;
+  그림5
+</center>
 
-
-물고기가 모두 이동했으니 이제 상어가 이동할 순서이다. 상어의 방향은 ↘이고, 이동할 수 있는 칸은 12번 물고기가 있는 칸, 15번 물고기가 있는 칸, 8번 물고기가 있는 칸 중에 하나이다. 만약, 8번 물고기가 있는 칸으로 이동하면, &lt;그림 6&gt;과 같아지게 된다.
+<p>물고기가 모두 이동했으니 이제 상어가 이동할 순서이다. 상어의 방향은 ↘이고, 이동할 수 있는 칸은 12번 물고기가 있는 칸, 15번 물고기가 있는 칸, 8번 물고기가 있는 칸 중에 하나이다. 만약, 8번 물고기가 있는 칸으로 이동하면, &lt;그림 6&gt;과 같아지게 된다.</p>
 
 <center>
   <img src="https://upload.acmicpc.net/2431d117-fab6-4de9-8d76-2fb41d471ee7/-/crop/651x656/1,12/-/preview/" width="50%" />  
-  <그림6>
-&lt;/center&gt;
+  
+  그림6
+</center>
 
+<p>상어가 먹을 수 있는 물고기 번호의 합의 최댓값을 구해보자.</p>
 
-상어가 먹을 수 있는 물고기 번호의 합의 최댓값을 구해보자.
+<h3 id="입력">입력</h3>
 
-### 입력
+<p>첫째 줄부터 4개의 줄에 각 칸의 들어있는 물고기의 정보가 1번 행부터 순서대로 주어진다. 물고기의 정보는 두 정수 ai, bi로 이루어져 있고, ai는 물고기의 번호, bi는 방향을 의미한다. 방향 bi는 8보다 작거나 같은 자연수를 의미하고, 1부터 순서대로 ↑, ↖, ←, ↙, ↓, ↘, →, ↗ 를 의미한다.</p>
 
-첫째 줄부터 4개의 줄에 각 칸의 들어있는 물고기의 정보가 1번 행부터 순서대로 주어진다. 물고기의 정보는 두 정수 ai, bi로 이루어져 있고, ai는 물고기의 번호, bi는 방향을 의미한다. 방향 bi는 8보다 작거나 같은 자연수를 의미하고, 1부터 순서대로 ↑, ↖, ←, ↙, ↓, ↘, →, ↗ 를 의미한다.
+<h3 id="출력">출력</h3>
 
-### 출력
+<p>상어가 먹을 수 있는 물고기 번호의 합의 최댓값을 출력한다.</p>
 
-상어가 먹을 수 있는 물고기 번호의 합의 최댓값을 출력한다.
+<hr />
 
----
+<h2 id="풀이">풀이</h2>
 
-## 풀이
+<p>문제의 흐름을 잘 따라가야 하는 문제였다.</p>
 
-문제의 흐름을 잘 따라가야 하는 문제였다.  
+<p>문제의 흐름은 다음과 같다,</p>
+<ol>
+  <li>상어를 0,0 에 넣는다. ( 이때 상어는 0,0 에 있던 물고기를 먹고 0, 0 에 있던 물고기의 방향을 갖는다)</li>
+  <li>1 ~ 16번의 물고기를 순서대로 규칙에 맞게 이동 시킨다.</li>
+  <li>상어가 움직일 수 있는 후보중 하나를 골라 해당 물고기를 먹고, 그 물고기의 방향을 갖느다.</li>
+  <li>2 ~ 3 과정을 더이상 상어가 이동할 수 없을때 까지 반복한다.</li>
+</ol>
 
-문제의 흐름은 다음과 같다,
-1. 상어를 0,0 에 넣는다. ( 이때 상어는 0,0 에 있던 물고기를 먹고 0, 0 에 있던 물고기의 방향을 갖는다)
-2. 1 ~ 16번의 물고기를 순서대로 규칙에 맞게 이동 시킨다.
-3. 상어가 움직일 수 있는 후보중 하나를 골라 해당 물고기를 먹고, 그 물고기의 방향을 갖느다.
-4. 2 ~ 3 과정을 더이상 상어가 이동할 수 없을때 까지 반복한다.
+<p>이를 코드를 구성하면 다음과 같다.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+  <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
-이를 코드를 구성하면 다음과 같다.
+  <span class="n">datas</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
 
-
-```python
-  from pprint import pprint
-  from copy import deepcopy
-
-  datas = [list(map(int, input().split())) for _ in range(4)]
-
-  # 각각의 인덱스에 [물고기의 번호, 물고기의 방향]을 갖는 리스트 fish 선언
-  fish = [ [ [ data[0], data[1] ], [ data[2], data[3] ], 
-              [ data[4], data[5] ], [ data[6], data[7] ]] for data in datas]
+  <span class="c1"># 각각의 인덱스에 [물고기의 번호, 물고기의 방향]을 갖는 리스트 fish 선언
+</span>  <span class="n">fish</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span> <span class="p">[</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">],</span> <span class="p">[</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">],</span> 
+              <span class="p">[</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">],</span> <span class="p">[</span> <span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">]]</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">]</span>
           
-  # 8개 방향을 딕셔너리로 저장
-  dir = {1: [-1, 0], 2: [-1, -1], 3: [0, -1], 4: [1, -1],
-        5: [1, 0], 6: [1, 1], 7: [0, 1], 8: [-1, 1]}
+  <span class="c1"># 8개 방향을 딕셔너리로 저장
+</span>  <span class="nb">dir</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">6</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">7</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">8</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
 
-  # 1 ~ 16번까지 물고기를 찾고 주어진 규칙에 맞게 물고기의 위치를 이동할 함수
-  def move_fish(board):
+  <span class="c1"># 1 ~ 16번까지 물고기를 찾고 주어진 규칙에 맞게 물고기의 위치를 이동할 함수
+</span>  <span class="k">def</span> <span class="nf">move_fish</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
 
-      for k in range(1, 16 + 1):
-          flag = False
-          for i in range(4):
-              for j in range(4):
-                  if k == board[i][j][0]:
-                      # k 가 존재한다면 flag = True
-                      flag = True
-                      r, c, d = i, j, board[i][j][1]
+      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+          <span class="n">flag</span> <span class="o">=</span> <span class="bp">False</span>
+          <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+              <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                  <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                      <span class="c1"># k 가 존재한다면 flag = True
+</span>                      <span class="n">flag</span> <span class="o">=</span> <span class="bp">True</span>
+                      <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 
-          # flag가 True 라면 k물고기 이동
-          if flag:
-              nr, nc = r + dir[d][0], c + dir[d][1]
-              nd, cnt = d, 1
-              # nr, nc 가 범위를 벗어나지 않고, 상어가 아닐때까지 방향을 바꿈
-              while nr &lt; 0 or nr &gt;= 4 or nc &lt; 0 or nc &gt;= 4 or board[nr][nc][0] == SHARK:
-                  # 방향을 8번 바꾸어도 만족하지 못한다면 break
-                  if cnt &gt;= 8:
-                      break
-                  nd = nd%8 + 1
-                  nr, nc = r + dir[nd][0], c + dir[nd][1]
-                  cnt += 1
+          <span class="c1"># flag가 True 라면 k물고기 이동
+</span>          <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+              <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="nb">dir</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span> <span class="o">+</span> <span class="nb">dir</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+              <span class="n">nd</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">d</span><span class="p">,</span> <span class="mi">1</span>
+              <span class="c1"># nr, nc 가 범위를 벗어나지 않고, 상어가 아닐때까지 방향을 바꿈
+</span>              <span class="k">while</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nr</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">nc</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nc</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">SHARK</span><span class="p">:</span>
+                  <span class="c1"># 방향을 8번 바꾸어도 만족하지 못한다면 break
+</span>                  <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+                      <span class="k">break</span>
+                  <span class="n">nd</span> <span class="o">=</span> <span class="n">nd</span><span class="o">%</span><span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span>
+                  <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="nb">dir</span><span class="p">[</span><span class="n">nd</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span> <span class="o">+</span> <span class="nb">dir</span><span class="p">[</span><span class="n">nd</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                  <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
               
-              if cnt &lt; 8:
-                  board[r][c][1] = nd
-                  board[r][c], board[nr][nc] = board[nr][nc], board[r][c]
-      return board
+              <span class="k">if</span> <span class="n">cnt</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+                  <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nd</span>
+                  <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">],</span> <span class="n">board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">],</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span>
+      <span class="k">return</span> <span class="n">board</span>
 
-  def dfs(r, c, board, score):
+  <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">score</span><span class="p">):</span>
       
-      global max_score
+      <span class="k">global</span> <span class="n">max_score</span>
 
-      score += board[r][c][0]
-      max_score = max(max_score, score)
-      # 물고기를 먹고 해당 자리에 상어를 배치, 상어의 방향도 최신화
-      board[r][c][0] = SHARK
-      d = board[r][c][1] 
+      <span class="n">score</span> <span class="o">+=</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+      <span class="n">max_score</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_score</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+      <span class="c1"># 물고기를 먹고 해당 자리에 상어를 배치, 상어의 방향도 최신화
+</span>      <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">SHARK</span>
+      <span class="n">d</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> 
 
-      # 물고기를 규칙에 맞게 이동 시켜줌 
-      board = move_fish(board)
+      <span class="c1"># 물고기를 규칙에 맞게 이동 시켜줌 
+</span>      <span class="n">board</span> <span class="o">=</span> <span class="n">move_fish</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
       
-      nr, nc = r, c
-      for _ in range(1, 4):
-          nr = nr + dir[d][0]
-          nc = nc + dir[d][1]
-          if 0 &lt;= nr &lt; 4 and 0 &lt;= nc &lt; 4 and board[nr][nc][0] &gt; 0:
-              # 이전 상어가 있던 칸을 빈칸으로 만들어줌
-              board[r][c] = [0, 0]
-              # deepcopy를 통해 최신화된 맵을 넘겨주며 재귀적으로 dfs 실행 
-              dfs(nr, nc, deepcopy(board), score)
+      <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span>
+      <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+          <span class="n">nr</span> <span class="o">=</span> <span class="n">nr</span> <span class="o">+</span> <span class="nb">dir</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+          <span class="n">nc</span> <span class="o">=</span> <span class="n">nc</span> <span class="o">+</span> <span class="nb">dir</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+          <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nc</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">board</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+              <span class="c1"># 이전 상어가 있던 칸을 빈칸으로 만들어줌
+</span>              <span class="n">board</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+              <span class="c1"># deepcopy를 통해 최신화된 맵을 넘겨주며 재귀적으로 dfs 실행 
+</span>              <span class="n">dfs</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">board</span><span class="p">),</span> <span class="n">score</span><span class="p">)</span>
 
-  SHARK = -1
-  max_score = 0
+  <span class="n">SHARK</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">max_score</span> <span class="o">=</span> <span class="mi">0</span>
       
-  dfs(0, 0, fish, 0)
-  print(max_score)
+  <span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fish</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">max_score</span><span class="p">)</span>
 
-```
-```
-
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
     7 6 2 3 15 6 9 8
     3 1 1 8 14 7 10 1
     6 1 13 6 4 3 11 4
     16 1 8 7 5 2 12 2
     33
-```
-</그림6></center></그림5></center></그림4></center></그림3></center></그림2></center></그림1></center>
+</code></pre></div></div>
 
         
       </section>
@@ -786,7 +778,7 @@
       <span class="page__meta-date">
         <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2022-06-11T18:01:42+09:00">June 11, 2022</time>
+        <time datetime="2022-06-11T18:03:48+09:00">June 11, 2022</time>
       </span>
     
 
@@ -837,7 +829,7 @@
       <span class="page__meta-date">
         <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2022-06-11T18:01:42+09:00">June 11, 2022</time>
+        <time datetime="2022-06-11T18:03:48+09:00">June 11, 2022</time>
       </span>
     
 
