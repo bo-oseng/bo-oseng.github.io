@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/algorithms/boj-10809/</loc>
+<loc>http://localhost:4000/boj/boj-10809/</loc>
 <lastmod>2022-01-01T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -21,7 +21,7 @@
 <lastmod>2022-01-01T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/algorithms/boj-2908/</loc>
+<loc>http://localhost:4000/boj/boj-2908/</loc>
 <lastmod>2022-01-02T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -105,7 +105,7 @@
 <lastmod>2022-01-15T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/boj-4153/</loc>
+<loc>http://localhost:4000/boj/boj-4153/</loc>
 <lastmod>2022-01-15T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -265,7 +265,7 @@
 <lastmod>2022-02-06T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/algorithms/boj-1463/</loc>
+<loc>http://localhost:4000/boj/boj-1463/</loc>
 <lastmod>2022-02-07T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -358,6 +358,10 @@
 </url>
 <url>
 <loc>http://localhost:4000/boj/boj-1476/</loc>
+<lastmod>2022-02-23T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/boj/boj-3085/</loc>
 <lastmod>2022-02-23T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -487,6 +491,10 @@
 <url>
 <loc>http://localhost:4000/boj/boj-13460/</loc>
 <lastmod>2022-03-22T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/boj/boj-12100/</loc>
+<lastmod>2022-03-23T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/boj/boj-3190/</loc>
@@ -641,14 +649,6 @@
 <lastmod>2022-06-07T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/2022-02-23-boj-3085/</loc>
-<lastmod>2022-06-11T18:11:17+09:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/2022-03-23-boj-12100/</loc>
-<lastmod>2022-06-11T18:11:17+09:00</lastmod>
-</url>
-<url>
 <loc>http://localhost:4000/categories/data-structure</loc>
 </url>
 <url>
@@ -773,6 +773,6 @@
 </url>
 <url>
 <loc>http://localhost:4000/googlea3d15494bec1ba8c.html</loc>
-<lastmod>2022-06-09T02:14:47+09:00</lastmod>
+<lastmod>2022-06-11T18:21:46+09:00</lastmod>
 </url>
 </urlset>
