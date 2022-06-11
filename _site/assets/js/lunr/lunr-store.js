@@ -113,6 +113,108 @@ var store = [{
         "url": "/boj/boj-1978/",
         "teaser": null
       },{
+        "title": "백준 문제 중 15685번, 수학, 'Fly me to the Alpha Centauri'",
+        "excerpt":"백준 문제 중 1011번 https://www.acmicpc.net/problem/1011 문제 우현이는 어린 시절, 지구 외의 다른 행성에서도 인류들이 살아갈 수 있는 미래가 오리라 믿었다. 그리고 그가 지구라는 세상에 발을 내려 놓은 지 23년이 지난 지금, 세계 최연소 ASNA 우주 비행사가 되어 새로운 세계에 발을 내려 놓는 영광의 순간을 기다리고 있다. 그가 탑승하게 될 우주선은...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","수학"],
+        "url": "/boj/boj-1011/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 2775번, 수학, '부녀회장이 될테야'",
+        "excerpt":"백준 문제중 2775번 https://www.acmicpc.net/problem/2775 문제 평소 반상회에 참석하는 것을 좋아하는 주희는 이번 기회에 부녀회장이 되고 싶어 각 층의 사람들을 불러 모아 반상회를 주최하려고 한다. 이 아파트에 거주를 하려면 조건이 있는데, “a층의 b호에 살려면 자신의 아래(a-1)층의 1호부터 b호까지 사람들의 수의 합만큼 사람들을 데려와 살아야 한다” 는 계약 조항을 꼭 지키고 들어와야...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","수학"],
+        "url": "/boj/boj-2775/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 1929번, 수학, '소수 구하기'",
+        "excerpt":"백준 문제 중 1929번 https://www.acmicpc.net/problem/1929 문제 M이상 N이하의 소수를 모두 출력하는 프로그램을 작성하시오. 입력 첫째 줄에 자연수 M과 N이 빈 칸을 사이에 두고 주어진다. (1 ≤ M ≤ N ≤ 1,000,000) M이상 N이하의 소수가 하나 이상 있는 입력만 주어진다. 출력 한 줄에 하나씩, 증가하는 순서대로 소수를 출력한다. 풀이 Try1 m,n...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","수학"],
+        "url": "/boj/boj-1929/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 11653번, 수학, '소인수분해'",
+        "excerpt":"백준 문제 중 11653번 https://www.acmicpc.net/problem/11653 문제 정수 N이 주어졌을 때, 소인수분해하는 프로그램을 작성하시오. 입력 첫째 줄에 정수 N (1 ≤ N ≤ 10,000,000)이 주어진다. 출력 N의 소인수분해 결과를 한 줄에 하나씩 오름차순으로 출력한다. N이 1인 경우 아무것도 출력하지 않는다. 풀이 소인수 분해는 결국 자연수 n 을 소수들의 곱들로 분해하여 나타...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","수학"],
+        "url": "/boj/boj-11653/",
+        "teaser": null
+      },{
+        "title": "백준 문제 1085 with python",
+        "excerpt":"layout: single title: 백준 문제 중 1085, 수학, ‘직사각형에서 탈출’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 수학] toc: true 백준 문제 중 1085번 https://www.acmicpc.net/problem/1085 문제 한수는 지금 (x, y)에 있다. 직사각형은 각 변이 좌표축에 평행하고, 왼쪽 아래 꼭짓점은 (0, 0), 오른쪽 위 꼭짓점은 (w, h)에 있다. 직사각형의 경계선까지 가는 거리의...","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-1085/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 3009번, 수학, '\t네 번째 점'",
+        "excerpt":"백준 문제 중 3009번 https://www.acmicpc.net/problem/3009 문제 세 점이 주어졌을 때, 축에 평행한 직사각형을 만들기 위해서 필요한 네 번째 점을 찾는 프로그램을 작성하시오. 입력 세 점의 좌표가 한 줄에 하나씩 주어진다. 좌표는 1보다 크거나 같고, 1000보다 작거나 같은 정수이다. 출력 직사각형의 네 번째 점의 좌표를 출력한다. 풀이 # xy 좌표를 각각...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","수학"],
+        "url": "/boj/boj-3009/",
+        "teaser": null
+      },{
+        "title": "벡준 문제 3053 with python",
+        "excerpt":"layout: single title: 백준 문제 중 2775번, 수학, ‘택시 기하학’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 수학] toc: true 백준 문제 중 3053번 https://www.acmicpc.net/problem/3053 문제 19세기 독일 수학자 헤르만 민코프스키는 비유클리드 기하학 중 택시 기하학을 고안했다. 택시 기하학에서 두 점 T1(x1,y1), T2(x2,y2) 사이의 거리는 다음과 같이 구할 수 있다. D(T1,T2)...","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-3053/",
+        "teaser": null
+      },{
+        "title": "백준 문제 4153 with python",
+        "excerpt":"백준 문제 중 4153번 https://www.acmicpc.net/problem/4153 문제 과거 이집트인들은 각 변들의 길이가 3, 4, 5인 삼각형이 직각 삼각형인것을 알아냈다. 주어진 세변의 길이로 삼각형이 직각인지 아닌지 구분하시오. 입력 입력은 여러개의 테스트케이스로 주어지며 마지막줄에는 0 0 0이 입력된다. 각 테스트케이스는 모두 30,000보다 작은 양의 정수로 주어지며, 각 입력은 변의 길이를 의미한다 출력 각...","categories": [],
+        "tags": [],
+        "url": "/boj-4153/",
+        "teaser": null
+      },{
+        "title": "백준 문제 4948번 with pythob",
+        "excerpt":"layout: single title: 백준 문제 중 4948번, 구현, ‘베르트랑 공준’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 수학] toc: true 백준 문제 중 4948번 https://www.acmicpc.net/problem/4948 문제 베르트랑 공준은 임의의 자연수 n에 대하여, n보다 크고, 2n보다 작거나 같은 소수는 적어도 하나 존재한다는 내용을 담고 있다. 이 명제는 조제프 베르트랑이 1845년에 추측했고, 파프누티...","categories": [],
+        "tags": [],
+        "url": "/boj-4948/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 1022번, 구현, '소용돌이 예쁘게 출력하기'",
+        "excerpt":"백준 문제 중 1002번 https://www.acmicpc.net/problem/1002 문제 조규현과 백승환은 터렛에 근무하는 직원이다. 하지만 워낙 존재감이 없어서 인구수는 차지하지 않는다. 다음은 조규현과 백승환의 사진이다. 이석원은 조규현과 백승환에게 상대편 마린(류재명)의 위치를 계산하라는 명령을 내렸다. 조규현과 백승환은 각각 자신의 터렛 위치에서 현재 적까지의 거리를 계산했다. 조규현의 좌표 (x1, y1)와 백승환의 좌표 (x2, y2)가 주어지고,...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","구현"],
+        "url": "/boj/boj-1022/",
+        "teaser": null
+      },{
+        "title": "백준 문제 중 10872번, 구현, '팩토리얼'",
+        "excerpt":"백준 문제 중 10872번 https://www.acmicpc.net/problem/10872 문제 0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오. 입력 첫째 줄에 정수 N(0 ≤ N ≤ 12)이 주어진다### 출력 출력 첫째 줄에 N!을 출력한다. 풀이 재귀함수를 이용하여 코드를 구현한다. # 팩토리얼 함수 선언 def facto(x:int)-&gt;int: # x 가 1 이하면 1을...","categories": ["BOJ"],
+        "tags": ["python","백준온라인저지","코딩테스트","수학"],
+        "url": "/boj/boj-10872/",
+        "teaser": null
+      },{
+        "title": "Boj 9029+",
+        "excerpt":"layout: single title: 백준 문제 중 9020번, 수학, ‘ 골드바흐의 추측’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 수학] toc: true 백준 문제 중 9020번 https://www.acmicpc.net/problem/9020 문제 1보다 큰 자연수 중에서 1과 자기 자신을 제외한 약수가 없는 자연수를 소수라고 한다. 예를 들어, 5는 1과 5를 제외한 약수가 없기 때문에 소수이다. 하지만,...","categories": [],
+        "tags": [],
+        "url": "/boj-9029+/",
+        "teaser": null
+      },{
+        "title": "백준 문제 10870 with python",
+        "excerpt":"layout: single title: 백준 문제 중 10870번, 수학, ‘피보나치 수 5’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 수학] toc: true 백준 문제 중 10870번 https://www.acmicpc.net/problem/10870 문제 피보나치 수는 0과 1로 시작한다. 0번째 피보나치 수는 0이고, 1번째 피보나치 수는 1이다. 그 다음 2번째 부터는 바로 앞 두 피보나치 수의 합이 된다....","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-10870/",
+        "teaser": null
+      },{
+        "title": "백준 문제 11729 with python",
+        "excerpt":"layout: single title: 백준 문제 중 11729, 재귀, ‘ 하노이 탑 이동 순서’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 재귀] toc: true 백준 문제 중 11729 https://www.acmicpc.net/problem/11729 문제 세 개의 장대가 있고 첫 번째 장대에는 반경이 서로 다른 n개의 원판이 쌓여 있다. 각 원판은 반경이 큰 순서대로 쌓여있다. 이제 수도승들이...","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-11729/",
+        "teaser": null
+      },{
+        "title": "백준 문제 2798 with python",
+        "excerpt":"layout: single title: 백준 문제 중 2798번, 구현, ‘ 블랙잭’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 브루트포스] toc: true 백준 문제 중 2798번 https://www.acmicpc.net/problem/2798 문제 카지노에서 제일 인기 있는 게임 블랙잭의 규칙은 상당히 쉽다. 카드의 합이 21을 넘지 않는 한도 내에서, 카드의 합을 최대한 크게 만드는 게임이다. 블랙잭은 카지노마다 다양한...","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-2798/",
+        "teaser": null
+      },{
+        "title": "백준 문제 2231 with python",
+        "excerpt":"layout: single title: 백준 문제 중 2231, 브루트포스, ‘분해합’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 브루트포스] toc: true 백준 문제 중 2231번 https://www.acmicpc.net/problem/2231 문제 어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다....","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-2231/",
+        "teaser": null
+      },{
+        "title": "백준 문제 7568 with python",
+        "excerpt":"layout: single title: 백준 문제 중 7568번, 구현, ‘덩치’ categories: BOJ tag: [python, 백준온라인저지, 코딩테스트, 수학] toc: true 백준 문제 중 7568번 https://www.acmicpc.net/problem/7568 문제 우리는 사람의 덩치를 키와 몸무게, 이 두 개의 값으로 표현하여 그 등수를 매겨보려고 한다. 어떤 사람의 몸무게가 x kg이고 키가 y cm라면 이 사람의 덩치는 (x,...","categories": ["Algorithms"],
+        "tags": [],
+        "url": "/algorithms/boj-7568/",
+        "teaser": null
+      },{
         "title": "LinkedList- (1) SingleLinkedList with python",
         "excerpt":"연결리스트 연결리스트를 쓸일이 자주 있을거 같아서 파이썬 환경에서 링크리스트를 구현 해보려고 한다. 링크드리스트(연결리스트)에 대한자세한 설명 (1) SingleLinkedList from typing import Any,Type # 노드 클래스 선언 class Node: def __init__(self,data:Any,next:Node=None): self.data = data self.next = next # 싱글 링크드리스트 클래스 선언 class SingleLinkedList: # 시작 head, 현재 cur, 갯수 no 선언...","categories": ["Data-structure"],
         "tags": ["SingleLinkedList","자료구조","python"],
