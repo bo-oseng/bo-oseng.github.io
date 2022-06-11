@@ -10,6 +10,7 @@ package.json
 _site/
 .sass-cache/
 .jekyll-metadata
+.jekyll-cache
 .jekyll
 Gemfile
 Gemfile.lock
