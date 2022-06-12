@@ -22,6 +22,7 @@ toc: true
 <center>
   <img src="https://user-images.githubusercontent.com/94548914/169976963-29bd1d44-197a-42ba-a2e4-37cd485fd784.png" width="80%"/>
   
+
   백준
 </center>  
 
@@ -29,7 +30,8 @@ toc: true
 <center>
   <img src="https://user-images.githubusercontent.com/94548914/173220554-38910a97-f500-49a9-8308-933eb98c5bab.JPG" width="80%"/>
 
-  백준
+
+  프로그래머스
 </center>
 
 ### 백준
