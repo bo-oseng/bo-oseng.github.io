@@ -16,18 +16,20 @@ toc: true
 
 직접 써보면서 느낀 각 플랫폼의 장단점과 결론.
 
-+ 백준
 <center>
   <img src="https://user-images.githubusercontent.com/94548914/170221847-6b4aa412-a6d8-4589-9668-21816c84ed2e.png" width="80%"/>
 </center>  
-
 <center>
   <img src="https://user-images.githubusercontent.com/94548914/169976963-29bd1d44-197a-42ba-a2e4-37cd485fd784.png" width="80%"/>
+  
+  백준
 </center>  
 
-+ 프로그래머스
+
 <center>
   <img src="https://user-images.githubusercontent.com/94548914/173220554-38910a97-f500-49a9-8308-933eb98c5bab.JPG" width="80%"/>
+
+  백준
 </center>
 
 ### 백준
