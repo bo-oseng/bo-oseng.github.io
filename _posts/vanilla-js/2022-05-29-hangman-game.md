@@ -13,7 +13,7 @@ toc: true
 # Hangman Game
 - svg를 활용한 행맨게임
 - <a href='https://codepen.io/kim7720/pen/QWQmzJq'>Live demo</a>
-- <a href='https://github.com/bo-oseng/vanilla_javascript_pratice_projects/tree/main/Hangman%20Game'>Source demo</a>
+- <a href='https://github.com/bo-oseng/vanilla_javascript_pratice_projects/tree/main/Hangman%20Game'>Source</a>
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="Hangman" src="https://codepen.io/kim7720/embed/QWQmzJq?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/kim7720/pen/QWQmzJq">

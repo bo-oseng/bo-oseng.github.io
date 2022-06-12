@@ -14,7 +14,7 @@ toc: true
 
 - 무한 스크롤 예제
 - <a href='https://codepen.io/kim7720/pen/vYdpYjB'>Live demo</a>
-- <a href='https://github.com/bo-oseng/vanilla_javascript_pratice_projects/tree/main/Infinite%20Scroll%20Posts'>Live demo</a>
+- <a href='https://github.com/bo-oseng/vanilla_javascript_pratice_projects/tree/main/Infinite%20Scroll%20Posts'>Source</a>
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="Infinite Scroll Posts" src="https://codepen.io/kim7720/embed/vYdpYjB?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/kim7720/pen/vYdpYjB">
