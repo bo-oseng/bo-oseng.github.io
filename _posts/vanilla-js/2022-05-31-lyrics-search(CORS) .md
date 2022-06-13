@@ -5,7 +5,7 @@ title: Lyrics Search (CORS), VanillaJS - (10)
 categories:
   - VanillaJS
 
-tag: [javascript, SOP, CORS, proxy, tagname, herokuapp]
+tag: [javascript, SOP, CORS, proxy, tagname]
 
 toc: true
 
@@ -43,7 +43,6 @@ toc: true
    - 속도 저하가 생길 수 있음
    - 서버쪽의 CORS를 설정할 수 없을 때 클라이언트 쪽에서 프록시 서버를 활용하면 해결할 수 있음.
    - 이 예제에서는 간단한 프록시를 활용했다.
-   - 이 방법으로 구현하면 속도가 저하 된다는 단점이 있다. 사용자 입장에서는 답답함을 느낄 정도라 다음에는 heroku를 제대로 활용하는 법을 공부해야 겠다.
 
    ```javascript
    // getMoreSongs
