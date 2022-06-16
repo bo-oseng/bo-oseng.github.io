@@ -63,7 +63,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "CS50" %}
-                        <li><a href="/categories/CS50" class="">자료구조 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/CS50" class="">CS50 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
