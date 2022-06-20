@@ -5,7 +5,7 @@ title: Termux를 쓰는 이유, 다운 및 설치
 categories:
   - Termux
 
-tag: [안드로이드, 리눅스, terminal]
+tag: [안드로이드, 터미널, terminal, linux, 리눅스]
 
 toc: true
 
@@ -26,17 +26,21 @@ toc: true
 ## 다운받는 법
 Fdroid 공식홈페이지에서 제공하는 Fdroid 에서 다운 받는다.[공식홈페이지](https://f-droid.org/ko/packages/com.termux/)
 Fdorid 마켓에서 termux를 찾아 다운 받은뒤 단순히 설치하고 실행하면 터미널화면이 뜨게되고 리눅스 환경이 갖춰지게된다.
-![termux1](https://ifh.cc/g/PGXDPy.jpg)
 
-![termux2](https://ifh.cc/g/DQQBbq.jpg)
+<center>
+  <img alt="termux-img" src="https://user-images.githubusercontent.com/94548914/174541495-baefdf3f-f67e-4f9f-8152-90a2fe682bb1.jpeg" widht="50%">
+</center>
+<center>
+  <img alt="termux-pwd-ls" src="https://user-images.githubusercontent.com/94548914/174541610-f60874b4-9a80-4ca6-a637-811634aceedc.jpeg" widht="50%">
+</center>
+
 pwd, ls 정상 작동
 <br>
-설치가 잘 되었으면 termux의 활용을 위해서 로컬 저장소 접근권을 얻는다.  
+설치가 잘 되었으면 termux의 활용을 위해서 로컬 저장소 접근권을 설정해줘야한다.
 ```bash
 termux-setup-storage
 ```  
- 
-![storage 접근 불가](https://ifh.cc/g/Mdz4jb.jpg)  
- 
-처음 termux에서 ls 명령어를 치면 저장소에 접근할 수 없어서 아무것도 뜨지 않는다.  
-![storage 접근권 생김](https://ifh.cc/g/O9JrZA.jpg)  
+<center>
+  <img alt="termux-storage-setting" src="https://user-images.githubusercontent.com/94548914/174541767-0097297f-656a-423c-8ceb-4dde3c14aadb.jpeg" widht="50%">
+</center>
+
