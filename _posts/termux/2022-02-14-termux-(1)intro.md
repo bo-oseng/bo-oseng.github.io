@@ -30,17 +30,17 @@ Fdorid 마켓에서 termux를 찾아 다운 받은뒤 단순히 설치하고 실
 <center>
   <img alt="termux-img" src="https://user-images.githubusercontent.com/94548914/174541495-baefdf3f-f67e-4f9f-8152-90a2fe682bb1.jpeg" widht="50%">
 </center>
-<center>
-  <img alt="termux-pwd-ls" src="https://user-images.githubusercontent.com/94548914/174541610-f60874b4-9a80-4ca6-a637-811634aceedc.jpeg" widht="50%">
-</center>
-
-pwd, ls 정상 작동
-<br>
 설치가 잘 되었으면 termux의 활용을 위해서 로컬 저장소 접근권을 설정해줘야한다.
 ```bash
 termux-setup-storage
 ```  
 <center>
   <img alt="termux-storage-setting" src="https://user-images.githubusercontent.com/94548914/174541767-0097297f-656a-423c-8ceb-4dde3c14aadb.jpeg" widht="50%">
+</center>
+
+
+잘 설정 되었는지 pwd와 ls로 확인
+<center>
+  <img alt="termux-pwd-ls" src="https://user-images.githubusercontent.com/94548914/174541610-f60874b4-9a80-4ca6-a637-811634aceedc.jpeg" widht="50%">
 </center>
 
