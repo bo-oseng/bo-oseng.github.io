@@ -13,6 +13,11 @@ published: ture
 ---
 
 # Code-server란
+> 배경  
+> 
+> 현역 복무중 프로그래밍이 너무 하고싶었다. 컴퓨터를 접하는게 쉽지가 않아 다른 방법을 찾다보니 이 프로젝트를 알게 되었고 소개해보려고한다.
+> 먼저 [termux](https://bo-oseng.github.io/termux/termux-(1)intro/)의 설치가 필요하다.  
+
 [code-server](https://github.com/coder/code-server)<br>
 Visual Studio Code는 대부분 타입스크립트로 짜여진 프로그램이다. 이를 활용해서 VScode를 어느 환경에서든 웹앱으로서 실행할 수 있게 해주는 오픈소스 프로젝트이다.
 
@@ -24,11 +29,11 @@ Visual Studio Code는 대부분 타입스크립트로 짜여진 프로그램이�
 
 
 
-하지만 code-server를 termux에서 설치하고자 하면 root 권한이 없어 오류가 생긴다. 안드로이드에 직접 루트권한을 가진 터미널이 아닌 termux위에서 동작하는 터미널이기 떄문이다. 이를 우회하기 위해서 chroot를 활용해야한다.
+하지만  termux에서 code-server를 바로 설치하고자 하면 root 권한이 없어 오류가 생긴다. 안드로이드에 직접 루트권한을 가진 터미널이 아닌 termux위에서 동작하는 터미널이기 떄문이다. 이를 우회하기 위해서 chroot를 활용해야한다.
 
 
 ## chroot란
-chroot란 Change Root Directory의 줄임말로 현재 실행 중인 프로세스와 차일드 프로세스 그룹에서 루트 디렉터리를 변경하는 작업이다. 루트의 하위 디렉터리와 상위를 분리시켜 하위 디렉터리에서 더 이상 상위 디렉터리로 가지 못하게 격리하고 하위 디렉터리를 새로운 루트로 하는 프로세스를 만들 수 있다.([chroot 더 자세한 설명](https://ko.wikipedia.org/wiki/Chroot))
+chroot란 Change Root Directory의 줄임말로 현재 실행 중인 프로세스에서 루트 디렉터리를 변경하는 작업이다. 루트의 하위 디렉터리와 상위를 분리시켜 하위 디렉터리에서 더 이상 상위 디렉터리로 가지 못하게 격리하고 하위 디렉터리를 새로운 루트로 하는 프로세스를 만들 수 있다.([chroot 더 자세한 설명](https://ko.wikipedia.org/wiki/Chroot))
 <center>
   <img at="chroot-tree" src="https://user-images.githubusercontent.com/94548914/174535110-2a245c0c-ab41-49a3-84ff-3e17e1c32467.png" width="50%">
 </center>
