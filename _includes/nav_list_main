@@ -67,6 +67,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <!--2차 분류-->
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "OS" %}
+                        <li><a href="/categories/OS" class="">OS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
       <li>
         <!--1차 분류-->
