@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 운영체제의 역할과 구조
+title: OS - (1) 운영체제의 역할과 구조
 
 category:
   - OS
