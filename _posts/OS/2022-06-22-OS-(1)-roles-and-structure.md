@@ -69,7 +69,9 @@ toc: true
 <center>
   <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJXwNG%2Fbtqw787Kgfe%2FvmrkitiEEjDI8G9w2mFzUk%2Fimg.png" width="50%">  
 </center>
-출처: Operating System Concepts 10th - SILBERSCHARTZ  
+<center>
+  <p>출처: Operating System Concepts 10th - SILBERSCHARTZ</p>
+</center>
 
 #### modebit
 시스템 콜이 작동될 때 modebit을 참고해 유저 모드와 커널 모드를 구분합니다. 그 값이 1이라면 유저모드 0이라면 커널모드 나타냅니다.
