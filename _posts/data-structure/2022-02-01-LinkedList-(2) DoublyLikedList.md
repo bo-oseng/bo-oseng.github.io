@@ -21,212 +21,111 @@ toc: true
 
 
 ```python
-from typing import Any,Type
+from typing import Any, Type
 
-# 노드 클래스 선언
 class Node:
-     
-    def __init__(self,data:Any,next:Node=None,prev:Node=None)->None:
-         
-         # 전방 탐색을 위해 prev필드 추가
+    def __init__(self, data: Any, prev = None, next = None) -> None:
         self.data = data
-        self.next = next
         self.prev = prev
+        self.next = next
 
- # 이중연결리스트 클래스 선언
+
 class DoublyLinkedList:
-
-     # 시작 head, 현재 cur, 갯수 no 선언
-    def __init__(self):
-
-        self.head = None
-        self.cur = None
+    def __init__(self) -> None:
         self.no = 0
+        self.head = self.tail = None
+        self.cur = None
 
-
-     # dunder 함수로 len구현
     def __len__(self):
-
         return self.no
 
-
-     # 원하는 데이터를 찾는 함수
-    def search(self,data:Any)->int:
-
-         # data의 인덱스를 나타낼 변수
-        cnt = 0
-        
-         # head 부터 시작해서 노드가 none이 될때까지 next
-        p = self.head
-        while p is not None:
-
-            # 스캔중 data 발견시 return cnt 
-            if p.data == data:
-                self.cur = p    
-                return cnt
-            p = p.next
-            cnt+=1
-   
-         # 검색 실패시 return -1
-        return -1
-
-
-     # 머리에 노드추가 함수
-    def add_first(self,data:Any)->None:
-        
-        self.head = Node(data,self.head)
-        self.no+=1
-  
-         # head.next가 존재 할시 prev가 self.head를 가르키도록 할당
-        if self.head.next is not None:
-            self.head.next.prev = self.head
-
-
-     # 꼬리 노드추가 함수 
-    def add_last(self,data:Any)->None:
-
-         # 리스트가 비었다면 머리추가와 동일
-        if self.head is None:
-            self.add_first(data)
-
+    def add_first(self, data: Any):
+        self.no += 1
+        if self.head is not None:
+            ptr = self.head
+            self.head = self.cur = Node(data)
+            self.head.next = ptr
+            ptr.prev = self.head
         else:
+            self.head = Node(data)
+            self.tail = self.head
 
-             # p.next가 None 즉 마지막 노드까지 스캔
-            p = self.head
-            while p.next is not None:
-                p = p.next
+    def add_last(self, data: Any):
+        self.no += 1
+        if self.tail is not None:
+            ptr = self.tail
+            self.tail = self.cur = Node(data)
+            self.tail.prev = ptr
+            ptr.next = self.tail
+        else:
+            self.tail = Node(data)
+            self.head = self.tail
 
-             # 마지막노드 p의 next에 data를 data로 prev를 p로 갖는 노드 추가
-             # cur, no 업데이트
-            p.next = self.cur = Node(data,None,p)
-            self.no+=1
-
-
-     # 머리노드 삭제 함수
-    def remove_first(self)->Any:
-
-         # 리스트가 비었다면 삭제 실패 False 반환
+    def remove_first(self):
         if self.head is None:
             return False
-
-         # head가 None이 아니라면 head를 삭제
-         # cur, no 업데이트 후 True 반환            
         else:
             self.head = self.cur = self.head.next
             self.head.prev = None
-            self.no-=1
+            self.no -= 1
             return True
 
-
-     # 꼬리노드 삭제 함수
-    def remove_last(self)->bool:
-
-         # 리스트가 비었다면 false 반환
-        if self.head is None:
+    def remove_last(self):
+        if self.tail is None:
             return False
-
-         # p.next가 none 즉 마지막 노드까지 스캔
-         # 단. pre에 이전 p를 저장하며 진행
         else:
-            p = self.head
-            pre = self.head
-            while p.next is not None:
-                pre = p
-                p = p.next
-    
-             # 마지막 노드 p의 전 노드 pre의 next를 None으로 업데이트
-            pre.next = None
-
-             # p의 prev에 None 할당
-            p.prev = None
-            self.cur = pre
-            self.no-=1
+            self.tail = self.cur = self.tail.prev
+            self.tail.next = None
+            self.no -= 1
             return True
 
-     # 노드x를 삭제하는 함수
-    def remove(self,x:Node)->None:
-  
-         # 리스트가 비었다면 false 반환  
-        if self.head is None:
-            return False
-        else:
-            p = self.head
-            pre = self.head
+    def print(self):
+        ptr = self.head
+        while ptr is not None:
+            print(f'{ptr.data} ->')
+            ptr = ptr.next
 
-             # p의 next와 x가 일치할때 까지 진행
-            while p.next is not x:
-                pre = p
-                p = p.next
-
-                 # 마지막 노드까지 없다면 false 반환
-                if p is None:
-                    return False
-
-             # p의 next가 x이므로 p.next에 x의 next 대입
-            p.next = x.next
-
-             # p의 next가 None이 아니라면 prev에 pre 할당
-            if p.next is not None:
-                p.next.prev = pre
-            self.cur = p
-            self.no-=1
-
-    def remove_cur_node(self)->None:
-        self.remove(self.cur)
-
-    def print_cur_node(self)->None:
-
-        if self.cur is None: print('None')
-        else: print(self.cur.data)
-
-    def print(self)->None:
-       
-        p=self.head
-        while p is not None:
-            print(p.data)
-            p=p.next
-
-    def print_reverse(self)->None:
-        
-        p=self.head
-        while p.next is not None:
-            p=p.next
-        while p is not None:
-            print(p.data)
-            p=p.prev
-
-    def clear(self)->None:
-
-        while self.head is not None:
-            self.remove_first()
-        self.cur = None
-        self.no
+    def reverse_print(self):
+        ptr = self.tail
+        while ptr is not None:
+            print(f'{ptr.data} ->')
+            ptr = ptr.prev
 
 
-x=DoublyLinkedList()
-x.add_first(1)
-x.add_first(2)
-x.add_first(3)
-x.add_last(4)
-x.add_last(5)
-x.search(1)
-x.remove_cur_node()
-x.add_last(9)
-x.add_last(10)
-x.remove_last()
-x.add_first(8)
-x.add_first(7)
-x.remove_first()
 
-x.print()
-print(f'len:{len(x)}')
+dlst = DoublyLinkedList()
+dlst.add_first(2)
+dlst.add_first(3)
+dlst.add_first(4)
+dlst.add_first(5)
+dlst.add_last(6)
+dlst.add_last(7)
+dlst.add_last(8)
+dlst.add_last(9)
+
+dlst.remove_first()
+dlst.remove_last()
+dlst.reverse_print()
+print()
+dlst.print()
+print()
+print(len(dlst))
+
 ```
 
-    8
-    3
-    2
-    4
-    5
-    9
-    len:6
+    8 ->
+    7 ->
+    6 ->
+    2 ->
+    3 ->
+    4 ->
+    
+    4 ->
+    3 ->
+    2 ->
+    6 ->
+    7 ->
+    8 ->
+    
+    6
 
