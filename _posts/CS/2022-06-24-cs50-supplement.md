@@ -4,9 +4,9 @@ layout: single
 title: CS50 2019 강의보충
 
 categories:
-  - CS50
+  - CS
 
-tag: [C, C언어, 포인터, 배열포인터, 포인터 배열, 이중포인터]
+tag: [C, C언어, 포인터, 배열포인터, 포인터 배열, 이중포인터, CS50]
 
 toc: true
 
