@@ -16,18 +16,20 @@
             <!--2차 분류-->
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    {% if category[0] == "BOJ" %}
+                        <li><a href="/categories/boj" class="">BOJ ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+            <!--2차 분류-->
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "BOJ" %}
-                        <li><a href="/categories/boj" class="">백준 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Programmers" %}
+                        <li><a href="/categories/programmers" class="">Programmers ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+
       </li>
       <li>
         <!--1차 분류-->
@@ -55,15 +57,24 @@
             <!--2차 분류-->
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Data-structure" %}
-                        <li><a href="/categories/data-structure" class="">자료구조 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Algorithm" %}
+                        <li><a href="/categories/algorithm" class="">Algorithm ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+            <!--2차 분류-->
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "CS50" %}
                         <li><a href="/categories/CS50" class="">CS50 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <!--2차 분류-->
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Data-structure" %}
+                        <li><a href="/categories/data-structure" class="">Data Structure ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
