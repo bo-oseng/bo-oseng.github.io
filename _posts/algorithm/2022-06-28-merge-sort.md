@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 
+title: 병합정렬 직접 구현해보기 with python
 categories:
   - Algorithm
 
