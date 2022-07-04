@@ -88,8 +88,8 @@ toc: true
 ```python
 def getSum(a: int, b: int) -> int:
 
-    MASK = 0xFFFFFFFF
-    INT_MAX = 0x7FFFFFFF
+    MASK = 0xFFFFFFFF // 비트마스킹에 사용한 비트마스크
+    INT_MAX = 0x7FFFFFFF // 양의정수가 가질 수 있는 최댓값, 2의보수에서는 이값을 넘으면 음수로 표현된다.
     
     a_bin = bin(a & MASK)[2:].zfill(32) // 입력으로 주어진 a, b를 비트마스킹을 통해 2의보수로 표현 
     b_bin = bin(b & MASK)[2:].zfill(32) // 이후 bin()은 2진수를 문자열로 나타내며 0b로 시작하므로 [2:]로 슬라이싱
@@ -117,8 +117,9 @@ def getSum(a: int, b: int) -> int:
 
     result = int(('').join(result[::-1]), 2) & MASK
 
+    // 음수처리, result > INF_MAX라면 음수를 나타낸다.
     if result > INT_MAX:
-        result = ~(result ^ MASK) // 연산을 마친 2의보수를 파이썬 형식으로 변환
+        result = ~(result ^ MASK) // 음수 2의보수를 파이썬 형식으로 변환 
 
     return result
 
