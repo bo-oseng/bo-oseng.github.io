@@ -118,8 +118,9 @@ def getSum(a: int, b: int) -> int:
     result = int(('').join(result[::-1]), 2) & MASK
 
     // 음수처리, result > INF_MAX라면 음수를 나타낸다.
+    // 음수 2의보수를 파이썬 형식으로 변환 (비트반전 연산과 2의보수 관계때문에 ~연산만으로 계산이 가능하다.)
     if result > INT_MAX:
-        result = ~(result ^ MASK) // 음수 2의보수를 파이썬 형식으로 변환 
+        result = ~(result ^ MASK) 
 
     return result
 
@@ -128,3 +129,6 @@ print(getSum(-3, -5))
 ```python
 >> -8
 ```
+
++ 참고: [비트반전 연산과 2의보수 관계](http://127.0.0.1:4000/cs/complement/#%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%97%90%EC%84%9C%EC%9D%98-%EC%9D%8C%EC%88%98
+)
