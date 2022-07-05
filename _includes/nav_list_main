@@ -94,14 +94,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Python" %}
-                        <li><a href="/categories/python" class="">termux ({{category[1].size}})</a></li>
+                        <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Termux" %}
-                        <li><a href="/categories/termux" class="">termux ({{category[1].size}})</a></li>
+                        <li><a href="/categories/termux" class="">Termux ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
