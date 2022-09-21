@@ -1,5 +1,5 @@
 ---
-title: "바닐라JS"
+title: "VanillaJS"
 
 layout: archive
 
