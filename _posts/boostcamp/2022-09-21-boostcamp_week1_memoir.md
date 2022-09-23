@@ -86,19 +86,19 @@ toc: true
   + 비선형 모델인 neural network에 대해 학습했다. 
 
 
-      $$ \vec{o}_{({n}\times{p})} ={\vec{x}_{({n}\times{d})}}\times{ \mathbb{W}_{({d}\times{p})}} + \vec{b}_{({n}\times{p})} $$
+  $$ \vec{o}_{({n}\times{p})} ={\vec{x}_{({n}\times{d})}}\times{ \mathbb{W}_{({d}\times{p})}} + \vec{b}_{({n}\times{p})} $$
+  + 위 식은 지금까지 다뤄왔던 선형모델이고 그려보면 다음과 같다.
 
-    + 위 식은 지금까지 다뤄왔던 선형모델이고 그려보면 다음과 같다.
 
-      <img src="https://user-images.githubusercontent.com/94548914/191547199-77cd864b-4c9c-4374-a62b-c5f6d1d7af77.png">
+  <img src="https://user-images.githubusercontent.com/94548914/191547199-77cd864b-4c9c-4374-a62b-c5f6d1d7af77.png">
 
     + d 개의 변수로 p개의 선형모델을 만들어서 p개의 잠재변수를 설명하는 모델이라고 할 수 있다.
     + 화살표들의 개수가 총 (d x p)개이고 이는 가중치 행렬의 성분수와 같다.
     + 기존까지 다뤄왔던 선형모델의 각각에 비선형 함수를 합성한다. 
-      $$ \mathbb{H} = (\sigma(z_1), \sigma(z_1), ..., \sigma(z_n)) $$
-      $$ \sigma(\vec{z}) = \sigma(\mathbb{W}\vec{x} + \vec{b}) $$
+  $$ \mathbb{H} = (\sigma(z_1), \sigma(z_1), ..., \sigma(z_n)) $$
+  $$ \sigma(\vec{z}) = \sigma(\mathbb{W}\vec{x} + \vec{b}) $$
     + 위 식을 모델로 그려보면 다음과 같다.
-    <img src="https://user-images.githubusercontent.com/94548914/191549251-1f83886a-c1d0-4f34-b803-69e78c35d3e8.png">
+<img src="https://user-images.githubusercontent.com/94548914/191549251-1f83886a-c1d0-4f34-b803-69e78c35d3e8.png">
     + 각각의 z<sub>1</sub>, z<sub>2</sub>, ..., z<sub>n</sub>에 각각 비선형 함수를 합성해야한다.
     + z 벡터에 비선형함수를 합성해 새로만든 잠재벡터를 Hidden Vector라고도 하고 H 벡터라한다.
     + 비선형 모델을 합성하므로서 선형모델만 다룰 수 있던 한계를 극복할 수 있다.
@@ -152,9 +152,9 @@ $$\frac{\partial \xi}{\partial W_{rec}} =(\frac{\partial \xi}{\partial y} \frac{
   + 주어진 데이터에서 실증적으로 추정한 분포는 원래의 분포와 다를 수 있다. 하지만 원래의 분포에 근사할 수 있는 방벙들이 존재한다.
   + 분류문제는 데이터 x로부터 추출된 패턴𝜙(x)와 가중치 행렬 W을 통해 조건부 확률을 계산한다.(softmax(W𝜙(x) + b))
   + 회귀문제의 경우 밀도함수로 추정을 해야 하므로 조건부 기댓값을 추정한다.
-      $$ \mathbb{E}\left[  y| x\right] = \int _{y}yP\left(  y| x\right) \cdot dy \left( 1\right) $$
+$$ \mathbb{E}\left[  y| x\right] = \int _{y}yP\left(  y| x\right) \cdot dy \left( 1\right) $$
   + 조건부 기댓값은 아래식을 최소화 하는 함수와 일치하는게 수학적으로 증명되었다. (나중에 더 찾아봐야겠다.)  
-      $$ \mathbb{E}\left\| y-f\left( x\right) \right\| _{2} $$    
+$$ \mathbb{E}\left\| y-f\left( x\right) \right\| _{2} $$    
   + 통계적 모형에서 목적에 따라 추정량이 달라질 수 있다.
   + 평균, 분산, 첨도, 공분산에 대해 배웠다.
   + 몬테 카를로 샘플링에 알아봤다.
@@ -205,9 +205,9 @@ $$  ⇒ \log L\left( \theta ;\mathbb{X}\right) =\log \prod ^{n}_{i=1}P\left(  x_
 + 베이즈 통계학
   + 데이터가 새롭게 추갈될 때 정보를 어떻게 업데이트 할 것인가?
   + 베이즈 정리를 활용해 가능하다.
-  $$P\left(  B| A\right) =\dfrac{P\left( B\cap A\right) }{P\left( A\right) } = P\left( B\right) \cdot \dfrac{P\left(  A| B\right) }{P\left( A\right) } $$
-  + A라는 새로운 정보가 주어졌을 때 P(B)로 부터 P(B|A)를 계산할 수 있다.
-  $$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \dfrac{P\left(  A| B\right)_{가능도}  }{P\left( A\right)_{Evidence}  } $$
+$$P\left(  B| A\right) =\dfrac{P\left( B\cap A\right) }{P\left( A\right) } = P\left( B\right) \cdot \dfrac{P\left(  A| B\right) }{P\left( A\right) } $$
+  + A라는 새로운 정보가 주어졌을 때 P(B)로 부터 P(B\|A)를 계산할 수 있다.
+$$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \dfrac{P\left(  A| B\right)_{가능도}  }{P\left( A\right)_{Evidence}  } $$
   + 베이즈 정리를 통해 계싼한 사후확률을 다시 사전확률로 사용하여 갱신된 사후확률을 계산할 수 있다.
   + 조건부 확률로 인과관계를 함부로 추론해서는 안되고, 인과관계를 알아내기 위해서는 중첩요인(Confounding factor)의 효과를 제거 해야한다.
 <br>
@@ -217,26 +217,33 @@ $$  ⇒ \log L\left( \theta ;\mathbb{X}\right) =\log \prod ^{n}_{i=1}P\left(  x_
 
 + Convolution Neural Network (CNN)
   + Convolution 연산은 커널을 입력벡터 상에서 움직여가면서 선형모델과 합성되는 구조이다.
-    + 커널은 정의역 내에서 움직여도 변하지 않는다. (Translation invariant)
-    + 커널은 주어진 신호에 국소적으로 적용된다.
-    + [커널 실습 해보기](https://setosa.io/ev/image-kernels/)
     $$ \left[ f\ast g\right]\left( x\right) =\int _{\mathbb{R} ^{d}}f\left( z\right) g\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ g\ast f\right]\left( x\right)$$
 
     $$ \left[ f\ast g\right]\left( x\right) =\sum _{a\in \mathbb{Z} ^{d}}f\left( z\right) g\left( x-z\right) \cdot dz = \sum _{a\in \mathbb{Z} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ g\ast f\right]\left( x\right)$$
+    + 커널은 정의역 내에서 움직여도 변하지 않는다. (Translation invariant)
+    + 커널은 주어진 신호에 국소적으로 적용된다.
+    + [커널 실습 해보기](https://setosa.io/ev/image-kernels/)
   + 입력 크기를 (H, W), 커널 크기를 (K<sub>H</sub>, K<sub>W</sub>), 출력 크기를 (O<sub>H</sub>, O<sub>W</sub>)라 하면 출력 크기는 다음과 같이 계산합니다.
-      $$O_{H}=H-K_{H}+1$$
-      $$O_{W}=W-K_{W}+1$$
+    <br>
+
+    $$ O_{H}=H-K_{H}+1 $$
+    <br>
+    
+    $$ O_{W}=W-K_{W}+1 $$
+
   + 채널이 여러개면 convolutuion을 채널개수 만큼 적용한다.
     + 출력이 한개면 커널의 채널수와 입력의 채널수가 같아야한다.
     + 출력을 여러개 받고 싶다면 채널의 수를 늘리면 된다.
   + CONV 연산의 역전파
     + CONV는 역전파를 계산할 떄도 CONV 연산이 나오게 된다.
-      $$ \dfrac{\partial }{\partial x}\left[ f\ast g\right]\left( x\right) =\dfrac{\partial }{\partial x}\int _{\mathbb{R} ^{d}}f\left( z\right) \dfrac{\partial g}{\partial x}\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ f\ast g'\right]\left( x\right)$$
+  $$ \dfrac{\partial }{\partial x}\left[ f\ast g\right]\left( x\right) =\dfrac{\partial }{\partial x}\int _{\mathbb{R} ^{d}}f\left( z\right) \dfrac{\partial g}{\partial x}\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ f\ast g'\right]\left( x\right)$$
     + 그림을 통해 자세히 살펴보자.
 
 <center>
   <img src="https://user-images.githubusercontent.com/94548914/191957662-b99446b1-6865-4da8-ac4a-a5aef85f70a5.png">
-
+</center>    
+CNN 모델에서 역전파를 고려해보자.
+<center>
   <img src="https://user-images.githubusercontent.com/94548914/191958225-de314746-cdd0-4936-a081-3235f9b010f3.png">
 </center>
 
