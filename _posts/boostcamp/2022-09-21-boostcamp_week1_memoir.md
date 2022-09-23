@@ -1,9 +1,11 @@
 ---
 layout: single
 
-title: 부스트캠프에 AI 1일차 ~ 3일차 회고록  
+title: 부스트캠프에 AI 1주차차 회고록  
 categories:
   - Boostcamp
+
+published: False
 
 tag: [Boostcamp, 부스트캠프, ]
 
