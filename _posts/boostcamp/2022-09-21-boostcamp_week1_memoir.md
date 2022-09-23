@@ -182,6 +182,16 @@ $$S^{2}=\dfrac{1}{N-1}\sum ^{N}_{i=1}\left( x_{i}-\overline{x}\right) ^{2}$$
     + Maximum Likelihood Estimations (MLE) 최대 가능도 추정법이 있다.
 $$ \widehat{\theta }_{MLE}=argmax L\left( \theta ;x\right) =argmaxP\left( \left| x\right| \theta \right)  $$
 
++ Maximum Likelihood Estimations (MLE)
+  + 이론적으로 가장 가능성이 높은 모수를 추정 하는방법 중 하나이다.
+  + 가능돌 함수는 θ를 따르는 분포가 X를 관찰할 가능성을 뜻하지만 확률로 해석하면 안된다.
+  + 데이터 집합 X가 독립적으로 추출 되었을 경우  로그 가능도를 최적화하는게 유리히다.
+    + 곱을 덧셈으로 바꿀 수 있어 연산이 간단해진
+    + 미분연산의 시간복잡도가 O(n^2)에서 O(n)으로 줄어든다.
+$$ L\left( \theta ;\mathbb{X}\right) =\prod ^{n}_{i=1}P\left(  x_{i}| \theta \right)  $$
+$$  ⇒ \log L\left( \theta ;\mathbb{X}\right) =\log \prod ^{n}_{i=1}P\left(  x_{i}| \theta \right)  $$
+
+
 <br>
 <br>
 <br>
@@ -220,3 +230,32 @@ $$ \widehat{\theta }_{MLE}=argmax L\left( \theta ;x\right) =argmaxP\left( \left|
   + CONV 연산의 역전파
     + CONV는 역전파를 계산할 떄도 CONV 연산이 나오게 된다.
       $$ \dfrac{\partial }{\partial x}\left[ f\ast g\right]\left( x\right) =\dfrac{\partial }{\partial x}\int _{\mathbb{R} ^{d}}f\left( z\right) \dfrac{\partial g}{\partial x}\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ f\ast g'\right]\left( x\right)$$
+    + 그림을 통해 자세히 살펴보자.
+
+<center>
+  <img src="https://user-images.githubusercontent.com/94548914/191957662-b99446b1-6865-4da8-ac4a-a5aef85f70a5.png">
+
+  <img src="https://user-images.githubusercontent.com/94548914/191958225-de314746-cdd0-4936-a081-3235f9b010f3.png">
+</center>
+
+
+ O<sub>1</sub>은 x<sub>3</sub>에  W<sub>3</sub>를 통해 Grad를 전달한다.   
+
+ O<sub>2</sub>은 x<sub>3</sub>에  W<sub>2</sub>를 통해 Grad를 전달한다.   
+
+ O<sub>3</sub>은 x<sub>3</sub>에  W<sub>1</sub>를 통해 Grad를 전달한다.
+
+
+<center>
+  <img src="https://user-images.githubusercontent.com/94548914/191958469-5601a9cb-061f-4fbd-8331-1e0d3fa854fa.png">
+</center>
+
+O<sub>3</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>3</sub>가  w<sub>1</sub>에 배정된다.   
+O<sub>2</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>2</sub>가  w<sub>2</sub>에 배정된다.   
+O<sub>1</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>1</sub>가  w<sub>3</sub>에 배정된다.
+
+<center>
+  <img src="https://user-images.githubusercontent.com/94548914/191958639-70bd6d78-5c2b-4846-aa4c-9ab7e7fd2742.png">
+</center>
+
+이 과정을 모든 입력 x에 대해 반복하면 결국 convolution 연산의 꼴이 된다.
