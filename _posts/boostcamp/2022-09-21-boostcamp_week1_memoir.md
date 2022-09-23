@@ -126,6 +126,7 @@ toc: true
   <center>
     <br/>
     <img src = "https://wikidocs.net/images/page/22886/rnn_image2_ver3.PNG"/>
+    <div style="color:gray"> 출처: https://wikidocs.net/book/2155</div>
   </center>
   
    +  RNN 모델의 역전파 즉 BPTT를 구하기 위해 수식을 전개 해봤다.(생각보다 어려워서 나중에 다시 한번 해봐야겠다.)
