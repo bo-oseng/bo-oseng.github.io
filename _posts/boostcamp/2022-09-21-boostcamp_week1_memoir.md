@@ -30,7 +30,7 @@ toc: true
 + 심화과제에서 Gradient Descent를 학습하면서 sympy로 다항식을 세우고 미분하는 법에 대해 배웠다.
 
 + Gradient Descent를 직접 알고리즘으로 구현하면서 더 깊게 이해하게 되었다.   
-  <br>
+<br>
 <br>
 <br>
 <br>
@@ -225,12 +225,9 @@ $$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \
     + 커널은 주어진 신호에 국소적으로 적용된다.
     + [커널 실습 해보기](https://setosa.io/ev/image-kernels/)
   + 입력 크기를 (H, W), 커널 크기를 (K<sub>H</sub>, K<sub>W</sub>), 출력 크기를 (O<sub>H</sub>, O<sub>W</sub>)라 하면 출력 크기는 다음과 같이 계산합니다.
-    <br>
 
-    $$ O_{H}=H-K_{H}+1 $$
-    <br>
-    
-    $$ O_{W}=W-K_{W}+1 $$
+      $$ O_{H}=H-K_{H}+1 \\ $$
+      $$ O_{W}=W-K_{W}+1 $$
 
   + 채널이 여러개면 convolutuion을 채널개수 만큼 적용한다.
     + 출력이 한개면 커널의 채널수와 입력의 채널수가 같아야한다.
@@ -240,32 +237,32 @@ $$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \
   $$ \dfrac{\partial }{\partial x}\left[ f\ast g\right]\left( x\right) =\dfrac{\partial }{\partial x}\int _{\mathbb{R} ^{d}}f\left( z\right) \dfrac{\partial g}{\partial x}\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ f\ast g'\right]\left( x\right)$$
     + 그림을 통해 자세히 살펴보자.
 
-<center>
-  <img src="https://user-images.githubusercontent.com/94548914/191957662-b99446b1-6865-4da8-ac4a-a5aef85f70a5.png">
-</center>    
-CNN 모델에서 역전파를 고려해보자.
-<center>
-  <img src="https://user-images.githubusercontent.com/94548914/191958225-de314746-cdd0-4936-a081-3235f9b010f3.png">
-</center>
+      <center>
+        <img src="https://user-images.githubusercontent.com/94548914/191957662-b99446b1-6865-4da8-ac4a-a5aef85f70a5.png" >
+
+      CNN 모델에서 역전파를 고려해보자.
+      <center>
+        <img src="https://user-images.githubusercontent.com/94548914/191958225-de314746-cdd0-4936-a081-3235f9b010f3.png">
+      </center>
 
 
- O<sub>1</sub>은 x<sub>3</sub>에  W<sub>3</sub>를 통해 Grad를 전달한다.   
+      O<sub>1</sub>은 x<sub>3</sub>에  W<sub>3</sub>를 통해 Grad를 전달한다.   
 
- O<sub>2</sub>은 x<sub>3</sub>에  W<sub>2</sub>를 통해 Grad를 전달한다.   
+      O<sub>2</sub>은 x<sub>3</sub>에  W<sub>2</sub>를 통해 Grad를 전달한다.   
 
- O<sub>3</sub>은 x<sub>3</sub>에  W<sub>1</sub>를 통해 Grad를 전달한다.
+      O<sub>3</sub>은 x<sub>3</sub>에  W<sub>1</sub>를 통해 Grad를 전달한다.
 
 
-<center>
-  <img src="https://user-images.githubusercontent.com/94548914/191958469-5601a9cb-061f-4fbd-8331-1e0d3fa854fa.png">
-</center>
+      <center>
+        <img src="https://user-images.githubusercontent.com/94548914/191958469-5601a9cb-061f-4fbd-8331-1e0d3fa854fa.png">
+      </center>
 
-O<sub>3</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>3</sub>가  w<sub>1</sub>에 배정된다.   
-O<sub>2</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>2</sub>가  w<sub>2</sub>에 배정된다.   
-O<sub>1</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>1</sub>가  w<sub>3</sub>에 배정된다.
+      O<sub>3</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>3</sub>가  w<sub>1</sub>에 배정된다.<br> 
+      O<sub>2</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>2</sub>가  w<sub>2</sub>에 배정된다.<br> 
+      O<sub>1</sub> 가 x<sub>3</sub>에 대해서 w<sub>1</sub>을 통해 Grad을 전달 했기 떄문에 w<sub>1</sub>을 통해서 전달 되었던 Grad였던 δ<sub>1</sub>가  w<sub>3</sub>에 배정된다.<br> 
 
-<center>
-  <img src="https://user-images.githubusercontent.com/94548914/191958639-70bd6d78-5c2b-4846-aa4c-9ab7e7fd2742.png">
-</center>
+      <center>
+        <img src="https://user-images.githubusercontent.com/94548914/191958639-70bd6d78-5c2b-4846-aa4c-9ab7e7fd2742.png">
+      </center>
 
-이 과정을 모든 입력 x에 대해 반복하면 결국 convolution 연산의 꼴이 된다.
+      이 과정을 모든 입력 x에 대해 반복하면 결국 convolution 연산의 꼴이 된다.
