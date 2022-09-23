@@ -194,6 +194,8 @@ $$  ⇒ \log L\left( \theta ;\mathbb{X}\right) =\log \prod ^{n}_{i=1}P\left(  x_
 <br>
 
 + 마스터 클래스를 진행했다. 현업에 계신 교수님의 대부분이 궁금해 할 질문에 대해 답변해주셨다.
+
+
 <br>
 <br>
 <br>
