@@ -180,7 +180,7 @@ $$S^{2}=\dfrac{1}{N-1}\sum ^{N}_{i=1}\left( x_{i}-\overline{x}\right) ^{2}$$
     + 기계적으로 확률분포를 가정하지 않고 데이터를 생성하는 원리를 먼저 고려해야한다.
     + 모수를 추정한 후엔 반드시 검정을 해야한다.
     + Maximum Likelihood Estimations (MLE) 최대 가능도 추정법이 있다.
-$$ \widehat{\theta }_{MLE}=\argmax L\left( \theta ;x\right) =argmaxP\left( \left| x\right| \theta \right)  $$
+$$ \widehat{\theta }_{MLE}=argmax L\left( \theta ;x\right) =argmaxP\left( \left| x\right| \theta \right)  $$
 
 <br>
 <br>
