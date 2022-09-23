@@ -1,11 +1,14 @@
 ---
 layout: single
 
-title: 부스트캠프에 합격했다.
+title: 부스트캠프에 합격했다
+
+published: False
+
 categories:
   - Boostcamp
 
-tag: []
+tag: [Boostcamp, 부스트캠프, 온보딩키트]
 
 toc: true
 
