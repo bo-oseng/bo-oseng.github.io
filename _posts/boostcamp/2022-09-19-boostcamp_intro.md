@@ -3,8 +3,6 @@ layout: single
 
 title: 부스트캠프에 합격했다
 
-published: False
-
 categories:
   - Boostcamp
 
