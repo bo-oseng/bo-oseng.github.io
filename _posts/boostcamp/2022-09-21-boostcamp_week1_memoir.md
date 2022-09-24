@@ -41,12 +41,12 @@ toc: true
 
 + 경사하강법에 매운맛을 수강했다. 
 
-     $$ \left\|y - X \beta\right\|$$
+     $$\\  \left\|y - X \beta\right\|$$
 + 경사하강법에 매운맛을 수강했다. 
 
   + 위와 같은 손실 함수의 L2_norm은 제곱 합의 평균 Mean Square Error로 접근하는 게 미분할 때 더 쉽게 계산할 수 있다.(제곱근 안의 수가 0에 가까워지는 방향과 MSE 자체가 0에 가까워지는 방향은 같다.)
 
-    $$ \nabla_\beta\left\|y - X \beta\right\| = \frac{\partial{MSE}}{\partial\beta} =\delta_\beta\{\frac1n \sum_{i=1}^n(y_i - \sum_{j=1}^dX_{ij}\beta_{j})^2\}$$
+    $$\\  \nabla_\beta\left\|y - X \beta\right\| = \frac{\partial{MSE}}{\partial\beta} =\delta_\beta\{\frac1n \sum_{i=1}^n(y_i - \sum_{j=1}^dX_{ij}\beta_{j})^2\}$$
 
     $$ = -\frac{2}{n}X^{T}(y-X\beta^{(t)}) $$
 
@@ -86,7 +86,7 @@ toc: true
   + 비선형 모델인 neural network에 대해 학습했다. 
 
 
-  $$ \vec{o}_{({n}\times{p})} ={\vec{x}_{({n}\times{d})}}\times{ \mathbb{W}_{({d}\times{p})}} + \vec{b}_{({n}\times{p})} $$
+  $$\\  \vec{o}_{({n}\times{p})} ={\vec{x}_{({n}\times{d})}}\times{ \mathbb{W}_{({d}\times{p})}} + \vec{b}_{({n}\times{p})} $$
   + 위 식은 지금까지 다뤄왔던 선형모델이고 그려보면 다음과 같다.
 
 
@@ -95,7 +95,7 @@ toc: true
     + d 개의 변수로 p 개의 선형모델을 만들어서 p개의 잠재변수를 설명하는 모델이라고 할 수 있다.
     + 화살표들의 개수가 총 (d x p)개 이고 이는 가중치 행렬의 성분수와 같다.
     + 기존까지 다뤄왔던 선형모델의 각각에 비선형 함수를 합성한다. 
-  $$ \mathbb{H} = (\sigma(z_1), \sigma(z_1), ..., \sigma(z_n)) $$
+  $$\\  \mathbb{H} = (\sigma(z_1), \sigma(z_1), ..., \sigma(z_n)) $$
   $$ \sigma(\vec{z}) = \sigma(\mathbb{W}\vec{x} + \vec{b}) $$
     + 위 식을 모델로 그려보면 다음과 같다.
 <img src="https://user-images.githubusercontent.com/94548914/191549251-1f83886a-c1d0-4f34-b803-69e78c35d3e8.png">
@@ -121,7 +121,7 @@ toc: true
   + 시퀀스 데이터의 특징은 이벤트의 발생 순서가 아주 중요한 요소라는 점이다. 
     + ex) 개가 사람이 물었다. 사람이 개를 물었다.
   + 시퀀스 데이터는 조건부확률의 곱셈 형태로 나타내어 다룰 수 있다.
-      $$ \prod ^{t}_{5=1}P\left(  X_{s}| X_{s-1},..., X_{1}\right) $$
+  $$ \\ \prod ^{t}_{5=1}P\left(  X_{s}| X_{s-1},..., X_{1}\right) $$
   + 시퀀스 데이터를 다루기 위해서 과거의 정보가 저장되며 출력에 전달되는 형태의 모델이 필요하다.
   <center>
     <br/>
@@ -131,7 +131,7 @@ toc: true
   
    +  RNN 모델의 역전파 즉 BPTT를 구하기 위해 수식을 전개해 봤다.(나중에 다시 한번 해봐야겠다.)
 
-$$\frac{\partial \xi}{\partial W_x} = (\frac{\partial \xi}{\partial y} \frac{\partial y}{\partial S_n} \frac{\partial S_n}{\partial W_x} + \frac{\partial \xi}{\partial y} \frac{\partial y}{\partial S_n} \frac{\partial S_n}{\partial S_{n-1}}\frac{\partial S_{n-1}}{\partial W_x} \cdots) = 
+$$\\ \frac{\partial \xi}{\partial W_x} = (\frac{\partial \xi}{\partial y} \frac{\partial y}{\partial S_n} \frac{\partial S_n}{\partial W_x} + \frac{\partial \xi}{\partial y} \frac{\partial y}{\partial S_n} \frac{\partial S_n}{\partial S_{n-1}}\frac{\partial S_{n-1}}{\partial W_x} \cdots) = 
 \sum\limits_{k=0}^n \frac{\partial \xi}{\partial y} \frac{\partial y}{\partial S_k} \frac{\partial S_k}{\partial W_x} = \frac{1}{n}\sum\limits_{k=0}^n \frac{\partial \xi}{\partial S_k} X_k $$ 
 
 $$\frac{\partial \xi}{\partial W_{rec}} =(\frac{\partial \xi}{\partial y} \frac{\partial y}{\partial S_n} \frac{\partial S_n}{\partial W_{rec}} + \frac{\partial \xi}{\partial y} \frac{\partial y}{\partial S_n} \frac{\partial S_n}{\partial S_{n-1}}\frac{\partial S_{n-1}}{\partial W_{rec}} \cdots) = 
@@ -153,9 +153,9 @@ $$\frac{\partial \xi}{\partial W_{rec}} =(\frac{\partial \xi}{\partial y} \frac{
   + 주어진 데이터에서 실증적으로 추정한 분포는 원래의 분포와 다를 수 있다. 하지만 원래의 분포에 근사할 수 있는 방법들이 존재한다.
   + 분류 문제는 데이터 x로부터 추출된 패턴𝜙(x)와 가중치 행렬 W을 통해 조건부 확률을 계산한다.(softmax(W𝜙(x) + b))
   + 회귀문제의 경우 밀도함수로 추정을 해야 하므로 조건부 기댓값을 추정한다.
-$$ \mathbb{E}\left[  y| x\right] = \int _{y}yP\left(  y| x\right) \cdot dy \left( 1\right) $$
+$$ \\ \mathbb{E}\left[  y| x\right] = \int _{y}yP\left(  y| x\right) \cdot dy \left( 1\right) $$
   + 조건부 기댓값은 아래식을 최소화하는 함수와 일치하는 게 수학적으로 증명되었다. (나중에 더 찾아봐야겠다.)  
-$$ \mathbb{E}\left\| y-f\left( x\right) \right\| _{2} $$    
+$$ \\ \mathbb{E}\left\| y-f\left( x\right) \right\| _{2} $$    
   + 통계적 모형에서 목적에 따라 추정량이 달라질 수 있다.
   + 평균, 분산, 첨도, 공분산에 대해 배웠다.
   + 몬테 카를로 샘플링에 알아봤다.
@@ -173,7 +173,7 @@ $$ \mathbb{E}\left\| y-f\left( x\right) \right\| _{2} $$
   + 모수적 방법론
     + 모수를 가정하고 그 분포를 결정하는 방법이다.
     + N - 1로 나누는 이유는 unbiased(불편) 추정량을 구하기 위해서이다.
-$$ \overline{X}=\dfrac{1}{N}\sum ^{N}_{i=1}x_{i} $$
+$$ \\ \overline{X}=\dfrac{1}{N}\sum ^{N}_{i=1}x_{i} $$
 $$S^{2}=\dfrac{1}{N-1}\sum ^{N}_{i=1}\left( x_{i}-\overline{x}\right) ^{2}$$
 
   + 비 모수적 방법론
@@ -181,7 +181,7 @@ $$S^{2}=\dfrac{1}{N-1}\sum ^{N}_{i=1}\left( x_{i}-\overline{x}\right) ^{2}$$
     + 기계적으로 확률분포를 가정하지 않고 데이터를 생성하는 원리를 먼저 고려해야 한다.
     + 모수를 추정한 후엔 반드시 검정을 해야 한다.
     + Maximum Likelihood Estimations (MLE) 최대 가능도 추정법이 있다.
-$$ \widehat{\theta }_{MLE}=argmax L\left( \theta ;x\right) =argmaxP\left( \left| x\right| \theta \right)  $$
+$$ \\ \widehat{\theta }_{MLE}=argmax L\left( \theta ;x\right) =argmaxP\left( \left| x\right| \theta \right)  $$
 
 + Maximum Likelihood Estimations (MLE)
   + 이론적으로 가장 가능성이 높은 모수를 추정하는 방법 중 하나이다.
@@ -189,7 +189,7 @@ $$ \widehat{\theta }_{MLE}=argmax L\left( \theta ;x\right) =argmaxP\left( \left|
   + 데이터 집합 X가 독립적으로 추출되었을 경우  로그 가능도를 최적화하는 게 유리히다.
     + 곱을 덧셈으로 바꿀 수 있어 연산이 간단해진
     + 미분연산의 시간 복잡도가 O(n^2)에서 O(n)으로 줄어든다.
-$$ L\left( \theta ;\mathbb{X}\right) =\prod ^{n}_{i=1}P\left(  x_{i}| \theta \right)  $$
+$$ \\ L\left( \theta ;\mathbb{X}\right) =\prod ^{n}_{i=1}P\left(  x_{i}| \theta \right)  $$
 $$  ⇒ \log L\left( \theta ;\mathbb{X}\right) =\log \prod ^{n}_{i=1}P\left(  x_{i}| \theta \right)  $$
 
 <br>
@@ -206,9 +206,9 @@ $$  ⇒ \log L\left( \theta ;\mathbb{X}\right) =\log \prod ^{n}_{i=1}P\left(  x_
 + 베이즈 통계학
   + 데이터가 새롭게 추가될 때 정보를 어떻게 업데이트할 것인가?
   + 베이즈 정리를 활용해 가능하다.
-$$P\left(  B| A\right) =\dfrac{P\left( B\cap A\right) }{P\left( A\right) } = P\left( B\right) \cdot \dfrac{P\left(  A| B\right) }{P\left( A\right) } $$
+$$\\ P\left(  B| A\right) =\dfrac{P\left( B\cap A\right) }{P\left( A\right) } = P\left( B\right) \cdot \dfrac{P\left(  A| B\right) }{P\left( A\right) } $$
   + A라는 새로운 정보가 주어졌을 때 P(B)로부터 P(B\|A)를 계산할 수 있다.
-$$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \dfrac{P\left(  A| B\right)_{가능도}  }{P\left( A\right)_{Evidence}  } $$
+$$\\ P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \dfrac{P\left(  A| B\right)_{가능도}  }{P\left( A\right)_{Evidence}  } $$
   + 베이즈 정리를 통해 계산한 사후 확률을 다시 사전 확률로 사용하여 갱신된 사후 확률을 계산할 수 있다.
   + 조건부 확률로 인과관계를 함부로 추론해서는 안 되고, 인과관계를 알아내기 위해서는 중첩 요인(Confounding factor)의 효과를 제거해야 한다.
 <br>
@@ -218,7 +218,7 @@ $$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \
 
 + Convolution Neural Network (CNN)
   + Convolution 연산은 커널을 입력 벡터 상에서 움직여가면서 선형모델과 합성되는 구조이다.
-    $$ \left[ f\ast g\right]\left( x\right) =\int _{\mathbb{R} ^{d}}f\left( z\right) g\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ g\ast f\right]\left( x\right)$$
+    $$ \\ \left[ f\ast g\right]\left( x\right) =\int _{\mathbb{R} ^{d}}f\left( z\right) g\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ g\ast f\right]\left( x\right)$$
 
     $$ \left[ f\ast g\right]\left( x\right) =\sum _{a\in \mathbb{Z} ^{d}}f\left( z\right) g\left( x-z\right) \cdot dz = \sum _{a\in \mathbb{Z} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ g\ast f\right]\left( x\right)$$
     + 커널은 정의역 내에서 움직여도 변하지 않는다. (Translation invariant)
@@ -226,7 +226,7 @@ $$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \
     + [커널 실습 해보기](https://setosa.io/ev/image-kernels/)
   + 입력 크기를 (H, W), 커널 크기를 (K<sub>H</sub>, K<sub>W</sub>), 출력 크기를 (O<sub>H</sub>, O<sub>W</sub>)라 하면 출력 크기는 다음과 같이 계산합니다.
 
-      $$ O_{H}=H-K_{H}+1 \\ $$
+      $$ \\ O_{H}=H-K_{H}+1 \\ $$
       $$ O_{W}=W-K_{W}+1 $$
 
   + 채널이 여러 개면 convolutuion을 채널 개수 만큼 적용한다.
@@ -234,7 +234,7 @@ $$P\left(  B| A\right)_{사후확률} = P\left( B\right)_{사전확률}  \cdot \
     + 출력을 여러 개 받고 싶다면 채널의 수를 늘리면 된다.
   + CONV 연산의 역전파
     + CONV는 역전파를 계산할 때도 CONV 연산이 나오게 된다.
-  $$ \dfrac{\partial }{\partial x}\left[ f\ast g\right]\left( x\right) =\dfrac{\partial }{\partial x}\int _{\mathbb{R} ^{d}}f\left( z\right) \dfrac{\partial g}{\partial x}\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ f\ast g'\right]\left( x\right)$$
+  $$ \\ \dfrac{\partial }{\partial x}\left[ f\ast g\right]\left( x\right) =\dfrac{\partial }{\partial x}\int _{\mathbb{R} ^{d}}f\left( z\right) \dfrac{\partial g}{\partial x}\left( x-z\right) \cdot dz = \int _{\mathbb{R} ^{d}}g\left( x-z\right) f\left( z\right) \cdot dz = \left[ f\ast g'\right]\left( x\right)$$
     + 그림을 통해 자세히 살펴보자.
 
       <center>
