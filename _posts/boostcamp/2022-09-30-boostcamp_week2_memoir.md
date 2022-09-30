@@ -132,7 +132,7 @@ toc: true
 
 <br>
 
-+ 과제로 주어진 custom model제작 문서를 살펴봤다.
++ 과제로 주어진 Documentation 활용과 nn.Module에 대해 살펴봤다.
 	+ PyTorch의 [Documentation](https://pytorch.org/docs/stable/index.html)을 활용하는 법에 대해 배웠다.
 	+ torch와 tensor에 있는 기본적인 메소드들과 객체들을 살펴봤다.
 		+ torch.view
@@ -200,16 +200,102 @@ toc: true
   
 
 ## Day 9
++ 모델의 미분을 담당하는 Backwad 함수는 Auto grad가 아닌 사용자가 직접 미분 수식을 오버라이딩이 가능하다.
+  
++ 모델을 훈련시키는 Optimize 또한 오버라이딩 가능하다.
+<br>
+<br>
 
-+ Auto grad
+<img alt="모델 훈련 흐름" src="https://user-images.githubusercontent.com/94548914/193284626-a8213eda-9890-4daa-bc96-8b2b9a4f4c50.png">
 
-+ Optimizer
-
+  
 + Datasets
+  + 데이터를 시작할 때 어떻게 불러 온 것인지(\_\_init\_\_())
+  + 데이터의 총 길이가 얼마나 되는지(\_\_len\_\_())
+  + 하나의 데이터를 불러올 때 어떤식으로 매핑 할 것인지(\_\_getitem\_\_())
+  + Image, Text, Audio 등 데이터 입력 형태에 따라 각 함수를 다르게 정의한다.
+  + 데이터 셋에 대한 표준화된 처리 방법 제공이 필요하다.
+  + 모든 것을 데이터 생성 시점에 처리할 필요는 없음.
+
++ Transforms
+  + 데이터를 다루기 쉽게 Preprocessor(전처리)
+    + ToTensor(), CenterCrop() 등등
 
 + DataLoader
+  + Data들을 묶어서 Sampling과 Shuffle을 하거나 Batch를 생성해 주는 클래스.
+  + Tensor로 변환 + Batch 처리가 메인.
+  + 학습 직전(GPU feed)전 데이터 변환을 책임짐.
+  + 병렬적인 데이터 전처리 코드의 고민이 필요함.
+  + [DataLoader Parameters](https://subinium.github.io/pytorch-dataloader/)
+    + sampler
+    + batch_sampler
+    + num_workers
+    + collate_fn
 
-+ 기본과제 2
++ Custom Dataser과 Custom DataLoader 생성
+  + MyMNISTDataset을 만들어보자.
+    + 숫자 이미지 데이터를 받아 0 ~ 9까지의 클래스로 분류하는 모델
+```python
+# MyMNISTDataset 생성
+class MyMNISTDataset(Dataset):
+    _repr_indent = 4
+
+    def __init__(self, path, transform, train=True):
+        self.path = path
+        self.transform = transform
+        self.images = read_MNIST_images(self.path['image'])
+        self.lables = read_MNIST_labels(self.path['label'])
+        self.classes = [
+            "0 - zero",
+            "1 - one",
+            "2 - two",
+            "3 - three",
+            "4 - four",
+            "5 - five",
+            "6 - six",
+            "7 - seven",
+            "8 - eight",
+            "9 - nine",
+            ]
+
+    def __len__(self):
+        len_dataset = None
+        len_dataset = len(self.lables)
+        return len_dataset
+
+    def __getitem__(self, idx):
+        X,y = None, None
+        # transform 적용
+        X = self.transform(self.images[idx])
+        
+        # path를 '/'로 쪼갠뒤, 4번째 인덱스의 문자열의 5글자가 train이 아닌 경우는 학습데이터가 아니다.
+        if 'train' != self.path['image'].split('/')[4][:5]:
+            return torch.tensor(X, dtype=torch.double)
+        y = self.lables[idx]
+        return torch.tensor(X, dtype=torch.double), torch.tensor(y, dtype=torch.long)
+
+    def __repr__(self):
+        '''
+        https://github.com/pytorch/vision/blob/master/torchvision/datasets/vision.py
+        '''
+        head = "(PyTorch HomeWork) My Custom Dataset : MNIST"
+        data_path = self._repr_indent*" " + "Data path: {}".format(self.path['image'])
+        label_path = self._repr_indent*" " + "Label path: {}".format(self.path['label'])
+        num_data = self._repr_indent*" " + "Number of datapoints: {}".format(self.__len__())
+        num_classes = self._repr_indent*" " + "Number of classes: {}".format(len(self.classes))
+
+        return '\n'.join([head,
+                          data_path, label_path, 
+                          num_data, num_classes])
+```
+```python
+## dataloader_train_MNIST 생성
+dataloader_train_MNIST = DataLoader(dataset=dataset_train_MyMNIST,
+                                    batch_size=16,
+                                    shuffle=True,
+                                    num_workers=4,
+                                    )
+```
 
 <br>
 
@@ -227,7 +313,6 @@ toc: true
 
 + 오피스아워
 
-+ 기본과제2
 
 <br>
 
