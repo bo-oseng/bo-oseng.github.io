@@ -69,26 +69,29 @@ toc: true
 	+ View와 Reshpae
 		+ Contiguity 보장에 차이가있다. Contiguity란 메모리의 연속성과 데이터의 순서가 일치하는지의 여부이다.
 		+ 예시를 살펴 보자
+  
 		```pyton
 		a = torch.arange(6).view(3, 2)
 		b = a.view(6)
 		print(f'a: {a}')
 		print(f'b: {b}')
 		```
+
 		```bash
 		-> a: tensor([[0, 1], [2, 3], [4, 5]]) 
 		-> b: tensor([0, 1, 2, 3, 4, 5])
 		```
+
 		```python
 		a.fill_(1)
 		print(f'a: {a}')
 		print(f'b: {b}')
 		```
+
 		```bash
 		-> a: tensor([[1, 1], [1, 1], [1, 1]])
 		-> b: tensor([1, 1, 1, 1, 1, 1])
 		```
-		
 		```pyton
 		a = torch.arange(6).view(3, 2)
 		b = a.t().reshape(6)
@@ -99,16 +102,19 @@ toc: true
 		-> a: tensor([[0, 1], [2, 3], [4, 5]])
 		->  b: tensor([0, 2, 4, 1, 3, 5])
 		```
+	
 		```python
 		a.fill_(1)
 		print(f'a: {a}')
 		print(f'b: {b}')
 		```
+
 		```bash
 		-> a: tensor([[1, 1], [1, 1], [1, 1]])
 		# 연속성이 보장되지 않자 referernce를 끊고 copy형태로 저장된다.
 		->  b: tensor([0, 2, 4, 1, 3, 5])
 		```
+
 	
 	+ dim별 squeeze와 unsquzee를 학습했다.
 		<img src="https://user-images.githubusercontent.com/94548914/193257456-ee454200-f900-48b1-9908-75ea72612a4f.png" width="80%">
