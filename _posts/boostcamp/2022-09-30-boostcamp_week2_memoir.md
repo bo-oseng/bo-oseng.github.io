@@ -117,7 +117,8 @@ toc: true
 
 	
 	+ dim별 squeeze와 unsquzee를 학습했다.
-		<img src="https://user-images.githubusercontent.com/94548914/193257456-ee454200-f900-48b1-9908-75ea72612a4f.png" width="80%">
+		<img src="https://user-images.githubusercontent.com/94548914/193257456-ee454200-f900-48b1-9908-75ea72612a4f.png" width="80%">   
+
 		<a href = https://bit.ly/3CgkVWK style='color: gray'>출처: https://bit.ly/3CgkVWK</a>
 	
 	+ mm과 matmal의 차이를 학습했다. (matmal은 brodcasting을 지원하고, mm은 지원하지 않는다.)
@@ -185,9 +186,10 @@ toc: true
 			+ tenosr만 가능한 hook
 	+ apply
 		+ 모듈의 Computational Graph의 루트부터 리프까지 모든 함수에 일일히 적용하는 함수.
-		+ model.apply( func )
+		+ model.apply( func )   
+<br>
 
-[hook 참고자료](https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/)
+		[hook 참고자료](https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/)
 
 <br>
 
