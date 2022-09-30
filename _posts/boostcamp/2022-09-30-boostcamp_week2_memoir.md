@@ -41,7 +41,7 @@ toc: true
 		+ Pytorch는 에서는 Runtime에 Computational Graph가 Define되며 출력이 가능하지만 TensorFlow는 Graph를 Define하고 Runtime에 데이터를 feed시켜준다.
 
 
-			+ <img src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/39012951_549971678790670_7494296685422575616_n.png?_nc_cat=109&ccb=1-7&_nc_sid=8024bb&_nc_ohc=0LSxRo2Nw8kAX8-E6g_&_nc_ht=scontent-ssn1-1.xx&oh=00_AT_A-GeKoYbp9K0QawwLgbGyJUaA0Wg-LBAOwRy_NB1kSA&oe=635D2333" width="50%">
+			 <img src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/39012951_549971678790670_7494296685422575616_n.png?_nc_cat=109&ccb=1-7&_nc_sid=8024bb&_nc_ohc=0LSxRo2Nw8kAX8-E6g_&_nc_ht=scontent-ssn1-1.xx&oh=00_AT_A-GeKoYbp9K0QawwLgbGyJUaA0Wg-LBAOwRy_NB1kSA&oe=635D2333" width="50%">
 
 <br>
 
