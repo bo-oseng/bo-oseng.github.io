@@ -444,11 +444,129 @@ n
 
 
 + multi GPU
+  + GPU
+  + Node
+  + Single Node Single GPU
+  + Single Node Multi GPU
+  + Multi Node Multi GPU
+  + ANNOUMCIMG TensorRT 8.0
+  + Model Parallelize
+    + 모델을 나눠 각 cuda에서 처리한 뒤 마지막에 결과를 종합함.
+    + 파이프 라인을 잘 설계해야 병목현상이 안 일어남.
+  + Data Paralleize
+    + 데이터를 나눠 cuda에 할당후 결과의 평균을 취하는 방법.
+    + minibatch 수식과 유사하나 한번에 여러 GPU에서 수행한다.
+    + DataParallel
+      + 결과 종합을 한 CUDA에서 하므로 GPU 사용 불균형 문제가 발생한다.
+      + Batch 사이즈 감소할 수 있다.(병목현상 발생)
+      + Global InterFilter Lock(GIL)
+        + 파이썬 Multi Processing 제약
+    + DistributedDataParallel
+      + 모으는 작업이 없고, 나중에 평균치를 계산
+      + 각각의 GPU에 CPU가 할당되어 코디네이터 없이 연산 가능
+  
+```python
+# DataParallel
+parallel_model = torch.nn.DataParallel(model)
+```
+```python
+# DistributedDataParallel
+train_sampler = torch.utils.data.distributed.DistributedSampler(train_data) shuffle = False
 
-+ Hyperparmeter Tuning
+trainloader = torch.utils.data.DataLoader(
+	train_data,
+	batch_size=20,
+	shuffle=True, 
+	pin_memory=True,
+	shuffle=shuffle,
+	sampler=train_sampler,
+	pin_memory=pin_memory,
+	num_workers=3, 
+)
+```
+
++ 모델 성능 개선시 고려 순서
+  1. 데이터를 더 수집한다.(교체하거나 오류확인)
+  2. 모델을 바꿔본다.
+  3. Hyperparameter Tuning
+     + Hyperparmeter Tuning
+       + 모델 스스로 학습하지 않는 값은 사람이 지정.
+         + Neural Architecture Search(알아서 찾아줌)
+       + 마지막 0.01을 쥐어 짜야할 때 도전
+       + 가장 기본적인 방법 Grtid, Random
+       + 최근에는 베이지안 기반 기법들이 주도
 
 + Pytorch troubleshooting
+  + Out Of Memory (OOM)
+    + 왜 발생했는지 알기 어려움
+    + 어디서 발생했는지 알기 어려움
+    + Error Backtracking이 이상한 데로 감
+    + 메모리의 이전 상황의 파악이 어려움
+    + GPUtill로 상태를 보기.
+    + torch.cuda.empty_cache() 써보기
+    + Training Loop에 tensor 자체로 축적되는 변수는 반드시 tensor가 필요한지 확인할 것.
+    + del 명령어 적절히 사용하기.
+    + 가능한 Batch 사이즈 실험해보기
+    + Inference 시점에서는 torch.no.grad() 사용하기.
+    + CUDNN-STATUS_NOT_INIT, device-side-assert 두개 모두 OOM의 일종임.
+    + colab에서 너무 큰 사이즈는 실행 하지 말것.
+    + CNN의 대부분 에러는 크기가 안맞아서 생김.(torch.summary() 활용)
+    + tensor의 float precision을 16 bit로 줄일 수도 있음.
 
-+ Pytorch template 이해하기
++ project-template 이해하기
+  + config.json 파일을 기준으로 움직임.
+  + Folder Structure
+  ```
+  pytorch-template/
+  │
+  ├── train.py - main script to start training
+  ├── test.py - evaluation of trained model
+  │
+  ├── config.json - holds configuration for training
+  ├── parse_config.py - class to handle config file and cli options
+  │
+  ├── new_project.py - initialize new project with template files
+  │
+  ├── base/ - abstract base classes
+  │   ├── base_data_loader.py
+  │   ├── base_model.py
+  │   └── base_trainer.py
+  │
+  ├── data_loader/ - anything about data loading goes here
+  │   └── data_loaders.py
+  │
+  ├── data/ - default directory for storing input data
+  │
+  ├── model/ - models, losses, and metrics
+  │   ├── model.py
+  │   ├── metric.py
+  │   └── loss.py
+  │
+  ├── saved/
+  │   ├── models/ - trained models are saved here
+  │   └── log/ - default logdir for tensorboard and logging output
+  │
+  ├── trainer/ - trainers
+  │   └── trainer.py
+  │
+  ├── logger/ - module for tensorboard visualization and logging
+  │   ├── visualization.py
+  │   ├── logger.py
+  │   └── logger_config.json
+  │  
+  └── utils/ - small utility functions
+      ├── util.py
+      └── ...
+  ```
 
 + 마스터클래스
+  + Data가 깡패다.
+  + 엔지니어와 리서처의 차이에 대해서 알 수 있었다.
+  + 햔장에서는 데이터를 만들어내야 하는 상황이 많다.
+  + 어떤 데이터를 만들어내 AI를 접목시킬 수 있을지 생각해보자.
+  + 앞으로 알아야할 것 들
+    + MLOPs 도구들
+    + 데이터베이스
+    + Cloud-AWS, GCP, Azure
+    + Spark
+    + Linux, Docker, 쿠버네티스
