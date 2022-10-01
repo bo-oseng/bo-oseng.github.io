@@ -63,12 +63,14 @@ toc: true
 	ndim : 2 shape : (2, 5)
 	ndim : 2 shape : torch.Size([2, 5])
 	```
+	<br>
+
 	+ tensor는 GPU에 올려 연산이 가능하다.
 		+ ```t_array.data.to('cuda')```
 	
 	+ View와 Reshpae
 		+ Contiguity 보장에 차이가있다. Contiguity란 메모리의 연속성과 데이터의 순서가 일치하는지의 여부이다.
-		+ 예시를 살펴 보자
+		+ 예시를 살펴 보자   
   
 		```pyton
 		a = torch.arange(6).view(3, 2)
@@ -115,11 +117,14 @@ toc: true
 		->  b: tensor([0, 2, 4, 1, 3, 5])
 		```
 
+	<br>
 	
 	+ dim별 squeeze와 unsquzee를 학습했다.
-		<img src="https://user-images.githubusercontent.com/94548914/193257456-ee454200-f900-48b1-9908-75ea72612a4f.png" width="80%">   
+		<img src="https://user-images.githubusercontent.com/94548914/193257456-ee454200-f900-48b1-9908-75ea72612a4f.png" width="80%"/>   
 
-		<a href = https://bit.ly/3CgkVWK style='color: gray'>출처: https://bit.ly/3CgkVWK</a>
+		<a href = 'https://bit.ly/3CgkVWK' style='color: gray'>
+		  출처: https://bit.ly/3CgkVWK 
+		</a>
 	
 	+ mm과 matmal의 차이를 학습했다. (matmal은 brodcasting을 지원하고, mm은 지원하지 않는다.)
 	
@@ -205,7 +210,7 @@ toc: true
 + 모델을 훈련시키는 Optimize 또한 오버라이딩 가능하다.
 <br>
 <br>
-
++ 전체적인 Trainning의 흐름
 <img alt="모델 훈련 흐름" src="https://user-images.githubusercontent.com/94548914/193284626-a8213eda-9890-4daa-bc96-8b2b9a4f4c50.png">
 
   
@@ -235,67 +240,67 @@ toc: true
 + Custom Dataser과 Custom DataLoader 생성
   + MyMNISTDataset을 만들어보자.
     + 숫자 이미지 데이터를 받아 0 ~ 9까지의 클래스로 분류하는 모델
-```python
-# MyMNISTDataset 생성
-class MyMNISTDataset(Dataset):
-    _repr_indent = 4
+	```python
+	# MyMNISTDataset 생성
+	class MyMNISTDataset(Dataset):
+		_repr_indent = 4
 
-    def __init__(self, path, transform, train=True):
-        self.path = path
-        self.transform = transform
-        self.images = read_MNIST_images(self.path['image'])
-        self.lables = read_MNIST_labels(self.path['label'])
-        self.classes = [
-            "0 - zero",
-            "1 - one",
-            "2 - two",
-            "3 - three",
-            "4 - four",
-            "5 - five",
-            "6 - six",
-            "7 - seven",
-            "8 - eight",
-            "9 - nine",
-            ]
+		def __init__(self, path, transform, train=True):
+			self.path = path
+			self.transform = transform
+			self.images = read_MNIST_images(self.path['image'])
+			self.lables = read_MNIST_labels(self.path['label'])
+			self.classes = [
+				"0 - zero",
+				"1 - one",
+				"2 - two",
+				"3 - three",
+				"4 - four",
+				"5 - five",
+				"6 - six",
+				"7 - seven",
+				"8 - eight",
+				"9 - nine",
+				]
 
-    def __len__(self):
-        len_dataset = None
-        len_dataset = len(self.lables)
-        return len_dataset
+		def __len__(self):
+			len_dataset = None
+			len_dataset = len(self.lables)
+			return len_dataset
 
-    def __getitem__(self, idx):
-        X,y = None, None
-        # transform 적용
-        X = self.transform(self.images[idx])
-        
-        # path를 '/'로 쪼갠뒤, 4번째 인덱스의 문자열의 5글자가 train이 아닌 경우는 학습데이터가 아니다.
-        if 'train' != self.path['image'].split('/')[4][:5]:
-            return torch.tensor(X, dtype=torch.double)
-        y = self.lables[idx]
-        return torch.tensor(X, dtype=torch.double), torch.tensor(y, dtype=torch.long)
+		def __getitem__(self, idx):
+			X,y = None, None
+			# transform 적용
+			X = self.transform(self.images[idx])
+			
+			# path를 '/'로 쪼갠뒤, 4번째 인덱스의 문자열의 5글자가 train이 아닌 경우는 학습데이터가 아니다.
+			if 'train' != self.path['image'].split('/')[4][:5]:
+				return torch.tensor(X, dtype=torch.double)
+			y = self.lables[idx]
+			return torch.tensor(X, dtype=torch.double), torch.tensor(y, dtype=torch.long)
 
-    def __repr__(self):
-        '''
-        https://github.com/pytorch/vision/blob/master/torchvision/datasets/vision.py
-        '''
-        head = "(PyTorch HomeWork) My Custom Dataset : MNIST"
-        data_path = self._repr_indent*" " + "Data path: {}".format(self.path['image'])
-        label_path = self._repr_indent*" " + "Label path: {}".format(self.path['label'])
-        num_data = self._repr_indent*" " + "Number of datapoints: {}".format(self.__len__())
-        num_classes = self._repr_indent*" " + "Number of classes: {}".format(len(self.classes))
+		def __repr__(self):
+			'''
+			https://github.com/pytorch/vision/blob/master/torchvision/datasets/vision.py
+			'''
+			head = "(PyTorch HomeWork) My Custom Dataset : MNIST"
+			data_path = self._repr_indent*" " + "Data path: {}".format(self.path['image'])
+			label_path = self._repr_indent*" " + "Label path: {}".format(self.path['label'])
+			num_data = self._repr_indent*" " + "Number of datapoints: {}".format(self.__len__())
+			num_classes = self._repr_indent*" " + "Number of classes: {}".format(len(self.classes))
 
-        return '\n'.join([head,
-                          data_path, label_path, 
-                          num_data, num_classes])
-```
-```python
-## dataloader_train_MNIST 생성
-dataloader_train_MNIST = DataLoader(dataset=dataset_train_MyMNIST,
-                                    batch_size=16,
-                                    shuffle=True,
-                                    num_workers=4,
-                                    )
-```
+			return '\n'.join([head,
+							data_path, label_path, 
+							num_data, num_classes])
+	```
+	```python
+	# dataloader_train_MNIST 생성
+	dataloader_train_MNIST = DataLoader(dataset=dataset_train_MyMNIST,
+										batch_size=16,
+										shuffle=True,
+										num_workers=4,
+										)
+	```
 
 <br>
 
@@ -307,11 +312,124 @@ dataloader_train_MNIST = DataLoader(dataset=dataset_train_MyMNIST,
 
 ## Day 10
 
-+ Model 불러오기, pretrainde
++ Model 저장과 불러오기
+  + 학습 결과를 공유하고 싶다.
+  + model.save()
+    + 학습의 결과를 저장하기 위한 함수
+    + 모델 학습 중간 과정의 저장을 통해 최선의 결과 모댈울 선택
+    + 만들어진 모델을 외부 연구자와 공유하여 학습 재연성을 향상 시킴
+  
+	```python
+	# 파라미터만 저장 및 로드
+	torch.save(model.state_dict(), 'model.pt')
 
+	new_model = TheModelClass()
+	new_model.load_state_dict(torch.load('model.pt'))
+	```
+	```python
+	# 모델의 전체 architecture와 함께 저장 및 로드
+	torch.save(model, 'model.pt')
+
+	new_model = TheModelClass()
+	model = torch.load('model.pt')
+	```
++ Checkpoints
+  + 학습의 중간 결과를 저장하여 최선의 결과를 선택하는데 활용
+  + earlystopping 기법 사용시 이전 학습의 결과물을 저장
+  + loss와 metric 값을 지속적으로 확인 저장
+  + 일반적으로 epoch, loss, metric 을 함께 저장하여 확인
+  + Dict 형태로 저장 및 로드를 함.
+  + 특정한 조건때에만 저장되게 설정하는게 좋음.
+	```python
+			
+		torch.save({
+			'epoch': e,
+			'model_state_dict': model.state_dict(),
+			'optimizer_state_dict': optimizer.state_dict(),
+			'loss': epoch_loss,
+			}, "checkpoint.pt")
+			
+	```
+
++ Transfer Learning, Pretrained Model
+  + 다른 데이터셋으로 만든 모델을 현재 데이터에 적용
+  + Data Centric AI에 유리하다.
+  + 일반적으로 대용량 데이터셋으로 만들어진 모델의 성능이 뛰어나다.
+  + 현재의 Dl에서 가장 일반적이 학습 기법
+  + Backbone Architecture가 잘 학습된 모델에서 일부분만 변경하여 학습을 수행함.
+  + BERT, ImageNet, GPT 등등
+  + Pretrained model을 활용시 모델의 일부분을 frozen 시킴
+    + 내 모델과 합칠때 적절하게 특정 위치까지만 학습시키고 원래 모델의 Parameter를 frozen시킴
+    + Stepping frozen 기법.
+    + 입력과 출력을 내 데이터에 맞게 조절.
+    + Parameter Frozen 반드시 확인.
+	```python
+	# pretrained=True로 참고할 모델 vgg16을 불러옴
+	my_model = models.vgg16(pretrained=True).to(device)
+	```
+	```python
+	# 원래 모델의 parameter 들을 equires_grad = False 시킴
+	for param in my_model.parameters():
+		param.requires_grad = False
+	# 내가 필요한 부분의 parameter 들을 requires_grad = True 시킴
+	for param in my_model.linear_layers.parameters():
+		param.requires_grad = True
+	```
+
++ model.eval()
+  + 모듈을 평가 모드로 바꾼다.
+  + Dropout이나 BatchNorm 같이 Traim time에서만 사용하는 동작들을 멈추게 해준다.
+  + evaluation이 종료되면 model.train()으로 모드를 변경해 주어야 한다.
+
++ binary_acc 함수
+	```python
+	# y_pred_tag과 y_pred_tag가 일치하는  갯수를 세고
+	# 데이터의 크기로 나눈값의 백분율을 구한다.
+	def binary_acc(y_pred, y_test):
+		y_pred_tag = torch.round(torch.sigmoid(y_pred))
+		correct_results_sum = (y_pred_tag == y_pred_tag).sum().float()
+		acc = correct_results_sum/y_test.shape[0]
+		acc = torch.round(acc * 100)
+		
+		return acc
+	```
+	
++ nn.BCEWithLogitsLoss
+  + Binary Cross Entropy With Logits Loss 
+  + BCE Loss에 Sigmoid Layer를 추가한다.
+  + ℓ(x,y)=L={l 
+1
+​
+ ,…,l 
+N
+​
+ } 
+⊤
+ ,l 
+n
+​
+ =−w 
+n
+​
+ [y 
+n
+​
+ ⋅logx 
+n
+​
+ +(1−y 
+n
+​
+ )⋅log(1−x 
+n
+​
+ )],
 + Monitoring tools
-
-+ 오피스아워
+  + 분석을 도와주는 유용한 도구들이 있다.
+  + TensorBoard
+  + WadnB
+  
+	<img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/193386432-bfc0a005-140a-48df-965d-c8754283be1f.png">
 
 
 <br>
@@ -324,12 +442,13 @@ dataloader_train_MNIST = DataLoader(dataset=dataset_train_MyMNIST,
 
 ## Day 11
 
-+ Pytorch template 이해하기
 
 + multi GPU
 
 + Hyperparmeter Tuning
 
 + Pytorch troubleshooting
+
++ Pytorch template 이해하기
 
 + 마스터클래스

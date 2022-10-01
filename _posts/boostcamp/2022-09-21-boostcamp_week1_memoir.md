@@ -5,7 +5,7 @@ title: 부스트캠프에 AI 1주차(Day-1 ~ Day-5) 회고록
 categories:
   - Boostcamp
 
-tag: [Boostcamp, 부스트캠프, 회고록]
+tag: [Boostcamp, 부스트캠프, 경사하강법, SGD, RNN, BPTT, MLE, CNN]
 
 toc: true
 
