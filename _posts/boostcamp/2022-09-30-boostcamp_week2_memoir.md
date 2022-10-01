@@ -27,18 +27,18 @@ toc: true
 ## Day 7
 
 + Pytorch Intro 강의를 수강했다. 많은 딥러닝 라이브러리가 있지만 대표적으로 PyTorch와 TensorFlow가 있다.
-	+ Pytorch의 방식은 즉시 확인이 가능하고 사용하기 편하다는게 큰 장점이다.
+	+ Pytorch의 방식은 즉시 확인이 가능하고 사용하기 편하다는 게 큰 장점이다.
 	+ TensorFlow의 장점은 Production과 Scalability에 장점이 있다.
-	+ PyTorch는 Numpy, Auto Grad, Function 세가지의 조합이 특징이다.
+	+ PyTorch는 Numpy, Auto Grad, Function 세 가지의 조합이 특징이다.
 	+ Numpy 구조를 가지는 Tensor 객체로 array를 표현한다.
-	+ Auto grad(자동미분)을 지원하다.
+	+ Auto grad(자동 미분)을 지원하다.
 	+ 다양한 형태의 함수와 모델을 지원한다.
-	+  Pytorch와 TensorFlow의 큰차이는 Pytorch는 Define by Run의 방식이고 TensorFlow는 Define and Run의 방식이다.
-		+ 이 개념을 이해하기 위해서는 먼저 [Computational Graph](https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/)에 대해 알아야한다.
-		+ 쉽게 말하자면 함수하나 하나를 Node 처럼 취급하는 Graph이다. 
-		+ 각 Node에는 알맞은 함수와 역전파시 해당 노드 입장에서 Input Grad와 Outpu Grad를 체인룰을 이용해 함수형태로 저장하고 있다. 
+	+  Pytorch와 TensorFlow의 큰 이는 Pytorch는 Define by Run의 방식이고 TensorFlow는 Define and Run의 방식이다.
+		+ 이 개념을 이해하기 위해서는 먼저 [Computational Graph](https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/)에 대해 알아야 한다.
+		+ 쉽게 말하자면 함수 하나하나를 Node처럼 취급하는 Graph이다. 
+		+ 각 Node에는 알맞은 함수와 역전파 시 해당 노드 입장에서 Input Grad와 Outpu Grad를 체인 룰을 이용해 함수 형태로 저장하고 있다. 
 		+ 이런 형태로 모델이 이루어져 있기에 Autograd가 가능하다.
-		+ Pytorch는 에서는 Runtime에 Computational Graph가 Define되며 출력이 가능하지만 TensorFlow는 Graph를 Define하고 Runtime에 데이터를 feed시켜준다.
+		+ Pytorch에서는 Runtime에 Computational Graph가 Define 되며 출력이 가능하지만 TensorFlow는 Graph를 Define 하고 Runtime에 데이터를 feed시켜준다.
 
 
 			 <img src="https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/39012951_549971678790670_7494296685422575616_n.png?_nc_cat=109&ccb=1-7&_nc_sid=8024bb&_nc_ohc=0LSxRo2Nw8kAX8-E6g_&_nc_ht=scontent-ssn1-1.xx&oh=00_AT_A-GeKoYbp9K0QawwLgbGyJUaA0Wg-LBAOwRy_NB1kSA&oe=635D2333" width="50%">
@@ -69,8 +69,8 @@ toc: true
 		+ ```t_array.data.to('cuda')```
 	
 	+ View와 Reshpae
-		+ Contiguity 보장에 차이가있다. Contiguity란 메모리의 연속성과 데이터의 순서가 일치하는지의 여부이다.
-		+ 예시를 살펴 보자   
+		+ Contiguity 보장에 차이가 있다. Contiguity란 메모리의 연속성과 데이터의 순서가 일치하는지의 여부이다.
+		+ 예시를 살펴보자   
   
 		```pyton
 		a = torch.arange(6).view(3, 2)
@@ -119,7 +119,7 @@ toc: true
 
 	<br>
 	
-	+ dim별 squeeze와 unsquzee를 학습했다.
+	+ dim 별 squeeze와 unsquzee를 학습했다.
 		<img src="https://user-images.githubusercontent.com/94548914/193257456-ee454200-f900-48b1-9908-75ea72612a4f.png" width="80%"/>   
 
 		<a href = 'https://bit.ly/3CgkVWK' style='color: gray'>
@@ -129,7 +129,7 @@ toc: true
 	+ mm과 matmal의 차이를 학습했다. (matmal은 brodcasting을 지원하고, mm은 지원하지 않는다.)
 	
 	+ 자동 미분의 핵심인 backward 배웠다.(requires_grad 키워드를 학습했다.)
-		+ 자동 미분은 1일차에 학습했던  [Computational Graph](https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/)를 통해 이루어지고 해당 Parameter의 미분값을 저장할지 말지 정하는 옵션이 바로 requires_grad 키워드 이다.
+		+ 자동 미분은 1일차에 학습했던  [Computational Graph](https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/)를 통해 이루어지고 해당 Parameter의 미분 값을 저장할지 말지 정하는 옵션이 바로 requires_grad 키워드이다.
 
 <br>
 
@@ -157,18 +157,18 @@ toc: true
 
 ## Day 8
 
-+ custom model제작을 이어서 풀이했다.
++ custom model 제작을 이어서 풀이했다.
 	+ torch.nn
 		+ nn.Module
 		+ nn.Sequential
 		+ nn.ModuleList
-			+ module 클래스는 하위 포함된 모든 submodules들을 module단위로 출력해준다.
-			+ 모듈리스트가 아닌 리스트로 만들어진 python_list는 리스트 내부가 모듈임을 인지하지 못한다.
-			+ 모델 구조의 명확성을 위해 ModuleList를 써야한다.
+			+ module 클래스는 하위 포함된 모든 submodules들을 module 단위로 출력해준다.
+			+ 모듈 리스트가 아닌 리스트로 만들어진 python_list는 리스트 내부가 모듈임을 인지하지 못한다.
+			+ 모델 구조의 명확성을 위해 ModuleList를 써야 한다.
 		+ nn.ModuleDict
 		+ nn.Parameter
-			+ 모델 학습에 주로 사용되는 역전파 방법을 활용하기 위해서는 단계별로tensor의 gradient를 저장하고 있어야 한다.
-			+ 이런 관점에서 따로 변수에 저장하기보다 Parameter 클래스로 생성한 인스턴스 안에 제네레이션(함수) 형태로 이를 저장하고 있는것이 매우 효율적인 방법이다.
+			+ 모델 학습에 주로 사용되는 역전파 방법을 활용하기 위해서는 단계별로 tensor의 gradient를 저장하고 있어야 한다.
+			+ 이런 관점에서 따로 변수에 저장하기보다 Parameter 클래스로 생성한 인스턴스 안에 제네레이션(함수) 형태로 이를 저장하고 있는 것이 매우 효율적인 방법이다.
 		+ nn.Buffer
 		+ named_children
 		+ named_modules
@@ -190,7 +190,7 @@ toc: true
 		+ register_backward_hook(hook_fn)
 			+ tenosr만 가능한 hook
 	+ apply
-		+ 모듈의 Computational Graph의 루트부터 리프까지 모든 함수에 일일히 적용하는 함수.
+		+ 모듈의 Computational Graph의 루트부터 리프까지 모든 함수에 일일이 적용하는 함수.
 		+ model.apply( func )   
 <br>
 
@@ -215,9 +215,9 @@ toc: true
 
   
 + Datasets
-  + 데이터를 시작할 때 어떻게 불러 온 것인지(\_\_init\_\_())
+  + 데이터를 시작할 때 어떻게 불러온 것인지(\_\_init\_\_())
   + 데이터의 총 길이가 얼마나 되는지(\_\_len\_\_())
-  + 하나의 데이터를 불러올 때 어떤식으로 매핑 할 것인지(\_\_getitem\_\_())
+  + 하나의 데이터를 불러올 때 어떤 식으로 매핑할 것인지(\_\_getitem\_\_())
   + Image, Text, Audio 등 데이터 입력 형태에 따라 각 함수를 다르게 정의한다.
   + 데이터 셋에 대한 표준화된 처리 방법 제공이 필요하다.
   + 모든 것을 데이터 생성 시점에 처리할 필요는 없음.
@@ -229,7 +229,7 @@ toc: true
 + DataLoader
   + Data들을 묶어서 Sampling과 Shuffle을 하거나 Batch를 생성해 주는 클래스.
   + Tensor로 변환 + Batch 처리가 메인.
-  + 학습 직전(GPU feed)전 데이터 변환을 책임짐.
+  + 학습 직전(GPU feed) 전 데이터 변환을 책임짐.
   + 병렬적인 데이터 전처리 코드의 고민이 필요함.
   + [DataLoader Parameters](https://subinium.github.io/pytorch-dataloader/)
     + sampler
@@ -316,8 +316,8 @@ toc: true
   + 학습 결과를 공유하고 싶다.
   + model.save()
     + 학습의 결과를 저장하기 위한 함수
-    + 모델 학습 중간 과정의 저장을 통해 최선의 결과 모댈울 선택
-    + 만들어진 모델을 외부 연구자와 공유하여 학습 재연성을 향상 시킴
+    + 모델 학습 중간 과정의 저장을 통해 최선의 결과 모델울 선택
+    + 만들어진 모델을 외부 연구자와 공유하여 학습 재연성을 향상시킴
   
 	```python
 	# 파라미터만 저장 및 로드
@@ -335,11 +335,11 @@ toc: true
 	```
 + Checkpoints
   + 학습의 중간 결과를 저장하여 최선의 결과를 선택하는데 활용
-  + earlystopping 기법 사용시 이전 학습의 결과물을 저장
+  + earlystopping 기법 사용 시 이전 학습의 결과물을 저장
   + loss와 metric 값을 지속적으로 확인 저장
   + 일반적으로 epoch, loss, metric 을 함께 저장하여 확인
   + Dict 형태로 저장 및 로드를 함.
-  + 특정한 조건때에만 저장되게 설정하는게 좋음.
+  + 특정한 조건 때에만 저장되게 설정하는 게 좋음.
 	```python
 			
 		torch.save({
@@ -352,14 +352,14 @@ toc: true
 	```
 
 + Transfer Learning, Pretrained Model
-  + 다른 데이터셋으로 만든 모델을 현재 데이터에 적용
+  + 다른 데이터 셋으로 만든 모델을 현재 데이터에 적용
   + Data Centric AI에 유리하다.
-  + 일반적으로 대용량 데이터셋으로 만들어진 모델의 성능이 뛰어나다.
+  + 일반적으로 대용량 데이터 셋으로 만들어진 모델의 성능이 뛰어나다.
   + 현재의 Dl에서 가장 일반적이 학습 기법
   + Backbone Architecture가 잘 학습된 모델에서 일부분만 변경하여 학습을 수행함.
   + BERT, ImageNet, GPT 등등
-  + Pretrained model을 활용시 모델의 일부분을 frozen 시킴
-    + 내 모델과 합칠때 적절하게 특정 위치까지만 학습시키고 원래 모델의 Parameter를 frozen시킴
+  + Pretrained model을 활용 시 모델의 일부분을 frozen 시킴
+    + 내 모델과 합칠 때 적절하게 특정 위치까지만 학습시키고 원래 모델의 Parameter를 frozen 시킴
     + Stepping frozen 기법.
     + 입력과 출력을 내 데이터에 맞게 조절.
     + Parameter Frozen 반드시 확인.
@@ -452,10 +452,10 @@ n
   + ANNOUMCIMG TensorRT 8.0
   + Model Parallelize
     + 모델을 나눠 각 cuda에서 처리한 뒤 마지막에 결과를 종합함.
-    + 파이프 라인을 잘 설계해야 병목현상이 안 일어남.
+    + 파이프라인을 잘 설계해야 병목현상이 안 일어남.
   + Data Paralleize
-    + 데이터를 나눠 cuda에 할당후 결과의 평균을 취하는 방법.
-    + minibatch 수식과 유사하나 한번에 여러 GPU에서 수행한다.
+    + 데이터를 나눠 cuda에 할당 후 결과의 평균을 취하는 방법.
+    + minibatch 수식과 유사하나 한 번에 여러 GPU에서 수행한다.
     + DataParallel
       + 결과 종합을 한 CUDA에서 하므로 GPU 사용 불균형 문제가 발생한다.
       + Batch 사이즈 감소할 수 있다.(병목현상 발생)
@@ -485,14 +485,14 @@ trainloader = torch.utils.data.DataLoader(
 )
 ```
 
-+ 모델 성능 개선시 고려 순서
-  1. 데이터를 더 수집한다.(교체하거나 오류확인)
++ 모델 성능 개선 시 고려 순서
+  1. 데이터를 더 수집한다.(교체하거나 오류 확인)
   2. 모델을 바꿔본다.
   3. Hyperparameter Tuning
      + Hyperparmeter Tuning
        + 모델 스스로 학습하지 않는 값은 사람이 지정.
          + Neural Architecture Search(알아서 찾아줌)
-       + 마지막 0.01을 쥐어 짜야할 때 도전
+       + 마지막 0.01을 쥐어 짜야 할 때 도전
        + 가장 기본적인 방법 Grtid, Random
        + 최근에는 베이지안 기반 기법들이 주도
 
@@ -506,11 +506,11 @@ trainloader = torch.utils.data.DataLoader(
     + torch.cuda.empty_cache() 써보기
     + Training Loop에 tensor 자체로 축적되는 변수는 반드시 tensor가 필요한지 확인할 것.
     + del 명령어 적절히 사용하기.
-    + 가능한 Batch 사이즈 실험해보기
+    + 가능한 Batch 사이즈 실험해 보기
     + Inference 시점에서는 torch.no.grad() 사용하기.
-    + CUDNN-STATUS_NOT_INIT, device-side-assert 두개 모두 OOM의 일종임.
-    + colab에서 너무 큰 사이즈는 실행 하지 말것.
-    + CNN의 대부분 에러는 크기가 안맞아서 생김.(torch.summary() 활용)
+    + CUDNN-STATUS_NOT_INIT, device-side-assert 두 개 모두 OOM의 일종임.
+    + colab에서 너무 큰 사이즈는 실행하지 말것.
+    + CNN의 대부분 에러는 크기가 안 맞아서 생김.(torch.summary() 활용)
     + tensor의 float precision을 16 bit로 줄일 수도 있음.
 
 + project-template 이해하기
@@ -562,9 +562,11 @@ trainloader = torch.utils.data.DataLoader(
 + 마스터클래스
   + Data가 깡패다.
   + 엔지니어와 리서처의 차이에 대해서 알 수 있었다.
-  + 햔장에서는 데이터를 만들어내야 하는 상황이 많다.
-  + 어떤 데이터를 만들어내 AI를 접목시킬 수 있을지 생각해보자.
-  + 앞으로 알아야할 것 들
+  + 실무에서는 데이터를 만들어내야 하는 상황이 많다.
+  + 데이터는 어디에 있나요? 데이터는 누가 만들어요?
+    + 네. 제가 바로 누입니다.
+  + 어떤 데이터를 만들어내 AI를 접목시킬 수 있을지 생각해 보자.
+  + 앞으로 알아야 할 것 들
     + MLOPs 도구들
     + 데이터베이스
     + Cloud-AWS, GCP, Azure
