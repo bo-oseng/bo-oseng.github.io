@@ -6,7 +6,7 @@ title: 부스트캠프에 합격했다
 categories:
   - Boostcamp
 
-tag: [Boostcamp, 부스트캠프, 온보딩키트, AITech, 부스트캠프AITech, 부스트캠프aitech4기, 부스트캠프온보딩키트, AITech온보딩키트, 부스트캠퍼만을위한선물,부캠온보딩키트, 네이버커넥트, ,네이버커넥트재단]
+tag: [부스트캠프, AITech, 부스트캠프AITech, 부스트캠프aitech4기, 온보딩키트, 부스트캠프온보딩키트, AITech온보딩키트, 부스트캠퍼만을위한선물,부캠온보딩키트, 네이버커넥트, 네이버커넥트재단]
 
 toc: true
 
