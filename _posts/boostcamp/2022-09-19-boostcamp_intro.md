@@ -23,3 +23,7 @@ toc: true
 <img src="https://user-images.githubusercontent.com/94548914/191517196-e4e9d04a-7497-47df-b740-0a7a86bae345.png">
 
 평소에 관심 있던 AI 분야에 좋은 기회를 얻게 되어 너무 기쁩니다. 그리고 온보딩키트 준비해 주신 세심한 배려에 다시 한번 감사드립니다.
+
+<img width="" src="https://user-images.githubusercontent.com/94548914/193437484-ae3d1d95-833e-4553-b6d6-62d99a755074.jpeg">
+<img width="" src="https://user-images.githubusercontent.com/94548914/193437480-562d0a3d-aabc-44b9-b738-7fcf6e4f6d2a.jpeg">
+<img width="" src="https://user-images.githubusercontent.com/94548914/193437478-242c9101-c0f6-4bce-8009-6f140b79e321.jpeg">
