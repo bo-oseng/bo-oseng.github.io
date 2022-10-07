@@ -4,7 +4,7 @@ layout: single
 
   
 
-title: 부스트캠프에 AI 2주차(Day-7 ~ Day-12) 회고록
+title: 부스트캠프 AI 2주차(Day-7 ~ Day-12) 회고록
 
 categories:
 
