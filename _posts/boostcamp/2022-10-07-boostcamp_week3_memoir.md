@@ -4,7 +4,7 @@ layout: single
 
   
 
-title: 부스트캠프에 AI 3주차(Day-15 ~ Day-20) 회고록
+title: 부스트캠프 AI 3주차(Day-15 ~ Day-20) 회고록
 
 categories:
 
@@ -53,12 +53,13 @@ toc: true
 + Neural Networks 에 대해 학습했다.
   + 비행기는 처음 새나 박쥐를 모방하며 시작해 지금의 동물과는 동떨어진 형태가 되었다.
   + 이와 비슷하게 Neural Networks도 인간의 뇌를 모방하며 시작했지만 지금은 살짝 동떨어진 형태가 되지 않았나 싶다.
+  + Function approximators의 일종이다.
 + Multi-Layer Perceptron 을 공부했다.
 + Logit 함수가 무엇인지 알아봤다.
 
 <br>
 <br>
-피어세션: 강의에서 "여기는 logit이니까 activation 없이 나오죠"라고 언급됐었다. Logit 함수에 대해 조사했고 팀원들과 공유했다.
+피어세션: 강의에서 "여기는 logit이니까 activation 없이 나오죠"라고 언급됐었다. 의문이 생겨 Logit 함수에 대해 조사했고 팀원들과 공유했다.
 
 ## Day 17
 + CNN에 대해 학습했다.
