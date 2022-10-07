@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 부스트캠프에 AI 1주차(Day-1 ~ Day-5) 회고록  
+title: 부스트캠프 AI 1주차(Day-1 ~ Day-5) 회고록  
 categories:
   - Boostcamp
 
