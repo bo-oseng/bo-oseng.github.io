@@ -50,15 +50,77 @@ toc: true
   + Model
   + Loss
   + Algorithm
+
+<br>
+<br>
+
 + Neural Networks 에 대해 학습했다.
   + 비행기는 처음 새나 박쥐를 모방하며 시작해 지금의 동물과는 동떨어진 형태가 되었다.
   + 이와 비슷하게 Neural Networks도 인간의 뇌를 모방하며 시작했지만 지금은 살짝 동떨어진 형태가 되지 않았나 싶다.
   + Function approximators의 일종이다.
 + Multi-Layer Perceptron 을 공부했다.
+  + Linear Neural Network
+
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194794486-8ebf2c07-e752-493f-9ea1-ca3edb6d36ed.png">
+
+  + Mult Layer Perceptron
+  
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194794581-ab453716-ad93-4c5e-bb42-f88d924a5b60.png">
+
 + Logit 함수가 무엇인지 알아봤다.
 
 <br>
 <br>
+
++ Optimization
+  + Generalization
+    + 모델이 학습된 데이터 이외의 일반적인 unseendata에 대해 얼마나 잘 동작하는지를 말한다.
+  + Under-fitting vs. over-fitting
+    + Under-fitting 되면 성능이 떨어진다.
+    + Over-fitting 되면 Generalization이 떨어진다.
+  + Cross validation
+    + K-fold validation 이라고도 한다.
+    + Train data를 k개로 나누어 k개의 데이터 끼리 교차로 Vaildation data로 활용한다.
+    + 하이퍼 파라미터의 최적을 Cross validation으로 찾고, 하이퍼 파라미터를 가지고 모든 train data를 학습시킨다.
+  + Bias-variance tradeoff
+    + Bias는 표적으로 부터 전체적으로 얼마나 떨어져 있는지 거리를 말한다.
+    + Variance는 데이터들 끼리 얼마나 뭉쳐 있는지 여부를 말한다.
+    + Bias와 Variance 간에는 Tradeoff가 존재한다.
+
+      <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194795614-baff2f17-0619-47e0-86d1-1d469ca16264.png">
+
+  + Bootstrapping
+    + 학습 데이터 중 Subsmapling으로 여러개의 셋을 만들어 학습하겠다.
+  + Bagging and boosting
+    + Bootstrapping aggregating
+      + 여러개의 모델을 Bootstrapping으로 학습하고 평균을 내겠다.
+      + Parallel
+    + Bagging
+      + Sequential
+
+      <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194796556-929c7c47-2bf1-4f43-a204-6b77bf4c0639.png">
+
++ Gradient Descent Methods
+  + Stochastic gradient descent
+  + Mini-batch gradient descent
+  + Batch gradient descent
+    + Lager batch -> Sharp Minimizers
+    + Small batch -> Flat Minimizers
+
+      <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194796761-4ece8f35-5f71-4dd3-b19b-dc64f44ffa03.png">
+
++ Momentum
+  $$ \begin{aligned}a_{t+1}\leftarrow \beta a_{t}+g_{t}\\
+  W_{t+1}\leftarrow W_{t}-\eta a_{t+1}\end{aligned} $$
++ Nesterov Accelerated Gradient
+  + Lookahead Gradinet 추가.
+  $$ \begin{aligned}a_{t+1}\leftarrow \beta a_{t}+\nabla L\left( W_{t}-\eta \beta _{at}\right) \\
+  W_{t+1}\leftarrow W_{t}-\eta a_{t+1}\end{aligned} $$
++ Adagrad
++ Adadelta
++ RMSprop
++ Adam
+
 피어세션: 강의에서 "여기는 logit이니까 activation 없이 나오죠"라고 언급됐었다. 의문이 생겨 Logit 함수에 대해 조사했고 팀원들과 공유했다.
 
 ## Day 17
