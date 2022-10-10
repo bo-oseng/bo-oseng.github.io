@@ -117,11 +117,56 @@ toc: true
   $$ \begin{aligned}a_{t+1}\leftarrow \beta a_{t}+\nabla L\left( W_{t}-\eta \beta _{at}\right) \\
   W_{t+1}\leftarrow W_{t}-\eta a_{t+1}\end{aligned} $$
 + Adagrad
+  + 많이 변해온건 조금만, 조금만 변해온건 많이 변화시킨다.
+  + Gt가 너무 커지면 0에 가까워지고 학습이 잘 안된다.
+
+  <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194797450-bbdf7e57-8ac2-48ee-81ac-23673dd42a88.png">
+
 + Adadelta
+  + EMA: Exponetial Moving Average
+  + Learning rate이 없어 조절하기가 힘들다.
+  + 바꿀수 있는 부분이 많이 없음.
+
+  <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194797495-91ae73b4-b34f-4d67-a159-3a1f560db425.png">
+
 + RMSprop
+  + Stepsize가 추가됨.
+
+  <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194797541-63dfba88-75c3-43c2-9dd2-4b91bb0868da.png">
+
 + Adam
+  + 최근 가장 많이 쓰이는 Optimizer
+
+  <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194797594-0d6ab8ad-4ad4-460a-93b7-24830199143c.png">
+
+<br>
+
++ Regularization
+  + Over fitting을 막기위해 학습을 방해, 규제한다.
+  + Early stopping 
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798076-85988f12-dc6e-4424-9929-d11845ec969e.png">
+  + Parameter norm penalty 
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798113-65dfbda8-47d6-4842-9987-2518b8180577.png">
+  + Data augmentation 
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798147-54d3b75b-307a-486c-adcb-69d258a42562.png">
+  + Noise robustness
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798186-dbded22c-46c7-442b-a012-9a92b18a7ea2.png">
+
+  + Label smoothing
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798239-572e6bcc-fd05-41d6-a73c-6f8626e47dc5.png">
+  + Dropout
+  
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798277-45262cb3-546c-4f3f-adf1-e0f56fb63ae7.png">
+
+  + Batch normalization
+          
 
 피어세션: 강의에서 "여기는 logit이니까 activation 없이 나오죠"라고 언급됐었다. 의문이 생겨 Logit 함수에 대해 조사했고 팀원들과 공유했다.
+[Logit](https://velog.io/@guide333/logit-%ED%99%95%EB%A5%A0-sigmoid-softmax)
+
+<br>
+<br>
+<br>
 
 ## Day 17
 + CNN에 대해 학습했다.
