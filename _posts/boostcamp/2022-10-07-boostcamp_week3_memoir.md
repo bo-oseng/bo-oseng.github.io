@@ -67,7 +67,6 @@ toc: true
   
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194794581-ab453716-ad93-4c5e-bb42-f88d924a5b60.png">
 
-+ Logit 함수가 무엇인지 알아봤다.
 
 <br>
 <br>
@@ -144,16 +143,25 @@ toc: true
 + Regularization
   + Over fitting을 막기위해 학습을 방해, 규제한다.
   + Early stopping 
+  
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798076-85988f12-dc6e-4424-9929-d11845ec969e.png">
+
   + Parameter norm penalty 
+  
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798113-65dfbda8-47d6-4842-9987-2518b8180577.png">
+
   + Data augmentation 
+  
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798147-54d3b75b-307a-486c-adcb-69d258a42562.png">
+
   + Noise robustness
+  
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798186-dbded22c-46c7-442b-a012-9a92b18a7ea2.png">
 
   + Label smoothing
+
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798239-572e6bcc-fd05-41d6-a73c-6f8626e47dc5.png">
+
   + Dropout
   
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798277-45262cb3-546c-4f3f-adf1-e0f56fb63ae7.png">
