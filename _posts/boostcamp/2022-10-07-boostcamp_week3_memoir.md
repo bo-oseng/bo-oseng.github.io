@@ -159,6 +159,9 @@ toc: true
     <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194798277-45262cb3-546c-4f3f-adf1-e0f56fb63ae7.png">
 
   + Batch normalization
+
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194805588-95f32e14-0807-48af-a9aa-b1820eeacbea.png">
+
           
 
 피어세션: 강의에서 "여기는 logit이니까 activation 없이 나오죠"라고 언급됐었다. 의문이 생겨 Logit 함수에 대해 조사했고 팀원들과 공유했다.
