@@ -4,7 +4,7 @@ layout: single
 
   
 
-title: 부스트캠프 AI 3주차(Day-15 ~ Day-20) 회고록
+title: 부스트캠프 AI 3주차(Day-15 ~ Day-19) 회고록
 
 categories:
 
@@ -22,7 +22,7 @@ toc: true
 
 ---
 ## Day 15
-+ Dive Into Deep Learning 17장을 팀원들과 리뷰했다.
++ 쉬는 날이었지만 Dive Into Deep Learning 17장을 팀원들과 리뷰했다.
   + 17.1 Overview of Recommender Systems
   + 17.2 The MovieLens Dataset
   + 17.3 Matrix Factorization
@@ -31,6 +31,10 @@ toc: true
   + 17.6 Neural Collaborative Filtering for Personalized Ranking
   
 피어세션: 17.5, 17.6 부분이 너무 어려워서 나중에 다시 살펴보기로 했다.
+
+<br>
+<br>
+
 ## Day 16
 + 딥러닝이 등작한 역사와 배경에 대해 간단히 살펴보았다.
   + Alexnet
@@ -109,6 +113,7 @@ toc: true
       <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/194796761-4ece8f35-5f71-4dd3-b19b-dc64f44ffa03.png">
 
 + Momentum
+
   $$ \begin{aligned}a_{t+1}\leftarrow \beta a_{t}+g_{t}\\
   W_{t+1}\leftarrow W_{t}-\eta a_{t+1}\end{aligned} $$
 + Nesterov Accelerated Gradient
@@ -172,8 +177,8 @@ toc: true
 
           
 
-피어세션: 강의에서 "여기는 logit이니까 activation 없이 나오죠"라고 언급됐었다. 의문이 생겨 Logit 함수에 대해 조사했고 팀원들과 공유했다.
-[Logit](https://velog.io/@guide333/logit-%ED%99%95%EB%A5%A0-sigmoid-softmax)
+피어세션: 강의에서 "여기는 logit이니까 activation 없이 나오죠"라고 언급됐었다. 의문이 생겨 [Logit](https://velog.io/@guide333/logit-%ED%99%95%EB%A5%A0-sigmoid-softmax) 함수에 대해 조사했고 팀원들과 공유했다.
+
 
 <br>
 <br>
@@ -181,16 +186,31 @@ toc: true
 
 ## Day 17
 + CNN에 대해 학습했다.
+  + Convolutional Neural Network
+  + 
 + Modern CNN에 대해 살펴봤다.
 + CNN이 CV분야에서 어떻게 활용하는지 공부했다.
 + CNN에서 1by1 커널과 3by3 커널의 의미를 학습했다.
+  + 1by1
+  + 3by3
 + 왜 2by2 또는 짝수 커널을 쓰지 않는지 찾아봤다.
+  + 짝수 커널을 안 쓰는 이유
 + RNN에 대해 학습했다.
 + LSTM의 탄생배경과 구조에 대해 학습했다.
+
+<br>
+<br>
+<br>
+
 ## Day 18
 + Transformer에 대해서 학습했다.(All you need attetion)
 + Multi Head Attention에 대해 학습했다.
 + Generative Models에 대해 학습했다.
+
+<br>
+<br>
+<br>
+
 ## Day 19
 + VIT에 대해 학습했다.
 + Matplotlib에 대해 살펴봤다.
