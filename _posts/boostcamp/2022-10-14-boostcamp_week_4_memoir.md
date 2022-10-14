@@ -72,12 +72,11 @@ toc: true
 <br>
 <br>
 
-의문점: CDAE에서 개별 유저에 대해서 파라미터 V<sub>u</sub> 를 학습하고 이 때문에 Collaborative한 모델이라고한다. Collaborative의 정의에 대해서 다시 살펴봐야겠다.
+의문점: CDAE에서 개별 유저에 대해서 파라미터 V<sub>u</sub> 를 학습하고 이 때문에 Collaborative한 모델이라고한다. Collaborative의 정의에 대해서 다시 살펴봐야겠다. 강의 중 이렇게 말하셨다.
 
-<br>
-    
-
-    "각각의 유저별로 특징이 다르고 그 특징이 각각의 파라미터로 학습되며 이 모델이 Collaborative가 되었다."
+<blockquote>
+"각각의 유저별로 특징이 다르고 그 특징이 각각의 파라미터로 학습되며 이 모델이 Collaborative가 되었다."
+</blockquote>
 
 <br>
 
