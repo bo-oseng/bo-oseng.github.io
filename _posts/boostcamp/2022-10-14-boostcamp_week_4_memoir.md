@@ -185,6 +185,7 @@ toc: true
   <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/195982877-a1fbe988-fc00-4ee3-9e93-09fcf54279e5.png">
 
 + Alternative Least Square (ALS)
+  + Implicit Feedback 데이터에 적합하도록 MF 기반 모델을 설계하여 성능을 향상시킨
   + 유저와 아이템 매트릭스를 번갈아가면서 업데이트 두 매트릭스 중 하나를 상수로 놓고 나머지 매트릭스를 업데이트 p<sub>u</sub>, q<sub>i</sub>가운데 하나를 고정하고 다른 하나로 least-square 문제를 푸는 방법
   + Sparse한 데이터에 대해 SGD 보다 더 Robust 하며 대용량 데이터를 병렬 처리하여 빠른 학습 가능
 
@@ -192,8 +193,51 @@ toc: true
 
 
 + Bayesian Personalized Ranking
-+ Word2Vec
+  + [17.5. Personalized Ranking for Recommender Systems](https://d2l.ai/chapter_recommender-systems/ranking.html)
+  + Bayesian을 활용해 사용자에게 순서(Ranking)가 있는 아이템 리스트를 제공하는 문제
+  + 가정을 통해 Implicit의 정보를 좀 더 적극적으로 활용한다.
+  + Bayes 정리를 활용해 Maximum A Posterior 구한다.
+
+    <img width="50%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018423-a4d44029-65d8-4cf6-9dfc-f3731fc0137f.png">
+
++ Word2Vec 
+  + 임베딩(Embedding): 주어진 데이터를 낮은 차원의 벡터(vector)로 만들어서 표현하는 방법
+    <img width="70%" src="https://miro.medium.com/max/4800/1*2r1yj0zPAuaSGZeQfG6Wtw.png">
+
+    <span color="gray">출처: https://towardsdatascience.com/mapping-word-embeddings-with-word2vec-99a799dc9695</span>
+  + 대량의 문서 데이터셋을 vector 공간에 투영
+  + 압축된 형태의 많은 의미를 갖는 dense vector로 표현
+  + Continuous Bag of Words(CBOW)
+    + 주변에 있는 단어를 가지고 센터에 있는 단어를 예측하는 방법
+    + 중앙 단어를 기준으로 앞뒤 n개의 단어를 입력해 중앙 단어를 예측하는 방법
+    + 2n개의 임베딩 벡터를 평균내는 과정이 필요함
+  + Skip-Gram
+    + CBOW의 입력층과 출력층이 반대로 구성된 모델
+    + 벡터의 평균을 구하는 과정이 없음
+    + 중앙 단어를 입력으로 넣어 임베딩한 벡터로 주변단어를 Mulit Classification
+    + 일반적으로 CBOW보다 Skip-Gram이 성능(예측 정도가 아닌 임베딩 벡터의 표현력)이 좋다고 알려져 있음
+  + Skip-Gram w/ Negative Sampling (SGNS)
+    + Negative Sampling
+      + Positive sample 하나당 K개의 Negative을 샘플링함.
+      + 학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당함
+    + 중앙 단어, 입력 단어를 입력받아 주변에 있는지 여부를 정하는 Binary Classification으로 바뀜
+      
+    <img width="50%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018931-50ba4a33-6ef9-4b3a-9b86-473295c215e8.png">
+
 + Item2Vec
+  + 유저가 소비한 아이템 리스트를 문장으로, 아이템을 단어로 가정하여 Word2Vec 사용
+  + SGNS 기반의 Word2Vec을 사용하여 아이템을 벡터화하는 것이 최종 목표
+  + 유저 혹은 세션 별로 소비한 아이템 집합을 생성함 이 때 시퀀스를 집합으로 바꾸면서 공간적/시간적 정보는 사라짐
+  + 집합 안에 존재하는 아이템은 서로 유사하다고 가정함
+  + 아이템 집합 내 아이템 쌍들은 모두 SGNS의 Positive Sample이 됨
+  + SVD(MF) 보다 임베딩이 더 잘됨.
+  <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018999-364f3461-4052-4df6-81e6-7f65602b0ae1.png">
+
++ ANN
+  + 기존의 Brute Force KNN은 모든 Vector와 유사도 비교를 수행해야 함(너무 느림)
+  + 정확도를 조금 포기하고 아주 빠른 속도로 주어진 Vector의 근접 이웃을 찾아볼까? → ANN
+  + ANNOY: spotify에서 개발한 tree-based ANN 기법
+
   
 
 <br>
