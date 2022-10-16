@@ -51,7 +51,7 @@ toc: true
   + 유저가 접할 수 있는 정보의 양이 다양해지며 정보를 찾는데 시간이 오래 걸림.
   + Few Popular items → Long Tail Phenomenon
 
-    <img width="50%" alt="image" src="https://user-images.githubusercontent.com/94548914/195973538-d9bade72-6a64-4c4a-ad16-ededde708739.png">
+    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/195973538-d9bade72-6a64-4c4a-ad16-ededde708739.png">
 
   + 사용 데이터
     + 유저 관련 정보
@@ -79,7 +79,7 @@ toc: true
       $$ \dfrac{1}{ |{U}| }\sum ^{|{U}|}_{u=1} (AP@K)_{u} $$
   + NDCG
 
-    <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/195974225-efd4dda9-d537-46f2-8570-9749219d5415.png">
+    <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/195974225-efd4dda9-d537-46f2-8570-9749219d5415.png">
 
 
 + Onlie Test
@@ -110,13 +110,13 @@ toc: true
   + confidence
   + lift
 
-    <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/195975212-7cba102c-295b-403f-9c84-60f8329754e4.png">
+    <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/195975212-7cba102c-295b-403f-9c84-60f8329754e4.png">
 
-    <img width="70%" alt="support" src="https://user-images.githubusercontent.com/94548914/195975379-0e76e7f3-c92e-434c-9c00-171d5ecf923a.png">
+    <img width="100%" alt="support" src="https://user-images.githubusercontent.com/94548914/195975379-0e76e7f3-c92e-434c-9c00-171d5ecf923a.png">
     
-    <img width="70%" alt="confidence" src="https://user-images.githubusercontent.com/94548914/195975380-cfbfe517-b782-4a64-9eff-6028f777b06b.png">
+    <img width="100%" alt="confidence" src="https://user-images.githubusercontent.com/94548914/195975380-cfbfe517-b782-4a64-9eff-6028f777b06b.png">
 
-    <img width="70%" alt="lift" src="https://user-images.githubusercontent.com/94548914/195975381-3ad87ef9-0bd0-4ca7-bbb0-eebb287e429c.png">
+    <img width="100%" alt="lift" src="https://user-images.githubusercontent.com/94548914/195975381-3ad87ef9-0bd0-4ca7-bbb0-eebb287e429c.png">
 
   + lift 값을 내림차순 정렬하여 의미 있는 rule을 평가함.
     + 주의할 점은 이 rule 어떠한 상관관계를 의미하는 것은 아님.
@@ -135,7 +135,7 @@ toc: true
       2. 한 분야/장르의 추천 결과만 계속 나올 수 있음.
       3. 다른 유저의 데이터를 활용할 수 없음.
 
-    <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/195975549-3d7e62df-dfd8-410d-bedf-a9f82cab3499.png">
+    <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/195975549-3d7e62df-dfd8-410d-bedf-a9f82cab3499.png">
 
     $$ TF-IDF\left(w ,d\right) =  TF\left(w ,d\right) \cdot IDF(w) $$
 
@@ -182,14 +182,14 @@ toc: true
 
 + Matrix Factorization (MF)
 
-  <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/195982877-a1fbe988-fc00-4ee3-9e93-09fcf54279e5.png">
+  <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/195982877-a1fbe988-fc00-4ee3-9e93-09fcf54279e5.png">
 
 + Alternative Least Square (ALS)
   + Implicit Feedback 데이터에 적합하도록 MF 기반 모델을 설계하여 성능을 향상시킨.
   + 유저와 아이템 매트릭스를 번갈아가면서 업데이트 두 매트릭스 중 하나를 상수로 놓고 나머지 매트릭스를 업데이트 p<sub>u</sub>, q<sub>i</sub>가운데 하나를 고정하고 다른 하나로 least-square 문제를 푸는 방법.
   + Sparse한 데이터에 대해 SGD 보다 더 Robust 하며 대용량 데이터를 병렬 처리하여 빠른 학습 가능.
 
-    <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/195983026-b6cf5222-e2ec-4960-bf5c-145989c57149.png">
+    <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/195983026-b6cf5222-e2ec-4960-bf5c-145989c57149.png">
 
 
 + Bayesian Personalized Ranking
@@ -198,12 +198,12 @@ toc: true
   + 가정을 통해 Implicit의 정보를 좀 더 적극적으로 활용한다.
   + Bayes 정리를 활용해 Maximum A Posterior 구한다.
 
-    <img width="50%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018423-a4d44029-65d8-4cf6-9dfc-f3731fc0137f.png">
+    <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018423-a4d44029-65d8-4cf6-9dfc-f3731fc0137f.png">
 
 + Word2Vec 
   + Neural Network 기반 모델
   + 임베딩(Embedding): 주어진 데이터를 낮은 차원의 벡터(vector)로 만들어서 표현하는 방법.
-    <img width="70%" src="https://miro.medium.com/max/4800/1*2r1yj0zPAuaSGZeQfG6Wtw.png">
+    <img width="100%" src="https://miro.medium.com/max/4800/1*2r1yj0zPAuaSGZeQfG6Wtw.png">
 
     <span color="gray">출처: https://towardsdatascience.com/mapping-word-embeddings-with-word2vec-99a799dc9695</span>
   + 대량의 문서 데이터셋을 vector 공간에 투영.
@@ -224,7 +224,7 @@ toc: true
       + 학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당함.
     + 중앙 단어, 입력 단어를 입력받아 주변에 있는지 여부를 정하는 Binary Classification으로 바뀜.
       
-    <img width="50%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018931-50ba4a33-6ef9-4b3a-9b86-473295c215e8.png">
+    <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018931-50ba4a33-6ef9-4b3a-9b86-473295c215e8.png">
 
 + Item2Vec
   + 유저가 소비한 아이템 리스트를 문장으로, 아이템을 단어로 가정하여 Word2Vec 사용.
@@ -233,7 +233,7 @@ toc: true
   + 집합 안에 존재하는 아이템은 서로 유사하다고 가정함.
   + 아이템 집합 내 아이템 쌍들은 모두 SGNS의 Positive Sample이 됨.
   + SVD(MF) 보다 임베딩이 더 잘됨.
-  <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018999-364f3461-4052-4df6-81e6-7f65602b0ae1.png">
+  <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/196018999-364f3461-4052-4df6-81e6-7f65602b0ae1.png">
 
 + ANN
   + 기존의 Brute Force KNN은 모든 Vector와 유사도 비교를 수행해야 함.(너무 느림)
@@ -264,8 +264,8 @@ toc: true
 
 의문점: ANN 에서 priority queue를 어떻게 사용하는가?
 
-  <img width="50%" src="https://user-images.githubusercontent.com/94548914/195974515-48267eec-1c13-412c-af62-e3a9ba176df3.png">
-  <img width="50%" src="https://user-images.githubusercontent.com/94548914/195974513-56653663-7d54-42d9-9cf4-082a7963a8d8.png">
+  <img width="100%" src="https://user-images.githubusercontent.com/94548914/195974515-48267eec-1c13-412c-af62-e3a9ba176df3.png">
+  <img width="100%" src="https://user-images.githubusercontent.com/94548914/195974513-56653663-7d54-42d9-9cf4-082a7963a8d8.png">
 
 
 답: Section을 나눌 때 그림처럼 인접한 부분은 비슷한 Section으로(비슷한 색으로) 나누고 우선순위 정하며 Tree을 구성한뒤 가정 인접한 곳이 해당 노드에 없을때 queue 규칙에 맞게 트리를 타고 올라가 다음 탐색을 시행한다.
@@ -298,7 +298,7 @@ toc: true
   + MLP와 GMF를 결합.
   + GMF와 MLP는 서로 다른 embedding layer를 사용.
   
-    <img width="70%" alt="image" src="https://user-images.githubusercontent.com/94548914/196019315-2b86b98c-082f-4145-95a8-1bd5dc92770c.png">
+    <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/196019315-2b86b98c-082f-4145-95a8-1bd5dc92770c.png">
 
 + YouTube Recommendation
   + Scale
@@ -335,14 +335,19 @@ toc: true
 
 <br>
 
-  <div width="100vw">
-    <img width="50%" alt="total" src="https://user-images.githubusercontent.com/94548914/196020404-804aac3a-f315-4c22-ba79-384df27cd8af.png">
-    <p width="50%" style="margin-bottom: 10px; text-align: justify;">Total Model</p>
-    <img width="50%" alt="CG" src="https://user-images.githubusercontent.com/94548914/196020406-66117918-d34a-4ed8-8ebb-5c7d1b1c3793.png">
-    <p width="50%" style="margin-bottom: 10px; text-align: justify;"">Candidate Generation</p>
-    <img width="50%" alt="Ranking" src="https://user-images.githubusercontent.com/94548914/196020409-bbc77604-621f-4008-ad1d-237afc0f304b.png">
-    <p width="50%" style="margin-bottom: 10px; text-align: justify;"">Ranking</p>
-  </div>
+<div>
+  <img width="90%" alt="total" src="https://user-images.githubusercontent.com/94548914/196020404-804aac3a-f315-4c22-ba79-384df27cd8af.png">
+
+  <p style="display: block; margin-bottom: 10px; text-align: center;">Total Model</p>
+
+  <img width="90%" alt="CG" src="https://user-images.githubusercontent.com/94548914/196020406-66117918-d34a-4ed8-8ebb-5c7d1b1c3793.png">
+  
+  <p style="display: block; margin-bottom: 10px; text-align: center;">Candidate Generation</p>
+
+  <img width="90%" alt="Ranking" src="https://user-images.githubusercontent.com/94548914/196020409-bbc77604-621f-4008-ad1d-237afc0f304b.png">
+
+  <p style="display: block; margin-bottom: 10px; text-align: center;">Ranking</p>
+</div>
 
 <br>
 <br>
@@ -358,7 +363,7 @@ toc: true
   + 기존의 rating과 reconstructed rating의 RMSE를 최소화하는 방향으로 학습.
   + Hidden unit의 개수가 많아질 수록 RMSE가 감소함을 보임.
 
-    <img width="50%" alt="image" src="https://user-images.githubusercontent.com/94548914/196020866-4e4782e2-699d-4256-a72c-12d8ea81d521.png">
+    <img width="100%" alt="image" src="https://user-images.githubusercontent.com/94548914/196020866-4e4782e2-699d-4256-a72c-12d8ea81d521.png">
 
 <br>
 
