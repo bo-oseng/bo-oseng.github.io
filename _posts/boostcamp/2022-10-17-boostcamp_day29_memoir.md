@@ -12,7 +12,7 @@ categories:
 
   
 
-tag: [Boostcamp, 부스트캠프, 회고록]
+tag: [Boostcamp, 부스트캠프, 회고록, GNN, NGCF, LightGCN, GRU4Rec, CTR, FM, FFM, GBM]
 
   
 
