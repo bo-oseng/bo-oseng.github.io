@@ -12,7 +12,7 @@ categories:
 
   
 
-tag: [Boostcamp, 부스트캠프, 회고록]
+tag: [Boostcamp, 부스트캠프, 회고록, Offline Test, Onlie Test, 연관규칙분석, 딥러닝의 한계, TF-IDF, KNN, ANN, Latent, Embedding, MF, ALS, BPR, Word2Vec, SGNS, Item2Vec, HNSW, IVF, Product Quantization, NCF, YouTube Recommendation, AutoREC]
 
   
 
