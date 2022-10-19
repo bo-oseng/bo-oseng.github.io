@@ -4,7 +4,7 @@ layout: single
 
   
 
-title: 부스트캠프 AI 5주차(Day-29) 회고록
+title: 부스트캠프 AI 5주차(Day-30) 회고록
 
 categories:
 
