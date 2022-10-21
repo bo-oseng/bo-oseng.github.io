@@ -11,7 +11,7 @@ categories:
 
   
 
-tag: [Boostcamp, 부스트캠프, 회고록, BST]
+tag: [Boostcamp, 부스트캠프, 회고록, git, Fast Forward, Pull request, Branch 전략, gitflow, githubflow, Cherry pick, Branch hell, rebase, revert]
 
   
 
