@@ -31,6 +31,7 @@ toc: true
 #### Fast Forward
 + Merge할 main에서 추가적인 작업이 없었다면 branch에 있던 마지막 작업을 main 가르키기만 하면 된다. 이를 fast forward라 한다.
 + 일반적인 merge보다 속도가 빠름
+  
 #### Pull request
 + 책임자에게 내가 만든 브랜치를 main에 병합 해 주세요, 승인 해 주세요 라는 요청서.
 + 기능설명, 테스트방법, 스펙을 담은 문서로 설명
@@ -75,9 +76,30 @@ toc: true
     + 3대 reference중 하나
 
 #### Cherry pick
++ 3 way merge를 활용한 획기적인 방법
+  
+<img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197166035-21604574-f51e-4209-8a61-9d97e4ddac3d.png">
+
 #### Branch hell → rebase로 해결하자
 + merge: 진실이지만 복잡하다.
+
+<img width="90%" alt="merge" src="https://user-images.githubusercontent.com/94548914/197172149-e2f19de1-e4ee-4021-92e9-87a443d3e114.png">
+
+
+
 + rebase: 단순하지만 엄밀히 말하면 거짓말이다.
+  + Cherry pick을 통해 브랜치를 flatten 시킨 후 base가 하나였던거 처럼 된다.
+
+<img width="90%" alt="step2" src="https://user-images.githubusercontent.com/94548914/197170947-86bed9c0-25ab-4f45-a3b0-b0c83d405396.png">
+
+<img width="90%" alt="step1" src="https://user-images.githubusercontent.com/94548914/197170957-bbf4e05d-e803-48fa-8553-7d3230d4e9a4.png">
+
+<img width="90%" alt="step3" src="https://user-images.githubusercontent.com/94548914/197171365-f7f732f6-1008-4737-be2b-7cff22a32042.png">
+
+
+
 #### Revert
++ 깃의 특성상 과거에 잘못된 커밋을 직접 수정할 수 없음.
+  + 잘못된 부분을 수정한 후 새로 커밋을 한다는 개념으로 수정한다.
 + 이미 배포한 걸 취소
 + 3 way merge
