@@ -105,3 +105,4 @@ toc: true
 + 3 way merge
 
 <img width="90%" alt="revert" src="https://user-images.githubusercontent.com/94548914/197174368-806c07b5-e51e-4cc9-8f48-d6a377ed24b5.png">
+

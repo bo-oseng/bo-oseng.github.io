@@ -12,7 +12,7 @@ categories:
 
   
 
-tag: [Boostcamp, 부스트캠프, 회고록]
+tag: [Boostcamp, 부스트캠프, 회고록, git, Tracked, UnTracked, add, gitignore, checkout, reset, merge, log, alias, conflict, 3-way merge, amend, remote, push, pull, fetch]
 
   
 
@@ -57,7 +57,7 @@ toc: true
   + 3-way merge
     + Base를 기준으로 두고 합치려는 branch들을 비교 해가며 결정한다.
     + 이 때 결정하기 애매한 부분은 conflict가 난다.
-+ ammend
++ amend
 + Git remote
   + Origin/maim과 main의 위치가 다르면 버전관리
 + Git push

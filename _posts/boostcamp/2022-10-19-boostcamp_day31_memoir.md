@@ -292,3 +292,16 @@ toc: true
     + CTR 예측 Task의 sequence는 machine translation와 같은 NLP sequence보다는 덜 복잡한 것으로 보임.
   
     <img width="60%" alt="image" src="https://user-images.githubusercontent.com/94548914/196729786-e7dae864-c899-430f-8883-a563e8674cd3.png">
+
+## 의문점
+
+- Deep Interest Network의 Embedding Layer에서 concat할 필요 없이 바로 전체를 Embedding 하면 latent까지 모두 고려될 거 같은데 왜 굳이 cocnat후 Embedding을 할까?
+
+## 피어섹션
+-  Factorization Machine 식의 세번째 항에서 x_i x_j 의 정확한 의미가 알고싶다.
+
+## 멘토링
+- 강의에 나오는 논문은 다 읽어봐라!
+- BERT4REC → SOTA
+- 강의만 봐서는 해결할 수 없음 - trick 이 너무 많음 (notation 도 너무 자유분방한 듯).. 논문을 읽어야 함
+- heterogeneous 그래프에 관해 알아보기
