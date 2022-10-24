@@ -49,6 +49,7 @@ toc: true
 
 ### 추천 시스템 분류 체계
 
+
 <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197554110-61128554-7fe2-40b9-9b95-a8962b55f4b4.png">
 
 + Content Based Filtering
@@ -62,6 +63,86 @@ toc: true
   + Context Aware RecSys
   + Multi Armed Bandit
 
+### 추천 시스템 평가 방법
+
++ Offline Test
+  + 수집된 데이터를 Train, Valid, Test set 3가지로 분할하여 모델 성능 평가 시 활용한다.
+  + 데이터 분할 전략에 따라서 시스템 성능 평가에 큰 영향을 줄 수 있으므로 적절한 분할 전략이 필요하다.
+  + Leave One Last
+    + 사용자당 마지막 구매를 Test set으로, 마지막에서 2번째를 Valid set으로 분할한다.
+    + 장점: 학습 시 많은 데이터를 사용할 수 있다.
+    + 훈련 중에 모델이 테스트 데이터 상호작용을 특징으로 학습할 가능성 있다.
+    + <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197556044-3f92c8de-6390-4a09-9dee-c2699c8fefb9.png">
+
+  + Temporal User
+    + 시간을 이용한 분할 전략
+    + Leave One last와 유사하다.
+    + Data leakage 문제가 있다.
+  + Temporal Global
+    + 시간을 이용한 분할 전략
+    + 각 유저 간에 공유되는 시점을 고정하여,특정 시점 이후에 이뤄진 모든 상호작용을 test set으로 분할한다.
+    + 학습 및 검증에 사용할 수 있는 상호작용이 적은 문제가 있다.
+    + 가장 권장되는 방법이나 도메인에 따라 다르다.
+
+        <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197556956-c41a7c40-5e61-487d-aac0-388c1c628f22.png">
+
+  + Random Split
+    + 각 사용자 별로 interaction을 시간 순서에 관계없이 random 하게 아이템을 선택하여 분할한다.
+    + 사용하기 쉽고 많은 train set을 얻을 수 있다.
+    + Data leakage 문제가 발생할 수 있다.
+
+    <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197557445-72bccf7f-772b-461c-906f-e8b982aad53a.png">
+
+  + User Split
+    + User-free 모델에만 사용 가능하다.
+    + 사용자가 겹치지 않게 사용자를 기준으로 분할한다.
+    + Cold-start 문제에 대응하는 모델 생성이 가능한다.
+    + Data leakage 문제가 있다.
+    + 그러나 오히려 Cold Start를 위해 잘 쓰이지 않음(이유는 안 말해줌) -> 추가학습 필요.
+  
+    <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197561410-3ba84160-a7b8-44b9-9172-7ec8e122a9b3.png">
+
+  + K-Fold Cross Validation
+    + 좀 더 일반화 하기 위한 방법이다.
+    + 일반화와 폴드 앙상블을 활용해 더 높은 성능을 기대할 수 있으나 k개의 모델을 연산하므로 더 오래걸린다.
+    + Train set 내에서 k개의 Fold로 분할한 뒤, 한 Fold씩 Validation set으로 활용하여 검증한다.
+
+    <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197560145-ee76a0fd-c573-4031-8ddc-8bbba90d7867.png">
+
+
+
+  + Time Series Cross Validation
+    + 추천시스템 데이터는 대부분 시간에 대해 dependency가 존재 하기 때문에 시간을 고려하지 않고 학습하면 data leakage가 발생한다.
+    + 미래 데이터를 학습하여 과거를 예측하는 문제가 생긴다. 그러므로 Fold 분할 시 시간을 고려한다.
+    + Validation 데이터가 각각 달라서 각각의 모델이 상이하고, train 데이터가 줄어든다는 단점이 있다.
+  
+    <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197560664-716252c2-59c4-4734-adb8-6ae550520794.png">
+
+    + 이를 조금 더 개선해 Val을 고정하고 train을 val시점에 맞춰 줄여가며 학습한다. Val이 동일하므로 쉽게 평가할 수 있고 조금 더 비슷한 모델들이 나옴
+
+    <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197560966-cd04aab4-e62d-4bc6-a9ee-9ad47d94e287.png">
+
+
+  + 예측 알고리즘 평가 지표
+    + 평점 예측: RMSE, MAE
+    + 랭킹 문제: Precision@K, Recall@K, MAP@K, NDCG@K, Hit-rate
+  + Offline Test의 한계점
+    + 정확성 개선과 실제 시스템 성능 향상을 연관 짓기 어렵다.
+    + 서비스 만족도를 높인다고 보기 어렵다.
+  + 특성 평가 지표
+    + 성공적인 추천시스템: 정확도 향상 + 흔하지 않으면서도 흥미롭고 다양한 아이템을 추천
+    + Coverage: 전체 아이템 중 추천시스템이 추천하는 아이템의 비율
+    + Novelty: 새로운 아이템 추천
+    + Personalization: 개인화된 추천
+    + Serendipity: 의외의 아이템 추천
+    + Diversity: 얼마나 다양한 아이템이 추천되는지
+  
++ Onlie Test
+  + 이상적인 A/B는 동일한 유저이나 한 유저에거 동시에 두가지 제안은 불가능하므로 이를 위해 모든 면에서 최대한 비슷한 그룹으로 분할해야 한다.
+  + 유저를 두 그룹으로 분할하여 각각 A안과 B안을 보여주고 평균을 비교한다.
+  + 두 그룹의 특성이 모든면에서 비슷해야 한다.
+  + 그룹이 나뉘는 시점도 비슷해야 한다.(시점에 따라 데이터가 변할 수 있으므로)
+  + 트래픽(traffic)을 반으로 나눠서 사용한다.
 
 ### Content Based Filtering
 + 배경
@@ -140,7 +221,9 @@ Label Encoding: Label Encoding은 카테고리 피처를 코드형 숫자 값으
   + 학습 이후 서빙 속도가 빠름
 
 + Clustering
+  
     <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/197551954-bf6f8e4a-7612-4d85-9a36-42e783475f7b.png">
+
   + 데이터를 군집화 하여 군집내의 다른 사용자가 선호하는 아이템을 추천한다.
   + 군집화 이후 Collaborative Filtering 사용을 통한 예측 정확도가 향상된다.
   + 군집 데이터를 추룰하여 아이템 선호드를 계산하고, 사전확률로 활용하여 BPR을 적용한다.
@@ -155,6 +238,14 @@ Label Encoding: Label Encoding은 카테고리 피처를 코드형 숫자 값으
 
   + 군집화의 한계점
     + 데이터를 분할함에 따라 분할 된 데이터의 희소성 문제가 발생해 성능이 저하된다.
-    + 군집개수등파라미터를직접설정해야함
+    + 군집개수등 파라미터를 직접 설정 해야한다.
 
 
+## 의문점
+- User Split에서 오히려 Cold Start를 위해 잘 쓰이지 않는 이유가 뭘까?
+ 
+## 피어섹션
+
+- User Split에서 오히려 Cold Start를 위해 잘 쓰이지 않는 이유가 뭘까?
+- Temporal User/Global Split의 상호작용이 왜 적은지 논의.
+- Hit-rate 구체적인 설명 논의.
