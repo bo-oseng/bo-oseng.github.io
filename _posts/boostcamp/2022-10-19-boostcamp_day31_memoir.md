@@ -73,16 +73,18 @@ toc: true
       + $y = w^{T}x +b$
 
     + Cross-Product Transformation
+
       + (“gender=female” = 1) and (“language=en” = 1) → “AND(gender=female, language=en)” = 1
     
       + 서로 다른 변수 두개의 인터렉션을 표현하기위해 추가.
     
       + 본 논문에서는 편의상 두개의 주요 feature에 대해서만 연산.
-    
-      + $\phi _{k}\left( x\right) =\prod ^{d}_{i=1}x_{i}^{c_{ki}}, c_{ki}\in\{0, 1\}$
 
       + [Review – Polynomial Logistic Regression](https://bo-oseng.github.io/boostcamp/boostcamp_day29_memoir/#factorization-machines-fm)와 거의 유사함.
       + (n x n)만큼 학습 파라미터가 늘어나지만 표현할 수 있는 한계각 인터렉션의 한계가 명확하다.
+  
+$$\phi _{k}\left( x\right) =\prod ^{d}_{i=1}x_{i}^{c_{ki}}, c_{ki}\in\{0, 1\}$$
+
   
   + The Deep Component
 
