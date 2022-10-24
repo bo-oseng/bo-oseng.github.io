@@ -56,7 +56,7 @@ toc: true
   
 ### MAB Formula
   
-$q_{*}(a) = E[R_{t}|A_{t}=a]$
+$$ q_{*}(a) = E[R_{t}|A_{t}=a] $$
 
   + t: time step or play number
   
@@ -102,7 +102,7 @@ $$A_{t}=argmax_{a} Q_{t}\left( a\right) $$
 + 단점
   +  다만 시간이 많이 지나 충분히 데이터가 쌓여서 각각의 액션의 true distributuon을 충분히 추정했음에도 항상 Epsilon의 확률로 랜덤액 액션을 선택(Exploration & Exploitation Trade-offf)이 있으므로 후반으로 가면서 손해를 보는구조임
 
-<img width="60%" alt="image" src="https://user-images.githubusercontent.com/94548914/197329973-80723399-aad1-439c-8866-a9a170cba01c.png">
+  <img width="60%" alt="image" src="https://user-images.githubusercontent.com/94548914/197329973-80723399-aad1-439c-8866-a9a170cba01c.png">
 
 ###  Upper Confidence Bound (UCB)
 
