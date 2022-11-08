@@ -11,7 +11,7 @@ categories:
 
   
 
-tag: [Boostcamp, 부스트캠프, 회고록, ]
+tag: [Boostcamp, 부스트캠프, 회고록, 추천 시스템 정의, Content Based Filtering, Collaborative Filtering, Offline Test, Onlie Test, Temporal Global, Random Split, User Split, K-Fold Cross Validation, Time Series Cross Validation, Content Based Filtering, Memory Based Collaborative Filtering, Model Based Collaborative Filtering]
 
   
 
@@ -21,7 +21,9 @@ toc: true
 ## Day 36
 
 ### 추천 시스템 정의
+
 + 정보 필터링 기술의 일종으로, 특정 사용자가 관심을 가질 만한 정보를 추천하는 것을 말한다.
+  
 + 사용장의 행동 데이터와 이이템 데이터를 분석해 현재 사용자에게 가장 적절한 아이템을 추천하는 것을 말한다.
 
 + 추천 시스템의 목적?
@@ -160,7 +162,7 @@ toc: true
     + Sparse가 해소한다.
     + 단어간 유사성까지 벡터에 반영된다.
   + [TF-IDF](https://bo-oseng.github.io/boostcamp/boostcamp_week4_memoir/#day-23)
-    + skleanr의 TF-IDF는 띄어쓰기를 기준으로 단어를 분할되므로 a, the, `, 단수, 복수 등의 문제가 생길 수 있음 → mapcap 같은 toknizer를 활용하자.
+    + sklearn의 TF-IDF는 띄어쓰기를 기준으로 단어를 분할되므로 a, the, `, 단수, 복수 등의 문제가 생길 수 있음 → mapcap 같은 toknizer를 활용하자.
   + [Word2Vec](https://bo-oseng.github.io/boostcamp/boostcamp_week4_memoir/#day-24)
   
 ```
