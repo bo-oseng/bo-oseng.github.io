@@ -71,9 +71,9 @@
 
 **Slack**
 
-![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled.png)
+![Slack1](https://user-images.githubusercontent.com/94548914/200845593-93c447d4-801f-4fe3-9d68-8dfaf39243ca.png)
 
-![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled%201.png)
+![Slack2](https://user-images.githubusercontent.com/94548914/200845596-d726a33a-b3ac-41fb-a371-8310a3aeca68.png)
 
 파일 공유, 논의해야할 사항을 Slack을 이용해 공유하였다.
 
@@ -81,7 +81,7 @@
 
 **Github**
 
-![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled%202.png)
+![Git hub](https://user-images.githubusercontent.com/94548914/200845590-710951b6-ad66-4be5-87fa-69276398e5be.png)
 
 새로운 실험과 버전관리를 위해 Git과 Github를 활용했다.
 
@@ -89,7 +89,7 @@
 
 **Vscode Live Share**
 
-![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled%203.png)
+![VS live server](https://user-images.githubusercontent.com/94548914/200845598-2e01158a-4c91-4b37-8cbc-d3b40f4bc300.png)
 
 함께 코드를 공유해야할 상황에 vscode의 Live Share을 이용해 동시 작업을 하였다. 이를 통해 빠르고 효율적으로 오류 수정과 공유를 할 수 있었다.
 
@@ -97,7 +97,7 @@
 
 **Notion**
 
-![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled%204.png)
+![Notion](https://user-images.githubusercontent.com/94548914/200845592-4b017311-0ca9-4d4d-9090-e0d3a881cb05.png)
 
 실험결과 Parameter와 RMSE를 쉽고 명확하게 공유하기 위해 노션을 활용했다.      
 
@@ -113,7 +113,7 @@
 
 ## 1-3. 프로젝트 수행 절차 및 방법
 
-![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled%205.png)
+![마일스톤](https://user-images.githubusercontent.com/94548914/200845576-fc51939b-3d87-4b42-b88c-4a0c919d95cc.png)
 
 1. 학습 데이터 EDA, summary와 title 전처리
 2. 팀원들이 baseline에서 각각 1개의 모델을 맡아 데이터의 흐름과 연산 과정을 점검
@@ -163,7 +163,7 @@ year of publication
 
 - 가장 낮은 데이터는 1376이다. 또한 1960년 이후의 출판된 책의 분포는 다음과 같다.
     
-    ![output.png](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/output.png)
+    ![연도별 출판 분포](https://user-images.githubusercontent.com/94548914/200845580-a3a65461-b710-4052-aae4-81444d950703.png)
     
 
 publisher
@@ -189,13 +189,13 @@ language
 - 약 45%의 결측치가 존재했다.
 - 95%는 `en`이다. 또한 상위 5개의 language의 합이 98% 이상이다.
     
-    ![스크린샷 2022-11-05 오후 5.56.08.png](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2022-11-05_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.56.08.png)
-    
+    <img width="229" alt="언어별 분포" src="https://user-images.githubusercontent.com/94548914/200845579-1c4050c2-0b9f-4af9-a2e5-2d83e05b8654.png">
+
 - isbn의 처음 1~5자리 숫자가 국가코드인 것을 이용해 country 항목을 생성하여 채웠다.
 - 결측값은 다른 책의 같은 book_author과 매핑시켜 결측값을 채웠다.
 - country에서 `English`가 89.8%를 차지하였으므로 country가 `English`인 책은 1로, 아닌 책은 0으로 채웠다.
     
-    ![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled%206.png)
+    ![Country](https://user-images.githubusercontent.com/94548914/200845585-c99c4968-bb5c-49fd-8eb6-e7b5d9fd6bff.png)
     
 
 category
@@ -216,7 +216,7 @@ img_path
 - 68,092명의 User와 149,570권의 Books의 Interection 중 관측된 정보는 306,795건으로 99.9%의 Sparse Matrix의 데이터가 주어졌다.
 - Ratings의 분포는 다음과 같았다.
     
-    ![스크린샷 2022-11-05 오후 6.09.25.png](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2022-11-05_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.09.25.png)
+    <img width="461" alt="평점 분포" src="https://user-images.githubusercontent.com/94548914/200845582-87af6ef1-64aa-4e91-882c-2cecdfbdb070.png">
     
 
 **Model Select**
@@ -240,8 +240,7 @@ img_path
 - CV score (valid) : RMSE 2.1758
 - LB score (Public) : RMSE 2.1414
 - LB score (Private) : RMSE 2.1418
-
-![Untitled](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/Untitled%207.png)
+![실험결과 순위](https://user-images.githubusercontent.com/94548914/200845577-01c5dffd-e8a7-4400-99f3-4d9b135c24e6.png)
 
 ## 1-5. 자체 평가 의견
 
@@ -327,7 +326,7 @@ img_path
     
     (공동 실험자: 김다은, 류지수)
     
-    ![스크린샷 2022-11-07 오전 1.33.48.png](%E1%84%85%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%85%E1%85%B5%E1%84%91%E1%85%A9%E1%84%90%E1%85%B3%2007df3f02ac104624b8d93b82c0d73352/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2022-11-07_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.33.48.png)
+    <img width="1098" alt="Feature Enginerring 실험" src="https://user-images.githubusercontent.com/94548914/200845589-2250be3f-6a8d-4d9f-9dc6-40741caa84b8.png">
     
 - LightFM
     
