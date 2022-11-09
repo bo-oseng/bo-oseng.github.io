@@ -1,3 +1,22 @@
+---
+layout: single
+
+  
+
+title: 부스트캠프 AI, Book Rating Prediction 대회
+
+categories:
+
+- Boostcamp
+
+  
+
+tag: [Boostcamp, 부스트캠프, 회고록, 부캠대회, 프로젝트 ]
+
+
+toc: true
+---
+
 # 랩업리포트
 
 **RecSys 14조**
