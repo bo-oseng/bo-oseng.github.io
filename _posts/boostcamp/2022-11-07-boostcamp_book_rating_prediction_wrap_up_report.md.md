@@ -3,7 +3,7 @@ layout: single
 
   
 
-title: 부스트캠프 AI 8주차(Day-50) Book Rating Prediction 대회
+title: 부스트캠프 AI 8주차(Day-50) 회고록, Book Rating Prediction 대회
 
 categories:
 
