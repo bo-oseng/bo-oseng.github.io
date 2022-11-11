@@ -3,7 +3,7 @@ layout: single
 
   
 
-title: 부스트캠프 AI, Book Rating Prediction 대회
+title: 부스트캠프 AI 8주차(Day-50) Book Rating Prediction 대회
 
 categories:
 
@@ -11,7 +11,7 @@ categories:
 
   
 
-tag: [Boostcamp, 부스트캠프, 회고록, 부캠대회, 프로젝트 ]
+tag: [Boostcamp, 부스트캠프, 회고록, 부캠대회, 프로젝트. Ai stages]
 
 
 toc: true

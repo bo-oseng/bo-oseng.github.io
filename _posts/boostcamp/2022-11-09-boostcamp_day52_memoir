@@ -1,0 +1,43 @@
+---
+layout: single
+
+  
+
+title: 부스트캠프 AI 8주차(Day-52) Product Serving
+
+categories:
+
+- Boostcamp
+
+  
+
+tag: [Boostcamp, 부스트캠프, 회고록,]
+
+
+toc: true
+---
+
+## Day 52
+
+## Product Serving 개론
+
+### Model Serving
+
+### Serving Basic
+
+
+
+#### Online Serving Basic
+
+#### Web Server Basic
+
+#### API
+
+### Online Serving
+
+
+### Batch Serving
+
+#### Batch Serving Basic
+
+#### Online Serving vs Batch Serving

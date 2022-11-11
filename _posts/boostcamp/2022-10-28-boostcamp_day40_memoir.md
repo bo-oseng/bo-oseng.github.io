@@ -3,7 +3,7 @@ layout: single
 
   
 
-title: 부스트캠프 AI 5주차(Day-40) 회고록
+title: 부스트캠프 AI 6주차(Day-40) 회고록
 
 categories:
 
@@ -11,10 +11,12 @@ categories:
 
   
 
-tag: [Boostcamp, 부스트캠프, 회고록, 부캠대회, Book rating 대회, Baselinecode]
+tag: [Boostcamp, 부스트캠프, 회고록, 부캠대회, Book ratings Prediction, Baselinecode]
 
 
 toc: true
+
+published: False
 ---
 
 ## Day 40
