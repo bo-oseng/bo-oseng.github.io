@@ -3,7 +3,7 @@ layout: single
 
   
 
-title: 부스트캠프 AI 8주차(Day-51) 회고록, Product Serving
+title: 부스트캠프 AI 8주차(Day-51) 회고록, Product Serving 1
 
 categories:
 
@@ -16,6 +16,7 @@ tag: [Boostcamp, 부스트캠프, 회고록,]
 
 toc: true
 ---
+
 ## Day 51
 
 ## MLOps 개론

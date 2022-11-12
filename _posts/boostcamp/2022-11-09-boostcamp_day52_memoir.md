@@ -1,22 +1,16 @@
 ---
 layout: single
 
-  
-
-title: 부스트캠프 AI 8주차(Day-52) 회고록, Product Serving
+title: 부스트캠프 AI 8주차(Day-52) 회고록, Product Serving 2
 
 categories:
 
 - Boostcamp
 
-  
-
 tag: [Boostcamp, 부스트캠프, 회고록,]
-
 
 toc: true
 ---
-
 
 ## Day 52
 
