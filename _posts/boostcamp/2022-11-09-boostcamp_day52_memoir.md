@@ -7,7 +7,7 @@ categories:
 
 - Boostcamp
 
-tag: [Boostcamp, 부스트캠프, 회고록,]
+tag: [Boostcamp, 부스트캠프, 회고록, online vs batch]
 
 toc: true
 ---
