@@ -15,6 +15,7 @@ tag: [Boostcamp, 부스트캠프, 회고록, 부캠대회, Book ratings Predicti
 
 
 toc: true
+published: false
 ---
 
 ## Day 40
