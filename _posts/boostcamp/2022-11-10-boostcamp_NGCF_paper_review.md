@@ -15,7 +15,6 @@ tag: [Boostcamp, 부스트캠프, 회고록, NGCF]
 
 
 toc: true
-published: false
 ---
 
 
