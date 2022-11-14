@@ -16,12 +16,13 @@ tag: [Boostcamp, 부스트캠프, 회고록, NGCF]
 
 toc: true
 ---
-
+# NGCF 논문 리뷰
 
 ![슬라이드2](https://user-images.githubusercontent.com/94548914/201319947-5af78e3b-7318-42db-83b8-dcac574d4ce7.png)
 
 <br>
 
+## Introdcution
 ![슬라이드3](https://user-images.githubusercontent.com/94548914/201319953-845a98c4-4629-4dea-ab31-5b14a45d970b.png)
 
 <br>
@@ -66,6 +67,7 @@ toc: true
 
 <br>
 
+## Methodology
 ![슬라이드14](https://user-images.githubusercontent.com/94548914/201319991-9ecf6c78-27cd-4b82-9961-01c2c42ca6e5.png)
 
 <br>
@@ -138,6 +140,7 @@ toc: true
 
 <br>
 
+## Related Work
 ![슬라이드32](https://user-images.githubusercontent.com/94548914/201320055-b1c07e1e-7691-41a7-9979-bcadc79d9c94.png)
 
 <br>
@@ -162,6 +165,7 @@ toc: true
 
 <br>
 
+# Experiments
 ![슬라이드38](https://user-images.githubusercontent.com/94548914/201320084-91433123-0487-4698-bc3c-6955b18014ed.png)
 
 <br>
@@ -198,9 +202,11 @@ toc: true
 
 <br>
 
+## Conclusion and Future Work
 ![슬라이드47](https://user-images.githubusercontent.com/94548914/201320131-e2af10e5-30eb-4cfb-a01c-684c2ba0a216.png)
 
 <br>
+
 
 ![슬라이드48](https://user-images.githubusercontent.com/94548914/201320132-d0aec9f2-4fa1-42d9-a495-bc255646a40f.png)
 
