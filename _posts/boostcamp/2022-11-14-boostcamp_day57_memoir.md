@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 9주차(Day-57) 회고록, DKT 이해 및 DKT Trend 소개
+title: 부스트캠프 AI 9주차(Day-57) 회고록, DKT 대회 - (1) DKT 이해 및 DKT Trend 소개
 
 categories:
 
