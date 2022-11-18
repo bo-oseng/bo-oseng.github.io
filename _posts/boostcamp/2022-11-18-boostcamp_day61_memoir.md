@@ -10,6 +10,8 @@ categories:
 tag: [Boostcamp, 부스트캠프, 회고록, DKT, Deep Knowledge Tracing, DKT 대회]
 
 toc: true
+
+published: false
 ---
 
 ## Day 61
