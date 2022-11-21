@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 9주차(Day-57) 회고록, DKT 대회 - (3) Baseline Model
+title: 부스트캠프 AI 9주차(Day-59) 회고록, DKT 대회 - (3) Baseline Model
 
 categories:
 
@@ -299,5 +299,6 @@ class Bert(nn.Module):
 ## Appendix
 
 ### 의문점
+범주형과 수치형의 임베딩을 합칠때 각각 feature수가 다름에도 왜 굳이 절반씩 합치는지 잘 모르겠다. ( ex) 범주형 3개, 수치형 300개인데 반반씩합침 ), 나중에 실험 해봐야겠다.
 
 ### 피어섹션

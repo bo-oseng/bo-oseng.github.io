@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 9주차(Day-57) 회고록, DKT 대회 - (2) DKT EDA
+title: 부스트캠프 AI 9주차(Day-58) 회고록, DKT 대회 - (2) DKT EDA
 
 categories:
 
