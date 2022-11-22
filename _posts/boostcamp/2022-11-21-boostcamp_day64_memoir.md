@@ -1,20 +1,22 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 9주차(Day-64) 회고록, DKT 대회 - (5) LightGCN + LSTM 실험
+title: 부스트캠프 AI 10주차(Day-64) 회고록, DKT 대회 - (5) LightGCN + LSTM 구상
 
 categories:
 
 - Boostcamp
 
-tag: [Boostcamp, 부스트캠프, 회고록, DKT, Deep Knowledge Tracing, DKT 대회]
+tag: [Boostcamp, 부스트캠프, 회고록, DKT, Deep Knowledge Tracing, DKT 대회, KATRec]
 
 toc: true
 ---
 
 ## Day 64
 
-## LightGCN + LSTM 실험
+# Day 64 DKT 대회 진행상황
+
+## LightGCN + LSTM 구상
 
 LightGCN 으로 임베딩한 정보를 Positional 정보와 함께 Sequntial하게 만든뒤 LSTM에 넣어 값을 예측하는 모델에 대해 고민해봤다.
 
@@ -23,7 +25,11 @@ LightGCN 으로 임베딩한 정보를 Positional 정보와 함께 Sequntial하�
 아무래도 Positional Embedding 부분 개념이 약간 부족해서 이해가 잘 안되는거 같다. 
 Transformer 부터 차근차근 다시 살펴봐야겠다.
 
-## Github Issue
+### 참고자료
++ [KATRec 원작자 깃허브](https://github.com/DanialTaheri/KATRec)
++ [KATRec 논문](https://arxiv.org/abs/2012.03323)
+
+## Github Issue 해결
 
 <img width="80%" alt="스크린샷 2022-11-20 오후 5 26 50" src="https://user-images.githubusercontent.com/94548914/203078633-16bdc517-dfbc-41e7-aa69-94d8dfbf2112.png">
 
@@ -38,9 +44,7 @@ Transformer 부터 차근차근 다시 살펴봐야겠다.
 
 두 글을 읽고 이해하는데 굉장히 도움이 많이됐다 나중에 스스로 다시 한번 정리해봐야겠다.
 
-### 참고자료
-+ [KATRec 원작자 깃허브](https://github.com/DanialTaheri/KATRec)
-+ [KATRec 논문](https://arxiv.org/abs/2012.03323)
+
 
 ## Appendix
 
