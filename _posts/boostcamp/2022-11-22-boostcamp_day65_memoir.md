@@ -20,7 +20,11 @@ toc: true
 [KATRec 논문](https://arxiv.org/abs/2012.03323)을 이어서 연구중에 참고할만한 코드가 있나 검색을 하다보니 PyTorch Geometric Temporal 라이브러리와 GC-LSTM을 발견했다.
 
 ### GC-LSTM
-[GC-LSTM](https://pytorch-geometric-temporal.readthedocs.io/en/latest/_modules/torch_geometric_temporal/signal/static_graph_temporal_signal.html) 처음엔 KATRec과 비슷한 구조로 이루어진 모델을 기대하고 모델 구조 파악을 위해 첨부된 [GC-LSTM 논문](https://arxiv.org/abs/1812.04206)을 읽어봤다. 기대한것과는 달랐지만 현재 진행중인 DKT에는 KATRec보다 Temporal graph를 활용하는 GC-LSTM이 더 잘 어울린다는 생각이 들었다.
+[GC-LSTM](https://pytorch-geometric-temporal.readthedocs.io/en/latest/_modules/torch_geometric_temporal/signal/static_graph_temporal_signal.html) 처음엔 KATRec과 비슷한 구조로 이루어진 모델을 기대하고 모델 구조 파악을 위해 첨부된 [GC-LSTM 논문](https://arxiv.org/abs/1812.04206)을 읽어봤다.
+
+<img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/203333674-468bda54-70c6-4abc-b6c5-151b7eeda42d.png">
+
+기대한것과는 달랐지만 현재 진행중인 DKT에는 KATRec보다 Temporal graph를 활용하는 GC-LSTM이 더 잘 어울린다는 생각이 들었다.
 
 ### Temporal graph
 KATRec은 5회 인용이었는데 [T-GCN](https://ieeexplore.ieee.org/abstract/document/8809901) 무려 873회 인용된 논문이 있었다. 이 논문의 아이디어로 변형시킨게 GC-LSTM인듯 하다.
