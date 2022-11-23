@@ -1,13 +1,13 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 10주차(Day-65) 회고록, DKT 대회 - (6) Temporal Graph
+title: 부스트캠프 AI 10주차(Day-65) 회고록, DKT 대회 - (6) PyTorch Geometric Temporal - 1
 
 categories:
 
 - Boostcamp
 
-tag: [Boostcamp, 부스트캠프, 회고록, DKT, Deep Knowledge Tracing, DKT 대회, Temporal Graph]
+tag: [Boostcamp, 부스트캠프, 회고록, DKT, Deep Knowledge Tracing, DKT 대회, PyTorch Geometric Temporal, PyG]
 
 toc: true
 ---
@@ -27,9 +27,9 @@ toc: true
 기대한것과는 달랐지만 현재 진행중인 DKT에는 KATRec보다 Temporal graph를 활용하는 GC-LSTM이 더 잘 어울린다는 생각이 들었다.
 
 ### Temporal graph
-KATRec은 5회 인용이었는데 [T-GCN](https://ieeexplore.ieee.org/abstract/document/8809901) 무려 873회 인용된 논문이 있었다. 이 논문의 아이디어로 변형시킨게 GC-LSTM인듯 하다.
+[T-GCN](https://ieeexplore.ieee.org/abstract/document/8809901) 이 논문의 아이디어로 변형시킨게 GC-LSTM인듯 하다.
 
-Temporal graph 기본적인 아이디어는 그래프가 시간에따라 변화하는 경우 시간마다의 그래프의 Adjacent Matrix 하나하나를 입력으로 하여 Sequntial한 데이터를 만들고 이를 바탕으로 학습하는 것이다.
+T-GCN(Temporal graph) 기본적인 아이디어는 그래프가 시간에따라 변화하는 경우 시간마다의 그래프의 Adjacent Matrix 하나하나를 입력으로 하여 Sequntial한 데이터를 만들고 이를 바탕으로 학습하는 것이다.
 
 + [참고자료](https://towardsdatascience.com/temporal-graph-networks-ab8f327f2efe)
 
