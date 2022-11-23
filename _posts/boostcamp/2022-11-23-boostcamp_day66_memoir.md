@@ -20,7 +20,7 @@ toc: true
 
 ## Data Handling of Graphs
 
-```torch_geometric.data.Data```
+``` torch_geometric.data.Data ```
 
 데이터를 그래프의 형태로 나타내기 위한 방법으로 다음과 같은 속성을 가진다.
 
@@ -44,7 +44,7 @@ data = Data(x=x, edge_index=edge_index)
 
 ```
 
-<img width=70% src="https://pytorch-geometric.readthedocs.io/en/latest/_images/graph.svg">
+<img width="80%" src="https://pytorch-geometric.readthedocs.io/en/latest/_images/graph.svg" />
 
 ```python
 
@@ -73,9 +73,11 @@ Graph가 시간에 따라 변화하는 모습의 인접행렬로 나타내기 �
 
 
 ```python
+
 dataset = StaticGraphTemporalSignal(
     self._edges, self._edge_weights, self.features, self.targets
 )
+
 ```
 
 dataset을 선언할 때 ```_edges```, ```_edge_weights```, ```features```, ```targets```이 필요하다.
@@ -96,4 +98,4 @@ DKT 대회 데이터셋으로 StaticGraphTemporalSignal를 만들면 바로 모�
 ### 피어섹션 & 의문점
 Heterogeneous Graph에 대해 팀원들과 의견을 나눴고, 결론은 일단은 끝까지 해보자 였다. 대신 다른 인원은 만약을 대비해 KATRec을 구현 해보기로 했다.
 
- 또한 KATRec의 전체적인 구조에 대한 나의 의견을 팀원들과 공유했다. 데이터를 GCN으로 학습 하면 Prediction 단계 이전에 User Embedding과 Item Embedding을 구하는데, 여기서 구한 Item Embedding을 Transforemr의 입력을 word2vec으로 임베딩 대시 GCN을 활용하는 느낌인듯 하다.
+ 또한 KATRec의 전체적인 구조에 대한 나의 의견을 팀원들과 공유했다. 데이터를 GCN으로 학습 하면 Prediction 단계 이전에 User Embedding과 Item Embedding을 구하는데, 여기서 구한 Item Embedding을 Transforemr의 입력으로 word2vec으로 임베딩 대신 GCN을 활용하는 느낌인듯 하다.
