@@ -3,7 +3,7 @@ layout: single
 
   
 
-title: 부스트캠프 AI 8주차(Day-53) 회고록, 논문리뷰
+title: 부스트캠프 AI 8주차(Day-53) 회고록, NGCF 논문리뷰
 
 categories:
 
