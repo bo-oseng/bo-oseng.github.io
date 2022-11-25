@@ -71,3 +71,5 @@ Transformer의 Warm up 개념을 활용한다는 느낌이다.
 ## Appendix
 
 ### 피어섹션 & 의문점
+
+내가 생각하는 LightGCN + Transformer을 팀원들에게 소개하고 토론하는 시간을 가져보았다.
