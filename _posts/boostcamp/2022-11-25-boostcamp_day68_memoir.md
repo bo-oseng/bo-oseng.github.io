@@ -42,6 +42,9 @@ Predition 단계에서는 다음 두가지 Embedding이 활용된다.
 
 ## Transformer
 
+<img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/203948162-14df7287-6539-4355-b75d-c699f5962c6f.png">
+
+
 BERT의 핵심 키워드는 Attention으로 Attention을 활용해 기존의 RNN의 모델이 가진 입력 데이터끼리의 관계성을 끊을 수 있게 되었다.
 
 그리고 Positional Embedding을 활용해 Sequential함을 유지시켰다.
