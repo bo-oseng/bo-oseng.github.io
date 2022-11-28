@@ -68,7 +68,7 @@ Transformer의 Warm up 개념을 활용한다는 느낌이다.
 + Transforemr에 어떻게 LightGCN의 Embedding을 추가할지 성능 비교 실험.
   + 기존의 Transformer에 랜덤한 값으로 들어가는 Item에 대한 Embedding들을 그대로 두고 Feature를 새롭게 하나 추가해 LightGCN의 Emedding을 넣은것
   + Item에 대한 Embedding을 모두 LightGCN이 학습한 Embedding으로 교체한것.
-+ LightGCN Custom과 기존 LightGCN 성능 비교 실험.
++ LightGCN + Transformer Custom과 기존 LightGCN 성능 비교 실험.
   + 주관적인 판단으로 LightGCN Custom이 더 좋을거 같다는 생각이 들고 성능 비교를 통해 검증할 예정이다.
 
 ## Appendix
