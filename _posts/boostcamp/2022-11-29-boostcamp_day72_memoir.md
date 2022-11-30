@@ -59,20 +59,3 @@ Item끼리는 확실히 군집화를 이루었다고 판된된다.
 추가적으로 assementID 중 공통적으로 발견되는 문자열을 기준으로 카테고리를 만들어 그루핑을 한 뒤 시각화를 해봤다. 그리고 매우 유의미한 직관을 얻을 수 있었다.  
 
 User에 대해 tSNE와 Item에 대한 tSNE의 차이를 통해 1번 가설을 어느정도 뒷받쳐 준다고 생각한다. 즉 lightgcn의 user에 대한 학습이 오히려 성능에 노이즈로 작용할 수 있을거라고 판단된다. 또한 본 대회는 아이템에 대한 feature engineering이 성능에 아주 critical 할 것으로 예상된다.
-
-### lightGCN embedding Plot
-
-<img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/204494596-5d5eeb4e-360e-47fb-b841-273d7ce72d92.png">
-
-
-lightGCN의 Embedding중 아이템 Embedding에 대해서 시각화를 진행했다.lightGCN도 어느정도 군집화가 이루어 진듯하게 보인다.   
-
-
-<br>
-
-마찬가지로 assementID 중 공통적으로 발견되는 문자열을 기준으로 카테고리를 만들어 그루핑을 한 뒤 시각화를 해봤다.
-
-<img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/204494772-c503eac5-5be4-4b35-868c-8ab12270c98e.png">
-
-
-카테고리가 내가 임의로 만든 class라 완벽히 신뢰할만한 정보는 아니지만  카테고리를 기준으로는 오히려 MF보다 representation이 떨어진듯 하게 보인다.
