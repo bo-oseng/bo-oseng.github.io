@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 10주차(Day-71) 회고록, DKT 대회 - (9) LightGCN + Transformer
+title: 부스트캠프 AI 10주차(Day-71) 회고록, DKT 대회 - (10) LightGCN + Transformer
 
 categories:
 
@@ -29,28 +29,26 @@ LightGCN 단독 모델보다 성능이 떨어짐을 관측했다.
 
 ### 가설
 
-1. 이 대회의 데이터는 유저의 경향성은 거의 없고, 아이템의 경향성에 영향이 많은것으로 판단된다. 앞서 생각했던것 처럼 LightGCN은 User에 의해 학습되는 부분이 꽤나 많고, 이는 본 대회의 데이터 특성상 성능에 노이즈로 작용할거 같다.
-2. LightGCN은 구조상 train과 test 데이터 모두를 참고해 학습하나 Transformer는 그렇지 않았다. 여기서 오버피팅이 발생한 것이 아닐까?
+앞서 생각했던것 처럼 LightGCN은 User에 의해 학습되는 부분이 꽤나 많고 내가 짰던 모델의 흐름 대로라면 사실상 User의 임베딩을 쓰지 않게 된다. 때문에 Item 임베딩만 따로 떼어 보는 경우에는 오히려 User 정보의 간섭이 Item 임베딩의 representaion에 노이즈로 작용하는 것 같다.
 
-오늘은 1번 가설에 대해 연구를 진행했다.
 
 ## MF모델 TSNE로 시각화
 
-1번 가설이 타당한지 데이터에 대해서 좀 더 살펴보기 위해 간단하게 구현이 가능한 MF를 통해 시각화를 진행했다. 간단한 MF만으로도 vaild의 AUC가 77.79%로 매우 준수한 성능을 냈고 MF도 어느정도의 representaion을 나타내는 군집화를 이룬다고 추측할 수 있다.
+가설이 타당한지 데이터에 대해서 좀 더 살펴보기 위해 간단하게 구현이 가능한 MF를 통해 시각화를 진행했다. 간단한 MF만으로도 vaild의 AUC가 77.79%로 매우 준수한 성능을 냈고 MF도 어느정도의 representaion을 나타내는 군집화를 이룬다고 추측할 수 있다.
 
 ### User에 대해서 피벗 후 MF
 <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/204490110-34097f40-f475-4d42-a901-03a436262011.png">
 
 User 당 아이템들의 임베딩을 tSNE을 활용해 축소한 뒤 시각화를 진행해봤다.  
 
-User끼리 어느정도 뭉쳐 있다는 느낌도 들었지만, 너무 퍼진 형태로 존재한다고 판단되었다.
+User끼리 어느정도 뭉쳐 있다는 느낌도 들었지만, 너무 퍼진 형태로 존재한다고 판단된다.
 
 ### Item에 대해서 피벗 후 MF
 
 <img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/204490598-f645f555-5fc8-4aed-8ca2-c75aced8a3ac.png">
 
 User 당 아이템들의 임베딩을 tSNE을 활용해 축소한 뒤 시각화를 진행해봤다.  
-Item끼리는 확실히 군집화를 이루었다고 판된된다.
+Item끼리는 확실히 User에 비해 군집화를 잘 이루었다고 판된된다.
 
 <br>
 
@@ -58,4 +56,6 @@ Item끼리는 확실히 군집화를 이루었다고 판된된다.
 
 추가적으로 assementID 중 공통적으로 발견되는 문자열을 기준으로 카테고리를 만들어 그루핑을 한 뒤 시각화를 해봤다. 그리고 매우 유의미한 직관을 얻을 수 있었다.  
 
-User에 대해 tSNE와 Item에 대한 tSNE의 차이를 통해 1번 가설을 어느정도 뒷받쳐 준다고 생각한다. 즉 lightgcn의 user에 대한 학습이 오히려 성능에 노이즈로 작용할 수 있을거라고 판단된다. 또한 본 대회는 아이템에 대한 feature engineering이 성능에 아주 critical 할 것으로 예상된다.
+User에 대해 tSNE와 Item에 대한 tSNE의 차이는 가설을 어느정도 뒷받쳐 준다고 생각한다. 즉 내가 설계한 모델은 lightgcn의 item 임베딩들의 user에 대한 학습이 오히려 성능에 노이즈로 작용할 수 있을거라고 판단된다.  
+
+또한 본 대회는 아이템에 대한 feature engineering이 성능에 아주 critical 할 것으로 예상된다.
