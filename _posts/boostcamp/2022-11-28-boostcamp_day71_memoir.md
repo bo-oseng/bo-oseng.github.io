@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 10주차(Day-71) 회고록, DKT 대회 - (9) LightGCN + Transformer
+title: 부스트캠프 AI 11주차(Day-71) 회고록, DKT 대회 - (9) LightGCN + Transformer
 
 categories:
 
