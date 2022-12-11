@@ -16,7 +16,7 @@ toc: true
 - <a href = 'https://codepen.io/kim7720/pen/XWZBMwz'>Live demo</a>
 - <a href = 'https://github.com/bo-oseng/vanilla_javascript_pratice_projects/tree/main/Lyrics%20Search%20App'>Source</a>
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="LyricsSearch" src="https://codepen.io/kim7720/embed/XWZBMwz?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="600" style="width: 100%;" scrolling="no" title="LyricsSearch" src="https://codepen.io/kim7720/embed/XWZBMwz?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/kim7720/pen/XWZBMwz">
   LyricsSearch</a> by KimBosung (<a href="https://codepen.io/kim7720">@kim7720</a>)
   on <a href="https://codepen.io">CodePen</a>.
