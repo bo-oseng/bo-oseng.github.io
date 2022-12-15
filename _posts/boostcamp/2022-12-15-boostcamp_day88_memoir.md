@@ -7,10 +7,11 @@ categories:
 
 - Boostcamp
 
-tag: [Boostcamp, 부스트캠프, 회고록, Movie Recommenddation, SOTA, WRMF, BPR]
+tag: [Boostcamp, 부스트캠프, 회고록, Movie Recommenddation, DKT, GCN, GES, GES-LMSTattn]
 
 toc: true
 ---
+
 ## Day 88
 
 # GES-LMSTattn
