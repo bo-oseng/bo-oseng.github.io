@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: 부스트캠프 AI 12주차(Day-86) Movie Recommendation - (1) SOTA of RecSys
+title: 부스트캠프 AI 13주차(Day-86) Movie Recommendation - (1) SOTA of RecSys
 
 categories:
 
