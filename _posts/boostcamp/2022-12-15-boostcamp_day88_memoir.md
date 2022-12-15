@@ -30,8 +30,4 @@ DKT 대회 동안 구현했던 모델을 팀원들에게 설명하는 세미나�
 
 ## PPT
 
-<iframe src="https://cnu365-my.sharepoint.com/:p:/g/personal/201601642_o_cnu_ac_kr/EUUnA77SvnVKhhW0RMeVuW4BGwg5och648azN3ezFbyZtQ?e=RcfoaR" width="800" height="600"></iframe>
-
-
-
 <iframe src="https://docs.google.com/presentation/d/1MR-oMVX5Fmn1cusj16H3YNzIs9wAFSiu/edit?usp=sharing&ouid=112152832839407050731&rtpof=true&sd=true" width="800" height="600"></iframe>
