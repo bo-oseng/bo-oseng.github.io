@@ -73,6 +73,6 @@ Compatibility function으로 inner prodcut 대신 distance metric을 (ex. Euclid
 + Inner Procut
   + 가장 유사한 아이템 집단 중 각도 상으로는 가까우나 극단적으로 거리가 먼 아이템을 추천할 수 도 있음
 + Euclidean distance
-  + 가장 유사한 아이템 집단을 거리를 기준으로 추천 하므로 적당한 추천이 가능함.(locality를 고려한다.)
+  + 가장 유사한 아이템 집단을 거리를 기준으로 추천 하므로 적당한 추천이 가능함.(locality를 고려할 수 있음)
 <img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/208059950-75225d04-f314-4230-9b08-a0d0bc8ac4a4.png">
 
