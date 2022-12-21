@@ -12,7 +12,7 @@ tag: [Boostcamp, 부스트캠프, 회고록, MLE, Autoencoder, VAE]
 toc: true
 ---
 
-## Day 89
+## Day 92
 
 # Variational AutoEncoder
 
