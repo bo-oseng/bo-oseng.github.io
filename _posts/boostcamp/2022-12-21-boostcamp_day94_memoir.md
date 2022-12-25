@@ -29,7 +29,7 @@ toc: true
 
 ## SASRec dataset
 
-<img width=100% src='https://user-images.githubusercontent.com/94548914/208921384-00b2c5b7-80cd-4145-b410-188fad0ff550.jpg'>
+![SASRecDataset150](https://user-images.githubusercontent.com/94548914/209465695-d270cd4f-5852-4644-bcd2-1c19e9047e60.jpg)
 
 + dataset은 data type 키워드에 따라 조금씩 달라집니다. 그림에 나타낸 부분은 해당 type에서 주요하게 쓰일 값들입니다.
 
@@ -37,7 +37,8 @@ toc: true
 
 ## SASRec Model
 
-<img width=100% src='https://user-images.githubusercontent.com/94548914/208921405-6b441228-3ca8-43ca-8fc0-4eb4e653ce14.jpg'>
+
+![SASRecModel150](https://user-images.githubusercontent.com/94548914/209465698-ea91d536-8491-43c8-b97b-de6c1b3a5441.jpg)
 
 + subsequnet mask는 시퀀스의 미래 데이터를 보지 않고 출력값을 예측하기 위한 처리라고 생각하시면 됩니다. max_len이 50일 때는 한 유저당 50개의 시퀀스가 들어옵니다. 50개의 시퀀스를 하나씩 늘려가며 정보를 오픈한다고 생각하면 총 50개의 마스크가 필요합니다. 그리므로 subsequnet mask 크기는 50 x 50이 됩니다.
   
@@ -62,7 +63,9 @@ toc: true
 
 ## Finetune trainer
 
-<img width=100% src='https://user-images.githubusercontent.com/94548914/208921420-96404ee1-bd77-4e31-90f8-7dfd5be1598d.jpg'>
+
+![FinetuneTrainer150](https://user-images.githubusercontent.com/94548914/209465694-efbbbffe-f9cb-4cb3-b249-7d4212d8017b.jpg)
+
 
 + train과 eval 모두 finetune trainer를 통해 진행됩니다.
 
@@ -71,4 +74,3 @@ toc: true
 + eval은 SASRecModel에 input_ids를 입력했을 때 출력값 recommned_output, SASRecDataset의 answer의 조합으로 predictlist를 만듭니다.
   
   + eval의 자세한 내용은 김재인 조교님이 준비해 주신 오피스아워 자료와 강의가 이미 너무 훌륭한거 같아서 생략하겠습니다.
-
