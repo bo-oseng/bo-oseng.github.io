@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: Variational AutoEncoder 정리
+title: Variational AutoEncoder 정리 - (1) Intro
 
 categories:
 
@@ -110,14 +110,22 @@ Manifold(고차원 데이터를 공간에 흩뿌렸을 때 모든 데이터를 �
 
   <span style="font-size:70%; color:grey;">(출처: https://www.slideshare.net/NaverEngineering/ss-96581209 이활석님 강의자료)</span>
 
+
   단순 Euclidean distance보다 Manifold 곡면을 따라 거리를 측정하는게 더 Reasonable하다.
+
+
+  
 
 ### AutoEncoder
 
-AutoEncoder의 가장 중요한 기능 중 하나는 Manifold learning이다.
-
-
 <img width="80%" src="https://user-images.githubusercontent.com/94548914/208701322-10fdcd40-1a6d-4ac7-a94c-e4709d6fab39.png">
+
+<img width="90%" alt="image" src="https://user-images.githubusercontent.com/94548914/209949888-83b5ffe0-e85a-4b45-a525-104a8fff35c3.png">
+
+
+<span style="font-size:70%; color:grey;">(출처: https://www.slideshare.net/NaverEngineering/ss-96581209 이활석님 강의자료)</span>
+
+x 를 Encoder h(.)를 거친 latent z로 압축하고, z를 Decoder g(.)를 거쳐 y로 복원했을때 Recostruction Error 줄어드는 방향으로 학습시킴.
 
 Keyword
 + Unsupervised learning
@@ -125,25 +133,10 @@ Keyword
 + Generative model learning
 + **Manifold learning**
 
+AutoEncoder의 가장 중요한 기능 중 하나는 Manifold learning이다.
 
+<img width='90%' src='https://miro.medium.com/max/1400/1*ObxFHwUFGWnvnfqaJUbBXQ.png'>
 
-## Variational AutoEncoder
+<span style="font-size:70%; color:grey;">출처: https://towardsdatascience.com/manifold-learning-t-sne-lle-isomap-made-easy-42cfd61f5183</span>
 
-Variational AutoEncoder은 Generative가 모델의 목적이다. 목적부터 AutoEncoder와는 조금 다르다. Generative를 더 잘 하려고 모델을 설계하다 보니 모델의 모양이 AutoEncoder와 비슷해졌다.
-
-Keyword
-+ **Generative Model Learning**
-
-<img width="80%" alt="image" src="https://user-images.githubusercontent.com/94548914/208398166-9f833e5c-1ac2-4cba-9f60-3ca84190e6f2.png">
-
-<br>
-
-+ Z는 Latent Variable로서 리모콘의 버튼과 같은 역할을 해줄것이다. 
-
-  → ex] 1번 버튼을 누르면 남성의 이미지가 2번의 버튼을 누르면 여성의 이미지가 나온다.
-
-+ Z를 X로 Genrate 하는 함수중 가장 X를 잘 설명하게끔 해주는 함수 G를 추정해보자.
-
-  → Marginal 적분을 통해 p(x)가 최대가 되는 G를 구해보자.
-
-$$\int p\left(  x| g_{\theta}\left( z\right) \right) p\left( z\right) \cdot dz = p(x) $$ 
+의도하고 학습을 시킨게 아니었지만 찾은 Manifold 공간이 의미있는 Representaion을 자동으로 가졌다. 곡면을 따라 v1 방향으로 이미지를 샘플링 하면 숫자가 작아지는 효과가 있었고, 곡면을 따라 v2 방향으로 이미지를 샘플링하면 회전하는 효과가 있었다.
