@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: pandas의 dtype 성질에 의해 발생했던 버그 정리
+title: Pandas의 dtype 성질과 Pydantic에 의해 발생했던 버그해결
 
 categories:
 
