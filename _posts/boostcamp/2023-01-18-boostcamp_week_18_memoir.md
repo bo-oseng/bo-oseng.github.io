@@ -1,7 +1,7 @@
 ---
 layout: single
 
-title: Pandas의 dtype 성질과 Pydantic에 의해 발생했던 버그해결
+title: numpy 자료형과 Pydantic에 의해 발생했던 버그
 
 categories:
 
