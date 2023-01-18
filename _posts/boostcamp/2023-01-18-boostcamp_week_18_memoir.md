@@ -14,7 +14,9 @@ toc: true
 
 ### 배경
 
-부스트캠프 파이널 프로젝트의 추천 서비스의 프로타입을 만들던 중 찾기 어려운 버그가 발생했었다.  
+부스트캠프 파이널 프로젝트의 추천 서비스의 프로타입을 만들던 중 찾기 어려운 버그가 발생했었다.   
+
+
 해당 버그 해결법과 그 과정에서 추가적으로 학습한 것들을 정리하고자 한다.   
  
     AI모델: pandas==1.5.2, numpy==1.24.1, torch==1.13.1, scipy==1.10.0을 활용한 EASE 모델
@@ -51,7 +53,9 @@ toc: true
 
 모델에서 **pandas로 csv를 읽어올 때** int는 파이썬의 기본형 int가 아닌 **numpy.int64**로 설정된다.  
 
-그렇다면 numpy.int64은 왜 문제가 됐을까? 원인은 fastapi의 pydantic 에 있다.
+그렇다면 numpy.int64은 왜 문제가 됐을까?  
+
+원인은 fastapi의 pydantic 에 있다.
 
 pydantic은 vaildation을 쉽고 빠르게 검증하기 위한 라이브러리로 pydantic을 통해 fastapi는 복잡하고 긴 코드의 vaildation을 쉽게 컨트롤할 수 있다.  
 
@@ -65,7 +69,7 @@ return {'inference_result': inference_result}의 json으로 변환하는 과정�
 
 ## 버그 해결법
 
-### 해결법-1
+### 해결법 - (1)
 
 문제가 되는 numpy.int64를 int로 바꿔주는 방법이다.  
 
@@ -89,7 +93,7 @@ def get_model_rec(model, input_ids, top_k) -> EASE:
 
 numpy.int64 -> int 로 의도한대로 자료형이 변환된다.
 
-### 해결법-2
+### 해결법 - (2)
 함수의 return type을 response_model 파라미터를 통해 json이아닌 List로 정해주면 된다.
 
 response_model를 통해 json의 schema가 아닌 custom type을 사용자가 직접 지정할 수 있다.
