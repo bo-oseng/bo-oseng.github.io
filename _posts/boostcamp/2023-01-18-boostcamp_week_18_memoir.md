@@ -29,7 +29,7 @@ toc: true
 
 <div> Exception in ASGI application </div> 
 <div style='color: gray;'>ASGI는 fastapi가 따르고 있는 서버의 인터페이스 정책이다. </div>  
-<div style='color: gray; font-size: 10px;'>ASGI is a spiritual successor to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.</div>
+<div style='color: gray; font-size: 10px;'>(ASGI is a spiritual successor to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.)</div>
 
 <br>
 
@@ -59,7 +59,7 @@ toc: true
 
 pydantic은 vaildation을 쉽고 빠르게 검증하기 위한 라이브러리로 pydantic을 통해 fastapi는 복잡하고 긴 코드의 vaildation을 쉽게 컨트롤할 수 있다.  
 
-버그가 발생한 코드의 make_inference_track의 return 형식은 fastapi의 swagger를 살펴보면 다음과 같다.  
+버그가 발생한 코드의 make_inference_track의 return type은 fastapi의 swagger를 통해 살펴보면 다음과 같다.  
 
 <img width="1430" alt="image" src="https://user-images.githubusercontent.com/94548914/213181813-ae877228-cfe7-4656-922e-975e1e1371eb.png">
 
