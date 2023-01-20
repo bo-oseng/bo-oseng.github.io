@@ -1,13 +1,13 @@
 ---
 layout: single
 
-title: numpy 자료형과 Pydantic에 의해 발생했던 버그
+title: Pandas와 클라우드 DB 데이터 읽기 속도 비교
 
 categories:
 
 - Boostcamp
 
-tag: [Boostcamp, 부스트캠프, 회고록, pandas, dtype, fastapi, pydantic, numpy.int64, int, item()]
+tag: [pandas, dtype, pyarrow, rds, mysql]
 
 toc: true
 ---
@@ -26,6 +26,8 @@ toc: true
 
 + CPU: Intel(R) Xeon(R) Gold 5120 CPU @ 2.20GHz
 + GPU: Tesla V100
+
++ Cloud DB: AWS RDS micro
 
 
 ```python
