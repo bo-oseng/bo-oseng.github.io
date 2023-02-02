@@ -22,11 +22,6 @@ toc: true
 이 내용들을 팀원들에게 더 잘 공유하고 싶어서 draw.io를 통해 깔끔하게 도식화해봤습니다. 완성하고 나니 모두에게 공유하는 게 좋겠다는 생각이 들었습니다. 오류가 있으면 편하게 피드백 주시면 감사할 거 같습니다!  
 
 
-<blockquote>
-참고로 UML이라는 게 있습니다. UML에 따라 도형 모양까지 용도에 맞춰 도식화하는 게 좋은 방법이다 정도만 알고 있습니다. (저는 그냥 예뻐 보이는 도형 골라서 했습니다 ㅋㅋㅋ)
-</blockquote>
-
-
 ## SASRec dataset
 
 ![SASRecDataset150](https://user-images.githubusercontent.com/94548914/209465695-d270cd4f-5852-4644-bcd2-1c19e9047e60.jpg)
