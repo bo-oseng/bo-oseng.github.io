@@ -122,6 +122,6 @@ async def make_inference_track(request: Request):
 
 그렇다면 csv가 저장될 시점의 자료형을 같이 저장했다가 read_csv 실행시 자료형을 같이 불러오는건가 라는 의문이 생겨 서칭을 했다.  
 
-서칭결과 read_csv을 통해 csv를 읽어올 때 pandas가 컬럼의 타입을 동적으로 추로하고 이 과정에 많은 메모리가 소모된다고 한다.  
+서칭결과 read_csv을 통해 csv를 읽어올 때 pandas가 컬럼의 타입을 동적으로 추론하고 이 과정에 많은 메모리가 소모된다고 한다.  
 
 그래서 read_csv 함수에 dtype 파라미터를 통해 type을 지정해주면 메모리가 최적화되고 속도가 매우 향상되므로 dtype 설정이 권장된다.
